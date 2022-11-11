@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Input, Box, Button, Form } from "../../common";
 import { useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import {joinAtom} from "../../recoil/AtomJoin"
 
 const SignUpForm = () => {
+  const [join,setJoin]=useRecoilState(joinAtom);
   const navigate = useNavigate();
   const {
     handleSubmit,
@@ -13,20 +16,17 @@ const SignUpForm = () => {
   console.log(watch("memberName"));
   return (
     <>
-      <Box>
+      <Form>
         <p>회원가입</p>
         <label htmlFor="memberName">id</label>
         <Input
-          id="memberName"
-          name="memberName"
-          type="text"
           placeholder="아이디를 입력해주세요."
-          // ref={register({ required: true, pattern:/^(?=.*[a-zA-Z])[-a-zA-Z0-9]{4,10}$/, })}
+          {...register("memberName",{ required: true, pattern:/^(?=.*[a-zA-Z])[-a-zA-Z0-9]{4,10}$/, })}
           // onChange={handleUsername}
         />
-        {/* {errors.memberName && errors.memberName.type ==="required" && <p>아이디를 입력해주세요.</p>}
-        {errors.memberName && errors.memberName.type ==="pattern" && <p>아이디는 영어 대소문자, 숫자만 가능합니다.</p>} */}
         <Button> id중복확인</Button>
+        {errors.memberName && errors.memberName.type ==="required" && <p>아이디를 입력해주세요.</p>}
+        {errors.memberName && errors.memberName.type ==="pattern" && <p>아이디는 영어 대소문자, 숫자만 가능합니다.</p>}        
         <br />
         <label htmlFor="memberNickName">닉네임</label>
         <Input
@@ -67,7 +67,7 @@ const SignUpForm = () => {
         >
           등록하기
         </Button>
-      </Box>
+      </Form>
     </>
   );
 };
