@@ -4,7 +4,12 @@ import { useForm } from "react-hook-form";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-  const { register, watch, errors } = useForm();
+  const {
+		handleSubmit,
+		register,
+		watch,
+		formState: { errors },
+	} = useForm();
   console.log(watch("memberName"));
   return (
     <>
