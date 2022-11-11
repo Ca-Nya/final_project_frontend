@@ -5,11 +5,11 @@ import { useForm } from "react-hook-form";
 const SignUpForm = () => {
   const navigate = useNavigate();
   const {
-		handleSubmit,
-		register,
-		watch,
-		formState: { errors },
-	} = useForm();
+    handleSubmit,
+    register,
+    watch,
+    formState: { errors },
+  } = useForm();
   console.log(watch("memberName"));
   return (
     <>
@@ -41,17 +41,15 @@ const SignUpForm = () => {
         {errors.memberNickName && errors.memberNickName.type ==="maxLength" && <p>닉네임은 15자 이내로 작성바랍니다.</p>} */}
         <Button> 닉네임중복확인</Button>
         <br />
-        <label htmlFor="password">
-          비밀번호
-          </label>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="비밀번호를 입력해주세요."
-            // ref={register({ required: true, minLength:6 })}
-          />
-       
+        <label htmlFor="password">비밀번호</label>
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="비밀번호를 입력해주세요."
+          // ref={register({ required: true, minLength:6 })}
+        />
+
         <br />
         <label htmlFor="passwordCheck">
           비밀번호 확인
