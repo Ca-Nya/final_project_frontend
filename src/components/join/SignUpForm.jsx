@@ -3,8 +3,11 @@ import { Input, Box, Button, Form } from "../../common";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import {joinAtom} from "../../recoil/AtomJoin"
+import { useDispatch } from "react-redux";
+import { __requestSignUp } from "../../redux/modules/join/joinSlice";
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const [join,setJoin]=useRecoilState(joinAtom);
   const navigate = useNavigate();
   const {
@@ -16,7 +19,16 @@ const SignUpForm = () => {
   console.log(watch("memberName"));
   return (
     <>
-      <Form>
+    <Form onSubmit={handleSubmit(value => {
+     const {id , nickname, password} = value;
+      dispatch(__requestSignUp({memberName: id, memberNickname: nickname, password}))
+    })}>
+      <Input  {...register("id")}/>
+      <Input  {...register("nickname")}/>
+      <Input  {...register("password")}/>
+      <Button>제출</Button>
+    </Form>
+      {/* <Form>
         <p>회원가입</p>
         <label htmlFor="memberName">id</label>
         <Input
@@ -37,8 +49,8 @@ const SignUpForm = () => {
           // ref={register({ required: true, maxLength:15 })}
           // onChange={handleUsername}
         />
-        {/* {errors.memberNickName && errors.memberNickName.type ==="required" && <p>닉네임을 입력해주세요.</p>}
-        {errors.memberNickName && errors.memberNickName.type ==="maxLength" && <p>닉네임은 15자 이내로 작성바랍니다.</p>} */}
+        {errors.memberNickName && errors.memberNickName.type ==="required" && <p>닉네임을 입력해주세요.</p>}
+        {errors.memberNickName && errors.memberNickName.type ==="maxLength" && <p>닉네임은 15자 이내로 작성바랍니다.</p>}
         <Button> 닉네임중복확인</Button>
         <br />
         <label htmlFor="password">비밀번호</label>
@@ -67,7 +79,7 @@ const SignUpForm = () => {
         >
           등록하기
         </Button>
-      </Form>
+      </Form> */}
     </>
   );
 };
