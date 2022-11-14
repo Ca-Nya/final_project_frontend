@@ -1,6 +1,5 @@
 import { ImStarFull } from "react-icons/im";
 import { Box, Margin } from "../../common";
-import { useState } from "react";
 
 const CafeRatings = ({ ratings, setRatings }) => {
 	const reviewRate = [
