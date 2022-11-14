@@ -22,6 +22,8 @@ const initialState = {
   error: null,
 };
 
+
+
 // Sign Up POST
 export const __requestSignUp = createAsyncThunk(
   "join/requestSignUp",
