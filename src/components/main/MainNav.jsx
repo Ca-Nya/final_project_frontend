@@ -34,8 +34,8 @@ const MainNav = () => {
       ) : (
         <span
           onClick={() => {
-            setIsLoginClick(!isLoginClick)
-            navigate("/join");
+            setIsLoginClick(!isLoginClick);
+            navigate("/join");            
           }}
         >
           로그인
