@@ -2,7 +2,7 @@ import { Box, Input, Button } from "../../common";
 import { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useParams } from "react-router-dom";
-import { CafeSearch } from "../../components/cafe_review";
+import { CafeSearch, CafeRatings } from "../../components/cafe_review";
 import axios from "axios";
 
 const CafeReview = () => {
@@ -48,26 +48,9 @@ const CafeReview = () => {
 		}
 		setThumbnailImages(imageThumbnailUrlList);
 		setImages(imageUrlList);
-		// 게시글 값을 위한 form data
-		// for (let i = 0; i < images.length; i++) {
-		//   console.log("images =>", images[i]);
-		//   formData.append("image", images[i]);
-		// }
-		// for (let key of formData.keys()) {
-		//   console.log("formData ===>", key, ":", formData.get(key));
-		// }
 	};
-
-	// useEffect(() => {
-	//   // 게시글 값을 위한 form data
-	//   for (let i = 0; i < images.length; i++) {
-	//     console.log("images =>", images[i]);
-	//     formData.append("image", images[i]);
-	//   }
-	//   for (let key of formData.keys()) {
-	//     console.log("formData ===>", key, ":", formData.get(key));
-	//   }
-	// }, [images]);
+	// 평점 state
+	const [ratings, setRatings] = useState([0, 0, 0, 0, 0, 0]);
 
 	// 이미지 삭제 핸들러
 	const handleDeleteImage = idx => () => {
@@ -79,7 +62,16 @@ const CafeReview = () => {
 		boardTitle: "",
 		boardContent: "",
 		address: place,
+		ratings,
 	});
+
+	// 별점 state 변경시 게시글 state 변경
+	useEffect(() => {
+		setInputValue(prev => {
+			return { ...prev, ratings };
+		});
+	}, [ratings]);
+
 	// 게시글 작성
 	const fetchAddPost = async payload => {
 		try {
@@ -87,7 +79,7 @@ const CafeReview = () => {
 			const formData = payload;
 			const jwtToken = localStorage.getItem("jwtToken");
 			const response = await axios.put(
-				`${BASE_URL}/auth/board/update/${+id}`,
+				`${BASE_URL}/auth/board/submit/${+id}`,
 				formData,
 				{
 					headers: {
@@ -190,6 +182,7 @@ const CafeReview = () => {
 				placeholder="리뷰를 등록해주세요"
 				type="text"
 			/>
+			<CafeRatings ratings={ratings} setRatings={setRatings} />
 			<CafeSearch setPlace={setPlace} place={place} />
 			<Button
 				type="button"
