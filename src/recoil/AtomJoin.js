@@ -1,6 +1,6 @@
-import {atom} from "recoil";
+import { atom } from "recoil";
 
 export const joinAtom = atom({
-    key:"Join",
-    default:[]
- })
+	key: "Join",
+	default: [],
+});

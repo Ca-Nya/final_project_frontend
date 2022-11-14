@@ -1,4 +1,3 @@
 import styled, { css } from "styled-components";
 
-export const Nav = styled.nav`
-`
+export const Nav = styled.nav``;
