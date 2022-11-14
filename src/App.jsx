@@ -2,12 +2,12 @@ import Router from "./shared/Router";
 import GlobalStyles from "./GlobalStyles";
 
 function App() {
-  return (
-  <>
-  <GlobalStyles/>
-  <Router />
-  </>
-  );
+	return (
+		<>
+			<GlobalStyles />
+			<Router />
+		</>
+	);
 }
 
 export default App;

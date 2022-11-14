@@ -1,3 +1,3 @@
 import SignInPage from "./SignInPage";
 
-export default SignInPage ;
+export default SignInPage;

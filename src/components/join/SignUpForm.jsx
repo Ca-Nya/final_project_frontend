@@ -1,34 +1,37 @@
 import { useNavigate } from "react-router-dom";
-import { Input, Box, Button, Form } from "../../common";
+import { Input, Button, Form } from "../../common";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import {joinAtom} from "../../recoil/AtomJoin"
+import { joinAtom } from "../../recoil/AtomJoin";
 import { useDispatch } from "react-redux";
 import { __requestSignUp } from "../../redux/modules/join/joinSlice";
 
 const SignUpForm = () => {
-  const dispatch = useDispatch();
-  const [join,setJoin]=useRecoilState(joinAtom);
-  const navigate = useNavigate();
-  const {
-    handleSubmit,
-    register,
-    watch,
-    formState: { errors },
-  } = useForm();
-  console.log(watch("memberName"));
-  return (
-    <>
-    <Form onSubmit={handleSubmit(value => {
-     const {id , nickname, password} = value;
-      dispatch(__requestSignUp({memberName: id, memberNickname: nickname, password}))
-    })}>
-      <Input  {...register("id")}/>
-      <Input  {...register("nickname")}/>
-      <Input  {...register("password")}/>
-      <Button>제출</Button>
-    </Form>
-      {/* <Form>
+	const dispatch = useDispatch();
+	const [join, setJoin] = useRecoilState(joinAtom);
+	const navigate = useNavigate();
+	const { handleSubmit, register, watch } = useForm();
+	console.log(watch("memberName"));
+	return (
+		<>
+			<Form
+				onSubmit={handleSubmit(value => {
+					const { id, nickname, password } = value;
+					dispatch(
+						__requestSignUp({
+							memberName: id,
+							memberNickname: nickname,
+							password,
+						}),
+					);
+				})}
+			>
+				<Input placeholder="id" {...register("id")} />
+				<Input placeholder="nickname" {...register("nickname")} />
+				<Input placeholder="password" {...register("password")} />
+				<Button>제출</Button>
+			</Form>
+			{/* <Form>
         <p>회원가입</p>
         <label htmlFor="memberName">id</label>
         <Input
@@ -80,8 +83,8 @@ const SignUpForm = () => {
           등록하기
         </Button>
       </Form> */}
-    </>
-  );
+		</>
+	);
 };
 
 export default SignUpForm;

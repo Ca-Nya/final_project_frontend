@@ -1,7 +1,7 @@
 import { SignInForm } from "../../components/join";
 
 const SignInPage = () => {
-  return <SignInForm />;
+	return <SignInForm />;
 };
 
 export default SignInPage;
