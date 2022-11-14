@@ -88,7 +88,7 @@ const SignUpForm = () => {
 				>
 					id중복확인
 				</Button>
-				{errors.memberName && errors.memberName.type === "required" ? (
+				{errors.memberName && errors.memberName.type === "true" ? (
 					<p>아이디를 입력해주세요.</p>
 				) : (
 					""
