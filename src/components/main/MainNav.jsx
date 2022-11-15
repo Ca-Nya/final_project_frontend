@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Button } from "../../common";
 import { resetToken } from "../../redux/modules/join/joinSlice";
 import { useMutation } from "@tanstack/react-query";
@@ -10,6 +10,17 @@ const MainNav = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const jwtToken = localStorage.getItem("Authorization")
+	const nickname = localStorage.getItem("Nickname");
+	const { token } = useSelector(state => state.join);
+	console.log("token=>", token);
+
+	useEffect(() => {
+		if (!jwtToken) {
+			dispatch(resetToken());
+		}
+	}, [dispatch,jwtToken]);
+
 
 	const { token } = useSelector(state => state.join);
 
@@ -20,6 +31,7 @@ const MainNav = () => {
 			}
 		}
 	}, [token, dispatch]);
+
 
 	const fetchPostId = async () => {
 		try {
@@ -88,24 +100,35 @@ const MainNav = () => {
 
 	return (
 		<Box>
-			{token ? (
+			{jwtToken ? (
+				<Box>
+				<p>{nickname}님 환영합니다.</p>
 				<span
 					onClick={() => {
 						dispatch(resetToken());
-						localStorage.removeItem("Authorization");
-						localStorage.removeItem("Nickname");
+						// localStorage.removeItem("Authorization");
+						// localStorage.removeItem("Nickname");
+						localStorage.clear();
+						navigate("/")
 					}}
 				>
 					로그아웃
 				</span>
+				</Box>
 			) : (
 				<span
+				onClick={()=>{
+					navigate("/join")
+				}}
+				>로그인</span>
+
 					onClick={() => {
 						navigate("/join");
 					}}
 				>
 					로그인
 				</span>
+
 			)}
 			<Button onClick={handleGetPostId}>글쓰기</Button>
 		</Box>
