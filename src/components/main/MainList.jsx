@@ -3,8 +3,8 @@ import { useFetchPosts } from "../../querys";
 
 
 const MainList = () => {
-	const { data } = useFetchPosts();
-	console.log("useFetchPosts query data =>", data);
+	// const { data } = useFetchPosts();
+	// console.log("useFetchPosts query data =>", data);
 
 	return (
 		<div>
