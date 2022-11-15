@@ -3,7 +3,7 @@ const MainList = () => {
 	return (
 		<div>
 			<p>메인리스트</p>
-			<CommentItem />
+			<CommentItem/>
 			<CommentList />
 		</div>
 	);

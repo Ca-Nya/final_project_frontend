@@ -11,7 +11,7 @@ const MainNav = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const jwtToken = localStorage.getItem("Authorization")
-
+	const nickname = localStorage.getItem("Nickname");
 	const { token } = useSelector(state => state.join);
 	console.log("token=>", token);
 
@@ -88,16 +88,21 @@ const MainNav = () => {
 
 	return (
 		<Box>
-			{token ? (
+			{jwtToken ? (
+				<Box>
+				<p>{nickname}님 환영합니다.</p>
 				<span
 					onClick={() => {
 						dispatch(resetToken());
-						localStorage.removeItem("Authorization");
-						localStorage.removeItem("Nickname");
+						// localStorage.removeItem("Authorization");
+						// localStorage.removeItem("Nickname");
+						localStorage.clear();
+						navigate("/")
 					}}
 				>
 					로그아웃
 				</span>
+				</Box>
 			) : (
 				<span
 				onClick={()=>{
