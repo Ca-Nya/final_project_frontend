@@ -1,6 +1,6 @@
 import { Box, Input, Button } from "../../common";
 import { useState, useEffect } from "react";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../../components/cafe_review";
 import axios from "axios";

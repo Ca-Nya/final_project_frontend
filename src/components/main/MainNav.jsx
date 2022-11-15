@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Button } from "../../common";
 import { resetToken } from "../../redux/modules/join/joinSlice";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 const MainNav = () => {
@@ -20,6 +20,18 @@ const MainNav = () => {
 			dispatch(resetToken());
 		}
 	}, [dispatch,jwtToken]);
+
+
+	const { token } = useSelector(state => state.join);
+
+	useEffect(() => {
+		if (token) {
+			if (!localStorage.getItem("Authorization")) {
+				dispatch(resetToken());
+			}
+		}
+	}, [token, dispatch]);
+
 
 	const fetchPostId = async () => {
 		try {
@@ -109,6 +121,14 @@ const MainNav = () => {
 					navigate("/join")
 				}}
 				>로그인</span>
+
+					onClick={() => {
+						navigate("/join");
+					}}
+				>
+					로그인
+				</span>
+
 			)}
 			<Button onClick={handleGetPostId}>글쓰기</Button>
 		</Box>
