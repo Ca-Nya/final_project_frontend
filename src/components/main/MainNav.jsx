@@ -1,30 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Box, Button } from "../../common";
 import { resetToken } from "../../redux/modules/join/joinSlice";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 const MainNav = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const [isLoginClick, setIsLoginClick] = useState(false);
-	const { statusCode, token } = useSelector(state => state.join);
+
+	const { token } = useSelector(state => state.join);
 
 	useEffect(() => {
 		if (token) {
 			if (!localStorage.getItem("Authorization")) {
-				setIsLoginClick(true);
 				dispatch(resetToken());
 			}
 		}
-	}, [setIsLoginClick, token, dispatch]);
+	}, [token, dispatch]);
 
 	const fetchPostId = async () => {
 		try {
-			const jwtToken = localStorage.getItem("jwtToken");
+			const jwtToken = localStorage.getItem("Authorization");
 			const response = await axios.post(
 				`${BASE_URL}/auth/board/save`,
 				"fetchPostId",
@@ -102,7 +101,6 @@ const MainNav = () => {
 			) : (
 				<span
 					onClick={() => {
-						setIsLoginClick(!isLoginClick);
 						navigate("/join");
 					}}
 				>

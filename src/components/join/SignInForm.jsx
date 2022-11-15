@@ -16,7 +16,7 @@ const SigninForm = () => {
 	const errorData = useSelector(state => state.join.error);
 
 	//아이디와 비밀번호 성공시 redux
-	const { statusCode } = useSelector(state => state.join);
+	const { statusCode, token } = useSelector(state => state.join);
 
 	//React Hook Form
 	const {
@@ -37,22 +37,13 @@ const SigninForm = () => {
 
 	//로그인 성공시
 	useEffect(() => {
-		if (statusCode === 200) {
+		if (token && statusCode === 200) {
 			navigate("/");
 		}
 	});
 
 	return (
 		<>
-			{/* <Form onSubmit={handleSubmit(value => {
-      console.log('value =>', value)
-      const { id, password } = value;
-      dispatch(__requestSignIn({memberName: id, password}))
-    })}>
-     <Input {...register("id")}/>
-     <Input {...register("password")}/>
-     <Button>로그인</Button>
-    </Form>   */}
 			<Form
 				onSubmit={handleSubmit(value => {
 					console.log("value =>", value);
