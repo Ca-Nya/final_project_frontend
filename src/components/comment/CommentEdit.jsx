@@ -60,7 +60,7 @@ const CommentEdit = ({ item }) => {
         console.log("editComment=>",editComment,);
 		e.preventDefault();
         if(editComment===""){
-            alert("값을 넣어주세요!")
+            alert("댓글을 수정해주세요!")
         } else {
             editMutation.mutate({
                 commentId: item.commentId,
