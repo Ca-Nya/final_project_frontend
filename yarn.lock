@@ -7669,6 +7669,8 @@ react-persist@^1.0.2:
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
 
+
+
 react-query@^3.39.2:
   version "3.39.2"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.2.tgz#9224140f0296f01e9664b78ed6e4f69a0cc9216f"
@@ -7677,6 +7679,7 @@ react-query@^3.39.2:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
     match-sorter "^6.0.2"
+
 
 react-redux@^8.0.5:
   version "8.0.5"
