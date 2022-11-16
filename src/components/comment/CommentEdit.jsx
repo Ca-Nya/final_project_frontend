@@ -11,7 +11,6 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const CommentEdit = ({ item }) => {
-
 	//로컬스토리지 닉네임가져오기
 	const nickname = localStorage.getItem("Nickname");
 	//로컬스토리지 토큰가져오기
@@ -21,23 +20,26 @@ const CommentEdit = ({ item }) => {
 	//수정코멘트 스테이트
 	const [editComment, setEditComment] = useState("");
 
-    //queryClient 선언하기
-    const queryClient = useQueryClient();
+	//queryClient 선언하기
+	const queryClient = useQueryClient();
 
 	//댓글 수정하기 put요청
-	const editMutation = useMutation(commentEdit =>
-		axios.put(
-			`${BASE_URL}/auth/comment/${commentEdit.commentId}/update`,
-			commentEdit,
-			{
-				headers: {
-					authorization,
+	const editMutation = useMutation(
+		commentEdit =>
+			axios.put(
+				`${BASE_URL}/auth/comment/${commentEdit.commentId}/update`,
+				commentEdit,
+				{
+					headers: {
+						authorization,
+					},
 				},
+			),
+		{
+			onSuccess: () => {
+				queryClient.invalidateQueries("getComments");
 			},
-		),
-         { onSuccess: () =>{
-            queryClient.invalidateQueries('getComments');
-         } }
+		},
 	);
 
 	//댓글 삭제하기 delete요청
@@ -57,17 +59,17 @@ const CommentEdit = ({ item }) => {
 
 	//댓글 수정하기 쿼리 요청(온클릭)
 	const handleEditComplete = e => {
-        console.log("editComment=>",editComment,);
+		console.log("editComment=>", editComment);
 		e.preventDefault();
-        if(editComment===""){
-            alert("댓글을 수정해주세요!")
-        } else {
-            editMutation.mutate({
-                commentId: item.commentId,
-                commentContent: editComment,
-            });
-        }
-       setEdit(false);
+		if (editComment === "") {
+			alert("댓글을 수정해주세요!");
+		} else {
+			editMutation.mutate({
+				commentId: item.commentId,
+				commentContent: editComment,
+			});
+		}
+		setEdit(false);
 	};
 
 	//댓글 삭제하기 쿼리요청
@@ -76,7 +78,7 @@ const CommentEdit = ({ item }) => {
 		const delRes = window.confirm("정말 삭제하시겠습니까?");
 		if (delRes) {
 			alert("삭제되었습니다.");
-			delMutation.mutate({ commentId:item.commentId });
+			delMutation.mutate({ commentId: item.commentId });
 		} else {
 			alert("취소합니다.");
 		}
@@ -92,7 +94,7 @@ const CommentEdit = ({ item }) => {
 								type="text"
 								name="commentContent"
 								defaultValue={item?.commentContent}
-                                required={item?.commentContent}
+								required={item?.commentContent}
 								onChange={handleEdit}
 							/>
 							<Button onClick={handleEditComplete}>완료</Button>
@@ -124,5 +126,3 @@ const CommentEdit = ({ item }) => {
 };
 
 export default CommentEdit;
-
-
