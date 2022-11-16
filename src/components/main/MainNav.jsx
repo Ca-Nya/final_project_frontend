@@ -1,20 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Box, Button } from "../../common";
 import { resetToken } from "../../redux/modules/join/joinSlice";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 const MainNav = () => {
+
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const jwtToken = localStorage.getItem("Authorization");
 	const nickname = localStorage.getItem("Nickname");
-	const { token } = useSelector(state => state.join);
-	console.log("token=>", token);
 
+	//토큰 리셋 useEffect
 	useEffect(() => {
 		if (!jwtToken) {
 			dispatch(resetToken());
@@ -113,12 +113,19 @@ const MainNav = () => {
 				</Box>
 			) : (
 				<span
+
 					onClick={() => {
 						navigate("/join");
 					}}
 				>
 					로그인
 				</span>
+
+				onClick={()=>{
+					navigate("/join")
+				}}
+				>로그인</span>
+
 			)}
 			<Button onClick={handleGetPostId}>글쓰기</Button>
 		</Box>
