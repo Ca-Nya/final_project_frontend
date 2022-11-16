@@ -26,7 +26,7 @@ const CafeRatings = ({ ratings, setRatings }) => {
 			{reviewRate.map((rateList, idx) => {
 				return (
 					<Margin key={rateList[idx]} margin="20px">
-						<Box variant="rating-box">
+						<Box variant="cafe-review-rating-box">
 							<Box>
 								{rateList.map((star, index) => {
 									return (

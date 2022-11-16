@@ -7,7 +7,6 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 const MainNav = () => {
-
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -19,8 +18,7 @@ const MainNav = () => {
 		if (!jwtToken) {
 			dispatch(resetToken());
 		}
-	}, [dispatch,jwtToken]);
-
+	}, [dispatch, jwtToken]);
 
 	const { token } = useSelector(state => state.join);
 
@@ -31,7 +29,6 @@ const MainNav = () => {
 			}
 		}
 	}, [token, dispatch]);
-
 
 	const fetchPostId = async () => {
 		try {
@@ -102,25 +99,27 @@ const MainNav = () => {
 		<Box>
 			{jwtToken ? (
 				<Box>
-				<p>{nickname}님 환영합니다.</p>
-				<span
-					onClick={() => {
-						dispatch(resetToken());
-						// localStorage.removeItem("Authorization");
-						// localStorage.removeItem("Nickname");
-						localStorage.clear();
-						navigate("/")
-					}}
-				>
-					로그아웃
-				</span>
+					<p>{nickname}님 환영합니다.</p>
+					<span
+						onClick={() => {
+							dispatch(resetToken());
+							// localStorage.removeItem("Authorization");
+							// localStorage.removeItem("Nickname");
+							localStorage.clear();
+							navigate("/");
+						}}
+					>
+						로그아웃
+					</span>
 				</Box>
 			) : (
 				<span
-				onClick={()=>{
-					navigate("/join")
-				}}
-				>로그인</span>
+					onClick={() => {
+						navigate("/join");
+					}}
+				>
+					로그인
+				</span>
 			)}
 			<Button onClick={handleGetPostId}>글쓰기</Button>
 		</Box>
