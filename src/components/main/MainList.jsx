@@ -1,4 +1,5 @@
 import { CommentList, CommentItem } from "../comment";
+import { DetailLike } from "../detail"
 import { useFetchPosts } from "../../querys";
 
 const MainList = () => {
@@ -10,6 +11,7 @@ const MainList = () => {
 			<p>메인리스트</p>
 			<CommentItem />
 			<CommentList />
+			<DetailLike />
 		</div>
 	);
 };
