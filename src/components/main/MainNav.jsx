@@ -7,7 +7,6 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 const MainNav = () => {
-
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -20,6 +19,8 @@ const MainNav = () => {
 			dispatch(resetToken());
 		}
 	}, [dispatch, jwtToken]);
+
+	const { token } = useSelector(state => state.join);
 
 	useEffect(() => {
 		if (token) {
@@ -113,19 +114,12 @@ const MainNav = () => {
 				</Box>
 			) : (
 				<span
-
 					onClick={() => {
 						navigate("/join");
 					}}
 				>
 					로그인
 				</span>
-
-				onClick={()=>{
-					navigate("/join")
-				}}
-				>로그인</span>
-
 			)}
 			<Button onClick={handleGetPostId}>글쓰기</Button>
 		</Box>

@@ -1,13 +1,4 @@
-
-import {
-	QueryClient,
-	useMutation,
-	useQueryClient,
-	useQuery,
-} from "@tanstack/react-query";
-
 import { useQuery } from "@tanstack/react-query";
-
 import axios from "axios";
 import { Box, Input, Button, Form } from "../../common";
 import CommentEdit from "./CommentEdit";
@@ -15,7 +6,6 @@ import CommentEdit from "./CommentEdit";
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const CommentList = () => {
-  
 	//댓글 리스트 get요청 react-query
 	const { data, status } = useQuery(["getComments"], async () => {
 		const response = await axios.get(`${BASE_URL}/get/comments`);
