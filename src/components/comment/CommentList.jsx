@@ -3,7 +3,7 @@ import {
 	useMutation,
 	useQueryClient,
 	useQuery,
-} from "react-query";
+} from "@tanstack/react-query";
 import axios from "axios";
 import { Box, Input, Button, Form } from "../../common";
 import { useEffect, useState } from "react";
