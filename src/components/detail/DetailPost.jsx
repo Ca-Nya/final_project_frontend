@@ -123,9 +123,6 @@ const DetailPost = () => {
 					<DetailMap searchPlace={"스테이어도러블"} />
 				</Box>
 			</Box>
-			<CommentItem />
-			<CommentList />
-			<DetailLike />
 		</Box>
 	);
 };
