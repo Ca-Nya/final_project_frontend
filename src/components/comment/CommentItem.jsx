@@ -20,7 +20,7 @@ const CommentItem = () => {
 	//댓글 등록하기 post요청
 	const mutation = useMutation(
 		commentContent =>
-			axios.post(`${BASE_URL}/auth/comment/3/create`, commentContent, {
+			axios.post(`${BASE_URL}/auth/comment/13/create`, commentContent, {
 				headers: {
 					authorization,
 				},

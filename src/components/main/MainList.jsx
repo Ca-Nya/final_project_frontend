@@ -1,6 +1,4 @@
 import { FirstHeading } from "../../common";
-import { CommentList, CommentItem } from "../comment";
-import { DetailLike } from "../detail"
 import { useFetchPosts } from "../../querys";
 import {
 	MainCanyaPick,
@@ -28,9 +26,6 @@ const MainList = () => {
 			<FirstHeading>NEW</FirstHeading>
 			{/* All List */}
 			<FirstHeading>ALL</FirstHeading>
-			<CommentItem />
-			<CommentList />
-			<DetailLike />
 		</div>
 	);
 };

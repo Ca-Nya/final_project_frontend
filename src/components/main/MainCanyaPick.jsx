@@ -17,17 +17,21 @@ const MainCanyaPick = ({ coffeePick }) => {
 						<Strong>{idx + 1}</Strong>
 						<ThirdHeading>{pick.boardTitle}</ThirdHeading>
 						<Box>{pick.boardContent}</Box>
-						<Strong>주소</Strong>
+						<Strong>{pick.address}</Strong>
 						<Image
 							src={pick.imageUrl}
 							alt="Ca Nya's Pick3 카페 이미지"
 							variant="main-canya-pick"
 						/>
 						<Box>
-							<Image src="" alt="프로필 이미지" />
+							<Image
+								src={pick.profileImage}
+								alt="프로필 이미지"
+								variant="main-canya-pick-profile"
+							/>
 							<DataList>
 								<DataTerm>닉네임</DataTerm>
-								<DataDesc></DataDesc>
+								<DataDesc>{pick.memberNickname}</DataDesc>
 							</DataList>
 						</Box>
 						<DataList>

@@ -1,17 +1,17 @@
 import { request } from "../shared/request";
 import { useMutation } from "@tanstack/react-query";
 
-const deletePost = boardId => {
+const deleteDetailPost = boardId => {
 	return request({
 		method: "delete",
 		url: `/auth/board/delete/${boardId}`,
 	});
 };
 
-const useDeletePost = payload => {
+const useDeleteDetailPost = payload => {
 	return useMutation({
 		mutationFn: async payload => {
-			const response = await deletePost(payload);
+			const response = await deleteDetailPost(payload);
 			console.log("useDeletePost response =>", response);
 			return response.data;
 		},
@@ -20,4 +20,4 @@ const useDeletePost = payload => {
 	});
 };
 
-export default useDeletePost;
+export default useDeleteDetailPost;

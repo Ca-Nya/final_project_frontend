@@ -9,7 +9,7 @@ import {
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../cafe_review";
-import { useFetchDetailPost, useEditPost } from "../../querys";
+import { useFetchDetailPost, useEditDetailPost } from "../../querys";
 import { useNavigate } from "react-router-dom";
 
 const DetailEditPost = () => {
@@ -22,7 +22,7 @@ const DetailEditPost = () => {
 		isDetailPostLoading,
 	} = useFetchDetailPost();
 	// 상세페이지 수정 Hook
-	const { mutate: editPostMutate } = useEditPost();
+	const { mutate: editPostMutate } = useEditDetailPost();
 
 	const { address, boardContent, boardTitle, imageList, rating } =
 		detailPostData;
@@ -67,8 +67,8 @@ const DetailEditPost = () => {
 	// 이미지 썸네일 state
 	const [thumbnailImages, setThumbnailImages] = useState([...detailImages]);
 	// 이미지 state
-	const [images, setImages] = useState([]);
-	// console.log("images =>", images);
+	const [images, setImages] = useState([...detailImages]);
+	console.log("images =>", images);
 	// 이미지 파일 추가 핸들러
 	const handleGetImage = e => {
 		const imageList = e.target.files;
@@ -170,16 +170,23 @@ const DetailEditPost = () => {
 				onClick={() => {
 					if (place) {
 						formData.append("data", JSON.stringify(inputValue));
+						const imageUrls = [];
 						for (let i = 0; i < images.length; i++) {
-							formData.append("image", images[i]);
+							if (typeof images[i] === "string") {
+								imageUrls.push(images[i]);
+							} else {
+								formData.append("images", images[i]);
+							}
 						}
+						formData.append("url", JSON.stringify({ urlList: imageUrls }));
 						for (let key of formData.keys()) {
 							console.log("formData ===>", key, ":", formData.get(key));
 						}
+
 						editPostMutate(formData, {
 							onSuccess: (data, variables, context) => {
 								alert("수정이 완료되었습니다");
-								navigate("/detail/post");
+								// navigate("/detail/post");
 							},
 							onError: (error, variables, context) => {
 								alert("수정을 실패했습니다");

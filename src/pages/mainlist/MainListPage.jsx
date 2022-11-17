@@ -5,7 +5,7 @@ function MainListPage() {
 	return (
 		<styles.MainListPage>
 			<MainNav />
-			<MainList />
+			{/* <MainList /> */}
 		</styles.MainListPage>
 	);
 }
