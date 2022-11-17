@@ -111,6 +111,11 @@ const MainNav = () => {
 					>
 						로그아웃
 					</span>
+					<p
+					onClick={()=>{
+						navigate("/mypage");
+					}}
+					>마이페이지</p>
 				</Box>
 			) : (
 				<span

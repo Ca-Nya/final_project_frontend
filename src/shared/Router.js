@@ -4,6 +4,7 @@ import SignInPage from "../pages/join/";
 import SignUpPage from "../components/join/SignUpForm";
 import { CafeReview } from "../components/cafe_review";
 import { DetailPost } from "../components/detail";
+import { MyPage } from "../components/my_page";
 
 const Router = () => {
 	return (
@@ -15,6 +16,7 @@ const Router = () => {
 					<Route path="/register" element={<SignUpPage />} />
 					<Route path="/write/:id" element={<CafeReview />} />
 					<Route path="/detail" element={<DetailPost />} />
+					<Route path="/mypage" element={<MyPage />} />
 				</Routes>
 			</BrowserRouter>
 		</>
