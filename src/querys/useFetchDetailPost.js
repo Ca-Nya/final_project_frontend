@@ -6,7 +6,7 @@ const fetchDetailPost = boardId => {
 	return getRequest({
 		method: "get",
 		// url: `/board/${boardId}`,
-		url: `/board/${11}`,
+		url: `/board/${21}`,
 	});
 };
 

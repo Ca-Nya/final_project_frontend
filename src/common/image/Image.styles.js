@@ -21,6 +21,20 @@ export const Image = styled.img`
 					object-fit: cover;
 					object-position: center;
 				`;
+			case "main-canya-pick":
+				return css`
+					width: 300px;
+					height: 200px;
+					object-fit: cover;
+					object-position: center;
+				`;
+			case "main-canya-pick-profile":
+				return css`
+					width: 40px;
+					height: 40px;
+					object-fit: contain;
+					object-position: center;
+				`;
 			default:
 				break;
 		}

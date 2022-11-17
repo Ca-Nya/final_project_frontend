@@ -1,6 +1,11 @@
 import useFetchPosts from "./useFetchPosts";
 import useFetchDetailPost from "./useFetchDetailPost";
-import useEditPost from "./useEditPost";
-import useDeletePost from "./useDeletePost";
+import useEditDetailPost from "./useEditDetailPost";
+import useDeleteDetailPost from "./useDeleteDetailPost";
 
-export { useFetchPosts, useFetchDetailPost, useEditPost, useDeletePost };
+export {
+	useFetchPosts,
+	useFetchDetailPost,
+	useEditDetailPost,
+	useDeleteDetailPost,
+};

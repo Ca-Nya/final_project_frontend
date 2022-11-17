@@ -10,9 +10,13 @@ import {
 	Image,
 } from "../../common";
 import { DetailMap, DetailRatings } from "../../components/detail";
-import { useFetchDetailPost, useDeletePost } from "../../querys";
+import { useFetchDetailPost, useDeleteDetailPost } from "../../querys";
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
 import { useNavigate } from "react-router-dom";
+
+import { CommentList, CommentItem } from "../comment";
+import { DetailLike } from "../detail";
+
 import { CommentList, CommentItem } from "../../components/comment";
 import { DetailLike } from "../../components/detail";
 
@@ -20,7 +24,7 @@ const DetailPost = () => {
 	// React Router
 	const navigate = useNavigate();
 	const { data, isError, isLoading } = useFetchDetailPost();
-	const { mutate: deletePostMutate } = useDeletePost();
+	const { mutate: deletePostMutate } = useDeleteDetailPost();
 	const ratings = [];
 	const {
 		address,
@@ -45,12 +49,25 @@ const DetailPost = () => {
 	if (isError) return <div>에러입니다</div>;
 
 	return (
+
+		<>
 		<Box>
+
 			<Box>
 				{/* 후에 상태로 수정 */}
 				{localStorage.getItem("Nickname") === memberNickname ? (
 					<Box>
+
+						<Button
+							onClick={() => {
+								navigate("/detail/edit");
+							}}
+						>
+							수정
+						</Button>
+
 						<Button>수정</Button>
+
 						<Button
 							onClick={() => {
 								deletePostMutate(11, {
@@ -120,10 +137,17 @@ const DetailPost = () => {
 				</Box>
 				<Box>
 					<SecondHeading>위치</SecondHeading>
+
+					<DetailMap searchPlace={address} />
+
 					<DetailMap searchPlace={"스테이어도러블"} />
+
 				</Box>
 			</Box>
-		</Box>
+			<CommentItem />
+			<CommentList />
+			<DetailLike />
+		</>
 	);
 };
 

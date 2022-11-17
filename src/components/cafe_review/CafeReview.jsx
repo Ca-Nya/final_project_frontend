@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../../components/cafe_review";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const CafeReview = () => {
+	// React Router
+	const navigate = useNavigate();
 	// Base Url
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// 지도 장소 검색값 state
@@ -101,38 +104,10 @@ const CafeReview = () => {
 			console.log("onMutate =>", variables);
 		},
 		onSuccess: (data, variables, context) => {
-			console.log(
-				"onSuccess =>",
-				"data =>",
-				data,
-				"variables =>",
-				variables,
-				"context =>",
-				context,
-			);
+			console.log("onSuccess =>", "data =>", data);
 		},
 		onError: (error, variables, context) => {
-			console.log(
-				"onError =>",
-				error,
-				"variables =>",
-				variables,
-				"context =>",
-				context,
-			);
-		},
-		onSettled: (data, error, variables, context) => {
-			console.log(
-				"onSettled =>",
-				"data =>",
-				data,
-				"error =>",
-				error,
-				"variables =>",
-				variables,
-				"context =>",
-				context,
-			);
+			console.log("onError =>", error);
 		},
 	});
 
@@ -190,6 +165,7 @@ const CafeReview = () => {
 					if (place) {
 						formData.append("data", JSON.stringify(inputValue));
 						for (let i = 0; i < images.length; i++) {
+							console.log(`${images[i]}  =>`, images[i]);
 							formData.append("image", images[i]);
 						}
 						for (let key of formData.keys()) {

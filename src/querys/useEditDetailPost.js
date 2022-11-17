@@ -1,19 +1,19 @@
 import { request } from "../shared/request";
 import { useMutation } from "@tanstack/react-query";
 
-const editPost = payload => {
+const editDetailPost = payload => {
 	return request({
 		method: "put",
 		// url: `/auth/board/update/${boardId}`
-		url: `/auth/board/update/${11}`,
+		url: `/auth/board/update/${21}`,
 		payload,
 	});
 };
 
-const useEditPost = payload => {
+const useEditDetailPost = payload => {
 	return useMutation({
 		mutationFn: async payload => {
-			const response = await editPost(payload);
+			const response = await editDetailPost(payload);
 			console.log("useEditPost response =>", response);
 			return response.data;
 		},
@@ -22,4 +22,4 @@ const useEditPost = payload => {
 	});
 };
 
-export default useEditPost;
+export default useEditDetailPost;
