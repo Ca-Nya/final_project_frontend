@@ -5,7 +5,7 @@ import SignUpPage from "../components/join/SignUpForm";
 import DetailPage from "../pages/detail";
 import { CafeReview } from "../components/cafe_review";
 import { DetailPost, DetailEditPost } from "../components/detail";
-import { MyPage } from "../components/my_page";
+import { MyBoard, MyComment, MyLike, MyPage} from"../components/my_page"
 
 const Router = () => {
 	return (
@@ -18,6 +18,9 @@ const Router = () => {
 					<Route path="/write/:id" element={<CafeReview />} />
 					<Route path="/detail" element={<DetailPost />} />
 					<Route path="/mypage" element={<MyPage />} />
+					<Route path="/myboard" element={<MyBoard />} />
+					<Route path="/mycomment" element={<MyComment />} />
+					<Route path="/mylike" element={<MyLike />} />
 					<Route path="/detail" element={<DetailPage />}>
 						<Route path="post" element={<DetailPost />} />
 						<Route path="edit" element={<DetailEditPost />} />

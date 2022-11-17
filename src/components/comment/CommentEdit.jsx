@@ -103,9 +103,9 @@ const CommentEdit = ({ item }) => {
 				onError: (error, variables, context) => {
 					console.log("error => ", error)
 				},
-				onSuccess: (data, variables, context) => {
-					alert(data.data)
+				onSuccess: (data, variables, context) => {					
 					queryClient.invalidateQueries("getComments");
+					alert(data.data);
 				}
 			});			
 		}
@@ -147,7 +147,6 @@ const CommentEdit = ({ item }) => {
 								onChange={handleEdit}
 							/>
 							<Button onClick={handleEditComplete}>완료</Button>
-							<Button onClick={handleRemove}>삭제</Button>
 						</Box>
 					) : (
 						<>
