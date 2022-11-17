@@ -66,7 +66,7 @@ const DetailLike = () => {
 	const handleLike = () => {
 		//보드아이디 받는 로직 상세페이지 이후 구현
 		if (authorization) {
-			const boardIdPrac = parseInt(1);
+			const boardIdPrac = parseInt(6);
 			setLike(boardIdPrac);
 		} else {
 			alert("로그인 후 좋아요해주세요!");

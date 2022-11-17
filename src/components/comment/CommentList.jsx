@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useEffect } from "react";
 import { Box, Input, Button, Form } from "../../common";
 import CommentEdit from "./CommentEdit";
 
@@ -14,7 +15,7 @@ const CommentList = () => {
 	console.log("CommentList=>", data);
 	if (status === "error") {
 		return <div>error입니다.</div>;
-	}
+	};
 
 	return (
 		<Box>
