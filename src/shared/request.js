@@ -28,3 +28,18 @@ export const getRequest = async ({
 };
 
 // Post/Put/Delete Request
+export const request = async ({
+	method,
+	url,
+	throwWhenError = false,
+	payload,
+}) => {
+	try {
+		const response = await http[method](url, payload);
+		console.log("Request response =>", response);
+		return response;
+	} catch (error) {
+		if (throwWhenError) throw error;
+		console.log("Request error =>", error);
+	}
+};

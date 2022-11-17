@@ -7,12 +7,18 @@ import {
 	DataList,
 	DataDesc,
 	DataTerm,
+	Image,
 } from "../../common";
 import { DetailMap, DetailRatings } from "../../components/detail";
-import { useFetchDetailPost } from "../../querys";
+import { useFetchDetailPost, useDeletePost } from "../../querys";
+import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
+import { useNavigate } from "react-router-dom";
 
 const DetailPost = () => {
-	const { data } = useFetchDetailPost();
+	// React Router
+	const navigate = useNavigate();
+	const { data, isError, isLoading } = useFetchDetailPost();
+	const { mutate: deletePostMutate } = useDeletePost();
 	const ratings = [];
 	const {
 		address,
@@ -22,21 +28,55 @@ const DetailPost = () => {
 		imageList,
 		rating,
 		totalRating,
+		memberNickname,
+		memberProfileImg,
+		liked,
 	} = data;
 
-	// 별점을 배열에 추가
+	// 별점을 담은 객체 배열화
 	for (let rate in rating) {
 		ratings.push(rating[rate]);
 	}
 
+	if (isLoading) return <div>로딩중..</div>;
+
+	if (isError) return <div>에러입니다</div>;
+
 	return (
 		<Box>
-			<Box>
-				<Button>수정</Button>
-				<Button>삭제</Button>
-			</Box>
+			{/* 후에 상태로 수정 */}
+			{localStorage.getItem("Nickname") === memberNickname ? (
+				<Box>
+					<Button>수정</Button>
+					<Button
+						onClick={() => {
+							deletePostMutate(11, {
+								onSuccess: (data, variables, context) => {
+									alert("삭제가 완료되었습니다");
+									navigate("/");
+								},
+								onError: (error, variables, context) => {
+									alert("삭제를 실패했습니다");
+								},
+								onSettled: (data, error, variables, context) => {},
+							});
+						}}
+					>
+						삭제
+					</Button>
+				</Box>
+			) : (
+				""
+			)}
 			<FirstHeading>{boardTitle}</FirstHeading>
 			<DataList>
+				<DataTerm>작성자</DataTerm>
+				<DataList>{memberNickname}</DataList>
+				<Image
+					src={memberProfileImg}
+					alt="프로필 이미지"
+					variant="detail-review-profile"
+				/>
 				<DataTerm>작성일</DataTerm>
 				<DataDesc>n월</DataDesc>
 			</DataList>
@@ -44,6 +84,9 @@ const DetailPost = () => {
 				<DataList>
 					<DataTerm>좋아요 수</DataTerm>
 					<DataDesc>{heartCount}개</DataDesc>
+					<Box variant="detail-heart-count">
+						<FaHeart className={liked ? "liked" : ""} size="20" />
+					</Box>
 				</DataList>
 				<DataList>
 					<DataTerm>평균점수</DataTerm>
@@ -52,8 +95,13 @@ const DetailPost = () => {
 			</Box>
 			<Box>
 				<SecondHeading>이미지</SecondHeading>
-				{/* {imageList.map(image => {
-          })} */}
+				{imageList.map(({ imageUrl }) => {
+					return (
+						<Box key={imageUrl}>
+							<Image src={imageUrl} alt="리뷰 이미지" variant="detail-review" />
+						</Box>
+					);
+				})}
 			</Box>
 			<Box>
 				<SecondHeading>내용</SecondHeading>
@@ -65,7 +113,7 @@ const DetailPost = () => {
 			</Box>
 			<Box>
 				<SecondHeading>위치</SecondHeading>
-				<DetailMap searchPlace={address} />
+				<DetailMap searchPlace={"스테이어도러블"} />
 			</Box>
 		</Box>
 	);
