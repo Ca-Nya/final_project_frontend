@@ -24,11 +24,15 @@ const MainCanyaPick = ({ coffeePick }) => {
 							variant="main-canya-pick"
 						/>
 						<Box>
+
 							<Image
 								src={pick.profileImage}
 								alt="프로필 이미지"
 								variant="main-canya-pick-profile"
 							/>
+
+							<Image src={pick.profileImage} alt="프로필 이미지" />
+
 							<DataList>
 								<DataTerm>닉네임</DataTerm>
 								<DataDesc>{pick.memberNickname}</DataDesc>

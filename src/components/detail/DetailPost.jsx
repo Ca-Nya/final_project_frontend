@@ -13,8 +13,12 @@ import { DetailMap, DetailRatings } from "../../components/detail";
 import { useFetchDetailPost, useDeleteDetailPost } from "../../querys";
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
 import { useNavigate } from "react-router-dom";
+
 import { CommentList, CommentItem } from "../comment";
 import { DetailLike } from "../detail";
+
+import { CommentList, CommentItem } from "../../components/comment";
+import { DetailLike } from "../../components/detail";
 
 const DetailPost = () => {
 	// React Router
@@ -45,11 +49,15 @@ const DetailPost = () => {
 	if (isError) return <div>에러입니다</div>;
 
 	return (
+
 		<>
+		<Box>
+
 			<Box>
 				{/* 후에 상태로 수정 */}
 				{localStorage.getItem("Nickname") === memberNickname ? (
 					<Box>
+
 						<Button
 							onClick={() => {
 								navigate("/detail/edit");
@@ -57,6 +65,9 @@ const DetailPost = () => {
 						>
 							수정
 						</Button>
+
+						<Button>수정</Button>
+
 						<Button
 							onClick={() => {
 								deletePostMutate(11, {
@@ -126,7 +137,11 @@ const DetailPost = () => {
 				</Box>
 				<Box>
 					<SecondHeading>위치</SecondHeading>
+
 					<DetailMap searchPlace={address} />
+
+					<DetailMap searchPlace={"스테이어도러블"} />
+
 				</Box>
 			</Box>
 			<CommentItem />
