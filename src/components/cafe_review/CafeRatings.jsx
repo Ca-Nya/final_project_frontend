@@ -1,14 +1,14 @@
-import { ImStarFull } from "react-icons/im";
+import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { Box, Margin } from "../../common";
 
 const CafeRatings = ({ ratings, setRatings }) => {
 	const reviewRate = [
-		["coffeRate", 1, 2, 3, 4, 5],
-		["dessertRate", 1, 2, 3, 4, 5],
-		["priceRate", 1, 2, 3, 4, 5],
-		["moodRate", 1, 2, 3, 4, 5],
-		["kindnessRate", 1, 2, 3, 4, 5],
-		["parkingRate", 1, 2, 3, 4, 5],
+		["커피", 1, 2, 3, 4, 5],
+		["디저트", 1, 2, 3, 4, 5],
+		["가격", 1, 2, 3, 4, 5],
+		["분위기", 1, 2, 3, 4, 5],
+		["친절", 1, 2, 3, 4, 5],
+		["주차", 1, 2, 3, 4, 5],
 	];
 
 	const handleStarClick = (idx, star) => () => {
@@ -26,25 +26,36 @@ const CafeRatings = ({ ratings, setRatings }) => {
 			{reviewRate.map((rateList, idx) => {
 				return (
 					<Margin key={rateList[idx]} margin="20px">
-						<Box variant="cafe-review-rating-box">
-							<Box>
+						<Box>
+							<Box variant="cafe-review-rating-box">
 								{rateList.map((star, index) => {
+									if (index === 0) {
+										return <Box key={rateList[0]}>{rateList[0]}</Box>;
+									}
 									return (
-										<span key={Math.floor(Math.random() * 100000)}>
-											{index !== 0 ? (
-												<ImStarFull
-													onClick={handleStarClick(idx, star)}
-													className={
-														rateList[index] <= ratings[idx] ? "active" : ""
-													}
-													size="40"
-												/>
-											) : (
-												""
-											)}
-										</span>
+										<FaStar
+											key={Math.floor(Math.random() * 1000000)}
+											onClick={handleStarClick(idx, star)}
+											className={
+												rateList[index] <= ratings[idx] ? "active" : ""
+											}
+											size="30"
+										/>
 									);
 								})}
+							</Box>
+							<Box>
+								{ratings[idx] === 5
+									? "아주 좋아요"
+									: ratings[idx] === 4
+									? "맘에 들어요"
+									: ratings[idx] === 3
+									? "보통이에요"
+									: ratings[idx] === 2
+									? "그냥 그래요"
+									: ratings[idx] === 1
+									? "별로에요"
+									: ""}
 							</Box>
 						</Box>
 					</Margin>

@@ -30,6 +30,23 @@ export const Box = styled.div`
 						color: #fdd237;
 					}
 				`;
+			case "detail-heart-count":
+				return css`
+					margin: 0 auto;
+					& svg {
+						color: #ff7777;
+					}
+				`;
+			case "detail-heart":
+				return css`
+					margin: 0 auto;
+					& svg {
+						color: #c4c4c4;
+					}
+					.liked {
+						color: #ff7777;
+					}
+				`;
 			default:
 				break;
 		}

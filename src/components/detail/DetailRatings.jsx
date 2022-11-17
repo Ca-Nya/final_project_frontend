@@ -1,14 +1,14 @@
-import { ImStarFull } from "react-icons/im";
+import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { Box, Margin } from "../../common";
 
 const DetailRatings = ({ ratings }) => {
 	const reviewRate = [
-		[1, 2, 3, 4, 5],
-		[1, 2, 3, 4, 5],
-		[1, 2, 3, 4, 5],
-		[1, 2, 3, 4, 5],
-		[1, 2, 3, 4, 5],
-		[1, 2, 3, 4, 5],
+		["커피", 1, 2, 3, 4, 5],
+		["디저트", 1, 2, 3, 4, 5],
+		["가격", 1, 2, 3, 4, 5],
+		["분위기", 1, 2, 3, 4, 5],
+		["친절", 1, 2, 3, 4, 5],
+		["주차", 1, 2, 3, 4, 5],
 	];
 	console.log("ratings =>", ratings);
 
@@ -20,9 +20,12 @@ const DetailRatings = ({ ratings }) => {
 						<Box variant="detail-rating-box">
 							<Box>
 								{rateList.map((star, index) => {
+									if (index === 0) {
+										return <Box key={rateList[0]}>{rateList[0]}</Box>;
+									}
 									return (
 										<span key={Math.floor(Math.random() * 100000)}>
-											<ImStarFull
+											<FaStar
 												className={
 													rateList[index] <= ratings[idx] ? "active" : ""
 												}
@@ -31,6 +34,17 @@ const DetailRatings = ({ ratings }) => {
 										</span>
 									);
 								})}
+								<Box>
+									{ratings[idx] === 5
+										? "아주 좋아요"
+										: ratings[idx] === 4
+										? "맘에 들어요"
+										: ratings[idx] === 3
+										? "보통이에요"
+										: ratings[idx] === 2
+										? "그냥 그래요"
+										: "별로에요"}
+								</Box>
 							</Box>
 						</Box>
 					</Margin>
