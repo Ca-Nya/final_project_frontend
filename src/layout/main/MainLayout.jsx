@@ -5,7 +5,7 @@ const MainLayout = () => {
 	return (
 		<styles.MainLayout>
 			<MainNav />
-			{/* <MainList /> */}
+			<MainList />
 		</styles.MainLayout>
 	);
 };
