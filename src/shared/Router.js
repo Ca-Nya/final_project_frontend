@@ -4,10 +4,8 @@ import SignInPage from "../pages/join/";
 import SignUpPage from "../components/join/SignUpForm";
 import DetailPage from "../pages/detail";
 import { CafeReview } from "../components/cafe_review";
-import { DetailPost } from "../components/detail";
-import { MyPage } from "../components/my_page";
 import { DetailPost, DetailEditPost } from "../components/detail";
-
+import { MyPage } from "../components/my_page";
 
 const Router = () => {
 	return (

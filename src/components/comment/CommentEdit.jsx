@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Input, Button, Form } from "../../common";
 import {
 	QueryClient,
@@ -23,10 +23,13 @@ const CommentEdit = ({ item }) => {
 	//queryClient 선언하기
 	const queryClient = useQueryClient();
 
-	//댓글 수정하기 put요청
-	const editMutation = useMutation(
-		commentEdit =>
-			axios.put(
+	const {
+		mutate: editMutation,
+		status,
+		data,
+	} = useMutation(
+		async commentEdit => {
+			const response = await axios.put(
 				`${BASE_URL}/auth/comment/${commentEdit.commentId}/update`,
 				commentEdit,
 				{
@@ -34,13 +37,42 @@ const CommentEdit = ({ item }) => {
 						authorization,
 					},
 				},
-			),
+			);
+			return response;
+		},
 		{
-			onSuccess: () => {
-				queryClient.invalidateQueries("getComments");
+			onSuccess: ({ status,data }) => {
+				if (status === "200") {
+					console.log("data =>", data)				
+					console.log("status =>", status)
+					// queryClient.invalidateQueries("getComments");
+					// alert(data);
+				}
+			},
+			onError: error => {
+				alert("수정되지않았어요🥹");
 			},
 		},
 	);
+
+	// 댓글 수정하기 put요청
+	// const editMutation = useMutation(
+	// 	commentEdit =>
+	// 		axios.put(
+	// 			`${BASE_URL}/auth/comment/${commentEdit.commentId}/update`,
+	// 			commentEdit,
+	// 			{
+	// 				headers: {
+	// 					authorization,
+	// 				},
+	// 			},
+	// 		),
+	// 	{
+	// 		onSuccess: () => {
+	// 			queryClient.invalidateQueries("getComments");
+	// 		},
+	// 	},
+	// );
 
 	//댓글 삭제하기 delete요청
 	const delMutation = useMutation(commentId =>
@@ -60,17 +92,34 @@ const CommentEdit = ({ item }) => {
 	//댓글 수정하기 쿼리 요청(온클릭)
 	const handleEditComplete = e => {
 		console.log("editComment=>", editComment);
-		e.preventDefault();
 		if (editComment === "") {
 			alert("댓글을 수정해주세요!");
-		} else {
-			editMutation.mutate({
+		} 
+		else {
+			editMutation({
 				commentId: item.commentId,
 				commentContent: editComment,
-			});
+			}, {
+				onError: (error, variables, context) => {
+					console.log("error => ", error)
+				},
+				onSuccess: (data, variables, context) => {
+					alert(data.data)
+					queryClient.invalidateQueries("getComments");
+				}
+			});			
 		}
-		setEdit(false);
+		setEdit(false);		
 	};
+
+	// useEffect(() => {
+	// 	if (editComment) {
+	// 		editMutation.mutate({
+	// 			commentId: item.commentId,
+	// 			commentContent: editComment,
+	// 		});
+	// 	}
+	// }, [editComment]);
 
 	//댓글 삭제하기 쿼리요청
 	const handleRemove = e => {

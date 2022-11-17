@@ -19,7 +19,7 @@ root.render(
 			<RecoilRoot>
 				<App />
 			</RecoilRoot>
-			<ReactQueryDevtools />
+			{/* <ReactQueryDevtools /> */}
 		</QueryClientProvider>
 	</Provider>,
 	// </React.StrictMode>,
