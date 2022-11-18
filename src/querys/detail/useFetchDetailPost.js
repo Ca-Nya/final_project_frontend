@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRequest } from "../shared/request";
+import { getRequest } from "../../shared/request";
 
 // 상세페이지 게시글 요청 API
 const fetchDetailPost = boardId => {
 	return getRequest({
 		method: "get",
 		// url: `/board/${boardId}`,
-		url: `/board/${21}`,
+		url: `/board/${boardId}`,
 	});
 };
 

@@ -1,11 +1,10 @@
-import { request } from "../shared/request";
+import { request } from "../../shared/request";
 import { useMutation } from "@tanstack/react-query";
 
-const editDetailPost = payload => {
+const editDetailPost = ({ boardId, payload }) => {
 	return request({
 		method: "put",
-		// url: `/auth/board/update/${boardId}`
-		url: `/auth/board/update/${21}`,
+		url: `/auth/board/update/${boardId}`,
 		payload,
 	});
 };

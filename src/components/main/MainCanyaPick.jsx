@@ -8,10 +8,12 @@ import {
 	Box,
 } from "../../common";
 
-const MainCanyaPick = ({ coffeePick }) => {
+const MainCanyaPick = ({ picks }) => {
+	if (!picks) return <Box>게시글이 존재하지 않습니다.</Box>;
+
 	return (
 		<Box>
-			{coffeePick.map((pick, idx) => {
+			{picks.map((pick, idx) => {
 				return (
 					<Box key={pick.boardId}>
 						<Strong>{idx + 1}</Strong>
@@ -25,7 +27,7 @@ const MainCanyaPick = ({ coffeePick }) => {
 						/>
 						<Box>
 							<Image
-								src={pick.profileImage}
+								src={pick.memberProfileImage}
 								alt="프로필 이미지"
 								variant="main-canya-pick-profile"
 							/>

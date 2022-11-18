@@ -1,11 +1,22 @@
 import { Box, Button } from "../../common";
 
-const MainCanyaButtons = () => {
+const MainCanyaButtons = ({ setCanyaPick, mainPosts }) => {
+	// 카냐's Pick 게시글 변경 이벤트 핸들러
+	const handleChangeCanyaPick = e => {
+		setCanyaPick(mainPosts[e.target.value]);
+	};
+
 	return (
 		<Box>
-			<Button>coffe</Button>
-			<Button>desert</Button>
-			<Button>mood</Button>
+			<Button value="coffeePick" onClick={handleChangeCanyaPick}>
+				coffe
+			</Button>
+			<Button value="dessertPick" onClick={handleChangeCanyaPick}>
+				desert
+			</Button>
+			<Button value="moodPick" onClick={handleChangeCanyaPick}>
+				mood
+			</Button>
 		</Box>
 	);
 };

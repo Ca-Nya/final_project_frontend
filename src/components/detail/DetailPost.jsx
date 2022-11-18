@@ -10,18 +10,22 @@ import {
 	Image,
 } from "../../common";
 import { DetailMap, DetailRatings } from "../../components/detail";
-import { useFetchDetailPost, useDeleteDetailPost } from "../../querys";
+import { useFetchDetailPost, useDeleteDetailPost } from "../../querys/detail";
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CommentList, CommentItem } from "../comment";
 import { DetailLike } from "../detail";
 
 const DetailPost = () => {
 	// React Router
 	const navigate = useNavigate();
-	const { data, isError, isLoading } = useFetchDetailPost();
+	// 게시글 상세 페이지 파라미터
+	const { id } = useParams();
+	// 게시글 상세 페이지 정보 요청 hook
+	const { data, isError, isLoading } = useFetchDetailPost(+id);
+	// 게시글 삭제 요청 hook
 	const { mutate: deletePostMutate } = useDeleteDetailPost();
-	const ratings = [];
+	// 상세 페이지 게시글 데이터
 	const {
 		address,
 		boardContent,
@@ -36,6 +40,7 @@ const DetailPost = () => {
 	} = data;
 
 	// 별점을 담은 객체 배열화
+	const ratings = [];
 	for (let rate in rating) {
 		ratings.push(rating[rate]);
 	}
@@ -52,7 +57,7 @@ const DetailPost = () => {
 					<Box>
 						<Button
 							onClick={() => {
-								navigate("/detail/edit");
+								navigate(`/detail/edit/${+id}`);
 							}}
 						>
 							수정

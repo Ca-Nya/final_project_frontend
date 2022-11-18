@@ -9,18 +9,20 @@ import {
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../cafe_review";
-import { useFetchDetailPost, useEditDetailPost } from "../../querys";
+import { useFetchDetailPost, useEditDetailPost } from "../../querys/detail";
 import { useNavigate } from "react-router-dom";
 
 const DetailEditPost = () => {
 	// React Router
 	const navigate = useNavigate();
+	// 게시글 상세페이지 수정페이지 파라미터
+	const { id } = useParams();
 	// 상세페이지 내용 요청 Hook
 	const {
 		data: detailPostData,
 		isError: isDetailPostError,
 		isDetailPostLoading,
-	} = useFetchDetailPost();
+	} = useFetchDetailPost(+id);
 	// 상세페이지 수정 Hook
 	const { mutate: editPostMutate } = useEditDetailPost();
 
@@ -183,16 +185,19 @@ const DetailEditPost = () => {
 							console.log("formData ===>", key, ":", formData.get(key));
 						}
 
-						editPostMutate(formData, {
-							onSuccess: (data, variables, context) => {
-								alert("수정이 완료되었습니다");
-								// navigate("/detail/post");
+						editPostMutate(
+							{ boardId: +id, payload: formData },
+							{
+								onSuccess: (data, variables, context) => {
+									alert("수정이 완료되었습니다");
+									navigate(`/detail/post/${+id}`);
+								},
+								onError: (error, variables, context) => {
+									alert("수정을 실패했습니다");
+								},
+								onSettled: (data, error, variables, context) => {},
 							},
-							onError: (error, variables, context) => {
-								alert("수정을 실패했습니다");
-							},
-							onSettled: (data, error, variables, context) => {},
-						});
+						);
 					} else if (!place) alert("장소를 선택해주세요");
 				}}
 			>
