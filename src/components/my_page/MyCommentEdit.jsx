@@ -10,19 +10,21 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
-const CommentEdit = ({ item }) => {
-	//로컬스토리지 닉네임가져오기
-	const nickname = localStorage.getItem("Nickname");
+const MyCommentEdit = ({ comment }) => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
+
+	//로컬스토리지 닉네임가져오기
+	const nickname = localStorage.getItem("Nickname");
+
 	//수정여부 스테이트
 	const [edit, setEdit] = useState(false);
+
 	//수정코멘트 스테이트
 	const [editComment, setEditComment] = useState("");
 
 	//queryClient 선언하기
 	const queryClient = useQueryClient();
-
 	// 댓글 수정하기 put요청
 	const {
 		mutate: editMutation,
@@ -42,10 +44,10 @@ const CommentEdit = ({ item }) => {
 			return response;
 		},
 		{
-			onSuccess: ({ status,data }) => {
+			onSuccess: ({ status, data }) => {
 				if (status === "200") {
-					console.log("data =>", data)				
-					console.log("status =>", status)
+					console.log("data =>", data);
+					console.log("status =>", status);
 					// queryClient.invalidateQueries("getComments");
 					// alert(data);
 				}
@@ -76,22 +78,24 @@ const CommentEdit = ({ item }) => {
 		console.log("editComment=>", editComment);
 		if (editComment === "") {
 			alert("댓글을 수정해주세요!");
-		} 
-		else {
-			editMutation({
-				commentId: item.commentId,
-				commentContent: editComment,
-			}, {
-				onError: (error, variables, context) => {
-					console.log("error => ", error)
+		} else {
+			editMutation(
+				{
+					commentId: comment.commentId,
+					commentContent: editComment,
 				},
-				onSuccess: (data, variables, context) => {					
-					queryClient.invalidateQueries("getComments");
-					alert(data.data);
-				}
-			});			
+				{
+					onError: (error, variables, context) => {
+						console.log("error => ", error);
+					},
+					onSuccess: (data, variables, context) => {
+						queryClient.invalidateQueries("getComments");
+						alert(data.data);
+					},
+				},
+			);
 		}
-		setEdit(false);		
+		setEdit(false);
 	};
 
 	//댓글 삭제하기 쿼리요청
@@ -100,50 +104,41 @@ const CommentEdit = ({ item }) => {
 		const delRes = window.confirm("정말 삭제하시겠습니까?");
 		if (delRes) {
 			alert("삭제되었습니다.");
-			delMutation.mutate({ commentId: item.commentId });
+			delMutation.mutate({ commentId: comment.commentId });
 		} else {
 			alert("취소합니다.");
 		}
 	};
+	console.log("mycommenitem=>", comment);
 
 	return (
-		<Box>
-			{item.memberNickname === nickname ? (
+		<Box>		
+			{edit ? (
 				<Box>
-					{edit ? (
-						<Box>
-							<Input
-								type="text"
-								name="commentContent"
-								defaultValue={item?.commentContent}
-								required={item?.commentContent}
-								onChange={handleEdit}
-							/>
-							<Button onClick={handleEditComplete}>완료</Button>
-						</Box>
-					) : (
-						<>
-							<p>
-								{item.memberNickname}님: {item.commentContent}
-							</p>
-							<Button
-								onClick={() => {
-									setEdit(!edit);
-								}}
-							>
-								수정
-							</Button>
-							<Button onClick={handleRemove}>삭제</Button>
-						</>
-					)}
+					<Input
+						type="text"
+						name="commentContent"
+						defaultValue={comment?.commentContent}
+						required={comment?.commentContent}
+						onChange={handleEdit}
+					/>
+					<Button onClick={handleEditComplete}>완료</Button>
 				</Box>
 			) : (
-				<p key={item.commentId}>
-					{item.memberNickname}님: {item.commentContent}
-				</p>
+				<Box>
+					<p>{comment.commentContent}</p>
+					<Button
+						onClick={() => {
+							setEdit(!edit);
+						}}
+					>
+						수정
+					</Button>
+					<Button onClick={handleRemove}>삭제</Button>
+				</Box>
 			)}
 		</Box>
 	);
 };
 
-export default CommentEdit;
+export default MyCommentEdit;
