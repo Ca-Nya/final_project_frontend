@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, Input, Button, Form } from "../../common";
+import { useState } from "react";
+import { Input, Button, Form } from "../../common";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ const CommentItem = () => {
 	//댓글 등록하기 post요청
 	const mutation = useMutation(
 		commentContent =>
-			axios.post(`${BASE_URL}/auth/comment/13/create`, commentContent, {
+			axios.post(`${BASE_URL}/auth/comment/6/create`, commentContent, {
 				headers: {
 					authorization,
 				},

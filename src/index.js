@@ -7,7 +7,6 @@ import { RecoilRoot } from "recoil";
 import { Provider } from "react-redux";
 import store from "./redux/config/configStore";
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const queryClient = new QueryClient();
@@ -19,7 +18,7 @@ root.render(
 			<RecoilRoot>
 				<App />
 			</RecoilRoot>
-			<ReactQueryDevtools />
+			{/* <ReactQueryDevtools /> */}
 		</QueryClientProvider>
 	</Provider>,
 	// </React.StrictMode>,

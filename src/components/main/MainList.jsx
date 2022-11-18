@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FirstHeading, Box } from "../../common";
 import { useFetchPosts } from "../../querys/main";
+
 import {
 	MainCanyaPick,
 	MainNavButtons,
