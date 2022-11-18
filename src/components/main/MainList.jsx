@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FirstHeading, Box } from "../../common";
 import { useFetchPosts } from "../../querys/main";
 
+
 import {
 	MainCanyaPick,
 	MainNavButtons,
@@ -12,6 +13,7 @@ import {
 } from "../../components/main";
 
 const MainList = () => {
+	
 	// 전체 게시글 요청 hook
 	const { data: mainPosts, isError, isLoading } = useFetchPosts();
 	console.log("useFetchPosts query data =>", mainPosts);
@@ -26,6 +28,7 @@ const MainList = () => {
 
 	return (
 		<Box>
+	
 			<MainNavButtons />
 			<FirstHeading>CA NYA's PICK3</FirstHeading>
 			<MainCanyaButtons setCanyaPick={setCanyaPick} mainPosts={mainPosts} />

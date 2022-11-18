@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainListPage from "../pages/mainlist/MainListPage";
+import MainListPage from "../pages/mainlist";
 import SignInPage from "../pages/join/";
 import SignUpPage from "../components/join/SignUpForm";
 import DetailPage from "../pages/detail";

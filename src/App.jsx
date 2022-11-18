@@ -3,6 +3,7 @@ import GlobalStyles from "./GlobalStyles";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { resetToken } from "../src/redux/modules/join/joinSlice";
+import { Suspense } from "react"
 
 function App() {
 	const dispatch = useDispatch();
@@ -14,8 +15,10 @@ function App() {
 	}, [dispatch]);
 	return (
 		<>
-			<GlobalStyles />
+		<Suspense fallback={<div>로딩중</div>}>
+		<GlobalStyles />
 			<Router />
+		</Suspense>
 		</>
 	);
 }
