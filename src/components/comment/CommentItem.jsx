@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const CommentItem = () => {
-
 	const navigate = useNavigate();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");

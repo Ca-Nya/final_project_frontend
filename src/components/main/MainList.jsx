@@ -1,37 +1,42 @@
-import { FirstHeading } from "../../common";
+import { useState } from "react";
+import { FirstHeading, Box } from "../../common";
+import { useFetchPosts } from "../../querys/main";
 
-
-import { CommentList, CommentItem } from "../../components/comment";
-import { DetailLike } from "../../components/detail";
-
-import { useFetchPosts } from "../../querys";
 import {
 	MainCanyaPick,
 	MainNavButtons,
 	MainCanyaButtons,
+	MainBestList,
+	MainNewList,
+	MainAllList,
 } from "../../components/main";
 
 const MainList = () => {
-	const { data: mainPosts } = useFetchPosts();
+	// 전체 게시글 요청 hook
+	const { data: mainPosts, isError, isLoading } = useFetchPosts();
 	console.log("useFetchPosts query data =>", mainPosts);
+	// 전체 게시글 데이터
+	const { allDto, bestDto, newDto } = mainPosts;
+	// 카냐's Pick state
+	const [canyaPick, setCanyaPick] = useState(mainPosts.coffeePick);
 
-	const { allDto, bestDto, newDto, coffeePick, dessertPick, moodPick } =
-		mainPosts;
+	if (isError) return <Box>에러입니다</Box>;
+
+	if (isLoading) return <Box>로딩중...</Box>;
 
 	return (
-		<div>
+		<Box>
 			<MainNavButtons />
-			{/* Canya's Pick */}
 			<FirstHeading>CA NYA's PICK3</FirstHeading>
-			<MainCanyaButtons />
-			<MainCanyaPick coffeePick={coffeePick} />
-			{/* Best List */}
+			<MainCanyaButtons setCanyaPick={setCanyaPick} mainPosts={mainPosts} />
+			<MainCanyaPick picks={canyaPick} />
 			<FirstHeading>BSET</FirstHeading>
-			{/* New List */}
+			<MainBestList bestDto={bestDto} />
 			<FirstHeading>NEW</FirstHeading>
-			{/* All List */}
+			<MainNewList newDto={newDto} />
 			<FirstHeading>ALL</FirstHeading>
-		</div>
+			<MainAllList allDto={allDto} />
+		</Box>
 	);
 };
 

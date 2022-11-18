@@ -1,12 +1,12 @@
-import * as styles from "./MainListPage.styles";
 import { MainList, MainNav } from "../../components/main";
+import { Main } from "../../common";
 
 function MainListPage() {
 	return (
-		<styles.MainListPage>
+		<Main>
 			<MainNav />
-			{/* <MainList /> */}
-		</styles.MainListPage>
+			<MainList />
+		</Main>
 	);
 }
 

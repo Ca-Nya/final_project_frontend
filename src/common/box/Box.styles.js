@@ -47,6 +47,34 @@ export const Box = styled.div`
 						color: #ff7777;
 					}
 				`;
+			case "main-best-item":
+				return css`
+					width: 400px;
+					height: 200px;
+					background-image: url(${({ bg }) => bg});
+					background-position: center center;
+					background-size: cover;
+					background-repeat: no-repeat;
+				`;
+			case "main-new-item":
+				return css`
+					width: 200px;
+					height: 200px;
+					border-radius: 50%;
+					background-image: url(${({ bg }) => bg});
+					background-position: center center;
+					background-size: cover;
+					background-repeat: no-repeat;
+				`;
+			case "main-all-item":
+				return css`
+					width: 300px;
+					height: 200px;
+					background-image: url(${({ bg }) => bg});
+					background-position: center center;
+					background-size: cover;
+					background-repeat: no-repeat;
+				`;
 			default:
 				break;
 		}

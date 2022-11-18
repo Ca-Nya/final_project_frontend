@@ -19,8 +19,6 @@ const CafeRatings = ({ ratings, setRatings }) => {
 		});
 	};
 
-	console.log("ratings =>", ratings);
-
 	return (
 		<Box>
 			{reviewRate.map((rateList, idx) => {

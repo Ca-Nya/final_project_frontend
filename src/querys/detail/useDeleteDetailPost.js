@@ -1,4 +1,4 @@
-import { request } from "../shared/request";
+import { request } from "../../shared/request";
 import { useMutation } from "@tanstack/react-query";
 
 const deleteDetailPost = boardId => {

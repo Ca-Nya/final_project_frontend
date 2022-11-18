@@ -171,7 +171,16 @@ const CafeReview = () => {
 						for (let key of formData.keys()) {
 							console.log("formData ===>", key, ":", formData.get(key));
 						}
-						addPost.mutate(formData);
+						addPost.mutate(formData, {
+							onSuccess: (data, variables, context) => {
+								alert("리뷰 작성이 완료되었습니다");
+								navigate(`/detail/post/${+id}`);
+							},
+							onError: (error, variables, context) => {
+								alert("리뷰 작성을 실패했습니다");
+							},
+							onSettled: (data, error, variables, context) => {},
+						});
 					} else if (!place) alert("장소를 선택해주세요");
 				}}
 			>
