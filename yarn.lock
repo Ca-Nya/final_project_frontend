@@ -7587,6 +7587,13 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-error-boundary@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/react-error-boundary/-/react-error-boundary-3.1.4.tgz#255db92b23197108757a888b01e5b729919abde0"
+  integrity sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 react-error-overlay@^6.0.11:
   version "6.0.11"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
@@ -7596,6 +7603,11 @@ react-hook-form@^7.39.3:
   version "7.39.3"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.39.3.tgz#d5e66dae44187606992ba01f26460cca2565ea58"
   integrity sha512-H/vwk1vBf+TiXuyW6+hWz+zCujiDO6NqHlN5sPE/a+NGKKGK95XTM65DZz3NmEgs2M20Wka+g4uv4VD367wDBA==
+
+react-intersection-observer@^9.4.1:
+  version "9.4.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-9.4.1.tgz#4ccb21e16acd0b9cf5b28d275af7055bef878f6b"
+  integrity sha512-IXpIsPe6BleFOEHKzKh5UjwRUaz/JYS0lT/HPsupWEQou2hDqjhLMStc5zyE3eQVT4Fk3FufM8Fw33qW1uyeiw==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"

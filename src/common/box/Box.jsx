@@ -1,7 +1,12 @@
 import * as styles from "./Box.styles";
+import { forwardRef } from "react";
 
-const Box = ({ children, ...props }) => {
-	return <styles.Box {...props}>{children}</styles.Box>;
-};
+const Box = forwardRef((props, ref) => {
+	return (
+		<styles.Box {...props} ref={ref}>
+			{props.children}
+		</styles.Box>
+	);
+});
 
 export default Box;

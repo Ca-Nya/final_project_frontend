@@ -14,6 +14,7 @@ const useEditDetailPost = payload => {
 		mutationFn: async payload => {
 			const response = await editDetailPost(payload);
 			console.log("useEditPost response =>", response);
+
 			return response.data;
 		},
 		enabled: false,

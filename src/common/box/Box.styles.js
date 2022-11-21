@@ -75,6 +75,34 @@ export const Box = styled.div`
 					background-size: cover;
 					background-repeat: no-repeat;
 				`;
+			case "list-item":
+				return css`
+					width: 300px;
+					height: 400px;
+					background-color: blueviolet;
+					margin: 10px;
+				`;
+			case "list-target":
+				return css`
+					width: 300px;
+					height: 400px;
+					background-color: pink;
+					margin: 10px;
+				`;
+			case "main-search":
+				return css`
+					width: 500px;
+					height: 100px;
+					background-color: pink;
+					margin: 10px;
+				`;
+			case "main-logo":
+				return css`
+					width: 100px;
+					height: 50px;
+					background-color: yellow;
+				`;
+
 			default:
 				break;
 		}
