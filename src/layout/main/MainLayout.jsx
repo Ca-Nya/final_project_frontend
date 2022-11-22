@@ -1,4 +1,4 @@
-import { Box, FirstHeading } from "../../common";
+import { Box } from "../../common";
 import { MainList, MainNav } from "../../components/main";
 import { useFetchSearchList } from "../../querys/list";
 import { Fragment, useState, useEffect } from "react";
@@ -30,7 +30,7 @@ const MainLayout = () => {
 	};
 	// 메인 페이지 초기화 state (검색 전 메인 화면)
 	const [resetMain, setResetMain] = useState(false);
-	// 리스트 요청 무한스크롤 Hook
+	// 검색 리스트 요청 무한스크롤 Hook
 	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
 		useFetchSearchList(selectValues);
 	console.log(
@@ -109,5 +109,3 @@ const MainLayout = () => {
 };
 
 export default MainLayout;
-
-// data.pages[0].list ?
