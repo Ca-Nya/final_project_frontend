@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
+import loginId from "../../assets/icons/loginId.png";
 
 export const Input = styled.input`
 	${({ variant }) => {
@@ -11,11 +12,15 @@ export const Input = styled.input`
 						display: block;
 					} */
 					${({ purpose }) => {
-						// return purpose === "sign-in"
-						// 	? `background-color: aliceblue;
-						//      border-radius: 10px;
-						// `
-						// 	: "";
+						return purpose === "sign-in"
+							? `background-color: aliceblue;
+						     border-radius: 10px;
+							 background-img: url(${loginId});
+							 background-repeat: no-repeat;
+							 background-position: 5px center;
+							 padding-left: 40px;
+						`
+							: "";
 					}};
 					width: ${calcRem(472)};
 					height: 60px;

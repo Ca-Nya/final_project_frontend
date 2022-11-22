@@ -116,6 +116,11 @@ export const Box = styled.div`
 						margin: 10px;
 					`;
 				/* 로그인 / 회원가입 페이지 */
+					case "join-box":
+					return css`
+						width: 557px;
+						height: 700px;				
+					`;
 				default:
 					break;
 			}
