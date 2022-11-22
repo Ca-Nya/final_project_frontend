@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Form, Input, Button, Text } from "../../common";
+import { Form, Input, Button, Text, Box } from "../../common";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -38,7 +38,7 @@ const SigninForm = () => {
 	});
 
 	return (
-		<>
+		<Box variant="container">
 			<Form
 				onSubmit={handleSubmit(value => {
 					console.log("value =>", value);
@@ -60,6 +60,7 @@ const SigninForm = () => {
 				)}
 				<Text>비밀번호</Text>
 				<Input
+					variant="join"
 					placeholder="비밀번호를 입력해주세요."
 					{...register("password", {
 						required: true,
@@ -70,8 +71,12 @@ const SigninForm = () => {
 				) : (
 					""
 				)}
-				<Button>로그인</Button>
+				<Button
+				variant="join"
+				>로그인</Button>
 			</Form>
+			<Box>
+			<Text>아직 카냐 회원이 아니세요?</Text>
 			<Text
 				onClick={() => {
 					navigate("/register");
@@ -79,7 +84,8 @@ const SigninForm = () => {
 			>
 				회원가입
 			</Text>
-		</>
+			</Box>
+		</Box>
 	);
 };
 
