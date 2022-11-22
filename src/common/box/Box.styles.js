@@ -116,10 +116,24 @@ export const Box = styled.div`
 						margin: 10px;
 					`;
 				/* 로그인 / 회원가입 페이지 */
-					case "join-box":
+					case "join":
 					return css`
 						width: 557px;
-						height: 700px;				
+						height: 700px;
+						position: absolute;
+						top:163px;
+						left:1103px;
+						background-color: ${({ theme }) => theme.colors.white};
+						border-radius:5px;
+						align-items: center;
+						/* margin: 163px 240px 217px 1103px;				 */
+					`;
+						case "join-info":
+					return css`
+						width: 557px;
+						margin-bottom: 136px;
+						display: flex;
+
 					`;
 				default:
 					break;

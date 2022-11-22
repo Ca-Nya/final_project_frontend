@@ -39,15 +39,21 @@ const SigninForm = () => {
 	});
 
 	return (
-		<Box variant="join-background">
+		<Box variant="join">
 			<Form
+				variant="join"
 				onSubmit={handleSubmit(value => {
 					console.log("value =>", value);
 					const { memberName, password } = value;
 					dispatch(__requestSignIn({ memberName, password }));
 				})}
 			>
-				<Text>ID</Text>
+				<Text
+				variant="join"
+				>CA NYA</Text>
+				<Text
+				variant="join-id"
+				>아이디(ID)</Text>
 				<Input
 					variant="join"
 					purpose="sign-in"
@@ -59,7 +65,9 @@ const SigninForm = () => {
 				) : (
 					""
 				)}
-				<Text>비밀번호</Text>
+				<Text
+				variant="join-pw"
+				>비밀번호</Text>
 				<Input
 					variant="join"
 					placeholder="비밀번호를 입력해주세요."
@@ -72,20 +80,21 @@ const SigninForm = () => {
 				) : (
 					""
 				)}
-				<Button
-				variant="join"
-				>로그인</Button>
+				<Button variant="join">로그인</Button>
+				<Box variant="join-info">
+					<Text
+					variant="join-info"
+					>아직 카냐 회원이 아니세요?</Text>
+					<Text
+					variant="join-signup"
+						onClick={() => {
+							navigate("/register");
+						}}
+					>
+						회원가입 하기
+					</Text>
+				</Box>
 			</Form>
-			<Box>
-			<Text>아직 카냐 회원이 아니세요?</Text>
-			<Text
-				onClick={() => {
-					navigate("/register");
-				}}
-			>
-				회원가입
-			</Text>
-			</Box>
 		</Box>
 	);
 };

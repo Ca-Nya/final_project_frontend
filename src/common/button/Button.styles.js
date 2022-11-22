@@ -12,6 +12,7 @@ export const Button = styled.button`
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.xl};
                     font-weight: 700;
+					margin-top: 92px;
 				`;
 			default:
 				break;
