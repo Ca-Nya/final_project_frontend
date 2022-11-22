@@ -1,3 +1,3 @@
-import likedByFields from "./likedByFields";
+import LikedByFieldsLayout from "./LikedByFieldsLayout";
 
-export default likedByFields;
+export default LikedByFieldsLayout;
