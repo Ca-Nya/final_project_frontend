@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
-import loginId from "../../assets/icons/loginId.png";
+import loginId from "../../../src/assets/icons/loginId.png";
+import password from "../../../src/assets/icons/password.png";
 
 export const Input = styled.input`
 	${({ variant }) => {
@@ -15,12 +16,18 @@ export const Input = styled.input`
 						return purpose === "sign-in"
 							? `background-color: aliceblue;
 						     border-radius: 10px;
-							 background-img: url(${loginId});
+							 background-image: url(${loginId});
 							 background-repeat: no-repeat;
-							 background-position: 5px center;
-							 padding-left: 40px;
+							 background-position: 15px center;
+							 padding-left: 51px;
 						`
-							: "";
+							: `background-color: aliceblue;
+						     border-radius: 10px;
+							 background-image: url(${password});
+							 background-repeat: no-repeat;
+							 background-position: 15px center;
+							 padding-left: 51px;
+						`;
 					}};
 					width: ${calcRem(472)};
 					height: 60px;

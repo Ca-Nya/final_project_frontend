@@ -14,11 +14,19 @@ export const Section = styled.section`
 		${({ variant }) => {
 			switch (variant) {
 				/* 공통 */
+				case "container":
+					return css`
+						max-width: 1136px !important;
+						margin: 0 auto;
+						background-color: antiquewhite;
+					`;
 				/* 로그인 페이지 */
 				case "sign-in":
 					return css`
 						width: 100%;
 						height: 100vh;
+						display: flex;
+						position: relative;
 						background-image: url(${signInBackground});
 						background-repeat: no-repeat;
 						background-size: cover;
