@@ -12,18 +12,11 @@ export const Text = styled.p`
 			case "join":
 				return css`
 					display: flex;
-<<<<<<< HEAD
-				    margin:99px 0 24px 0;
-=======
 				    margin: 99px 0 24px 0;
->>>>>>> c2d08dad19deb8258f52fea4a638bf14f92df138
 					font-size: ${({ theme }) => theme.fontSizes.xxxl};
 					font-weight: 700;
 
 				`;
-<<<<<<< HEAD
-				
-=======
 				case "join-id":
 				return css`
 					display: flex;
@@ -66,7 +59,6 @@ export const Text = styled.p`
 					font-weight:700;
 
 				`;
->>>>>>> c2d08dad19deb8258f52fea4a638bf14f92df138
 			default:
 				break;
 		}
