@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Form, Input, Button, Text, Box } from "../../common";
+import { Form, Input, Button, Text, Box, Image } from "../../common";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,6 +7,7 @@ import {
 	resetError,
 } from "../../redux/modules/join/joinSlice";
 import { useEffect } from "react";
+import signInBackground from "../../assets/images/signin-background.png";
 
 const SigninForm = () => {
 	const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const SigninForm = () => {
 	});
 
 	return (
-		<Box variant="container">
+		<Box variant="join-background">
 			<Form
 				onSubmit={handleSubmit(value => {
 					console.log("value =>", value);

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
-import loginId  from "../../assets/icons/loginId.png";
+import loginId from "../../assets/icons/loginId.png";
 
 export const Input = styled.input`
 	${({ variant }) => {
@@ -15,7 +15,7 @@ export const Input = styled.input`
 						return purpose === "sign-in"
 							? `background-color: aliceblue;
 						     border-radius: 10px;
-							 background-img: url{loginId};
+							 background-img: url(${loginId});
 							 background-repeat: no-repeat;
 							 background-position: 5px center;
 							 padding-left: 40px;
