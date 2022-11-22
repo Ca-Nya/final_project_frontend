@@ -7,8 +7,8 @@ import SignUpPage from "../components/join/SignUpForm";
 import DetailPage from "../pages/detail";
 import { CafeReview } from "../components/cafe_review";
 import { DetailPost, DetailEditPost } from "../components/detail";
-import  { LikedByFields }  from "../components/likedByFields";
-import  {LikedByOveralls }  from "../components/likedByOveralls";
+import { LikedByFields } from "../components/likedByFields";
+import { LikedByOveralls } from "../components/likedByOveralls";
 import { MyBoard, MyComment, MyLike, MyPage } from "../components/my_page";
 
 const Router = () => {

@@ -53,7 +53,7 @@ const colors = {
 
 const device = {
 	mobile: `@media screen and (max-width: 767px)`,
-	desktop: `@media screen and (min-width: 768px)`,
+	desktop: `@media screen and (min-width: 1px)`,
 };
 
 const theme = {

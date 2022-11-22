@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { calcRem } from "../../themes";
 
 export const Box = styled.div`
 	/* >= 768 (Desktop) */
@@ -8,7 +9,7 @@ export const Box = styled.div`
 				/* 공통 */
 				case "container":
 					return css`
-						max-width: 1136px !important;
+						width: 1136px !important;
 						margin: 0 auto;
 						background-color: antiquewhite;
 					`;
@@ -59,6 +60,12 @@ export const Box = styled.div`
 						}
 					`;
 				/* 메인 페이지 */
+				case "nav-container":
+					return css`
+						width: 1136px !important;
+						/* margin: 0 auto; */
+						background-color: antiquewhite;
+					`;
 				case "main-best-item":
 					return css`
 						width: 400px;
@@ -87,18 +94,24 @@ export const Box = styled.div`
 						background-size: cover;
 						background-repeat: no-repeat;
 					`;
-				case "main-search":
-					return css`
-						width: 500px;
-						height: 100px;
-						background-color: pink;
-						margin: 10px;
-					`;
 				case "main-logo":
 					return css`
 						width: 100px;
 						height: 50px;
 						background-color: yellow;
+					`;
+				case "main-search":
+					return css`
+						width: ${calcRem(967)};
+						height: 51px;
+						margin: 0 auto;
+						background-color: pink;
+					`;
+				case "main-user-info":
+					// 내용물 width 값에 따라 변환
+					return css`
+						width: ${calcRem(110)};
+						background-color: tomato;
 					`;
 				/* 메인리스트, 카테고리별 리스트 */
 				case "list-item":
@@ -116,10 +129,10 @@ export const Box = styled.div`
 						margin: 10px;
 					`;
 				/* 로그인 / 회원가입 페이지 */
-					case "join-box":
+				case "join-box":
 					return css`
 						width: 557px;
-						height: 700px;				
+						height: 700px;
 					`;
 				default:
 					break;
