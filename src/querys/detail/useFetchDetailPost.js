@@ -5,12 +5,11 @@ import { getRequest } from "../../shared/request";
 const fetchDetailPost = boardId => {
 	return getRequest({
 		method: "get",
-		// url: `/board/${boardId}`,
 		url: `/board/${boardId}`,
 	});
 };
 
-// 상세페이지 게시글 요청 hook
+// 상세페이지 게시글 요청 Hook
 const useFetchDetailPost = boardId => {
 	console.log("boardId =>", boardId);
 	return useQuery({

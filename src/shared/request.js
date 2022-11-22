@@ -17,14 +17,9 @@ export const getRequest = async ({
 	throwWhenError = false,
 	params,
 }) => {
-	try {
-		const response = await http[method](url, { params });
-		console.log("getRequest response =>", response);
-		return response;
-	} catch (error) {
-		if (throwWhenError) throw error;
-		console.log("getRequest error =>", error);
-	}
+	const response = await http[method](url, { params });
+	console.log("getRequest response =>", response);
+	return response;
 };
 
 // Post/Put/Delete Request
@@ -39,7 +34,7 @@ export const request = async ({
 		console.log("Request response =>", response);
 		return response;
 	} catch (error) {
-		if (throwWhenError) throw error;
 		console.log("Request error =>", error);
+		if (throwWhenError) throw error;
 	}
 };

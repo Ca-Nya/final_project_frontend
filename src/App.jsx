@@ -1,9 +1,11 @@
 import Router from "./shared/Router";
 import GlobalStyles from "./GlobalStyles";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 import { resetToken } from "../src/redux/modules/join/joinSlice";
-import { Suspense } from "react"
+import { theme } from "./themes";
+import { Suspense, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { ErrorBoundary } from "react-error-boundary";
+import { ThemeProvider } from "styled-components";
 
 function App() {
 	const dispatch = useDispatch();
@@ -15,10 +17,14 @@ function App() {
 	}, [dispatch]);
 	return (
 		<>
-		<Suspense fallback={<div>로딩중</div>}>
-		<GlobalStyles />
-			<Router />
-		</Suspense>
+			<Suspense fallback={<div>Loading</div>}>
+				{/* <ErrorBoundary FallbackComponent={<div>에러발생</div>}> */}
+				<ThemeProvider theme={theme}>
+					<GlobalStyles />
+					<Router />
+				</ThemeProvider>
+				{/* </ErrorBoundary> */}
+			</Suspense>
 		</>
 	);
 }

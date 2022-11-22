@@ -32,8 +32,22 @@ export const Image = styled.img`
 				return css`
 					width: 40px;
 					height: 40px;
-					object-fit: contain;
+					object-fit: cover;
 					object-position: center;
+					border-radius: 50%;
+				`;
+			case "mypage-profile":
+				return css`
+					width: 170px;
+					height: 170px;
+					border-radius: 50%;
+					object-fit: cover;
+					object-position: center;
+				`;
+			case "mypage-post":
+				return css`
+					width: 200px;
+					height: 200px;
 				`;
 			default:
 				break;

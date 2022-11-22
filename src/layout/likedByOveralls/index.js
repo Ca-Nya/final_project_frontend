@@ -1,3 +1,3 @@
-import likedByOveralls from "./likedByOveralls";
+import LikedByOverallsLayout from "./LikedByOverallsLayout";
 
-export default likedByOveralls;
+export default LikedByOverallsLayout;
