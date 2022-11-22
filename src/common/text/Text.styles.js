@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Text = styled.p`
 	display: ${({ dp }) => (dp ? dp : "")};
@@ -9,6 +9,15 @@ export const Text = styled.p`
 
 	${({ variant }) => {
 		switch (variant) {
+			case "join":
+				return css`
+					display: flex;
+				    margin:99px 0 24px 0;
+					font-size: ${({ theme }) => theme.fontSizes.xxxl};
+					font-weight: 700;
+
+				`;
+				
 			default:
 				break;
 		}
