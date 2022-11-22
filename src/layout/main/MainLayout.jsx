@@ -59,7 +59,7 @@ const MainLayout = () => {
 	if (status === "error") return <Box>검색 리스트 Error</Box>;
 
 	return (
-		<Box>
+		<Box variant="layout">
 			<MainNav
 				handleChangeSelect={handleChangeSelect}
 				handleChangeSearchInput={handleChangeSearchInput}
