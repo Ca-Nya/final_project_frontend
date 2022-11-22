@@ -14,12 +14,11 @@ const useFetchPosts = () => {
 	return useQuery({
 		queryKey: ["posts"],
 		queryFn: async () => {
-			// header도 같이 받아 와야 할 수도..? => 토큰이나 닉네임 등
+			// try {
 			const response = await fetchPosts();
 			console.log("useFetchPosts response => ", response);
 			return response.data;
 		},
-		suspense: true,
 	});
 };
 

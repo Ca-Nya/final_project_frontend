@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Text = styled.p`
 	display: ${({ dp }) => (dp ? dp : "")};
@@ -9,6 +9,56 @@ export const Text = styled.p`
 
 	${({ variant }) => {
 		switch (variant) {
+			case "join":
+				return css`
+					display: flex;
+				    margin: 99px 0 24px 0;
+					font-size: ${({ theme }) => theme.fontSizes.xxxl};
+					font-weight: 700;
+
+				`;
+				case "join-id":
+				return css`
+					display: flex;
+					width: 557px;					
+				    margin: 0 0 8px 110px;
+					font-size: ${({ theme }) => theme.fontSizes.xl};
+					font-weight: 500;
+					text-align: left;
+
+				`;
+				case "join-pw":
+				return css`
+					display: flex;
+					width: 557px;					
+				    margin: 16px 0 8px 110px;
+					font-size: ${({ theme }) => theme.fontSizes.xl};
+					font-weight: 500;
+					text-align: left;
+
+				`;
+				case "join-info":
+				return css`
+					display: flex;				 
+				    margin: 20px 0 8px 50px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					text-align: left;
+
+				`;
+				case "join-signup":
+				return css`
+					display: flex;				 
+				    margin: 20px 30px 0px 168px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					color:${({ theme }) => theme.colors.black} ;
+					text-align: left;
+					text-decoration: underline;
+					text-decoration-thickness: 2px;
+					text-decoration-line:underline;
+					text-decoration-color:${({ theme }) => theme.colors.black};
+					font-weight:700;
+
+				`;
 			default:
 				break;
 		}
