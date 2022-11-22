@@ -1,7 +1,7 @@
 import { Box, FirstHeading } from "../../common";
 import { Outlet } from "react-router-dom";
 
-const likedByFieldsLayout = () => {
+const LikedByFieldsLayout = () => {
 	return (
 		<Box>
 			<FirstHeading>별점리스트</FirstHeading>
@@ -10,4 +10,4 @@ const likedByFieldsLayout = () => {
 	);
 };
 
-export default likedByFieldsLayout;
+export default LikedByFieldsLayout;
