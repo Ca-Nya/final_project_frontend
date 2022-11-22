@@ -29,7 +29,7 @@ const MainLayout = () => {
 		});
 	};
 	// 메인 페이지 초기화 state (검색 전 메인 화면)
-	const [resetMain, setResetMain] = useState(false);
+	const [resetMain, setResetMain] = useState(true);
 	// 검색 리스트 요청 무한스크롤 Hook
 	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
 		useFetchSearchList(selectValues);
@@ -59,7 +59,7 @@ const MainLayout = () => {
 	if (status === "error") return <Box>검색 리스트 Error</Box>;
 
 	return (
-		<Box variant="layout">
+		<>
 			<MainNav
 				handleChangeSelect={handleChangeSelect}
 				handleChangeSearchInput={handleChangeSearchInput}
@@ -67,44 +67,46 @@ const MainLayout = () => {
 				handleSubmitSearchValue={handleSubmitSearchValue}
 				setResetMain={setResetMain}
 			/>
-			{status === "loading" && !resetMain && <Box>검색 리스트 Loading</Box>}
-			{data && !resetMain ? (
-				<>
-					{data.pages[0].list ? (
-						<>
-							{
-								<Box>
-									{data.pages.map(pages => {
-										return (
-											<Fragment key={pages.list[0].boardId}>
-												{pages.list.map(item => {
-													return (
-														<Box variant="list-item" key={item.boardId}>
-															리스트
-														</Box>
-													);
-												})}
-											</Fragment>
-										);
-									})}
+			<Box variant="container">
+				{status === "loading" && !resetMain && <Box>검색 리스트 Loading</Box>}
+				{data && !resetMain ? (
+					<>
+						{data.pages[0].list ? (
+							<>
+								{
 									<Box>
-										{isFetchingNextPage ? (
-											<Box>Next Page Loading...</Box>
-										) : (
-											<Box ref={ref} variant="list-target" />
-										)}
+										{data.pages.map(pages => {
+											return (
+												<Fragment key={pages.list[0].boardId}>
+													{pages.list.map(item => {
+														return (
+															<Box variant="list-item" key={item.boardId}>
+																리스트
+															</Box>
+														);
+													})}
+												</Fragment>
+											);
+										})}
+										<Box>
+											{isFetchingNextPage ? (
+												<Box>Next Page Loading...</Box>
+											) : (
+												<Box ref={ref} variant="list-target" />
+											)}
+										</Box>
 									</Box>
-								</Box>
-							}
-						</>
-					) : (
-						<Box>검색 결과가 존재하지 않습니다.</Box>
-					)}
-				</>
-			) : (
-				<MainList />
-			)}
-		</Box>
+								}
+							</>
+						) : (
+							<Box>검색 결과가 존재하지 않습니다.</Box>
+						)}
+					</>
+				) : (
+					<MainList />
+				)}
+			</Box>
+		</>
 	);
 };
 

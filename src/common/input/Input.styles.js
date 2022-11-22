@@ -35,6 +35,12 @@ export const Input = styled.input`
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.lg};
 				`;
+			/* 메인 페이지 */
+			case "main-search":
+				return css`
+					width: ${calcRem(745)};
+					height: 51px;
+				`;
 			default:
 				break;
 		}
