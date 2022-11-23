@@ -8,8 +8,9 @@ import { CafeReview } from "../components/cafe_review";
 import { DetailPost, DetailEditPost } from "../components/detail";
 import { LikedByFields } from "../components/likedByFields";
 import { LikedByOveralls } from "../components/likedByOveralls";
-import { MyBoard, MyComment, MyLike } from "../components/my_page";
+import { MyBoard, MyComment, MyLike, MyPage } from "../components/my_page";
 import  MyPageLayout  from "../layout/mypage";
+
 
 
 const Router = () => {
@@ -36,6 +37,7 @@ const Router = () => {
 						<Route path=":mycomment" element={<MyComment />} />
 						<Route path=":mylike" element={<MyLike />} />
 					</Route>
+
 				</Routes>
 			</BrowserRouter>
 		</>

@@ -9,9 +9,15 @@ export const ListItem = styled.li`
 				/* 메인 페이지 */
 				case "main-select":
 					return css`
-						padding: 10px;
+						width: 100%;
+						padding: 12px;
+						text-align: center;
 						&:last-child {
-							padding: 10px 0 20px 0;
+							padding: 12px 12px 15px 12px;
+						}
+						&:hover {
+							background-color: #f8f8f8;
+							color: ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
 				default:

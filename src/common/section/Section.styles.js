@@ -26,7 +26,7 @@ export const Section = styled.section`
 						background-size: cover;
 						background-position: center center;
 					`;
-					case "sign-up":
+				case "sign-up":
 					return css`
 						width: 100%;
 						height: 100vh;
@@ -54,13 +54,21 @@ export const Nav = styled.nav`
 				/* 공통 */
 				case "main":
 					return css`
+						position: fixed;
 						width: 100%;
 						height: 100px;
 						margin: 0 auto;
 						background-color: ${({ theme }) => theme.colors.white};
-						border: 1px solid ${({ theme }) => theme.colors.line};
+						z-index: 6;
 					`;
 				/* 메인 페이지 */
+				case "main-category-button-group-wrap":
+					return css`
+						width: 100%;
+						height: 300px;
+						background-color: #f8f8f8;
+					`;
+				/* 로그인 / 회원가입 페이지 */
 				case "sign-in":
 					return css`
 						width: 100%;
