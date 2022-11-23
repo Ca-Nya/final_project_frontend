@@ -212,6 +212,22 @@ export const Box = styled.div`
 						width: 557px;
 						height: 700px;
 					`;
+					/* 마이페이지 */
+					case "pofile":
+					return css`
+						width:  ${calcRem(245)};
+						height:  ${calcRem(472)};
+						background-color: ${({ theme }) => theme.colors.white};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 5px;
+					`;
+						case "level":
+					return css`
+						width:  ${calcRem(50)};
+						height:  ${calcRem(25)};
+						background-color: #F6CD3C;
+						border-radius: 50px;
+					`;
 				default:
 					break;
 			}
