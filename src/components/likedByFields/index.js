@@ -1,3 +1,3 @@
-import LikedByFields from "./LikedByFields"
+import LikedByFields from "./LikedByFields";
 
-export { LikedByFields }
+export { LikedByFields };

@@ -2,13 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../layout/main";
 import LikedByFieldsLayout from "../layout/likedByFields";
 import LikedByOverallsLayout from "../layout/likedByOveralls";
-import SignInPage from "../pages/join/";
-import SignUpPage from "../components/join/SignUpForm";
+import { SignInPage,SignUpPage } from "../pages/join/";
 import DetailPage from "../pages/detail";
 import { CafeReview } from "../components/cafe_review";
 import { DetailPost, DetailEditPost } from "../components/detail";
-import  { LikedByFields }  from "../components/likedByFields";
-import  {LikedByOveralls }  from "../components/likedByOveralls";
+import { LikedByFields } from "../components/likedByFields";
+import { LikedByOveralls } from "../components/likedByOveralls";
 import { MyBoard, MyComment, MyLike, MyPage } from "../components/my_page";
 
 const Router = () => {

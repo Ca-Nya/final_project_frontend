@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { calcRem } from "../../themes";
 
 export const Box = styled.div`
 	/* >= 768 (Desktop) */
@@ -59,6 +60,71 @@ export const Box = styled.div`
 						}
 					`;
 				/* 메인 페이지 */
+				// navigation bar
+				case "main-nav-wraper":
+					return css`
+						width: 92%;
+						max-width: ${calcRem(1400)};
+						height: 100%;
+						margin: 0 auto;
+					`;
+				case "nav-container":
+					return css`
+						width: 100%;
+						max-width: 1136px !important;
+						margin: 0 10px;
+					`;
+				case "main-logo":
+					return css`
+						width: 10%;
+						max-width: ${calcRem(120)};
+						height: 50px;
+					`;
+				case "main-user-info":
+					return css`
+						width: 10%;
+						max-width: ${calcRem(130)};
+					`;
+				case "main-search":
+					return css`
+						position: relative;
+						width: 100%;
+						max-width: ${calcRem(967)};
+						margin: 0 auto;
+					`;
+				case "main-search-wraper":
+					return css`
+						position: absolute;
+						left: 10px;
+						width: 19%;
+						max-width: ${calcRem(222)};
+					`;
+				case "main-selcet-wraper":
+					return css`
+						position: relative;
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 20px;
+						background-color: ${({ theme }) => theme.colors.white};
+					`;
+				case "main-selcet-preview-wraper":
+					return css`
+						padding: 14px 0 14px 0;
+					`;
+				case "select-icon-wraper":
+					return css`
+						position: absolute;
+						padding: 10px 10px 10px 71%;
+						top: 0;
+						right: 0;
+						& svg {
+						}
+					`;
+				// case "":
+				// 	return css``;
+				// case "":
+				// 	return css``;
+
+				/* 메인리스트, 카테고리별 리스트 */
 				case "main-best-item":
 					return css`
 						width: 400px;
@@ -87,20 +153,6 @@ export const Box = styled.div`
 						background-size: cover;
 						background-repeat: no-repeat;
 					`;
-				case "main-search":
-					return css`
-						width: 500px;
-						height: 100px;
-						background-color: pink;
-						margin: 10px;
-					`;
-				case "main-logo":
-					return css`
-						width: 100px;
-						height: 50px;
-						background-color: yellow;
-					`;
-				/* 메인리스트, 카테고리별 리스트 */
 				case "list-item":
 					return css`
 						width: 300px;
@@ -116,24 +168,28 @@ export const Box = styled.div`
 						margin: 10px;
 					`;
 				/* 로그인 / 회원가입 페이지 */
-					case "join":
+				case "join":
 					return css`
 						width: 557px;
 						height: 700px;
 						position: absolute;
-						top:163px;
-						left:1103px;
+						top: 163px;
+						left: 1103px;
 						background-color: ${({ theme }) => theme.colors.white};
-						border-radius:5px;
+						border-radius: 5px;
 						align-items: center;
 						/* margin: 163px 240px 217px 1103px;				 */
 					`;
-						case "join-info":
+				case "join-info":
 					return css`
 						width: 557px;
 						margin-bottom: 136px;
 						display: flex;
-
+					`;
+				case "join-box":
+					return css`
+						width: 557px;
+						height: 700px;
 					`;
 				default:
 					break;

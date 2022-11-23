@@ -15,7 +15,7 @@ export const Input = styled.input`
 					${({ purpose }) => {
 						return purpose === "sign-in"
 							? `background-color: aliceblue;
-						     border-radius: 10px;
+						   border-radius: 10px;
 							 background-image: url(${loginId});
 							 background-repeat: no-repeat;
 							 background-position: 15px center;
@@ -34,6 +34,37 @@ export const Input = styled.input`
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.lg};
+				`;
+			case "signup":
+				return css`
+					width: ${calcRem(355)};
+					height: 60px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					background-color: aliceblue;
+					border-radius: 10px;
+					padding-left: 15px;
+				`;
+			case "signup-password":
+				return css`
+					width: ${calcRem(472)};
+					height: 60px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					background-color: aliceblue;
+					border-radius: 10px;
+					padding-left: 15px;
+				`;
+			/* 메인 페이지 */
+			case "main-search":
+				return css`
+					width: 96%;
+					height: 46px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 20px;
+					padding: 15px 15px 15px 20%;
 				`;
 			default:
 				break;

@@ -7,19 +7,20 @@ import Text from "./text";
 import Image from "./image";
 import TextArea from "./textArea";
 import Strong from "./strong";
+import Flex from "./flex";
 import { FirstHeading, SecondHeading, ThirdHeading } from "./heading";
 import { DataList, DataDesc, DataTerm } from "./description";
 import { Header, Main, Footer, Section, Article, Nav, Aside } from "./section";
+import { Select, Option } from "./select";
+import { ListItem, UnOrderedList } from "./list";
 
 export {
-	Box,
 	Button,
 	Form,
 	Margin,
 	FirstHeading,
 	SecondHeading,
 	ThirdHeading,
-	Text,
 	DataList,
 	DataDesc,
 	DataTerm,
@@ -33,5 +34,12 @@ export {
 	Aside,
 	TextArea,
 	Strong,
+	Select,
+	Option,
+	Flex,
+	ListItem,
+	UnOrderedList,
 	Input,
+	Text,
+	Box,
 };
