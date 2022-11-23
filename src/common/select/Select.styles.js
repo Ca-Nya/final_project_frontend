@@ -9,7 +9,8 @@ export const Select = styled.select`
 				/* 메인 페이지 */
 				case "main-search":
 					return css`
-						width: ${calcRem(222)};
+						width: 19%;
+						max-width: ${calcRem(222)};
 					`;
 				default:
 					break;
