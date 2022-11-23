@@ -18,6 +18,17 @@ export const Button = styled.button`
 						font-weight: 700;
 						margin-top: 92px;
 					`;
+				case "join-duplicate":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(97)};
+						height: 60px;
+						background-color: ${({ theme }) => theme.colors.main};
+						border-radius: 5px;
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						font-weight: 700;
+						text-align: center;
+					`;
 				/* 메인페이지 */
 				case "main-login":
 					return css`
