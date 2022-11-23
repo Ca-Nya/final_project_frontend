@@ -9,6 +9,7 @@ import { DetailPost, DetailEditPost } from "../components/detail";
 import { LikedByFields } from "../components/likedByFields";
 import { LikedByOveralls } from "../components/likedByOveralls";
 import { MyBoard, MyComment, MyLike, MyPage } from "../components/my_page";
+import { Test } from "../components/main";
 
 const Router = () => {
 	return (
@@ -33,6 +34,7 @@ const Router = () => {
 					<Route path="/myboard" element={<MyBoard />} />
 					<Route path="/mycomment" element={<MyComment />} />
 					<Route path="/mylike" element={<MyLike />} />
+					<Route path="/test" element={<Test />} />
 				</Routes>
 			</BrowserRouter>
 		</>
