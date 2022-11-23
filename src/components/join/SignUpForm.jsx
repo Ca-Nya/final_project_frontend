@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Input, Button, Form, Text, Marjin } from "../../common";
+import { Input, Button, Form, Text, Margin, Flex, Box } from "../../common";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -59,120 +59,208 @@ const SignUpForm = () => {
 					}
 				})}
 			>
-					<Text variant="join-sign">CA NYA</Text>
-				<label htmlFor="memberName">id</label>
-				<Input
-					placeholder="아이디를 입력해주세요."
-					maxLength="10"
-					{...register("memberName", {
-						required: true,
-						pattern: /^(?=.*[a-zA-Z])[-a-zA-Z0-9]{4,10}$/,
-					})}
-					onChange={e => {
-						dispatch(resetIdCheck());
-						dispatch(resetIdExist());
-						setInputValue(prev => {
-							return {
-								...prev,
-								idValue: e.target.value,
-							};
-						});
-					}}
-				/>
-				<Button
-					type="button"
-					disabled={isCheckedId}
-					onClick={() => {
-						dispatch(__isIdExist(inputValue.idValue));
-					}}
-				>
-					id중복확인
-				</Button>
-				{errors.memberName && errors.memberName.type === "true" ? (
-					<p>아이디를 입력해주세요.</p>
-				) : (
-					""
-				)}
-				{errors.memberName && errors.memberName.type === "pattern" ? (
-					<p>아이디는 4~10자 이내, 영어 대소문자, 숫자만 가능합니다.</p>
-				) : (
-					""
-				)}
-				{isCheckedId && !isExistId ? <p> 사용가능한 아이디입니다.</p> : ""}
-				{isExistId ? <p> 이미 사용중인 아이디 입니다.</p> : ""}
-				<br />
-				<label htmlFor="memberNickname">닉네임</label>
-				<Input
-					id="memberNickname"
-					type="text"
-					placeholder="닉네임을 입력해주세요."
-					{...register("memberNickname", { required: true, maxLength: 10 })}
-					onChange={e => {
-						dispatch(resetNicknameCheck());
-						dispatch(resetNicknameExist());
-						setInputValue(prev => {
-							return {
-								...prev,
-								nickNameValue: e.target.value,
-							};
-						});
-					}}
-				/>
-				{errors.memberNickname && errors.memberNickname.type === "required" ? (
-					<p>닉네임을 입력해주세요.</p>
-				) : (
-					""
-				)}
-				{errors.memberNickname && errors.memberNickname.type === "maxLength" ? (
-					<p>닉네임은 10자 이내로 작성바랍니다.</p>
-				) : (
-					""
-				)}
-				{isCheckedNickname && !isExistNickname ? (
-					<p> 사용가능한 닉네임입니다.</p>
-				) : (
-					""
-				)}
-				{isExistNickname ? <p> 이미 사용중인 닉네임 입니다.</p> : ""}
-				<Button
-					type="button"
-					disabled={isCheckedNickname}
-					onClick={() => {
-						dispatch(__isNicknameExist(inputValue.nickNameValue));
-					}}
-				>
-					닉네임중복확인
-				</Button>
-				<br />
-				<label htmlFor="password">비밀번호</label>
-				<Input
-					id="password"
-					type="text"
-					maxLength="20"
-					minLength="6"
-					placeholder="비밀번호를 입력해주세요."
-					{...register("password", {
-						required: true,
-						pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,20}$/,
-					})}
-				/>
-				{errors.password && errors.password.type === "required" ? (
-					<p>비밀번호를 입력해주세요.</p>
-				) : (
-					""
-				)}
-				{errors.password && errors.password.type === "pattern" ? (
-					<p>
-						비밀번호는 8~10자 이내, 최소 하나의 문자 및 하나의 숫자를 넣어
-						작성해주세요.
-					</p>
-				) : (
-					""
-				)}
-				<br />
-				<label htmlFor="passwordCheck">
-					비밀번호 확인
+				<Margin margin="150px 0 0 1312px">
+					<Text variant="join">CA NYA</Text>
+				</Margin>
+				<Margin margin="31px 0 0 1132px">
+					<Margin margin="5px 0 8px 8px">
+						<Text variant="join-id"> 닉네임 </Text>
+					</Margin>
+					<Box>
+						<Flex gap="20px">
+							<Input
+								variant="signup"
+								id="memberNickname"
+								type="text"
+								placeholder="별명(2~10자)을 입력해주세요."
+								{...register("memberNickname", {
+									required: true,
+									maxLength: 10,
+									minLength: 2,
+								})}
+								onChange={e => {
+									dispatch(resetNicknameCheck());
+									dispatch(resetNicknameExist());
+									setInputValue(prev => {
+										return {
+											...prev,
+											nickNameValue: e.target.value,
+										};
+									});
+								}}
+							/>
+							<Button
+								variant="join-duplicate"
+								type="button"
+								disabled={isCheckedNickname}
+								onClick={() => {
+									dispatch(__isNicknameExist(inputValue.nickNameValue));
+								}}
+							>
+								중복확인
+							</Button>
+						</Flex>
+					</Box>
+					{errors.memberNickname &&
+					errors.memberNickname.type === "required" ? (
+						<Margin margin="5px 0 0 10px ">
+						<Flex>
+							<Text variant="join-warning">
+							닉네임을 입력해주세요.
+							</Text>
+						</Flex>
+					</Margin>
+					) : (
+						""
+					)}
+					{errors.memberNickname &&
+					errors.memberNickname.type === "maxLength" ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">
+									닉네임은 10자 이내로 작성바랍니다
+								</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+					{isCheckedNickname && !isExistNickname ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-available">사용가능한 닉네임입니다.</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+					{isExistNickname ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">이미 사용중인 닉네임입니다.</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+
+					<Margin margin="15px 0 8px 8px">
+						<Text variant="join-id">아이디</Text>
+					</Margin>
+					<Box>
+						<Flex gap="20px">
+							<Input
+								variant="signup"
+								placeholder="아이디는 영어 대소문자, 숫자만 가능합니다"
+								maxLength="10"
+								{...register("memberName", {
+									required: true,
+									pattern: /^(?=.*[a-zA-Z])[-a-zA-Z0-9]{4,10}$/,
+								})}
+								onChange={e => {
+									dispatch(resetIdCheck());
+									dispatch(resetIdExist());
+									setInputValue(prev => {
+										return {
+											...prev,
+											idValue: e.target.value,
+										};
+									});
+								}}
+							/>
+							<Button
+								variant="join-duplicate"
+								type="button"
+								disabled={isCheckedId}
+								onClick={() => {
+									dispatch(__isIdExist(inputValue.idValue));
+								}}
+							>
+								중복확인
+							</Button>
+						</Flex>
+					</Box>
+					{errors.memberName && errors.memberName.type === "required" ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">아이디를 입력해주세요.</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+					{errors.memberName && errors.memberName.type === "pattern" ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">
+									아이디는 4~10자 이내, 영어 대소문자, 숫자만 가능합니다.
+								</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+					{isCheckedId && !isExistId ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-available">사용가능한 아이디입니다.</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+					{isExistId ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">이미 사용중인 아이디입니다.</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+
+					<Margin margin="50px 0 8px 8px">
+						<Text variant="join-id">비밀번호</Text>
+					</Margin>
 					<Input
+						variant="signup-password"
+						id="password"
+						type="text"
+						maxLength="20"
+						minLength="6"
+						placeholder="비밀번호를 입력해주세요."
+						{...register("password", {
+							required: true,
+							pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,20}$/,
+						})}
+					/>
+					{errors.password && errors.password.type === "required" ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">비밀번호를 입력해주세요.</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+					{errors.password && errors.password.type === "pattern" ? (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">
+									비밀번호는 8~10자 이내, 최소 하나의 문자 및 하나의 숫자를 넣어
+									작성해주세요.
+								</Text>
+							</Flex>
+						</Margin>
+					) : (
+						""
+					)}
+
+					<Margin margin="15px 0 8px 8px">
+						<Text variant="join-id">비밀번호 확인</Text>
+					</Margin>
+					<Input
+						variant="signup-password"
 						id="passwordCheck"
 						name="passwordCheck"
 						type="text"
@@ -182,14 +270,37 @@ const SignUpForm = () => {
 							validate: value => value === password.current,
 						})}
 					/>
-				</label>
-				{errors.passwordCheck && errors.passwordCheck.type === "required" && (
-					<p>비밀번호를 입력해주세요.</p>
-				)}
-				{errors.passwordCheck && errors.passwordCheck.type === "validate" && (
-					<p>비밀번호가 일치하지 않습니다.</p>
-				)}
-				<Button>등록하기</Button>
+
+					{errors.passwordCheck && errors.passwordCheck.type === "required" && (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">비밀번호를 입력해주세요.</Text>
+							</Flex>
+						</Margin>
+					)}
+					{errors.passwordCheck && errors.passwordCheck.type === "validate" && (
+						<Margin margin="5px 0 0 10px ">
+							<Flex>
+								<Text variant="join-warning">
+									비밀번호가 일치하지 않습니다.
+								</Text>
+							</Flex>
+						</Margin>
+					)}
+					<Margin margin="50px 0 0 0">
+						<Button variant="join">회원가입 하기</Button>
+					</Margin>
+					<Margin margin="18px 0 0 90px">
+						<Flex gap="30px">
+							<Text>이미 아이디가 있으신가요?</Text>
+							<Text variant="join-signup"
+							onClick={() => {
+								navigate("/join");
+							}}
+							>로그인 하기</Text>
+						</Flex>
+					</Margin>
+				</Margin>
 			</Form>
 		</>
 	);

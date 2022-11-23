@@ -35,6 +35,28 @@ export const Input = styled.input`
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.lg};
 				`;
+			case "signup":
+				return css`
+					width: ${calcRem(355)};
+					height: 60px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					background-color: aliceblue;
+					border-radius: 10px;
+					padding-left: 15px;
+				`;
+					case "signup-password":
+				return css`
+					width: ${calcRem(472)};
+					height: 60px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					background-color: aliceblue;
+					border-radius: 10px;
+					padding-left: 15px;
+				`;
 			/* 메인 페이지 */
 			case "main-search":
 				return css`

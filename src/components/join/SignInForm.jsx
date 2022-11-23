@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Form, Input, Button, Text, Box, Margin } from "../../common";
+import { Form, Input, Button, Text, Box, Margin, Flex } from "../../common";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -47,8 +47,12 @@ const SigninForm = () => {
 					dispatch(__requestSignIn({ memberName, password }));
 				})}
 			>
-				<Text variant="join">CA NYA</Text>
-				<Text variant="join-id">아이디(ID)</Text>
+				<Margin margin="99px 0 24px 0">
+					<Text variant="join">CA NYA</Text>
+				</Margin>
+				<Margin margin="0 0 8px 110px">
+					<Text variant="join-id">아이디(ID)</Text>
+				</Margin>
 				<Input
 					variant="join"
 					purpose="sign-in"
@@ -56,7 +60,11 @@ const SigninForm = () => {
 					{...register("memberName", { required: true })}
 				/>
 				{errors.memberName && errors.memberName.type === "required" ? (
-					<Text>아이디를 입력해주세요.</Text>
+					<Margin margin ="5px 290px 0 0 ">
+						<Flex >
+					<Text variant="join-warning">아이디를 입력해주세요.</Text>
+					</Flex>
+					</Margin>
 				) : (
 					""
 				)}
@@ -69,13 +77,21 @@ const SigninForm = () => {
 					})}
 				/>
 				{errors.password && errors.password.type === "required" ? (
-					<Text>비밀번호를 입력해주세요.</Text>
+					<Margin margin ="5px 280px 0 0 ">
+					<Flex >
+				<Text variant="join-warning">비밀번호를 입력해주세요.</Text>
+				</Flex>
+				</Margin>
 				) : (
 					""
 				)}
+				<Margin margin="92px 0 0 0">
 				<Button variant="join">로그인</Button>
+				</Margin>
 				<Box variant="join-info">
-					<Text variant="join-info">아직 카냐 회원이 아니세요?</Text>
+					<Margin margin="25px 0 8px 60px">
+						<Flex gap="140px">
+					<Text variant="join-info">아직 카냐 회원이 아니세요?</Text>					
 					<Text
 						variant="join-signup"
 						onClick={() => {
@@ -84,6 +100,8 @@ const SigninForm = () => {
 					>
 						회원가입 하기
 					</Text>
+					</Flex>
+					</Margin>
 				</Box>
 			</Form>
 		</Box>
