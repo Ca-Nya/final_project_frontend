@@ -9,7 +9,9 @@ import { DetailPost, DetailEditPost } from "../components/detail";
 import { LikedByFields } from "../components/likedByFields";
 import { LikedByOveralls } from "../components/likedByOveralls";
 import { MyBoard, MyComment, MyLike, MyPage } from "../components/my_page";
-import { MainCarousel } from "../components/main";
+import  MyPageLayout  from "../layout/mypage";
+
+
 
 const Router = () => {
 	return (
@@ -30,11 +32,12 @@ const Router = () => {
 					</Route>
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
-					<Route path="/mypage" element={<MyPage />} />
-					<Route path="/myboard" element={<MyBoard />} />
-					<Route path="/mycomment" element={<MyComment />} />
-					<Route path="/mylike" element={<MyLike />} />
-					<Route path="/test" element={<MainCarousel />} />
+					<Route path="/mypage" element={< MyPageLayout/>}>
+						<Route path=":myboard" element={<MyBoard />} />
+						<Route path=":mycomment" element={<MyComment />} />
+						<Route path=":mylike" element={<MyLike />} />
+					</Route>
+
 				</Routes>
 			</BrowserRouter>
 		</>

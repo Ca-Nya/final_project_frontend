@@ -1,8 +1,21 @@
-import { Box, Input, Button, Image, Text } from "../../common";
+import {
+	Box,
+	Input,
+	Button,
+	Image,
+	Text,
+	Label,
+	Margin,
+	Flex,
+} from "../../common";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useEditProfileImage } from "../../querys/my_page";
 import { useDeleteDetailPost } from "../../querys/detail";
+import Edit from "../../assets/icons/edit-profile.png";
+import Comment from "../../assets/icons/comment.png";
+import Heart from "../../assets/icons/heart.png";
+import Write from "../../assets/icons/write.png";
 import axios from "axios";
 
 const MyPage = () => {
@@ -103,24 +116,77 @@ const MyPage = () => {
 
 	return (
 		<Box>
-			<Box>
-				<Box>
-					<Image
-						src={memberProfileImage}
-						alt={memberProfileImage}
-						variant="mypage-profile"
-					/>
-					<Input
-						type="file"
-						accept="image/*"
-						onChange={handleChangeProfileImage}
-					/>
+			<Margin margin="43px 0 0 0">
+				<Box variant="pofile">
+					<Flex gap="1px" fd="column" ai="center">
+						<Box>
+							<Margin margin="16px 16px 0 206px">
+								<Label htmlFor="imageChange">
+									<Image
+										variant="profile-edit"
+										src={Edit}
+										title="프로필이미지 편집"
+									/>
+								</Label>
+							</Margin>
+							<Input
+								id="imageChange"
+								variant="profile-edit"
+								type="file"
+								accept="image/*"
+								onChange={handleChangeProfileImage}
+							/>
+
+							<Margin margin="11px 60px 0 60px">
+								<Image
+									src={memberProfileImage}
+									alt={memberProfileImage}
+									variant="mypage-profile"
+								/>
+							</Margin>
+						</Box>
+						<Margin margin="16px 60px 10px 60px">
+							<Text variant="join">{nickname}</Text>
+						</Margin>
+						<Box>
+							<Flex gap="10px">
+								<Box variant="level">
+									<Margin margin="4px 0 0 18px">
+										<Text variant="level">Lv</Text>
+									</Margin>
+								</Box>
+								<Margin margin="4px 0 0 0">
+									<Text>톨 💛</Text>
+								</Margin>
+							</Flex>
+						</Box>
+						<hr size="1" width="202px" color="#EAEAEA"></hr>
+						<Box>
+						<Margin margin="10px 0 0 0">
+							<Flex gap="20px">
+								<Image src={Write} />
+								<Image src={Heart} />
+								<Image src={Comment} />
+							</Flex>
+							</Margin>
+						</Box>
+						<Margin margin="0 0 5px 3px">
+							<Flex gap="11px">
+								<Text variant="profile-base">내가쓴글</Text>
+								<Text variant="profile-base">좋아요</Text>
+								<Text variant="profile-base">작성댓글</Text>
+							</Flex>
+						</Margin>
+						<Margin margin="0 5px 0 5px">
+							<Flex gap="40px">
+								<Text variant="join">{memberBoardCount}</Text>
+								<Text variant="join">{memberHeartCount}</Text>
+								<Text variant="join">{memberCommentCount}</Text>
+							</Flex>
+						</Margin>
+					</Flex>
 				</Box>
-				<Text>닉네임: {nickname}</Text>
-				<Text>총 게시글 수: {memberBoardCount}</Text>
-				<Text>총 댓글 수: {memberCommentCount}</Text>
-				<Text>총 좋아요 한 수: {memberHeartCount}</Text>
-			</Box>
+			</Margin>
 			<Box>
 				<Text
 					onClick={() => {
@@ -170,7 +236,7 @@ const MyPage = () => {
 				<Text>좋아요 한 글</Text>
 				{recentlyMyHeartBoardList?.map(item => {
 					return (
-						<Box>
+						<Box key={item.boardId}>
 							<Box key={item.boardId}>
 								<Image
 									variant="mypage-post"
@@ -189,7 +255,7 @@ const MyPage = () => {
 				<Text>내가 작성한 댓글</Text>
 				{recentlyMyCommentList?.map(item => {
 					return (
-						<Box>
+						<Box key={item.commentId}>
 							<Box key={item.commentId}>
 								<Text>{item.commentContent}</Text>
 								<Text>{item.boardTitle}</Text>

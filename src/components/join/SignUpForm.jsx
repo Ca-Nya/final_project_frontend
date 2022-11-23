@@ -287,7 +287,7 @@ const SignUpForm = () => {
 							</Flex>
 						</Margin>
 					)}
-					<Margin margin="50px 0 0 0">
+					<Margin margin="10px 0 0 0">
 						<Button variant="join">회원가입 하기</Button>
 					</Margin>
 					<Margin margin="18px 0 0 90px">
