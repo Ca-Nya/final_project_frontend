@@ -38,9 +38,10 @@ export const Image = styled.img`
 				`;
 			case "mypage-profile":
 				return css`
-					width: 170px;
-					height: 170px;
+					width: 128px;
+					height: 128px;
 					border-radius: 50%;
+					border: 5px solid #F6CD3C;
 					object-fit: cover;
 					object-position: center;
 				`;
@@ -48,6 +49,21 @@ export const Image = styled.img`
 				return css`
 					width: 200px;
 					height: 200px;
+				`;
+			case "mypage":
+				return css`
+					width: 100%;
+					height: 429px;
+					object-fit: cover;
+					object-position: center;
+				`;
+			case "profile-edit":
+				return css`
+					&:hover {
+						cursor: pointer;
+						filter: invert(60%) sepia(41%) saturate(4200%) hue-rotate(240deg)
+							brightness(150%) contrast(60%);
+					}
 				`;
 			default:
 				break;

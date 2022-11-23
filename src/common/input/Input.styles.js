@@ -57,6 +57,11 @@ export const Input = styled.input`
 					border-radius: 10px;
 					padding-left: 15px;
 				`;
+				/* 마이페이지 */
+				case "profile-edit":
+				return css`
+					display: none;
+				`;
 			/* 메인 페이지 */
 			case "main-search":
 				return css`

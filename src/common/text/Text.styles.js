@@ -64,6 +64,16 @@ export const Text = styled.p`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.main_purple};
 				`;
+				case "level":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${({ theme }) => theme.colors.white};
+				`;
+					case "profile-base":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${({ theme }) => theme.colors.black};
+				`;
 			default:
 				break;
 		}

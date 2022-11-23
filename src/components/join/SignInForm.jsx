@@ -85,7 +85,7 @@ const SigninForm = () => {
 				) : (
 					""
 				)}
-				<Margin margin="92px 0 0 0">
+				<Margin margin="10px 0 0 0">
 				<Button variant="join">로그인</Button>
 				</Margin>
 				<Box variant="join-info">
