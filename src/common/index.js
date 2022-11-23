@@ -8,6 +8,7 @@ import Image from "./image";
 import TextArea from "./textArea";
 import Strong from "./strong";
 import Flex from "./flex";
+import { Label } from "./label/Label.style";
 import { FirstHeading, SecondHeading, ThirdHeading } from "./heading";
 import { DataList, DataDesc, DataTerm } from "./description";
 import { Header, Main, Footer, Section, Article, Nav, Aside } from "./section";
@@ -39,6 +40,7 @@ export {
 	Flex,
 	ListItem,
 	UnOrderedList,
+	Label,
 	Input,
 	Text,
 	Box,
