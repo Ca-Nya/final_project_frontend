@@ -6,7 +6,7 @@ import MainCanyaButtons from "./MainCanyaButtons";
 import MainBestList from "./MainBestList";
 import MainNewList from "./MainNewList";
 import MainAllList from "./MainAllList";
-import Test from "./test";
+import MainSelectBox from "./MainSelectBox";
 
 export {
 	MainList,
@@ -17,5 +17,5 @@ export {
 	MainBestList,
 	MainNewList,
 	MainAllList,
-	Test,
+	MainSelectBox,
 };
