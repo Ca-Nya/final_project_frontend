@@ -59,6 +59,14 @@ export const Text = styled.p`
 					font-weight:700;
 
 				`;
+				case "join-sign":
+				return css`
+						display: flex;
+				    margin: 150px 0 0 1312px;
+					font-size: ${({ theme }) => theme.fontSizes.xxxl};
+					font-weight: 700;
+
+				`;
 			default:
 				break;
 		}

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Input, Button, Form } from "../../common";
+import { Input, Button, Form, Text, Marjin } from "../../common";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -59,7 +59,7 @@ const SignUpForm = () => {
 					}
 				})}
 			>
-				<p>회원가입</p>
+					<Text variant="join-sign">CA NYA</Text>
 				<label htmlFor="memberName">id</label>
 				<Input
 					placeholder="아이디를 입력해주세요."

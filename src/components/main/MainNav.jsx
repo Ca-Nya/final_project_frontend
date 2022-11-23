@@ -1,4 +1,14 @@
-import { Box, Button, Input, Text } from "../../common";
+import {
+	Box,
+	Button,
+	Input,
+	Text,
+	Nav,
+	Select,
+	Option,
+	Flex,
+	FirstHeading,
+} from "../../common";
 import { resetToken } from "../../redux/modules/join/joinSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,9 +28,8 @@ const MainNav = ({
 	const dispatch = useDispatch();
 	// React Router
 	const navigate = useNavigate();
-	// 로컬스토리지 토큰 & 닉네임
+	// 로컬스토리지 토큰
 	const jwtToken = localStorage.getItem("Authorization");
-	const nickname = localStorage.getItem("Nickname");
 	//토큰 리셋 useEffect
 	useEffect(() => {
 		if (!jwtToken) {
@@ -88,60 +97,73 @@ const MainNav = ({
 	};
 
 	return (
-		<Box>
-			<Box variant="main-search">
-				<Box variant="main-logo" onClick={handleResetMain}>
-					Logo
+		<>
+			<Nav variant="main">
+				<Box variant="main-nav-wraper">
+					<Flex jc="center" ai="center">
+						<Box variant="main-logo" onClick={handleResetMain}>
+							<FirstHeading aria-label="canya logo ">Logo</FirstHeading>
+						</Box>
+						<Box variant="nav-container">
+							<Box variant="main-search">
+								<Select
+									variant="main-search"
+									name="cafeSearch"
+									id="cafeSearch"
+									onChange={handleChangeSelect}
+									value={selectValues.category}
+								>
+									{selectList.map(option => {
+										return (
+											<Option value={option[0]} key={option[0]}>
+												{option[1]}
+											</Option>
+										);
+									})}
+								</Select>
+								<Input
+									variant="main-search"
+									onChange={handleChangeSearchInput}
+								/>
+								{/* <Button onClick={handleSubmitSearchValue}>검색</Button> */}
+							</Box>
+						</Box>
+						{jwtToken ? (
+							<Box variant="main-user-info">
+								<Text
+									onClick={() => {
+										dispatch(resetToken());
+										localStorage.clear();
+										navigate("/");
+									}}
+								>
+									로그아웃
+								</Text>
+								<Text
+									onClick={() => {
+										navigate("/mypage");
+									}}
+								>
+									마이페이지
+								</Text>
+							</Box>
+						) : (
+							<Box variant="main-user-info">
+								<Button
+									variant="main-login"
+									onClick={() => {
+										navigate("/join");
+									}}
+								>
+									로그인
+								</Button>
+							</Box>
+						)}
+					</Flex>
 				</Box>
-				<select
-					name="cafeSearch"
-					id="cafeSearch"
-					onChange={handleChangeSelect}
-					value={selectValues.category}
-				>
-					{selectList.map(option => {
-						return (
-							<option value={option[0]} key={option[0]}>
-								{option[1]}
-							</option>
-						);
-					})}
-				</select>
-				<Input onChange={handleChangeSearchInput} />
-				<Button onClick={handleSubmitSearchValue}>검색</Button>
-			</Box>
-
-			{jwtToken ? (
-				<Box>
-					<Text>{nickname}님 환영합니다.</Text>
-					<Text
-						onClick={() => {
-							dispatch(resetToken());
-							localStorage.clear();
-							navigate("/");
-						}}
-					>
-						로그아웃
-					</Text>
-					<Text
-						onClick={() => {
-							navigate("/mypage");
-						}}
-					>
-						마이페이지
-					</Text>
-				</Box>
-			) : (
-				<Text
-					onClick={() => {
-						navigate("/join");
-					}}
-				>
-					로그인
-				</Text>
-			)}
+			</Nav>
 			<Button onClick={handleGetPostId}>글쓰기</Button>
-		</Box>
+		</>
 	);
 };
 

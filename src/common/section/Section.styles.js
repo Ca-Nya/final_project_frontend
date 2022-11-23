@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
+import { calcRem } from "../../themes";
 import signInBackground from "../../assets/images/signin-background.png";
+import signUpBackground from "../../assets/images/signup-background.png";
 
 export const Header = styled.header``;
 
@@ -12,13 +14,6 @@ export const Section = styled.section`
 	${({ theme }) => theme.device.desktop} {
 		${({ variant }) => {
 			switch (variant) {
-				/* 공통 */
-				case "container":
-					return css`
-						max-width: 1136px !important;
-						margin: 0 auto;
-						background-color: antiquewhite;
-					`;
 				/* 로그인 페이지 */
 				case "sign-in":
 					return css`
@@ -31,6 +26,17 @@ export const Section = styled.section`
 						background-size: cover;
 						background-position: center center;
 					`;
+					case "sign-up":
+					return css`
+						width: 100%;
+						height: 100vh;
+						display: flex;
+						position: relative;
+						background-image: url(${signUpBackground});
+						background-repeat: no-repeat;
+						background-size: 948px;
+						background-position: left;
+					`;
 				default:
 					break;
 			}
@@ -40,6 +46,35 @@ export const Section = styled.section`
 
 export const Article = styled.article``;
 
-export const Nav = styled.nav``;
+export const Nav = styled.nav`
+	/* >= 768 (Desktop) */
+	${({ theme }) => theme.device.desktop} {
+		${({ variant }) => {
+			switch (variant) {
+				/* 공통 */
+				case "main":
+					return css`
+						width: 100%;
+						height: 114px;
+						margin: 0 auto;
+						/* background-color: ${({ theme }) => theme.colors.white}; */
+						background-color: #f4f4f4;
+					`;
+				/* 메인 페이지 */
+				case "sign-in":
+					return css`
+						width: 100%;
+						height: 100vh;
+						background-image: url(${signInBackground});
+						background-repeat: no-repeat;
+						background-size: cover;
+						background-position: center center;
+					`;
+				default:
+					break;
+			}
+		}}
+	}
+`;
 
 export const Aside = styled.aside``;

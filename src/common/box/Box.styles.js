@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { calcRem } from "../../themes";
 
 export const Box = styled.div`
 	/* >= 768 (Desktop) */
@@ -59,6 +60,39 @@ export const Box = styled.div`
 						}
 					`;
 				/* 메인 페이지 */
+				case "main-nav-wraper":
+					return css`
+						width: 90%;
+						max-width: ${calcRem(1350)};
+						height: 100%;
+						margin: 0 auto;
+					`;
+				case "nav-container":
+					return css`
+						width: 100%;
+						max-width: 1136px !important;
+						margin: 0 10px;
+					`;
+				case "main-logo":
+					return css`
+						width: 7%;
+						max-width: ${calcRem(90)};
+						height: 50px;
+						background-color: yellow;
+					`;
+				case "main-search":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(967)};
+						margin: 0 auto;
+					`;
+				case "main-user-info":
+					// 내용물 width 값에 따라 변환
+					return css`
+						width: 10%;
+						max-width: ${calcRem(130)};
+					`;
+				/* 메인리스트, 카테고리별 리스트 */
 				case "main-best-item":
 					return css`
 						width: 400px;
@@ -87,20 +121,6 @@ export const Box = styled.div`
 						background-size: cover;
 						background-repeat: no-repeat;
 					`;
-				case "main-search":
-					return css`
-						width: 500px;
-						height: 100px;
-						background-color: pink;
-						margin: 10px;
-					`;
-				case "main-logo":
-					return css`
-						width: 100px;
-						height: 50px;
-						background-color: yellow;
-					`;
-				/* 메인리스트, 카테고리별 리스트 */
 				case "list-item":
 					return css`
 						width: 300px;
@@ -116,24 +136,28 @@ export const Box = styled.div`
 						margin: 10px;
 					`;
 				/* 로그인 / 회원가입 페이지 */
-					case "join":
+				case "join":
 					return css`
 						width: 557px;
 						height: 700px;
 						position: absolute;
-						top:163px;
-						left:1103px;
+						top: 163px;
+						left: 1103px;
 						background-color: ${({ theme }) => theme.colors.white};
-						border-radius:5px;
+						border-radius: 5px;
 						align-items: center;
 						/* margin: 163px 240px 217px 1103px;				 */
 					`;
-						case "join-info":
+				case "join-info":
 					return css`
 						width: 557px;
 						margin-bottom: 136px;
 						display: flex;
-
+					`;
+				case "join-box":
+					return css`
+						width: 557px;
+						height: 700px;
 					`;
 				default:
 					break;
