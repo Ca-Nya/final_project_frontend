@@ -13,13 +13,6 @@ export const Section = styled.section`
 	${({ theme }) => theme.device.desktop} {
 		${({ variant }) => {
 			switch (variant) {
-				/* 공통 */
-				case "container":
-					return css`
-						max-width: 1136px !important;
-						margin: 0 auto;
-						background-color: antiquewhite;
-					`;
 				/* 로그인 페이지 */
 				case "sign-in":
 					return css`
@@ -52,7 +45,8 @@ export const Nav = styled.nav`
 						width: 100%;
 						height: 114px;
 						margin: 0 auto;
-						background-color: #d5d5d5;
+						/* background-color: ${({ theme }) => theme.colors.white}; */
+						background-color: #f4f4f4;
 					`;
 				/* 메인 페이지 */
 				case "sign-in":
