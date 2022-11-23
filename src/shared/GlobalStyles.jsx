@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
-  button {
+  button, ul {
     cursor: pointer;
     letter-spacing: 0.1em;
   }

@@ -3,7 +3,6 @@ import { FirstHeading, Box } from "../../common";
 import { useFetchPosts } from "../../querys/main";
 import {
 	MainCanyaPick,
-	MainNavButtons,
 	MainCanyaButtons,
 	MainBestList,
 	MainNewList,
@@ -43,7 +42,6 @@ const MainList = () => {
 		<Box>
 			{mainPosts && (
 				<>
-					<MainNavButtons />
 					<FirstHeading>CA NYA's PICK3</FirstHeading>
 					<MainCanyaButtons setCanyaPick={setCanyaPick} mainPosts={mainPosts} />
 					<MainCanyaPick picks={canyaPick} />

@@ -4,8 +4,6 @@ import {
 	Input,
 	Text,
 	Nav,
-	Select,
-	Option,
 	Flex,
 	FirstHeading,
 } from "../../common";
@@ -173,15 +171,3 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 };
 
 export default MainNav;
-
-// /* 메인 페이지 */
-// case "main-search":
-//   return css`
-//     width: 81%;
-//     max-width: ${calcRem(745)};
-//     height: 51px;
-//     border: 1px solid ${({ theme }) => theme.colors.line};
-//     border-top-right-radius: 20px;
-//     border-bottom-right-radius: 20px;
-//     padding: ${({ theme }) => theme.paddings.xl};
-//   `;

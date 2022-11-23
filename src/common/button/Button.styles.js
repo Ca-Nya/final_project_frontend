@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
 import search from "../../assets/icons/search.png";
+import { hot, all, recent } from "../../assets/icons/overalls";
 
 export const Button = styled.button`
 	/* >= 768 (Desktop) */
@@ -52,6 +53,12 @@ export const Button = styled.button`
 						background-repeat: no-repeat;
 						background-size: contain;
 						background-position: center center;
+					`;
+				case "main-cateory":
+					return css`
+						width: ${calcRem(90)};
+						height: ${calcRem(129)};
+						font-size: ${({ theme }) => theme.fontSizes.base};
 					`;
 				default:
 					break;

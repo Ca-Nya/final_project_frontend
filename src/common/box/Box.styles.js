@@ -9,7 +9,8 @@ export const Box = styled.div`
 				/* 공통 */
 				case "container":
 					return css`
-						max-width: 1136px !important;
+						width: 100%;
+						max-width: ${calcRem(1136)} !important;
 						margin: 0 auto;
 						background-color: antiquewhite;
 					`;
@@ -105,6 +106,8 @@ export const Box = styled.div`
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 20px;
 						background-color: ${({ theme }) => theme.colors.white};
+						overflow: hidden;
+						z-index: 11;
 					`;
 				case "main-selcet-preview-wraper":
 					return css`
@@ -119,8 +122,26 @@ export const Box = styled.div`
 						& svg {
 						}
 					`;
-				// case "":
-				// 	return css``;
+				case "main-carousel":
+					return css`
+						/* 캐러셀 어떻게 할지 조정 */
+						width: 100vw;
+						/* width: 100%; */
+						height: 600px;
+						z-index: 1;
+					`;
+				case "main-carousel-item":
+					return css`
+						background-image: url(${({ bg }) => bg});
+						width: 100vw;
+						/* max-width: ${calcRem(1924)}; */
+						height: 600px;
+						background-position: center center;
+						background-size: cover;
+						background-repeat: no-repeat;
+						filter: brightness(90%);
+					`;
+
 				// case "":
 				// 	return css``;
 

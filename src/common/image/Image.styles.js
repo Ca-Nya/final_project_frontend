@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { calcRem } from "../../themes";
 
 export const Image = styled.img`
 	height: ${({ height }) => (height ? height : "")};
@@ -7,6 +8,7 @@ export const Image = styled.img`
 
 	${({ variant }) => {
 		switch (variant) {
+			/* 상세 페이지 */
 			case "detail-review-profile":
 				return css`
 					width: 50px;
@@ -21,6 +23,7 @@ export const Image = styled.img`
 					object-fit: cover;
 					object-position: center;
 				`;
+			/* 메인 페이지 */
 			case "main-canya-pick":
 				return css`
 					width: 300px;
@@ -36,6 +39,14 @@ export const Image = styled.img`
 					object-position: center;
 					border-radius: 50%;
 				`;
+			case "main-cateory":
+				return css`
+					border-radius: 50%;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					padding: ${({ theme }) => theme.paddings.lg};
+					background-color: ${({ theme }) => theme.colors.white};
+				`;
+			/* 마이 페이지 */
 			case "mypage-profile":
 				return css`
 					width: 170px;

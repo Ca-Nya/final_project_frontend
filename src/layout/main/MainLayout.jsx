@@ -1,5 +1,10 @@
-import { Box } from "../../common";
-import { MainList, MainNav } from "../../components/main";
+import { Box, Margin } from "../../common";
+import {
+	MainNav,
+	MainCarousel,
+	MainNavButtons,
+	MainList,
+} from "../../components/main";
 import { useFetchSearchList } from "../../querys/list";
 import { Fragment, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
@@ -46,45 +51,53 @@ const MainLayout = () => {
 	return (
 		<>
 			<MainNav setResetMain={setResetMain} setSubmitValues={setSubmitValues} />
-			<Box variant="container">
+			<Margin margin="78px 0 0 0">
 				{status === "loading" && !resetMain && <Box>검색 리스트 Loading</Box>}
 				{data && !resetMain ? (
 					<>
-						{data.pages[0].list ? (
-							<>
-								{
-									<Box>
-										{data.pages.map(pages => {
-											return (
-												<Fragment key={pages.list[0].boardId}>
-													{pages.list.map(item => {
-														return (
-															<Box variant="list-item" key={item.boardId}>
-																리스트
-															</Box>
-														);
-													})}
-												</Fragment>
-											);
-										})}
+						<Box variant="container">
+							{data.pages[0].list ? (
+								<>
+									{
 										<Box>
-											{isFetchingNextPage ? (
-												<Box>Next Page Loading...</Box>
-											) : (
-												<Box ref={ref} variant="list-target" />
-											)}
+											{data.pages.map(pages => {
+												return (
+													<Fragment key={pages.list[0].boardId}>
+														{pages.list.map(item => {
+															return (
+																<Box variant="list-item" key={item.boardId}>
+																	리스트
+																</Box>
+															);
+														})}
+													</Fragment>
+												);
+											})}
+											<Box>
+												{isFetchingNextPage ? (
+													<Box>Next Page Loading...</Box>
+												) : (
+													<Box ref={ref} variant="list-target" />
+												)}
+											</Box>
 										</Box>
-									</Box>
-								}
-							</>
-						) : (
-							<Box>검색 결과가 존재하지 않습니다.</Box>
-						)}
+									}
+								</>
+							) : (
+								<Box>검색 결과가 존재하지 않습니다.</Box>
+							)}
+						</Box>
 					</>
 				) : (
-					<MainList />
+					<>
+						<MainCarousel />
+						<MainNavButtons />
+						<Box variant="container">
+							<MainList />
+						</Box>
+					</>
 				)}
-			</Box>
+			</Margin>
 		</>
 	);
 };
