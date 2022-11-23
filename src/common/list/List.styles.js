@@ -7,8 +7,13 @@ export const ListItem = styled.li`
 		${({ variant }) => {
 			switch (variant) {
 				/* 메인 페이지 */
-				case "":
-					return css``;
+				case "main-select":
+					return css`
+						padding: 10px;
+						&:last-child {
+							padding: 10px 0 20px 0;
+						}
+					`;
 				default:
 					break;
 			}
@@ -22,7 +27,7 @@ export const UnOrderedList = styled.ul`
 		${({ variant }) => {
 			switch (variant) {
 				/* 메인 페이지 */
-				case "":
+				case "main-select":
 					return css``;
 				default:
 					break;

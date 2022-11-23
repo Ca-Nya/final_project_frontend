@@ -46,7 +46,7 @@ export const Input = styled.input`
 					border-radius: 10px;
 					padding-left: 15px;
 				`;
-					case "signup-password":
+			case "signup-password":
 				return css`
 					width: ${calcRem(472)};
 					height: 60px;
@@ -60,13 +60,11 @@ export const Input = styled.input`
 			/* 메인 페이지 */
 			case "main-search":
 				return css`
-					width: 81%;
-					max-width: ${calcRem(745)};
-					height: 51px;
+					width: 96%;
+					height: 46px;
 					border: 1px solid ${({ theme }) => theme.colors.line};
-					border-top-right-radius: 20px;
-					border-bottom-right-radius: 20px;
-					padding: ${({ theme }) => theme.paddings.xl};
+					border-radius: 20px;
+					padding: 15px 15px 15px 20%;
 				`;
 			default:
 				break;

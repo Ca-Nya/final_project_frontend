@@ -55,10 +55,10 @@ export const Nav = styled.nav`
 				case "main":
 					return css`
 						width: 100%;
-						height: 114px;
+						height: 100px;
 						margin: 0 auto;
-						/* background-color: ${({ theme }) => theme.colors.white}; */
-						background-color: #f4f4f4;
+						background-color: ${({ theme }) => theme.colors.white};
+						border: 1px solid ${({ theme }) => theme.colors.line};
 					`;
 				/* 메인 페이지 */
 				case "sign-in":

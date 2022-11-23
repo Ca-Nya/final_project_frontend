@@ -9,21 +9,36 @@ import {
 	Flex,
 	FirstHeading,
 } from "../../common";
+import { MainSelectBox } from "../../components/main";
 import { resetToken } from "../../redux/modules/join/joinSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-const MainNav = ({
-	handleChangeSelect,
-	handleChangeSearchInput,
-	selectValues,
-	handleSubmitSearchValue,
-	setResetMain,
-}) => {
+const MainNav = ({ setResetMain, setSubmitValues }) => {
+	// Base Url
 	const BASE_URL = process.env.REACT_APP_SERVER;
+	// select값 state
+	const [selectValues, setSelectValue] = useState({
+		category: "all",
+		keyword: "",
+	});
+	// 검색 input value 변경 핸들러
+	const handleChangeSearchInput = e => {
+		setSelectValue(prev => {
+			return {
+				...prev,
+				keyword: e.target.value,
+			};
+		});
+	};
+	// 검색 핸들러
+	const handleSubmitSearchValue = () => {
+		setResetMain(false);
+		setSubmitValues(selectValues);
+	};
 	// React Dispatcher
 	const dispatch = useDispatch();
 	// React Router
@@ -83,13 +98,7 @@ const MainNav = ({
 	const handleGetPostId = () => {
 		getPostId.mutate();
 	};
-	// select option 생성 배열
-	const selectList = [
-		["all", "통합검색"],
-		["memberNickname", "글쓴이"],
-		["boardTitle", "글제목"],
-		["boardContent", "글내용"],
-	];
+
 	// 메인 페이지 리셋 핸들러
 	const handleResetMain = () => {
 		setResetMain(true);
@@ -101,62 +110,58 @@ const MainNav = ({
 			<Nav variant="main">
 				<Box variant="main-nav-wraper">
 					<Flex jc="center" ai="center">
-						<Box variant="main-logo" onClick={handleResetMain}>
-							<FirstHeading aria-label="canya logo ">Logo</FirstHeading>
+						<Box onClick={handleResetMain} variant="main-logo">
+							<FirstHeading aria-label="canya logo" variant="main-logo" />
 						</Box>
 						<Box variant="nav-container">
 							<Box variant="main-search">
-								<Select
-									variant="main-search"
-									name="cafeSearch"
-									id="cafeSearch"
-									onChange={handleChangeSelect}
-									value={selectValues.category}
-								>
-									{selectList.map(option => {
-										return (
-											<Option value={option[0]} key={option[0]}>
-												{option[1]}
-											</Option>
-										);
-									})}
-								</Select>
-								<Input
-									variant="main-search"
-									onChange={handleChangeSearchInput}
-								/>
-								{/* <Button onClick={handleSubmitSearchValue}>검색</Button> */}
+								<Flex jc="center">
+									<MainSelectBox setSelectValue={setSelectValue} />
+									<Input
+										variant="main-search"
+										onChange={handleChangeSearchInput}
+									/>
+									<Button
+										variant="main-search"
+										area-label="리뷰 검색 버튼"
+										onClick={handleSubmitSearchValue}
+									/>
+								</Flex>
 							</Box>
 						</Box>
 						{jwtToken ? (
 							<Box variant="main-user-info">
-								<Text
-									onClick={() => {
-										dispatch(resetToken());
-										localStorage.clear();
-										navigate("/");
-									}}
-								>
-									로그아웃
-								</Text>
-								<Text
-									onClick={() => {
-										navigate("/mypage");
-									}}
-								>
-									마이페이지
-								</Text>
+								<Flex>
+									<Text
+										onClick={() => {
+											dispatch(resetToken());
+											localStorage.clear();
+											navigate("/");
+										}}
+									>
+										로그아웃
+									</Text>
+									<Text
+										onClick={() => {
+											navigate("/mypage");
+										}}
+									>
+										마이페이지
+									</Text>
+								</Flex>
 							</Box>
 						) : (
 							<Box variant="main-user-info">
-								<Button
-									variant="main-login"
-									onClick={() => {
-										navigate("/join");
-									}}
-								>
-									로그인
-								</Button>
+								<Flex jc="center">
+									<Button
+										variant="main-login"
+										onClick={() => {
+											navigate("/join");
+										}}
+									>
+										로그인
+									</Button>
+								</Flex>
 							</Box>
 						)}
 					</Flex>
@@ -168,3 +173,15 @@ const MainNav = ({
 };
 
 export default MainNav;
+
+// /* 메인 페이지 */
+// case "main-search":
+//   return css`
+//     width: 81%;
+//     max-width: ${calcRem(745)};
+//     height: 51px;
+//     border: 1px solid ${({ theme }) => theme.colors.line};
+//     border-top-right-radius: 20px;
+//     border-bottom-right-radius: 20px;
+//     padding: ${({ theme }) => theme.paddings.xl};
+//   `;

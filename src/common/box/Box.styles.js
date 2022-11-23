@@ -60,10 +60,11 @@ export const Box = styled.div`
 						}
 					`;
 				/* 메인 페이지 */
+				// navigation bar
 				case "main-nav-wraper":
 					return css`
-						width: 90%;
-						max-width: ${calcRem(1350)};
+						width: 92%;
+						max-width: ${calcRem(1400)};
 						height: 100%;
 						margin: 0 auto;
 					`;
@@ -75,23 +76,54 @@ export const Box = styled.div`
 					`;
 				case "main-logo":
 					return css`
-						width: 7%;
-						max-width: ${calcRem(90)};
+						width: 10%;
+						max-width: ${calcRem(120)};
 						height: 50px;
-						background-color: yellow;
-					`;
-				case "main-search":
-					return css`
-						width: 100%;
-						max-width: ${calcRem(967)};
-						margin: 0 auto;
 					`;
 				case "main-user-info":
-					// 내용물 width 값에 따라 변환
 					return css`
 						width: 10%;
 						max-width: ${calcRem(130)};
 					`;
+				case "main-search":
+					return css`
+						position: relative;
+						width: 100%;
+						max-width: ${calcRem(967)};
+						margin: 0 auto;
+					`;
+				case "main-search-wraper":
+					return css`
+						position: absolute;
+						left: 10px;
+						width: 19%;
+						max-width: ${calcRem(222)};
+					`;
+				case "main-selcet-wraper":
+					return css`
+						position: relative;
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 20px;
+						background-color: ${({ theme }) => theme.colors.white};
+					`;
+				case "main-selcet-preview-wraper":
+					return css`
+						padding: 14px 0 14px 0;
+					`;
+				case "select-icon-wraper":
+					return css`
+						position: absolute;
+						padding: 10px 10px 10px 71%;
+						top: 0;
+						right: 0;
+						& svg {
+						}
+					`;
+				// case "":
+				// 	return css``;
+				// case "":
+				// 	return css``;
+
 				/* 메인리스트, 카테고리별 리스트 */
 				case "main-best-item":
 					return css`
