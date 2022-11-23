@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
 import signInBackground from "../../assets/images/signin-background.png";
+import signUpBackground from "../../assets/images/signup-background.png";
 
 export const Header = styled.header``;
 
@@ -24,6 +25,17 @@ export const Section = styled.section`
 						background-repeat: no-repeat;
 						background-size: cover;
 						background-position: center center;
+					`;
+					case "sign-up":
+					return css`
+						width: 100%;
+						height: 100vh;
+						display: flex;
+						position: relative;
+						background-image: url(${signUpBackground});
+						background-repeat: no-repeat;
+						background-size: 948px;
+						background-position: left;
 					`;
 				default:
 					break;
