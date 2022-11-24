@@ -44,7 +44,7 @@ const MyLike = () => {
                          <li><img src={item.imageList[0].imageUrl} alt={item.boardTitle}/></li>
 								<li>제목:{item.boardTitle}</li>						
 								<li>주소:{item.address}</li>
-								<li>평점:{item.totalRating.toFixed(1)}</li>
+								<li>평점:{item.totalRating}</li>
               </Box>
             )
           })}

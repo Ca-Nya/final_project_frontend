@@ -147,7 +147,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 									</Text>
 									<Text
 										onClick={() => {
-											navigate("/mypage");
+											navigate("/mypage/myall");
 										}}
 									>
 										마이페이지

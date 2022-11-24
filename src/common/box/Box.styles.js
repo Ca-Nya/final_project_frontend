@@ -274,6 +274,51 @@ export const Box = styled.div`
 						background-color: #f6cd3c;
 						border-radius: 50px;
 					`;
+				case "mypage-nav":
+					return css`
+						width: ${calcRem(846)};
+						height: ${calcRem(30)};
+						background-color: ${({ theme }) => theme.colors.white};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding-bottom: 40px;
+						padding-left: 10px;
+					`;
+				case "guide":
+					return css`
+						display: flex;
+						justify-content: space-between;
+					`;
+					case "guide-point":
+					return css`
+					width: ${calcRem(30)};
+						height: ${calcRem(18)};
+						/* background-color: ${({ theme }) => theme.colors.main}; */
+						border-radius: 5px;
+						text-align: center;
+						align-items: center;
+						background-color: ${props =>
+						props.isActive
+							? props.theme.colors.main
+							: props.theme.colors.light_gray};
+					`;
+					case "comment-box":
+					return css`
+						width: ${calcRem(846)};
+						height: ${calcRem(105)};
+						background-color: ${({ theme }) => theme.colors.white};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 5px;
+						
+					`;
+					case "board-box":
+					return css`
+						width: ${calcRem(846)};
+						height: ${calcRem(198)};
+						background-color: ${({ theme }) => theme.colors.white};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 5px;
+						
+					`;
 				default:
 					break;
 			}
