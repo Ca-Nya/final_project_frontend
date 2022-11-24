@@ -20,6 +20,11 @@ export const ListItem = styled.li`
 							color: ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
+				case "main-footer":
+					return css`
+						margin: 10px 10px 10px 0;
+						font-size: ${({ theme }) => theme.fontSizes.xl};
+					`;
 				default:
 					break;
 			}

@@ -23,6 +23,10 @@ const GlobalStyles = createGlobalStyle`
   resize: none;
   }
 
+  button {
+    background-color: transparent;
+  }
+
   button,
   textarea,
   input {

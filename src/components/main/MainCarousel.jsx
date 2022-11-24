@@ -38,17 +38,21 @@ const MainCarousel = () => {
 				{/* 하드코딩 후에 바꾸기 */}
 				<Box variant="main-carousel-item" bg={test1}>
 					<Flex jc="center" ai="center">
-						<Strong variant="main-carousel">안녕</Strong>
+						<Strong variant="main-carousel">차분한 오후의 드립커피</Strong>
 					</Flex>
 				</Box>
 				<Box variant="main-carousel-item" bg={test2}>
 					<Flex jc="center" ai="center">
-						<Strong variant="main-carousel">반가워요</Strong>
+						<Strong variant="main-carousel">
+							작은 카페에서 Bruno Major와 Mac Ayres를 주문했다{" "}
+						</Strong>
 					</Flex>
 				</Box>
 				<Box variant="main-carousel-item" bg={test3}>
 					<Flex jc="center" ai="center">
-						<Strong variant="main-carousel">카냐 카페</Strong>
+						<Strong variant="main-carousel">
+							여유로운 오후, 성수동 카페에서
+						</Strong>
 					</Flex>
 				</Box>
 			</StyledSlider>

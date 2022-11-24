@@ -79,16 +79,16 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 			console.log("error =>", error);
 		}
 	};
-
+	// 게시글 아이디 요청 Hook
 	const getPostId = useMutation(fetchPostId, {
 		onMutate: variables => {
 			console.log("onMutate =>", variables);
 		},
-		onSuccess: (data, variables, context) => {
-			console.log("onSuccess =>", "data =>", data, "variables =>");
+		onSuccess: data => {
+			console.log("onSuccess =>", "data =>", data);
 			navigate(`/write/${data}`);
 		},
-		onError: (error, variables, context) => {
+		onError: (error, variables) => {
 			console.log("onError =>", error, "variables =>", variables);
 		},
 	});
@@ -96,7 +96,6 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 	const handleGetPostId = () => {
 		getPostId.mutate();
 	};
-
 	// 메인 페이지 리셋 핸들러
 	const handleResetMain = () => {
 		setResetMain(true);
@@ -105,11 +104,18 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 
 	return (
 		<>
+			<Button onClick={handleGetPostId}>글쓰기</Button>
 			<Nav variant="main">
 				<Box variant="main-nav-wraper">
 					<Flex jc="center" ai="center">
-						<Box onClick={handleResetMain} variant="main-logo">
-							<FirstHeading aria-label="canya logo" variant="main-logo" />
+						<Box variant="main-logo">
+							<Flex ai="center" jc="center">
+								<Button onClick={handleResetMain}>
+									<FirstHeading aria-label="canya logo" variant="main-logo">
+										CA NYA
+									</FirstHeading>
+								</Button>
+							</Flex>
 						</Box>
 						<Box variant="nav-container">
 							<Box variant="main-search">
@@ -165,7 +171,6 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 					</Flex>
 				</Box>
 			</Nav>
-			<Button onClick={handleGetPostId}>글쓰기</Button>
 		</>
 	);
 };

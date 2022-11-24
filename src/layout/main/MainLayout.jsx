@@ -4,6 +4,7 @@ import {
 	MainCarousel,
 	MainNavButtons,
 	MainList,
+	MainFooter,
 } from "../../components/main";
 import { useFetchSearchList } from "../../querys/list";
 import { Fragment, useState, useEffect } from "react";
@@ -97,6 +98,7 @@ const MainLayout = () => {
 						</Box>
 					</>
 				)}
+				<MainFooter />
 			</Margin>
 		</>
 	);

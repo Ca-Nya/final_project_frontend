@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
+import { canya_rank } from "../../assets/icons/fields";
 
 export const Box = styled.div`
 	/* >= 768 (Desktop) */
@@ -12,7 +13,8 @@ export const Box = styled.div`
 						width: 100%;
 						max-width: ${calcRem(1136)} !important;
 						margin: 0 auto;
-						background-color: antiquewhite;
+						padding: 0 40px;
+						/* background-color: #eceaeade; */
 					`;
 				/* 리뷰 작성 페이지 */
 				case "cafe-review-rating-box":
@@ -108,6 +110,7 @@ export const Box = styled.div`
 						background-color: ${({ theme }) => theme.colors.white};
 						overflow: hidden;
 						z-index: 11;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
 					`;
 				case "main-selcet-preview-wraper":
 					return css`
@@ -124,10 +127,9 @@ export const Box = styled.div`
 					`;
 				case "main-carousel":
 					return css`
-						/* 캐러셀 어떻게 할지 조정 */
 						width: 100vw;
 						/* width: 100%; */
-						height: 600px;
+						height: 650px;
 						z-index: 1;
 					`;
 				case "main-carousel-item":
@@ -135,13 +137,57 @@ export const Box = styled.div`
 						background-image: url(${({ bg }) => bg});
 						width: 100vw;
 						/* max-width: ${calcRem(1924)}; */
-						height: 600px;
+						height: 650px;
 						background-position: center center;
 						background-size: cover;
 						background-repeat: no-repeat;
 						filter: brightness(90%);
 					`;
-
+				case "main-footer-wrap":
+					return css`
+						width: 100%;
+						height: 100%;
+						background-position: center center;
+						background-size: cover;
+						background-repeat: no-repeat;
+						padding: 40px 0;
+					`;
+				case "main-footer-address":
+					return css`
+						padding: 40px 0;
+					`;
+				case "main-footer-info":
+					return css`
+						padding: 40px 0;
+					`;
+				case "main-canya-pick-item-wrap":
+					return css`
+						width: 32%;
+						max-width: ${calcRem(363)};
+						box-shadow: rgba(0, 0, 0, 0.19) 0px 1px 5px;
+						position: relative;
+						border-radius: 5px;
+						overflow: hidden;
+					`;
+				case "main-canya-pick-rank":
+					return css`
+						width: ${calcRem(49)};
+						height: ${calcRem(61)};
+						position: absolute;
+						left: 33px;
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						background-image: url(${canya_rank});
+						font-weight: 600;
+						text-align: center;
+					`;
+				case "main-cany-pick-content-wrap":
+					return css`
+						padding: 5% 8% 9% 8%;
+					`;
+				case "main-canya-pick-content":
+					return css`
+						height: ${calcRem(100)};
+					`;
 				// case "":
 				// 	return css``;
 
@@ -212,20 +258,20 @@ export const Box = styled.div`
 						width: 557px;
 						height: 700px;
 					`;
-					/* 마이페이지 */
-					case "pofile":
+				/* 마이페이지 */
+				case "pofile":
 					return css`
-						width:  ${calcRem(245)};
-						height:  ${calcRem(472)};
+						width: ${calcRem(245)};
+						height: ${calcRem(472)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
 					`;
-						case "level":
+				case "level":
 					return css`
-						width:  ${calcRem(50)};
-						height:  ${calcRem(25)};
-						background-color: #F6CD3C;
+						width: ${calcRem(50)};
+						height: ${calcRem(25)};
+						background-color: #f6cd3c;
 						border-radius: 50px;
 					`;
 				default:

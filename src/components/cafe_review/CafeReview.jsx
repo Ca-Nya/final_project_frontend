@@ -1,4 +1,4 @@
-import { Box, Input, Button } from "../../common";
+import { Box, Input, Button, FirstHeading, Image } from "../../common";
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
@@ -54,7 +54,6 @@ const CafeReview = () => {
 	};
 	// 평점 state
 	const [ratings, setRatings] = useState([0, 0, 0, 0, 0, 0]);
-
 	// 이미지 삭제 핸들러
 	const handleDeleteImage = idx => () => {
 		setThumbnailImages(thumbnailImages.filter((_, index) => index !== idx));
@@ -67,14 +66,12 @@ const CafeReview = () => {
 		address: place,
 		ratings,
 	});
-
 	// 별점 state 변경시 게시글 state 변경
 	useEffect(() => {
 		setInputValue(prev => {
 			return { ...prev, ratings };
 		});
 	}, [ratings]);
-
 	// 게시글 작성
 	const fetchAddPost = async payload => {
 		try {
@@ -110,10 +107,33 @@ const CafeReview = () => {
 			console.log("onError =>", error);
 		},
 	});
+	// 리뷰 등록 핸들러
+	const handlePostReview = () => {
+		if (place) {
+			formData.append("data", JSON.stringify(inputValue));
+			for (let i = 0; i < images.length; i++) {
+				console.log(`${images[i]}  =>`, images[i]);
+				formData.append("image", images[i]);
+			}
+			for (let key of formData.keys()) {
+				console.log("formData ===>", key, ":", formData.get(key));
+			}
+			addPost.mutate(formData, {
+				onSuccess: () => {
+					alert("리뷰 작성이 완료되었습니다");
+					navigate(`/detail/post/${+id}`);
+				},
+				onError: error => {
+					console.log("error =>", error);
+					alert("리뷰 작성을 실패했습니다");
+				},
+			});
+		} else if (!place) alert("장소를 선택해주세요");
+	};
 
 	return (
 		<Box>
-			<h1>카페 리뷰</h1>
+			<FirstHeading>카페 리뷰</FirstHeading>
 			<Input
 				type="file"
 				accept="image/*"
@@ -123,14 +143,14 @@ const CafeReview = () => {
 			/>
 			{thumbnailImages.map((thumbnail, idx) => {
 				return (
-					<div key={idx}>
-						<img
+					<Box key={idx}>
+						<Image
 							style={{ width: "300px" }}
 							src={thumbnail}
 							alt="카페 리뷰 사진 썸네일"
 						/>
 						<Button onClick={handleDeleteImage(idx)}>삭제</Button>
-					</div>
+					</Box>
 				);
 			})}
 			<Input
@@ -159,31 +179,7 @@ const CafeReview = () => {
 			/>
 			<CafeRatings ratings={ratings} setRatings={setRatings} />
 			<CafeSearch setPlace={setPlace} place={place} />
-			<Button
-				type="button"
-				onClick={() => {
-					if (place) {
-						formData.append("data", JSON.stringify(inputValue));
-						for (let i = 0; i < images.length; i++) {
-							console.log(`${images[i]}  =>`, images[i]);
-							formData.append("image", images[i]);
-						}
-						for (let key of formData.keys()) {
-							console.log("formData ===>", key, ":", formData.get(key));
-						}
-						addPost.mutate(formData, {
-							onSuccess: (data, variables, context) => {
-								alert("리뷰 작성이 완료되었습니다");
-								navigate(`/detail/post/${+id}`);
-							},
-							onError: (error, variables, context) => {
-								alert("리뷰 작성을 실패했습니다");
-							},
-							onSettled: (data, error, variables, context) => {},
-						});
-					} else if (!place) alert("장소를 선택해주세요");
-				}}
-			>
+			<Button type="button" onClick={handlePostReview}>
 				등록
 			</Button>
 		</Box>

@@ -7,7 +7,25 @@ export const Header = styled.header``;
 
 export const Main = styled.main``;
 
-export const Footer = styled.footer``;
+export const Footer = styled.footer`
+	/* >= 768 (Desktop) */
+	${({ theme }) => theme.device.desktop} {
+		${({ variant }) => {
+			switch (variant) {
+				/* 메인 페이지 */
+				case "main-footer":
+					return css`
+						width: 100%;
+						height: 350px;
+						background-color: ${({ theme }) => theme.colors.dark_gray};
+						color: ${({ theme }) => theme.colors.white};
+					`;
+				default:
+					break;
+			}
+		}}
+	}
+`;
 
 export const Section = styled.section`
 	/* >= 768 (Desktop) */
@@ -68,6 +86,7 @@ export const Nav = styled.nav`
 						height: 300px;
 						background-color: #f8f8f8;
 					`;
+
 				/* 로그인 / 회원가입 페이지 */
 				case "sign-in":
 					return css`

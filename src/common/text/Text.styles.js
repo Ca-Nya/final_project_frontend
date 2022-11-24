@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { calcRem } from "../../themes";
 
 export const Text = styled.p`
 	display: ${({ dp }) => (dp ? dp : "")};
@@ -59,20 +60,33 @@ export const Text = styled.p`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.point};
 				`;
-				case "join-available":
+			case "join-available":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.main_purple};
 				`;
-				case "level":
+			case "level":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.white};
 				`;
-					case "profile-base":
+			case "profile-base":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.black};
+				`;
+			/* 메인 페이지 */
+			case "main-category":
+				return css`
+					height: ${calcRem(19)};
+				`;
+			case "main-footer-info":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+				`;
+			case "main-canya-pick-content":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.lg};
 				`;
 			default:
 				break;

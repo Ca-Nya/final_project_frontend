@@ -1,4 +1,4 @@
-import { Nav, Button, Box, Flex, Image, Text } from "../../common";
+import { Nav, Button, Box, Flex, Image, Text, Margin } from "../../common";
 import { useNavigate } from "react-router-dom";
 import { hot, recent, all } from "../../assets/icons/overalls";
 import {
@@ -34,19 +34,26 @@ const MainNavButtons = () => {
 		<Nav variant="main-category-button-group-wrap">
 			<Flex jc="center" ai="center">
 				<Box variant="container">
-					<Flex jc="center" ai="center" gap="27px">
+					<Flex jc="center" ai="center" gap="2.5%">
 						{overalls.map(category => {
 							return (
 								<Button
-									variant="main-cateory"
+									key={category[0]}
+									variant="main-category"
 									category={category[0]}
 									onClick={() => {
 										navigate(`/overalls/${category[0]}`);
 									}}
 								>
 									<>
-										<Image src={category[2]} variant="main-cateory" />
-										<Text>{category[1]}</Text>
+										<Image
+											src={category[2]}
+											alt={`${category[1]} 버튼`}
+											variant="main-category"
+										/>
+										<Margin margin="7% 0 0 0">
+											<Text variant="main-category">{category[1]}</Text>
+										</Margin>
 									</>
 								</Button>
 							);
@@ -54,27 +61,40 @@ const MainNavButtons = () => {
 						{fields.map(category => {
 							return (
 								<Button
-									variant="main-cateory"
+									key={category[0]}
+									variant="main-category"
 									onClick={() => {
 										navigate(`/fields/${category[0]}`);
 									}}
 								>
 									<>
-										<Image src={category[2]} variant="main-cateory" />
-										<Text>{category[1]}</Text>
+										<Image
+											src={category[2]}
+											alt={`${category[1]} 버튼`}
+											variant="main-category"
+										/>
+										<Margin margin="7% 0 0 0">
+											<Text variant="main-category">{category[1]}</Text>
+										</Margin>
 									</>
 								</Button>
 							);
 						})}
 						<Button
-							variant="main-cateory"
+							variant="main-category"
 							onClick={() => {
 								navigate(`/`);
 							}}
 						>
 							<>
-								<Image src={community} variant="main-cateory" />
-								<Text>커뮤니티</Text>
+								<Image
+									src={community}
+									alt="카테고리 버튼"
+									variant="main-category"
+								/>
+								<Margin margin="7% 0 0 0">
+									<Text variant="main-category">커뮤니티</Text>
+								</Margin>
 							</>
 						</Button>
 					</Flex>

@@ -11,6 +11,12 @@ export const Strong = styled.strong`
 					return css`
 						font-size: ${({ theme }) => theme.fontSizes.titleSize};
 						color: ${({ theme }) => theme.colors.white};
+						font-weight: 600;
+					`;
+				case "main-canya-pick-rank":
+					return css`
+						position: relative;
+						top: -6px;
 					`;
 				default:
 					break;

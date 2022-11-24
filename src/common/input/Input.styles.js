@@ -57,8 +57,8 @@ export const Input = styled.input`
 					border-radius: 10px;
 					padding-left: 15px;
 				`;
-				/* 마이페이지 */
-				case "profile-edit":
+			/* 마이페이지 */
+			case "profile-edit":
 				return css`
 					display: none;
 				`;
@@ -70,6 +70,7 @@ export const Input = styled.input`
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 20px;
 					padding: 15px 15px 15px 20%;
+					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
 				`;
 			default:
 				break;

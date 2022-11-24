@@ -1,24 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button } from "../../common";
+import { Button, Box, Text, ThirdHeading } from "../../common";
 
 const CafeMap = ({ searchPlace }) => {
 	const { kakao } = window;
-	// 검색결과를 담을 배열
+	// 검색결과를 담을 배열 state
 	const [Places, setPlaces] = useState([]);
+	// 카카오 맵을 담을 요소를 위한 ref
 	const mapContainer = useRef(null);
+	// 검색 키워드(searchPlace) 변경시 실행 effect
 	useEffect(() => {
+		// 카카오 맵 정보창
 		let infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+		// 카카오 맵 옵션
+		// option.center: 초기 좌표
 		const options = {
 			center: new kakao.maps.LatLng(33.450701, 126.570667),
 			level: 3,
 		};
+		// 카카오 맵
 		const map = new kakao.maps.Map(mapContainer.current, options);
-
+		// 장소 검색을 위한 객체
 		const ps = new kakao.maps.services.Places();
-
-		if (searchPlace) ps.keywordSearch(searchPlace, placesSearch);
-
-		function placesSearch(data, status) {
+		// 키워드 검색 함수
+		const placesSearch = (data, status) => {
 			if (status === kakao.maps.services.Status.OK) {
 				// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성
 				let bounds = new kakao.maps.LatLngBounds();
@@ -33,15 +37,17 @@ const CafeMap = ({ searchPlace }) => {
 				map.setBounds(bounds);
 				setPlaces(data);
 			}
-		}
-
-		function displayMarker(place) {
+		};
+		// 검색 키워드 변경시 키워드 검색
+		if (searchPlace) ps.keywordSearch(searchPlace, placesSearch);
+		// 마커 출력 함수
+		const displayMarker = place => {
 			let marker = new kakao.maps.Marker({
 				map: map,
 				position: new kakao.maps.LatLng(place.y, place.x),
 			});
-
-			kakao.maps.event.addListener(marker, "click", function () {
+			// 마커 클릭시 정보창 출력 & 카카오 맵으로 이동
+			kakao.maps.event.addListener(marker, "click", () => {
 				let url = "https://map.kakao.com/link/map/" + place.id;
 				window.open(url, "_blank");
 				let content =
@@ -51,43 +57,42 @@ const CafeMap = ({ searchPlace }) => {
 				infowindow.setContent(content);
 				infowindow.open(map, marker);
 			});
-		}
+		};
 	}, [searchPlace]);
 
 	return (
-		<div>
-			<div
+		<Box>
+			<Box
 				ref={mapContainer}
 				style={{
 					width: "500px",
 					height: "500px",
 				}}
-			></div>
-
-			{Places.map((item, i) => {
+			></Box>
+			{Places.map((item, idx) => {
 				console.log("item =>", item);
 				return (
-					<div id="result-list" key={item.id}>
-						<div style={{ marginTop: "20px" }}>
-							<span>{i + 1}</span>
-							<div>
-								<h5>{item.place_name}</h5>
+					<Box id="result-list" key={item.id}>
+						<Box style={{ marginTop: "20px" }}>
+							<Text>{idx + 1}</Text>
+							<Box>
+								<ThirdHeading>{item.place_name}</ThirdHeading>
 								{item.road_address_name ? (
-									<div>
-										<span>{item.road_address_name}</span>
-										<span>{item.address_name}</span>
-									</div>
+									<Box>
+										<Text>{item.road_address_name}</Text>
+										<Text>{item.address_name}</Text>
+									</Box>
 								) : (
-									<span>{item.address_name}</span>
+									<Text>{item.address_name}</Text>
 								)}
-								<span>{item.phone}</span>
-							</div>
+								<Text>{item.phone}</Text>
+							</Box>
 							<Button>선택</Button>
-						</div>
-					</div>
+						</Box>
+					</Box>
 				);
 			})}
-		</div>
+		</Box>
 	);
 };
 

@@ -26,8 +26,8 @@ export const Image = styled.img`
 			/* 메인 페이지 */
 			case "main-canya-pick":
 				return css`
-					width: 300px;
-					height: 200px;
+					width: 100%;
+					height: ${calcRem(247)};
 					object-fit: cover;
 					object-position: center;
 				`;
@@ -39,12 +39,17 @@ export const Image = styled.img`
 					object-position: center;
 					border-radius: 50%;
 				`;
-			case "main-cateory":
+			case "main-category":
 				return css`
+					width: 100%;
+					max-height: 90px;
 					border-radius: 50%;
 					border: 1px solid ${({ theme }) => theme.colors.line};
-					padding: ${({ theme }) => theme.paddings.lg};
+					padding: 22%;
 					background-color: ${({ theme }) => theme.colors.white};
+					&:hover {
+						border: 3px solid ${({ theme }) => theme.colors.main};
+					}
 				`;
 			/* 마이 페이지 */
 			case "mypage-profile":
@@ -52,7 +57,7 @@ export const Image = styled.img`
 					width: 128px;
 					height: 128px;
 					border-radius: 50%;
-					border: 5px solid #F6CD3C;
+					border: 5px solid #f6cd3c;
 					object-fit: cover;
 					object-position: center;
 				`;

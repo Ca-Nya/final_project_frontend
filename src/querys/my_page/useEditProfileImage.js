@@ -19,7 +19,6 @@ const useEditProfileImage = profile => {
 			console.log("useEditProfileImage response =>", response);
 			return response.data;
 		},
-		enabled: false,
 		suspense: true,
 	});
 };

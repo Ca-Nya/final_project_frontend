@@ -1,23 +1,46 @@
-import { Box, Button } from "../../common";
+import { Box, Button, Flex } from "../../common";
+import { useState } from "react";
 
 const MainCanyaButtons = ({ setCanyaPick, mainPosts }) => {
+	// 카냐's Pick 버튼 리스트
+	const canyaPicks = [
+		["coffeePick", "coffee"],
+		["dessertPick", "dessert"],
+		["moodPick", "mood"],
+	];
+	// 카냐's Pick 버튼 클릭 state
+	const [currentPick, setCurrentPick] = useState([true, false, false]);
 	// 카냐's Pick 게시글 변경 이벤트 핸들러
-	const handleChangeCanyaPick = e => {
-		console.log("mainPosts[e.target.vaule] =>", mainPosts[e.target.value]);
-		setCanyaPick(mainPosts[e.target.value]);
+	const handleChangeCanyaPick = idx => {
+		return e => {
+			console.log("mainPosts[e.target.vaule] =>", mainPosts[e.target.value]);
+			setCanyaPick(mainPosts[e.target.value]);
+			setCurrentPick(prev => {
+				const newCurrentPick = [...prev].map((_, index) =>
+					index === idx ? true : false,
+				);
+				return newCurrentPick;
+			});
+		};
 	};
 
 	return (
 		<Box>
-			<Button value="coffeePick" onClick={handleChangeCanyaPick}>
-				coffe
-			</Button>
-			<Button value="dessertPick" onClick={handleChangeCanyaPick}>
-				desert
-			</Button>
-			<Button value="moodPick" onClick={handleChangeCanyaPick}>
-				mood
-			</Button>
+			<Flex gap="40px" jc="center" ai="center">
+				{canyaPicks.map((pick, idx) => {
+					return (
+						<Button
+							key={pick}
+							value={pick[0]}
+							onClick={handleChangeCanyaPick(idx)}
+							variant="main-canya-pick-nav"
+							pick={currentPick[idx]}
+						>
+							{pick[1]}
+						</Button>
+					);
+				})}
+			</Flex>
 		</Box>
 	);
 };

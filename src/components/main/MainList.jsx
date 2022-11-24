@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FirstHeading, Box } from "../../common";
+import { FirstHeading, Box, Margin, Flex } from "../../common";
 import { useFetchPosts } from "../../querys/main";
 import {
 	MainCanyaPick,
@@ -42,14 +42,29 @@ const MainList = () => {
 		<Box>
 			{mainPosts && (
 				<>
-					<FirstHeading>CA NYA's PICK3</FirstHeading>
-					<MainCanyaButtons setCanyaPick={setCanyaPick} mainPosts={mainPosts} />
+					<Flex>
+						<Margin margin="108px 56px 0 0">
+							<FirstHeading variant="main-list">CA NYA's PICK3</FirstHeading>
+						</Margin>
+						<Margin margin="112px 0 30px 0">
+							<MainCanyaButtons
+								setCanyaPick={setCanyaPick}
+								mainPosts={mainPosts}
+							/>
+						</Margin>
+					</Flex>
 					<MainCanyaPick picks={canyaPick} />
-					<FirstHeading>BEST</FirstHeading>
+					<Margin margin="100px 0 0 0">
+						<FirstHeading variant="main-list">BEST💛</FirstHeading>
+					</Margin>
 					<MainBestList bestDto={mainPosts.bestDto} />
-					<FirstHeading>NEW</FirstHeading>
+					<Margin margin="100px 0 0 0">
+						<FirstHeading variant="main-list">NEW🔥</FirstHeading>
+					</Margin>
 					<MainNewList newDto={mainPosts.newDto} />
-					<FirstHeading>ALL</FirstHeading>
+					<Margin margin="100px 0 275px 0">
+						<FirstHeading variant="main-list">ALL☕️</FirstHeading>
+					</Margin>
 					<MainAllList allDto={mainPosts.allDto} />
 				</>
 			)}

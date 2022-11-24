@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
 import search from "../../assets/icons/search.png";
-import { hot, all, recent } from "../../assets/icons/overalls";
 
 export const Button = styled.button`
 	/* >= 768 (Desktop) */
@@ -39,7 +38,12 @@ export const Button = styled.button`
 						background-color: ${({ theme }) => theme.colors.main};
 						border-radius: 50px;
 						font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.darkgray};
 						border: 1px solid ${({ theme }) => theme.colors.line};
+
+						&:hover {
+							opacity: 0.8;
+						}
 					`;
 				case "main-search":
 					return css`
@@ -54,11 +58,24 @@ export const Button = styled.button`
 						background-size: contain;
 						background-position: center center;
 					`;
-				case "main-cateory":
+				case "main-category":
 					return css`
-						width: ${calcRem(90)};
+						width: 100%;
+						max-width: ${calcRem(90)};
 						height: ${calcRem(129)};
 						font-size: ${({ theme }) => theme.fontSizes.base};
+						background-color: transparent;
+					`;
+				case "main-canya-pick-nav":
+					return css`
+						font-weight: 800;
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+						background-color: ${({ pick, theme }) => {
+							return pick ? theme.colors.main : ``;
+						}};
+						&:hover {
+							background-color: ${({ theme }) => theme.colors.main};
+						}
 					`;
 				default:
 					break;

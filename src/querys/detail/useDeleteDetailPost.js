@@ -15,7 +15,6 @@ const useDeleteDetailPost = payload => {
 			console.log("useDeletePost response =>", response);
 			return response.data;
 		},
-		enabled: false,
 		suspense: true,
 	});
 };
