@@ -193,7 +193,7 @@ const MyPage = () => {
 					</Box>
 				</Margin>
 
-				<Margin margin="5px 0 0 20px">
+				<Margin margin="8px 0 0 40px">
 					<Box variant="mypage-nav">
 						<Flex gap="40px">
 							<Text

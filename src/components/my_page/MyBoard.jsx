@@ -2,16 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
-import {
-	Box,
-	Input,
-	Button,
-	Image,
-	Text,
-	Label,
-	Margin,
-	Flex,
-} from "../../common";
+import { Box, Button, Image, Text, Margin, Flex } from "../../common";
+import Edit from "../../assets/icons/edit.png";
+import Delete from "../../assets/icons/delete.png";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -73,35 +66,91 @@ const MyBoard = () => {
 					{data?.map(item => {
 						return (
 							<Box variant="board-box" key={item.boardId}>
-								<Box>
-									<Image
-										variant="myboard-post"
-										src={item.imageList[0].imageUrl}
-										alt={item.boardTitle}
-									/>
-								</Box>
-								<Text>제목:{item.boardTitle}</Text>
-								<Text>내용:{item.boardContent}</Text>
-								{item.commentContent && item.commentContent ? (
+								<Margin margin="30px 3px 10px 3px">
+									<Box variant="guide">
+										<Flex>
+											<Image
+												variant="myboard-post"
+												src={item.imageList[0].imageUrl}
+												alt={item.boardTitle}
+											/>
+											<Box>
+												<Flex fd="column">
+													<Box variant="board-smaillbox">
+														<Margin margin="10px 0 0 25px">
+															<Text
+																variant="board-title"
+																onClick={() => {
+																	navigate(`/detail/post/${item.boardId}`);
+																}}
+															>
+																{item.boardTitle}
+															</Text>
+															<Margin margin="20px 0 0 5px">
+																<Text variant="board-content">
+																	{item.boardContent}
+																</Text>
+															</Margin>
+														</Margin>
+													</Box>
+													<Margin margin="10px 0 5px 25px">
+														<Box variant="board-inbox">
+															<Flex jc="space-between">
+																<Text variant="comment-date">
+																	{item.createdAt}
+																</Text>
+
+																<Box variant="board-minibutton">
+																	<Flex gap="10px">
+																		<Button
+																			variant="mypage"
+																			onClick={handleEditPost(item)}
+																		>
+																			수정
+																			<Image
+																				variant="profile-edit"
+																				src={Edit}
+																			/>
+																		</Button>
+																		<Button
+																			variant="mypage"
+																			onClick={handelDeletePost(item)}
+																		>
+																			삭제
+																			<Image
+																				variant="profile-edit"
+																				src={Delete}
+																			/>
+																		</Button>
+																	</Flex>
+																</Box>
+															</Flex>
+														</Box>
+													</Margin>
+												</Flex>
+											</Box>
+										</Flex>
+									</Box>
+								</Margin>
+
+								{/* {item.commentContent && item.commentContent ? (
 									<li>댓글:{item.commentContent}</li>
 								) : (
 									<li>
 										<p>댓글이 없습니다.</p>
 									</li>
-								)}
-								<li>총댓글갯수:{item.commentCount}</li>
-								<li>주소:{item.address}</li>
-								<li>평점:{item.totalRating}</li>
-								<Button onClick={handleEditPost(item)}>수정</Button>
-								<Button onClick={handelDeletePost(item)}>삭제</Button>
+								)} */}
+								{/* <li>총댓글갯수:{item.commentCount}</li> */}
+								{/* <li>주소:{item.address}</li> */}
+								{/* <li>평점:{item.totalRating}</li> */}
 							</Box>
 						);
 					})}
 				</Box>
 			) : (
-				<li>
-					<p> 작성한 게시물이 없습니다.</p>
-				</li>
+				<Box>
+					<Text variant="comment"> 작성한 게시물이 없습니다.</Text>
+				</Box>
 			)}
 		</Box>
 	);

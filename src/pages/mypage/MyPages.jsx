@@ -1,4 +1,4 @@
-import { MainNav } from "../../components/main";
+import { MainNav, MainFooter } from "../../components/main";
 import { MyPage } from "../../components/my_page";
 import { Box, Image, Margin } from "../../common";
 import myPageBackground from "../../assets/images/mypage-background.png";
@@ -9,13 +9,14 @@ const MyPages = () => {
 		<Box>
 			<MainNav />
 			<Image variant="mypage" src={myPageBackground} />
-			<Margin margin="43px 0 0 0">
+			<Margin margin="43px 0 100px 0">
 				<Box variant="container">
 					<MyPage>
 						<Outlet />
 					</MyPage>
 				</Box>
 			</Margin>
+			<MainFooter />
 		</Box>
 	);
 };
