@@ -58,8 +58,10 @@ export const Image = styled.img`
 				`;
 			case "mypage-post":
 				return css`
-					width: 200px;
-					height: 200px;
+					width: ${calcRem(266)};
+					height: ${calcRem(266)};
+					border-radius: 5%;
+
 				`;
 			case "mypage":
 				return css`
@@ -75,6 +77,13 @@ export const Image = styled.img`
 						filter: invert(60%) sepia(41%) saturate(4200%) hue-rotate(240deg)
 							brightness(150%) contrast(60%);
 					}
+				`;
+				case "myboard-post":
+				return css`
+					width: ${calcRem(168)};
+					height: ${calcRem(168)};
+					border-radius: 5%;
+
 				`;
 			default:
 				break;

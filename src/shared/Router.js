@@ -8,7 +8,7 @@ import { CafeReview } from "../components/cafe_review";
 import { DetailPost, DetailEditPost } from "../components/detail";
 import { LikedByFields } from "../components/likedByFields";
 import { LikedByOveralls } from "../components/likedByOveralls";
-import { MyBoard, MyComment, MyLike } from "../components/my_page";
+import { MyBoard, MyComment, MyLike, MyAll } from "../components/my_page";
 import MyPageLayout from "../layout/mypage";
 
 const Router = () => {
@@ -31,9 +31,10 @@ const Router = () => {
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
 					<Route path="/mypage" element={<MyPageLayout />}>
-						<Route path=":myboard" element={<MyBoard />} />
-						<Route path=":mycomment" element={<MyComment />} />
-						<Route path=":mylike" element={<MyLike />} />
+						<Route path="myall" element={<MyAll />} />
+						<Route path="myboard" element={<MyBoard />} />
+						<Route path="mycomment" element={<MyComment />} />
+						<Route path="mylike" element={<MyLike />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>

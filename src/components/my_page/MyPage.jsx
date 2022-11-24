@@ -8,7 +8,7 @@ import {
 	Margin,
 	Flex,
 } from "../../common";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useMatch } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useEditProfileImage } from "../../querys/my_page";
 import { useDeleteDetailPost } from "../../querys/detail";
@@ -22,6 +22,10 @@ const MyPage = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
+	const myLikeMatch = useMatch("/mypage/mylike");
+	const myBoardMatch = useMatch("/mypage/myboard");
+	const myCommentMatch = useMatch("/mypage/mycomment");
+	const myAllMatch = useMatch("/mypage/myall");
 
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
@@ -116,156 +120,223 @@ const MyPage = () => {
 
 	return (
 		<Box>
-			<Margin margin="43px 0 0 0">
-				<Box variant="pofile">
-					<Flex gap="1px" fd="column" ai="center">
-						<Box>
-							<Margin margin="16px 16px 0 206px">
-								<Label htmlFor="imageChange">
-									<Image
-										variant="profile-edit"
-										src={Edit}
-										title="프로필이미지 편집"
-									/>
-								</Label>
-							</Margin>
-							<Input
-								id="imageChange"
-								variant="profile-edit"
-								type="file"
-								accept="image/*"
-								onChange={handleChangeProfileImage}
-							/>
-
-							<Margin margin="11px 60px 0 60px">
-								<Image
-									src={memberProfileImage}
-									alt={memberProfileImage}
-									variant="mypage-profile"
-								/>
-							</Margin>
-						</Box>
-						<Margin margin="16px 60px 10px 60px">
-							<Text variant="join">{nickname}</Text>
-						</Margin>
-						<Box>
-							<Flex gap="10px">
-								<Box variant="level">
-									<Margin margin="4px 0 0 18px">
-										<Text variant="level">Lv</Text>
-									</Margin>
-								</Box>
-								<Margin margin="4px 0 0 0">
-									<Text>톨 💛</Text>
-								</Margin>
-							</Flex>
-						</Box>
-						<hr size="1" width="202px" color="#EAEAEA"></hr>
-						<Box>
-						<Margin margin="10px 0 0 0">
-							<Flex gap="20px">
-								<Image src={Write} />
-								<Image src={Heart} />
-								<Image src={Comment} />
-							</Flex>
-							</Margin>
-						</Box>
-						<Margin margin="0 0 5px 3px">
-							<Flex gap="11px">
-								<Text variant="profile-base">내가쓴글</Text>
-								<Text variant="profile-base">좋아요</Text>
-								<Text variant="profile-base">작성댓글</Text>
-							</Flex>
-						</Margin>
-						<Margin margin="0 5px 0 5px">
-							<Flex gap="40px">
-								<Text variant="join">{memberBoardCount}</Text>
-								<Text variant="join">{memberHeartCount}</Text>
-								<Text variant="join">{memberCommentCount}</Text>
-							</Flex>
-						</Margin>
-					</Flex>
-				</Box>
-			</Margin>
-			<Box>
-				<Text
-					onClick={() => {
-						navigate("/myboard");
-					}}
-				>
-					내가쓴글/{" "}
-				</Text>
-				<Text
-					onClick={() => {
-						navigate("/mylike");
-					}}
-				>
-					좋아요/{" "}
-				</Text>
-				<Text
-					onClick={() => {
-						navigate("/mycomment");
-					}}
-				>
-					작성댓글/{" "}
-				</Text>
-			</Box>
-			<Box>
-				<Text>모두보기</Text>
-			</Box>
-			<Box>
-				<Text>내가 쓴 글</Text>
-				{recentlyMyBoardList?.map(item => {
-					return (
-						<Box key={item.boardId}>
+			<Flex>
+				<Margin margin="0 0 0 0">
+					<Box variant="pofile">
+						<Flex gap="1px" fd="column" ai="center">
 							<Box>
-								<Image
-									variant="mypage-post"
-									src={item.imageList[0].imageUrl}
-									alt={item.boardTitle}
-								></Image>
-								<Text>{item.boardTitle}</Text>
+								<Margin margin="16px 16px 0 206px">
+									<Label htmlFor="imageChange">
+										<Image
+											variant="profile-edit"
+											src={Edit}
+											title="프로필이미지 편집"
+										/>
+									</Label>
+								</Margin>
+								<Input
+									id="imageChange"
+									variant="profile-edit"
+									type="file"
+									accept="image/*"
+									onChange={handleChangeProfileImage}
+								/>
+
+								<Margin margin="11px 60px 0 60px">
+									<Image
+										src={memberProfileImage}
+										alt={memberProfileImage}
+										variant="mypage-profile"
+									/>
+								</Margin>
 							</Box>
-							<Button onClick={handleEditPost(item)}>수정</Button>
-							<Button onClick={handelDeletePost(item)}>삭제</Button>
-						</Box>
-					);
-				})}
-			</Box>
-			<Box>
-				<Text>좋아요 한 글</Text>
-				{recentlyMyHeartBoardList?.map(item => {
-					return (
-						<Box key={item.boardId}>
-							<Box key={item.boardId}>
-								<Image
-									variant="mypage-post"
-									src={item.imageList[0].imageUrl}
-									alt={item.boardTitle}
-								></Image>
-								<Text>{item.boardTitle}</Text>
+							<Margin margin="16px 60px 10px 60px">
+								<Text variant="join">{nickname}</Text>
+							</Margin>
+							<Box>
+								<Flex gap="15px">
+									<Box variant="level">
+										<Margin margin="4px 0 0 18px">
+											<Text variant="level">Lv</Text>
+										</Margin>
+									</Box>
+									<Margin margin="4px 0 20px 0">
+										<Text>톨 💛</Text>
+									</Margin>
+								</Flex>
 							</Box>
-							<Button onClick={handleEditPost(item)}>수정</Button>
-							<Button onClick={handelDeletePost(item)}>삭제</Button>
-						</Box>
-					);
-				})}
-			</Box>
-			<Box>
-				<Text>내가 작성한 댓글</Text>
-				{recentlyMyCommentList?.map(item => {
-					return (
-						<Box key={item.commentId}>
-							<Box key={item.commentId}>
-								<Text>{item.commentContent}</Text>
-								<Text>{item.boardTitle}</Text>
+							<hr size="1" width="202px" color="#EAEAEA"></hr>
+							<Box>
+								<Margin margin="20px 0 0 0">
+									<Flex gap="20px">
+										<Image src={Write} />
+										<Image src={Heart} />
+										<Image src={Comment} />
+									</Flex>
+								</Margin>
 							</Box>
-							<Button onClick={handleEditPost(item)}>수정</Button>
-							<Button onClick={handelDeletePost(item)}>삭제</Button>
+							<Margin margin="0 0 5px 3px">
+								<Flex gap="11px">
+									<Text variant="profile-base">내가쓴글</Text>
+									<Text variant="profile-base">좋아요</Text>
+									<Text variant="profile-base">작성댓글</Text>
+								</Flex>
+							</Margin>
+							<Margin margin="10px 5px 0 5px">
+								<Flex gap="40px">
+									<Text variant="join">{memberBoardCount}</Text>
+									<Text variant="join">{memberHeartCount}</Text>
+									<Text variant="join">{memberCommentCount}</Text>
+								</Flex>
+							</Margin>
+						</Flex>
+					</Box>
+				</Margin>
+
+				<Margin margin="5px 0 0 20px">
+					<Box variant="mypage-nav">
+						<Flex gap="40px">
+							<Text
+								variant="button"
+								onClick={() => {
+									navigate("myall");
+								}}
+								isActive={myAllMatch !== null}
+							>
+								모두보기
+							</Text>
+							<Box>
+								<Flex jc="center" gap="2px">
+									<Text
+										variant="button"
+										onClick={() => {
+											navigate("myboard");
+										}}
+										isActive={myBoardMatch !== null}
+									>
+										내가쓴글
+									</Text>
+									<Box variant="guide-point" isActive={myBoardMatch !== null}>
+										<Margin margin="1px 0 0 0">
+											<Text
+												variant="button-count"
+												isActive={myBoardMatch !== null}
+											>
+												{memberBoardCount}
+											</Text>
+										</Margin>
+									</Box>
+								</Flex>
+							</Box>
+							<Box>
+								<Flex jc="center" gap="2px">
+									<Text
+										variant="button"
+										onClick={() => {
+											navigate("mylike");
+										}}
+										isActive={myLikeMatch !== null}
+									>
+										좋아요한글
+									</Text>
+									<Box variant="guide-point" isActive={myLikeMatch !== null}>
+										<Margin margin="1px 0 0 0">
+											<Text
+												variant="button-count"
+												isActive={myLikeMatch !== null}
+											>
+												{memberHeartCount}
+											</Text>
+										</Margin>
+									</Box>
+								</Flex>
+							</Box>
+							<Box>
+								<Flex jc="center" gap="2px">
+									<Text
+										variant="button"
+										onClick={() => {
+											navigate("mycomment");
+										}}
+										isActive={myCommentMatch !== null}
+									>
+										작성댓글
+									</Text>
+									<Box variant="guide-point" isActive={myCommentMatch !== null}>
+										<Margin margin="1px 0 0 0">
+											<Text
+												variant="button-count"
+												isActive={myCommentMatch !== null}
+											>
+												{memberCommentCount}
+											</Text>
+										</Margin>
+									</Box>
+								</Flex>
+							</Box>
+						</Flex>
+					</Box>					
+					{/* <Box>
+						<Box variant="guide">
+							<Text>내가 쓴 글</Text>
+							<Text>더보기</Text>
 						</Box>
-					);
-				})}
-			</Box>
+						<Box variant="guide">
+							{recentlyMyBoardList?.map(item => {
+								return (
+									<Box key={item.boardId}>
+										<Box>
+											<Image
+												variant="mypage-post"
+												src={item.imageList[0].imageUrl}
+												alt={item.boardTitle}
+											></Image>
+											<Text>{item.boardTitle}</Text>
+										</Box>
+										<Button onClick={handleEditPost(item)}>수정</Button>
+										<Button onClick={handelDeletePost(item)}>삭제</Button>
+									</Box>
+								);
+							})}
+						</Box>
+					</Box>
+					<Box>
+						<Text>좋아요 한 글</Text>
+						{recentlyMyHeartBoardList?.map(item => {
+							return (
+								<Box key={item.boardId}>
+									<Box key={item.boardId}>
+										<Image
+											variant="mypage-post"
+											src={item.imageList[0].imageUrl}
+											alt={item.boardTitle}
+										></Image>
+										<Text>{item.boardTitle}</Text>
+									</Box>
+									<Button onClick={handleEditPost(item)}>수정</Button>
+									<Button onClick={handelDeletePost(item)}>삭제</Button>
+								</Box>
+							);
+						})}
+					</Box>
+					<Box>
+						<Text>내가 작성한 댓글</Text>
+						{recentlyMyCommentList?.map(item => {
+							return (
+								<Box key={item.commentId}>
+									<Box key={item.commentId}>
+										<Text>{item.commentContent}</Text>
+										<Text>{item.boardTitle}</Text>
+									</Box>
+									<Button onClick={handleEditPost(item)}>수정</Button>
+									<Button onClick={handelDeletePost(item)}>삭제</Button>
+								</Box>
+							);
+						})}
+					</Box> */}
+					<Outlet />
+				</Margin>
+			</Flex>
 		</Box>
 	);
 };
