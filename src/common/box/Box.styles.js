@@ -288,36 +288,50 @@ export const Box = styled.div`
 						display: flex;
 						justify-content: space-between;
 					`;
-					case "guide-point":
+				case "guide-point":
 					return css`
-					width: ${calcRem(30)};
+						width: ${calcRem(30)};
 						height: ${calcRem(18)};
 						/* background-color: ${({ theme }) => theme.colors.main}; */
 						border-radius: 5px;
 						text-align: center;
 						align-items: center;
 						background-color: ${props =>
-						props.isActive
-							? props.theme.colors.main
-							: props.theme.colors.light_gray};
+							props.isActive
+								? props.theme.colors.main
+								: props.theme.colors.light_gray};
 					`;
-					case "comment-box":
+				case "comment-box":
 					return css`
 						width: ${calcRem(846)};
 						height: ${calcRem(105)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
-						
 					`;
-					case "board-box":
+				case "board-box":
 					return css`
 						width: ${calcRem(846)};
 						height: ${calcRem(198)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
-						
+					`;
+				case "board-inbox":
+					return css`
+						width: ${calcRem(639)};
+						height: ${calcRem(27)};
+					`;
+					case "board-smaillbox":
+					return css`
+						width: ${calcRem(556)};
+						height: ${calcRem(121)};
+					`;
+					case "board-minibutton":
+					return css`
+						display: flex;
+						justify-content: center;
+                        align-items: center;
 					`;
 				default:
 					break;

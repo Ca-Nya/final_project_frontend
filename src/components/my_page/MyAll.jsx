@@ -88,7 +88,14 @@ const MyAll = () => {
 										alt={item.boardTitle}
 									></Image>
 									<Margin margin="8px auto 0 auto">
-										<Text>{item.boardTitle}</Text>
+										<Text
+											variant="all-title"
+											onClick={() => {
+												navigate(`/detail/post/${item.boardId}`);
+											}}
+										>
+											{item.boardTitle}
+										</Text>
 									</Margin>
 								</Box>
 							</Box>
@@ -121,7 +128,14 @@ const MyAll = () => {
 										alt={item.boardTitle}
 									></Image>
 									<Margin margin="8px auto 0 auto">
-										<Text>{item.boardTitle}</Text>
+										<Text
+										variant="all-title"
+											onClick={() => {
+												navigate(`/detail/post/${item.boardId}`);
+											}}
+										>
+											{item.boardTitle}
+										</Text>
 									</Margin>
 								</Box>
 							</Box>
@@ -153,13 +167,20 @@ const MyAll = () => {
 										<Box variant="guide">
 											<Flex jc="space-between">
 												<Text variant="comment">{item.commentContent}</Text>
-												<Text variant="comment-date">2022.11.24</Text>
+												<Text variant="comment-date">{item.createdAt}</Text>
 											</Flex>
 										</Box>
 									</Margin>
-                                    <Margin margin="10px 0 0 22px">
-									<Text variant="comment-title">{item.boardTitle}</Text>
-                                    </Margin>
+									<Margin margin="10px 0 0 22px">
+										<Text
+											variant="comment-title"
+											onClick={() => {
+												navigate(`/detail/post/${item.boardId}`);
+											}}
+										>
+											{item.boardTitle}
+										</Text>
+									</Margin>
 								</Box>
 							</Margin>
 						</Box>

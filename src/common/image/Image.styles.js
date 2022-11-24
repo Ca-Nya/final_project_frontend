@@ -88,7 +88,13 @@ export const Image = styled.img`
 					width: ${calcRem(168)};
 					height: ${calcRem(168)};
 					border-radius: 5%;
-
+				`;
+				case "mini-edit":
+				return css`
+					&:hover {
+						filter: invert(60%) sepia(41%) saturate(4200%) hue-rotate(240deg)
+							brightness(150%) contrast(60%);
+					}
 				`;
 			default:
 				break;

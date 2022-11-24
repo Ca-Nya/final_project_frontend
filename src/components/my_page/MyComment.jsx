@@ -1,7 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
-import { Box, Input, Button, Form } from "../../common";
+import {
+	Box,
+	Button,
+	Image,
+	Text,
+	Margin,
+	Flex,
+} from "../../common";
 import MyCommentEdit from "./MyCommentEdit";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
@@ -29,7 +36,11 @@ const MyComment = () => {
 
 	return (
 		<Box>
-			<p>{nickname}님이 작성하신 댓글입니다.</p>
+				<Margin margin="30px 3px 10px 3px">
+				<Box variant="mypage-nav">
+					<Text variant="title">작성 댓글 📋</Text>
+				</Box>
+			</Margin>
 			{data && data.length > 0 ? (
 				<Box>
 					{data?.map(comment => {
@@ -37,7 +48,9 @@ const MyComment = () => {
 					})}
 				</Box>
 			) : (
-				<p>작성하신 댓글이 없습니다.</p>
+				<Box>
+					<Text variant="comment"> 작성한 댓글이 없습니다.</Text>
+				</Box>
 			)}
 		</Box>
 	);

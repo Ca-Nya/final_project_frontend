@@ -29,6 +29,16 @@ export const Button = styled.button`
 						font-weight: 700;
 						text-align: center;
 					`;
+				/* 마이페이지 */
+				case "mypage":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						font-weight: 600;
+						&:hover {
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
 				/* 메인페이지 */
 				case "main-login":
 					return css`
