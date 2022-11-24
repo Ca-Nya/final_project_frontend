@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+export const calcRem = size => `${size / 16}rem`;
 
 export const Text = styled.p`
 	display: ${({ dp }) => (dp ? dp : "")};
@@ -35,7 +36,6 @@ export const Text = styled.p`
 			case "join-info":
 				return css`
 					display: flex;
-					/* margin: 20px 0 8px 50px; */
 					font-size: ${({ theme }) => theme.fontSizes.lg};
 					text-align: left;
 				`;
@@ -59,20 +59,75 @@ export const Text = styled.p`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.point};
 				`;
-				case "join-available":
+			case "join-available":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.main_purple};
 				`;
-				case "level":
+			case "level":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.white};
 				`;
-					case "profile-base":
+			case "profile-base":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.black};
+				`;
+			case "button":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${props =>
+						props.isActive
+							? props.theme.colors.black
+							: props.theme.colors.line};
+					font-weight: ${props => (props.isActive ? 700 : 400)};
+					&:hover {
+						cursor: pointer;
+						color: ${({ theme }) => theme.colors.dark_gray};
+					}
+				`;
+			case "button-count":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${props =>
+						props.isActive
+							? props.theme.colors.black
+							: props.theme.colors.line};
+					font-weight: ${props => (props.isActive ? 700 : 400)};
+				`;
+			case "add":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${({ theme }) => theme.colors.main_purple};
+					&:hover {
+						cursor: pointer;
+						transform: scale(0.9, 0.9);
+					}
+				`;
+			case "title":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.xxl};
+					color: ${({ theme }) => theme.colors.black};
+					font-weight: 700;
+				`;
+				case "comment":
+				return css`
+					font-size: ${calcRem(22)};
+					color: ${({ theme }) => theme.colors.dark_gray};
+					font-weight: 400;
+				`;
+				case "comment-title":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${({ theme }) => theme.colors.black};
+					font-weight: 700;
+				`;
+				case "comment-date":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${({ theme }) => theme.colors.gray};
+					font-weight: 400;
 				`;
 			default:
 				break;
