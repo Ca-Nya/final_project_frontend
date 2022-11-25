@@ -96,7 +96,7 @@ export const Text = styled.p`
 					font-weight: 600;
 					color: ${({ theme }) => theme.colors.main};
 				`;
-			/*  */
+			/* 마이페이지 */
 			case "button":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
@@ -145,11 +145,41 @@ export const Text = styled.p`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.black};
 					font-weight: 700;
+					&:hover {
+						cursor: pointer;
+						color: ${({ theme }) => theme.colors.main_purple};
+					}
 				`;
 			case "comment-date":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.gray};
+					font-weight: 400;
+				`;
+				case "board-title":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.xl};
+					color: ${({ theme }) => theme.colors.black};
+					font-weight: 700;
+					&:hover {
+						cursor: pointer;
+						color: ${({ theme }) => theme.colors.main_purple};
+					}
+				`;
+					case "all-title":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${({ theme }) => theme.colors.dark_gray};
+					font-weight: 600;
+					&:hover {
+						cursor: pointer;
+						color: ${({ theme }) => theme.colors.main_purple};
+					}
+				`;
+					case "board-content":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					color: ${({ theme }) => theme.colors.dark_gray};
 					font-weight: 400;
 				`;
 			default:
