@@ -73,6 +73,7 @@ export const Nav = styled.nav`
 				case "main":
 					return css`
 						position: fixed;
+						top: 0;
 						width: 100%;
 						height: 100px;
 						margin: 0 auto;

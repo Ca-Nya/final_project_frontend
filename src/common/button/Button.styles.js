@@ -1,12 +1,39 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
 import search from "../../assets/icons/search.png";
+import fixed_write from "../../assets/icons/fixed_write.png";
 
 export const Button = styled.button`
 	/* >= 768 (Desktop) */
 	${({ theme }) => theme.device.desktop} {
 		${({ variant }) => {
 			switch (variant) {
+				/* 공통 */
+				case "fixed-write":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						width: 100%;
+						border-radius: 50%;
+						max-width: ${calcRem(97)};
+						height: ${calcRem(97)};
+						background-color: ${({ theme }) => theme.colors.main};
+						position: fixed;
+						bottom: 80px;
+						right: 60px;
+						padding: 30px;
+						z-index: 5;
+						&::before {
+							content: "";
+							background-image: url(${fixed_write});
+							background-position: center center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							width: ${calcRem(36)};
+							height: ${calcRem(36)};
+							display: inline-block;
+							position: relative;
+						}
+					`;
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`

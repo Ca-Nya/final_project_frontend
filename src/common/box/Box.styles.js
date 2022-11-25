@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
 import { canya_rank } from "../../assets/icons/fields";
+import location from "../../assets/icons/location.png";
 
 export const Box = styled.div`
 	/* >= 768 (Desktop) */
@@ -168,6 +169,11 @@ export const Box = styled.div`
 						position: relative;
 						border-radius: 5px;
 						overflow: hidden;
+						cursor: pointer;
+						transition: transform 900ms;
+						&:hover {
+							transform: translateY(-0.6%);
+						}
 					`;
 				case "main-canya-pick-rank":
 					return css`
@@ -186,40 +192,127 @@ export const Box = styled.div`
 					`;
 				case "main-canya-pick-content":
 					return css`
-						height: ${calcRem(100)};
+						height: ${calcRem(75)};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 0 0 14px 0;
 					`;
-				// case "":
-				// 	return css``;
-
-				/* 메인리스트, 카테고리별 리스트 */
+				case "main-canya-pick-info":
+					return css`
+						height: ${calcRem(87)};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 10px 0 14px 0;
+						&::before {
+							content: "";
+							background-image: url(${location});
+							background-position: center center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							width: 6%;
+							max-width: ${calcRem(19)};
+							height: ${calcRem(23)};
+							display: inline-block;
+							position: relative;
+							margin: 0 5px 0 0;
+							top: 2px;
+						}
+					`;
+				case "main-canya-pick-info-content":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.base};
+					`;
+				case "main-canya-pick-heart-comment-info-wrap":
+					return css`
+						width: 100%;
+					`;
+				case "main-best-item-wraper":
+					return css`
+						overflow: hidden;
+						border-radius: 5px;
+						cursor: pointer;
+					`;
 				case "main-best-item":
 					return css`
-						width: 400px;
-						height: 200px;
-						background-image: url(${({ bg }) => bg});
+						width: ${calcRem(556)};
+						height: ${calcRem(230)};
+						background-image: linear-gradient(
+								rgba(0, 0, 0, 0.03),
+								rgba(0, 0, 0, 0.4)
+							),
+							url(${({ bg }) => bg});
 						background-position: center center;
 						background-size: cover;
 						background-repeat: no-repeat;
+						transition: transform 900ms;
+						&:hover {
+							transform: translateY(-0.6%);
+							background-image: linear-gradient(
+									rgba(0, 0, 0, 0.1),
+									rgba(0, 0, 0, 0.6)
+								),
+								url(${({ bg }) => bg});
+							transform: scale(1.05);
+							transition: transform 0.7s;
+						}
 					`;
+
 				case "main-new-item":
 					return css`
-						width: 200px;
-						height: 200px;
+						width: 100%;
+						max-width: ${calcRem(169)};
+						height: ${calcRem(245)};
+						position: relative;
+					`;
+				case "main-new-item-image":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(169)};
+						height: ${calcRem(162)};
 						border-radius: 50%;
 						background-image: url(${({ bg }) => bg});
 						background-position: center center;
 						background-size: cover;
 						background-repeat: no-repeat;
+						transition: border 400ms;
+						&:hover {
+							border: 3px solid ${({ theme }) => theme.colors.point};
+						}
 					`;
-				case "main-all-item":
+				case "main-new-address":
 					return css`
-						width: 300px;
-						height: 200px;
+						width: 100%;
+						/* width: 95%; */
+						max-width: ${calcRem(169)};
+						margin: 0 auto;
+					`;
+				case "main-all-item-wraper":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(266)};
+						height: ${calcRem(400)};
+						box-shadow: rgba(0, 0, 0, 0.19) 0px 1px 5px;
+						position: relative;
+						border-radius: 5px;
+						overflow: hidden;
+						cursor: pointer;
+						transition: transform 900ms;
+						&:hover {
+							transform: translateY(-0.6%);
+						}
+					`;
+				case "main-all-item-image":
+					return css`
+						width: 100%;
+						height: ${calcRem(232)};
 						background-image: url(${({ bg }) => bg});
 						background-position: center center;
 						background-size: cover;
 						background-repeat: no-repeat;
 					`;
+				case "main-all-item-info":
+					return css`
+						padding: 0 20px 20px 20px;
+					`;
+
 				case "list-item":
 					return css`
 						width: 300px;
@@ -288,36 +381,34 @@ export const Box = styled.div`
 						display: flex;
 						justify-content: space-between;
 					`;
-					case "guide-point":
+				case "guide-point":
 					return css`
-					width: ${calcRem(30)};
+						width: ${calcRem(30)};
 						height: ${calcRem(18)};
 						/* background-color: ${({ theme }) => theme.colors.main}; */
 						border-radius: 5px;
 						text-align: center;
 						align-items: center;
 						background-color: ${props =>
-						props.isActive
-							? props.theme.colors.main
-							: props.theme.colors.light_gray};
+							props.isActive
+								? props.theme.colors.main
+								: props.theme.colors.light_gray};
 					`;
-					case "comment-box":
+				case "comment-box":
 					return css`
 						width: ${calcRem(846)};
 						height: ${calcRem(105)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
-						
 					`;
-					case "board-box":
+				case "board-box":
 					return css`
 						width: ${calcRem(846)};
 						height: ${calcRem(198)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
-						
 					`;
 				default:
 					break;

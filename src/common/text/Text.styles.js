@@ -87,6 +87,14 @@ export const Text = styled.p`
 			case "main-canya-pick-content":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.lg};
+					line-height: 1.1;
+					height: 100%;
+				`;
+			case "main-footer":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					font-weight: 600;
+					color: ${({ theme }) => theme.colors.main};
 				`;
 			/*  */
 			case "button":

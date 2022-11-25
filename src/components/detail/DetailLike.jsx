@@ -43,14 +43,14 @@ const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
 				console.log(data);
 				if (data === "좋아요 생성 완료.") {
 					detailpostRefetch();
-					// alert("좋아요❤️");
+					alert("좋아요❤️");
 				} else {
 					detailpostRefetch();
 					// alert("좋아요 취소🥹");
 				}
 			},
 			onError: error => {
-				alert("다음기회에..");
+				// alert("다음기회에..");
 			},
 		},
 	);
@@ -70,7 +70,6 @@ const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
 	const handleLike = () => {
 		//보드아이디 받는 로직 상세페이지 이후 구현
 		if (authorization) {
-			// const boardIdPrac = parseInt(5);
 			setLike(boardId);
 		} else {
 			alert("로그인 후 좋아요해주세요!");

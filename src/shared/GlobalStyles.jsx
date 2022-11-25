@@ -61,6 +61,20 @@ const GlobalStyles = createGlobalStyle`
         box-shadow: none;
         outline: none;
     }
+
+  .ellipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+    }
+
+  .ellipsis-sm {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
 `;
 
 export default GlobalStyles;

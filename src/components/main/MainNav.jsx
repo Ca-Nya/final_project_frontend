@@ -104,7 +104,6 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 
 	return (
 		<>
-			<Button onClick={handleGetPostId}>글쓰기</Button>
 			<Nav variant="main">
 				<Box variant="main-nav-wraper">
 					<Flex jc="center" ai="center">
@@ -171,6 +170,11 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 					</Flex>
 				</Box>
 			</Nav>
+			<Button
+				aria-label="글쓰기 버튼"
+				onClick={handleGetPostId}
+				variant="fixed-write"
+			/>
 		</>
 	);
 };
