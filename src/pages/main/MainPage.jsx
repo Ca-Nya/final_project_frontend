@@ -1,10 +1,14 @@
-import { MainCarousel, MainList } from "../../components/main";
-import { Main } from "../../common";
+import { Box, Main } from "../../common";
+import { MainCarousel, MainList, MainNavButtons } from "../../components/main";
 
 function MainPage() {
 	return (
 		<Main>
-			<MainList />
+			<MainCarousel />
+			<MainNavButtons />
+			<Box variant="container">
+				<MainList />
+			</Box>
 		</Main>
 	);
 }

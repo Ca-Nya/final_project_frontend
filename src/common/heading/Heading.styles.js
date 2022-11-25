@@ -13,16 +13,15 @@ export const FirstHeading = styled.h1`
 					return css`
 						width: 100%;
 						height: 100%;
-						/* background-image: url(${mainNavLogo}); */
 						font-weight: 800;
 						background-repeat: no-repeat;
 						background-size: contain;
 						background-position: center center;
 					`;
-				case "main-list":
+				case "title":
 					return css`
 						font-size: ${({ theme }) => theme.fontSizes.titleSize};
-						font-weight: 800;
+						font-weight: 700;
 						letter-spacing: ${calcRem(1)};
 					`;
 				default:
@@ -80,8 +79,18 @@ export const SecondHeading = styled.h2`
 							display: inline-block;
 							position: relative;
 							left: -3px;
-							/* margin: 0 5px 0 0; */
 						}
+					`;
+				/* 글쓰기 페이지 */
+				case "title":
+					return css`
+						display: inline-block;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+						font-weight: 600;
+						width: 100%;
 					`;
 				default:
 					break;
@@ -124,6 +133,26 @@ export const ThirdHeading = styled.h3`
 						position: absolute;
 						top: 10px;
 						left: -6px;
+					`;
+				/* 글쓰기 페이지 */
+				case "cafe-review-file-button-title":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xl};
+						padding: 6px 8px;
+						font-weight: 600;
+						text-transform: uppercase;
+						letter-spacing: 0.06rem;
+						color: ${({ theme }) => theme.colors.gray};
+						border-radius: 15px;
+					`;
+				case "cafe-review-rating-title":
+					return css`
+          width: 
+						letter-spacing: 0.06rem;
+            font-size: ${({ theme }) => theme.fontSizes.xl};
+						font-weight: 600;
+						text-align: center;
+            width: ${calcRem(100)};
 					`;
 				default:
 					break;

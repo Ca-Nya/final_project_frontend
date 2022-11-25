@@ -156,7 +156,7 @@ export const Text = styled.p`
 					color: ${({ theme }) => theme.colors.gray};
 					font-weight: 400;
 				`;
-				case "board-title":
+			case "board-title":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.xl};
 					color: ${({ theme }) => theme.colors.black};
@@ -166,7 +166,7 @@ export const Text = styled.p`
 						color: ${({ theme }) => theme.colors.main_purple};
 					}
 				`;
-					case "all-title":
+			case "all-title":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.dark_gray};
@@ -176,11 +176,19 @@ export const Text = styled.p`
 						color: ${({ theme }) => theme.colors.main_purple};
 					}
 				`;
-					case "board-content":
+			case "board-content":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.dark_gray};
 					font-weight: 400;
+				`;
+			/* 글쓰기 페이지 */
+			case "cafe-review-rating-info":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.xl};
+					color: ${({ theme }) => theme.colors.dark_gray};
+					font-weight: 400;
+					text-align: center;
 				`;
 			default:
 				break;

@@ -1,12 +1,28 @@
-import { Box, Input, Button, FirstHeading, Image } from "../../common";
+import {
+	Box,
+	Input,
+	Button,
+	FirstHeading,
+	Image,
+	Label,
+	Margin,
+	DataList,
+	DataTerm,
+	DataDesc,
+	Hidden,
+	Flex,
+	ThirdHeading,
+	TextArea,
+	SecondHeading,
+} from "../../common";
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../../components/cafe_review";
+import { cafe_review_image_upload } from "../../assets/icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const CafeReview = () => {
+const CafeReview = ({ id }) => {
 	// React Router
 	const navigate = useNavigate();
 	// Base Url
@@ -25,8 +41,7 @@ const CafeReview = () => {
 	}, [place]);
 	// 데이터 전송을 위한 form 객체
 	const formData = new FormData();
-	// 게시글 작성 페이지 파라미터
-	const { id } = useParams();
+
 	// 이미지 썸네일 state
 	const [thumbnailImages, setThumbnailImages] = useState([]);
 	// 이미지 state
@@ -66,13 +81,31 @@ const CafeReview = () => {
 		address: place,
 		ratings,
 	});
+	// inputValue state - boardTitle 변경 핸들러
+	const handleChangeInputTitleState = e => {
+		setInputValue(prev => {
+			return {
+				...prev,
+				boardTitle: e.target.value,
+			};
+		});
+	};
+	// inputValue state - boardContent 변경 핸들러
+	const handleChangeInputContentState = e => {
+		setInputValue(prev => {
+			return {
+				...prev,
+				boardContent: e.target.value,
+			};
+		});
+	};
 	// 별점 state 변경시 게시글 state 변경
 	useEffect(() => {
 		setInputValue(prev => {
 			return { ...prev, ratings };
 		});
 	}, [ratings]);
-	// 게시글 작성
+	// 게시글 작성 API
 	const fetchAddPost = async payload => {
 		try {
 			console.log("post formdata =>", payload);
@@ -132,57 +165,83 @@ const CafeReview = () => {
 	};
 
 	return (
-		<Box>
-			<FirstHeading>카페 리뷰</FirstHeading>
-			<Input
-				type="file"
-				accept="image/*"
-				name="cafe_img"
-				multiple
-				onChange={handleGetImage}
-			/>
-			{thumbnailImages.map((thumbnail, idx) => {
-				return (
-					<Box key={idx}>
-						<Image
-							style={{ width: "300px" }}
-							src={thumbnail}
-							alt="카페 리뷰 사진 썸네일"
-						/>
-						<Button onClick={handleDeleteImage(idx)}>삭제</Button>
-					</Box>
-				);
-			})}
-			<Input
-				onChange={e => {
-					setInputValue(prev => {
-						return {
-							...prev,
-							boardTitle: e.target.value,
-						};
-					});
-				}}
-				placeholder="제목을 등록해주세요"
-				type="text"
-			/>
-			<Input
-				onChange={e => {
-					setInputValue(prev => {
-						return {
-							...prev,
-							boardContent: e.target.value,
-						};
-					});
-				}}
-				placeholder="리뷰를 등록해주세요"
-				type="text"
-			/>
-			<CafeRatings ratings={ratings} setRatings={setRatings} />
-			<CafeSearch setPlace={setPlace} place={place} />
-			<Button type="button" onClick={handlePostReview}>
-				등록
-			</Button>
-		</Box>
+		<Margin margin="165px 0 0 0">
+			<Box variant="container">
+				<Margin margin="0 0 60px 0">
+					<FirstHeading variant="title">리뷰 작성</FirstHeading>
+				</Margin>
+				<Margin margin="0 0 25px 0">
+					<Input
+						variant="cafe-review-title"
+						onChange={handleChangeInputTitleState}
+						placeholder="제목을 입력해주세요."
+						type="text"
+					/>
+				</Margin>
+				<Margin margin="0 0 20px 0">
+					<Flex gap="13px">
+						<Label
+							htmlFor="cafe-review-image"
+							variant="cafe-review-file-button"
+						>
+							<Flex fd="column" jc="center" ai="center">
+								<Image src={cafe_review_image_upload} alt="사진 업로드 버튼" />
+								<ThirdHeading variant="cafe-review-file-button-title">
+									사진올리기
+								</ThirdHeading>
+								<DataList>
+									<Hidden>
+										<DataTerm>올린 사진 수</DataTerm>
+									</Hidden>
+									<DataDesc variant="cafe-review-file-count">
+										( {images.length} / 4 )
+									</DataDesc>
+								</DataList>
+							</Flex>
+						</Label>
+						<Hidden>
+							<Input
+								id="cafe-review-image"
+								type="file"
+								accept="image/*"
+								name="cafe_img"
+								multiple
+								onChange={handleGetImage}
+							/>
+						</Hidden>
+						{thumbnailImages.map((thumbnail, idx) => {
+							return (
+								<Box key={idx} variant="cafe-review-thumbnail-wraper">
+									<Image
+										src={thumbnail}
+										alt="카페 리뷰 사진 썸네일"
+										variant="cafe-review-thumbnail"
+									/>
+									<Button
+										onClick={handleDeleteImage(idx)}
+										aria-label="이미지 삭제 버튼"
+										variant="cafe-review-thumbnail-delete"
+									/>
+								</Box>
+							);
+						})}
+					</Flex>
+				</Margin>
+				<TextArea
+					onChange={handleChangeInputContentState}
+					placeholder="리뷰를 등록해주세요."
+					variant="cafe-review-desc"
+				/>
+				<Margin margin="60px 0 25px 0">
+					<SecondHeading variant="title">별점평가⭐️</SecondHeading>
+				</Margin>
+				<CafeRatings ratings={ratings} setRatings={setRatings} />
+				<CafeSearch setPlace={setPlace} place={place} />
+				<Button type="button" onClick={handlePostReview}>
+					등록
+				</Button>
+			</Box>
+		</Margin>
 	);
 };
 

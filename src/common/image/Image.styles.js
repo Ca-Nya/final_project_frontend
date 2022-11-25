@@ -52,6 +52,15 @@ export const Image = styled.img`
 						border: 3px solid ${({ theme }) => theme.colors.main};
 					}
 				`;
+			/* 글쓰기 페이지 */
+			case "cafe-review-thumbnail":
+				return css`
+					display: block;
+					width: 100%;
+					max-width: ${calcRem(215)};
+					height: ${calcRem(215)};
+					border-radius: 5px;
+				`;
 			/* 마이 페이지 */
 			case "mypage-profile":
 				return css`
@@ -88,9 +97,8 @@ export const Image = styled.img`
 					width: ${calcRem(168)};
 					height: ${calcRem(168)};
 					border-radius: 5%;
-
 				`;
-				case "mini-edit":
+			case "mini-edit":
 				return css`
 					&:hover {
 						filter: invert(60%) sepia(41%) saturate(4200%) hue-rotate(240deg)
