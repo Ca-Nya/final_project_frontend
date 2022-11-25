@@ -8,10 +8,6 @@ export const Input = styled.input`
 		switch (variant) {
 			case "join":
 				return css`
-					/* &::after {
-						content: "소희님 아프지 마세요오ㅠㅠ";
-						display: block;
-					} */
 					${({ purpose }) => {
 						return purpose === "sign-in"
 							? `background-color: aliceblue;
@@ -62,7 +58,7 @@ export const Input = styled.input`
 				return css`
 					display: none;
 				`;
-					case "comment-edit":
+			case "comment-edit":
 				return css`
 					width: ${calcRem(355)};
 					height: 30px;
@@ -77,11 +73,23 @@ export const Input = styled.input`
 			case "main-search":
 				return css`
 					width: 96%;
-					height: 46px;
+					height: ${calcRem(46)};
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 20px;
 					padding: 15px 15px 15px 20%;
 					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+				`;
+			/* 글쓰기 페이지 */
+			case "cafe-review-title":
+				return css`
+					display: block;
+					width: 100%;
+					height: ${calcRem(55)};
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					padding: 15px 30px;
+					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
 				`;
 			default:
 				break;

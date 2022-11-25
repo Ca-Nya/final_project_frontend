@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
 import search from "../../assets/icons/search.png";
 import fixed_write from "../../assets/icons/fixed_write.png";
+import { image_delete } from "../../assets/icons";
 
 export const Button = styled.button`
 	/* >= 768 (Desktop) */
@@ -112,6 +113,23 @@ export const Button = styled.button`
 						}};
 						&:hover {
 							background-color: ${({ theme }) => theme.colors.main};
+						}
+					`;
+				/* 글쓰기 페이지 */
+				case "cafe-review-thumbnail-delete":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(44)};
+						height: ${calcRem(44)};
+						background-image: url(${image_delete});
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: center center;
+						position: absolute;
+						top: -16px;
+						right: -13px;
+						&:hover {
+							opacity: 0.9;
 						}
 					`;
 				default:

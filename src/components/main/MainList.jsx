@@ -43,10 +43,10 @@ const MainList = () => {
 			{mainPosts && (
 				<>
 					<Flex>
-						<Margin margin="104px 56px 0 0">
-							<FirstHeading variant="main-list">CA NYA's PICK3</FirstHeading>
+						<Margin margin="120px 57px 0 0">
+							<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
 						</Margin>
-						<Margin margin="112px 0 30px 0">
+						<Margin margin="130px 0 30px 0">
 							<MainCanyaButtons
 								setCanyaPick={setCanyaPick}
 								mainPosts={mainPosts}
@@ -54,18 +54,18 @@ const MainList = () => {
 						</Margin>
 					</Flex>
 					<MainCanyaPick picks={canyaPick} />
-					<Margin margin="100px 0 30px 0">
-						<FirstHeading variant="main-list">BEST💛</FirstHeading>
+					<Margin margin="130px 0 30px 0">
+						<FirstHeading variant="title">BEST💛</FirstHeading>
 					</Margin>
 					<MainBestList bestDto={mainPosts.bestDto} />
-					<Margin margin="100px 0 0 0">
-						<FirstHeading variant="main-list">NEW🔥</FirstHeading>
+					<Margin margin="130px 0 0 0">
+						<FirstHeading variant="title">NEW🔥</FirstHeading>
 					</Margin>
 					<MainNewList newDto={mainPosts.newDto} />
-					<Margin margin="100px 0 33px 0">
-						<FirstHeading variant="main-list">ALL☕️</FirstHeading>
+					<Margin margin="130px 0 33px 0">
+						<FirstHeading variant="title">ALL☕️</FirstHeading>
 					</Margin>
-					<Margin margin="0 0 275px 0">
+					<Margin margin="0 0 200px 0">
 						<MainAllList allDto={mainPosts.allDto} />
 					</Margin>
 				</>
