@@ -18,36 +18,37 @@ const MainFooter = () => {
 					<Flex jc="space-between">
 						<Box variant="main-footer-address">
 							<Margin margin="0 0 10px 0">
-								<SecondHeading variant="main-footer">Github</SecondHeading>
+								<SecondHeading variant="main-footer">CA NYA</SecondHeading>
 							</Margin>
-							<UnOrderedList>
-								<Flex>
-									<ListItem variant="main-footer">
-										<a
-											href="https://cocoder.tistory.com"
-											target="_blank"
-											rel="noreferrer"
-										>
-											Frontend
-										</a>
-									</ListItem>
-									<ListItem variant="main-footer">|</ListItem>
-									<ListItem variant="main-footer">
-										<a
-											href="https://github.com/cocoder16"
-											target="_blank"
-											rel="noreferrer"
-										>
-											Backend
-										</a>
-									</ListItem>
-								</Flex>
-							</UnOrderedList>
-							<Margin margin="90px 0 0 0">
-								<Text variant="main-footer-copy">
-									Copyright 2022. kinggod4jo. All Rights Reserved.
-								</Text>
+							<Text variant="main-footer">카페리뷰의 성지, 카냐</Text>
+							<Margin margin="65px 0 0 0">
+								<UnOrderedList>
+									<Flex>
+										<ListItem variant="main-footer">
+											<a
+												href="https://cocoder.tistory.com"
+												target="_blank"
+												rel="noreferrer"
+											>
+												Frontend
+											</a>
+										</ListItem>
+										<ListItem variant="main-footer">|</ListItem>
+										<ListItem variant="main-footer">
+											<a
+												href="https://github.com/cocoder16"
+												target="_blank"
+												rel="noreferrer"
+											>
+												Backend
+											</a>
+										</ListItem>
+									</Flex>
+								</UnOrderedList>
 							</Margin>
+							<Text variant="main-footer-copy">
+								Coffeeright 2022. kinggod4jo. All Rights Reserved.
+							</Text>
 						</Box>
 						<Box variant="main-footer-info">
 							<Flex fd="column" gap="10px" jc="center">

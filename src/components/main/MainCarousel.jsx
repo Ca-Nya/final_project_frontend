@@ -44,7 +44,7 @@ const MainCarousel = () => {
 				<Box variant="main-carousel-item" bg={test2}>
 					<Flex jc="center" ai="center">
 						<Strong variant="main-carousel">
-							작은 카페에서 Bruno Major와 Mac Ayres를 주문했다{" "}
+							작은 카페에서 Bruno Major와 Mac Ayres
 						</Strong>
 					</Flex>
 				</Box>

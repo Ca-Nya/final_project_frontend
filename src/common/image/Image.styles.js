@@ -13,7 +13,7 @@ export const Image = styled.img`
 				return css`
 					width: 50px;
 					height: 50px;
-					object-fit: contain;
+					object-fit: cover;
 					object-position: center;
 				`;
 			case "detail-review":
@@ -33,8 +33,8 @@ export const Image = styled.img`
 				`;
 			case "main-canya-pick-profile":
 				return css`
-					width: 40px;
-					height: 40px;
+					width: 37px;
+					height: 37px;
 					object-fit: cover;
 					object-position: center;
 					border-radius: 50%;
@@ -47,6 +47,7 @@ export const Image = styled.img`
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					padding: 22%;
 					background-color: ${({ theme }) => theme.colors.white};
+					transition: border 200ms;
 					&:hover {
 						border: 3px solid ${({ theme }) => theme.colors.main};
 					}
@@ -66,7 +67,6 @@ export const Image = styled.img`
 					width: ${calcRem(266)};
 					height: ${calcRem(266)};
 					border-radius: 5%;
-
 				`;
 			case "mypage":
 				return css`
@@ -83,11 +83,12 @@ export const Image = styled.img`
 							brightness(150%) contrast(60%);
 					}
 				`;
-				case "myboard-post":
+			case "myboard-post":
 				return css`
 					width: ${calcRem(168)};
 					height: ${calcRem(168)};
 					border-radius: 5%;
+
 				`;
 				case "mini-edit":
 				return css`

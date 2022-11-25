@@ -23,7 +23,7 @@ export const ListItem = styled.li`
 				case "main-footer":
 					return css`
 						margin: 10px 10px 10px 0;
-						font-size: ${({ theme }) => theme.fontSizes.xl};
+						font-size: ${({ theme }) => theme.fontSizes.lg};
 					`;
 				default:
 					break;
