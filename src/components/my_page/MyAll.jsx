@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEditProfileImage } from "../../querys/my_page";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
+import Spinner from "../../assets/icons/spinner.gif"
 
 const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -58,7 +59,7 @@ const MyAll = () => {
 
 	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
 
-	if (isLoading) return <Box>로딩중</Box>;
+	if (isLoading) return <Box><Image src={Spinner}/></Box>;
 	if (isError) return <Box>에러</Box>;
 
 	return (
@@ -167,7 +168,7 @@ const MyAll = () => {
 										<Box variant="guide">
 											<Flex jc="space-between">
 												<Text variant="comment">{item.commentContent}</Text>
-												<Text variant="comment-date">{item.createdAt}</Text>
+												<Text variant="comment-date">{item.commentCreatedAt}</Text>
 											</Flex>
 										</Box>
 									</Margin>

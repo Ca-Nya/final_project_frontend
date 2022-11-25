@@ -22,6 +22,8 @@ const MyPage = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
+	
+	//mypage category outlet useMatch
 	const myLikeMatch = useMatch("/mypage/mylike");
 	const myBoardMatch = useMatch("/mypage/myboard");
 	const myCommentMatch = useMatch("/mypage/mycomment");

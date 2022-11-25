@@ -139,6 +139,10 @@ export const Text = styled.p`
 					font-size: ${calcRem(22)};
 					color: ${({ theme }) => theme.colors.dark_gray};
 					font-weight: 400;
+					width: 600px;
+					white-space: nowrap;
+					overflow: hidden;
+                    text-overflow: ellipsis;
 				`;
 			case "comment-title":
 				return css`
@@ -181,6 +185,19 @@ export const Text = styled.p`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.dark_gray};
 					font-weight: 400;
+					display: inline-block;
+					width: 500px;
+					white-space: nowrap;
+					overflow: hidden;
+                    text-overflow: ellipsis;
+					white-space: normal;
+					line-height: 1.2;
+					max-height: 1.2;
+					text-align: left;
+					word-wrap: break-word;
+					display: -webkit-box;
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
 				`;
 			/* 글쓰기 페이지 */
 			case "cafe-review-rating-info":
