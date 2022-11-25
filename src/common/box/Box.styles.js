@@ -17,24 +17,6 @@ export const Box = styled.div`
 						padding: 0 40px;
 						/* background-color: #eceaeade; */
 					`;
-				/* 리뷰 작성 페이지 */
-				case "cafe-review-rating-box":
-					return css`
-						margin: 0 auto;
-						& svg {
-							color: #c4c4c4;
-							cursor: pointer;
-						}
-						:hover svg {
-							color: #fdd237;
-						}
-						& svg:hover ~ svg {
-							color: #c4c4c4;
-						}
-						.active {
-							color: #fdd237;
-						}
-					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
 					return css`
@@ -425,6 +407,47 @@ export const Box = styled.div`
 						display: flex;
 						justify-content: center;
 						align-items: center;
+					`;
+				/* 글쓰기 페이지 */
+				case "cafe-review-rating-wrap":
+					return css`
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 5px;
+						padding: 35px 60px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						& :last-child {
+							border-bottom: none;
+						}
+					`;
+				case "cafe-review-rating-item":
+					return css`
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 20px;
+					`;
+				case "cafe-review-rating":
+					return css`
+						width: ${calcRem(282)};
+						& svg {
+							color: #c4c4c4;
+							cursor: pointer;
+						}
+						:hover svg {
+							color: #fdd237;
+						}
+						& svg:hover ~ svg {
+							color: #c4c4c4;
+						}
+						.active {
+							color: #fdd237;
+						}
+					`;
+				case "cafe-review-thumbnail-wraper":
+					return css`
+						position: relative;
+					`;
+				case "cafe-review-rating-info":
+					return css`
+						width: ${calcRem(122)};
 					`;
 				default:
 					break;

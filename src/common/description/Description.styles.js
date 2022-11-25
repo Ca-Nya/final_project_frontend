@@ -112,6 +112,11 @@ export const DataDesc = styled.dd`
 						left: -3px;
 					}
 				`;
+			case "cafe-review-file-count":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.regular};
+					color: ${({ theme }) => theme.colors.gray};
+				`;
 			default:
 				break;
 		}

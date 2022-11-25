@@ -1,5 +1,6 @@
 import { FaStar } from "@react-icons/all-files/fa/FaStar";
-import { Box, Margin, Text } from "../../common";
+import { Fragment } from "react";
+import { Box, Text, Flex, ThirdHeading } from "../../common";
 
 const CafeRatings = ({ ratings, setRatings }) => {
 	// 카페 별점
@@ -22,34 +23,43 @@ const CafeRatings = ({ ratings, setRatings }) => {
 	};
 
 	return (
-		<Box>
+		<Box variant="cafe-review-rating-wrap">
 			{reviewRate.map((rateList, idx) => {
 				return (
-					<Margin key={rateList[idx]} margin="20px">
-						<Box>
-							<Box variant="cafe-review-rating-box">
-								{rateList.map((star, index) => {
-									if (index === 0) {
-										return <Box key={rateList[0]}>{rateList[0]}</Box>;
-									}
-									return (
-										<FaStar
-											key={Math.floor(Math.random() * 1000000)}
-											onClick={handleStarClick(idx, star)}
-											className={
-												rateList[index] <= ratings[idx] ? "active" : ""
-											}
-											size="30"
-										/>
-									);
-								})}
+					<Box key={rateList[idx]} variant="cafe-review-rating-item">
+						<Flex ai="center" jc="space-around">
+							<Box variant="cafe-review-rating-title">
+								<ThirdHeading variant="cafe-review-rating-title">
+									{rateList[0]}
+								</ThirdHeading>
 							</Box>
-							<Box>
-								<Text>
+							<Box variant="cafe-review-rating">
+								<Flex jc="center" ai="center" gap="12px">
+									{rateList.map((star, index) => {
+										return (
+											<Fragment key={Math.floor(Math.random() * 1000000)}>
+												{index !== 0 ? (
+													<FaStar
+														onClick={handleStarClick(idx, star)}
+														className={
+															rateList[index] <= ratings[idx] ? "active" : ""
+														}
+														size="45"
+													/>
+												) : (
+													""
+												)}
+											</Fragment>
+										);
+									})}
+								</Flex>
+							</Box>
+							<Box variant="cafe-review-rating-info">
+								<Text variant="cafe-review-rating-info">
 									{ratings[idx] === 5
-										? "아주좋아요"
+										? "아주 좋아요"
 										: ratings[idx] === 4
-										? "맘에들어요"
+										? "맘에 들어요"
 										: ratings[idx] === 3
 										? "보통이에요"
 										: ratings[idx] === 2
@@ -59,8 +69,8 @@ const CafeRatings = ({ ratings, setRatings }) => {
 										: "완전 별로에요"}
 								</Text>
 							</Box>
-						</Box>
-					</Margin>
+						</Flex>
+					</Box>
 				);
 			})}
 		</Box>

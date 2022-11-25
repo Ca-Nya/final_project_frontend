@@ -9,6 +9,7 @@ import {
 import { useFetchSearchList } from "../../querys/list";
 import { Fragment, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
 	// 검색 값 state
@@ -90,13 +91,7 @@ const MainLayout = () => {
 						</Box>
 					</>
 				) : (
-					<>
-						<MainCarousel />
-						<MainNavButtons />
-						<Box variant="container">
-							<MainList />
-						</Box>
-					</>
+					<Outlet></Outlet>
 				)}
 				<MainFooter />
 			</Margin>
