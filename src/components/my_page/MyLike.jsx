@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
 	Box,
@@ -21,6 +22,8 @@ const MyLike = () => {
 
 	//로컬스토리지 닉네임가져오기
 	const nickname = localStorage.getItem("Nickname");
+	
+	const [page,setPage] = useState(0);
 
 	//내가좋아요한 게시물 get요청
 	const { data, status } = useQuery(
@@ -43,6 +46,13 @@ const MyLike = () => {
 		},
 	);
 	console.log("MyLike=>", data);
+	
+	// const target = useRef(null); 
+
+	// useEffect(()=>{
+	// 	const observer = new IntersectionObserver();
+	// },[])
+	
 	return (
 		<Box>
 			<Margin margin="30px 3px 10px 3px">

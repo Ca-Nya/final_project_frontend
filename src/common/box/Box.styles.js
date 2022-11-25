@@ -409,25 +409,22 @@ export const Box = styled.div`
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
-
-
 					`;
 				case "board-inbox":
 					return css`
 						width: ${calcRem(639)};
 						height: ${calcRem(27)};
 					`;
-					case "board-smaillbox":
+				case "board-smaillbox":
 					return css`
 						width: ${calcRem(556)};
 						height: ${calcRem(121)};
 					`;
-					case "board-minibutton":
+				case "board-minibutton":
 					return css`
 						display: flex;
 						justify-content: center;
-                        align-items: center;
-
+						align-items: center;
 					`;
 				default:
 					break;
@@ -435,3 +432,4 @@ export const Box = styled.div`
 		}}
 	}
 `;
+
