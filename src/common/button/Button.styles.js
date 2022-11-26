@@ -132,6 +132,40 @@ export const Button = styled.button`
 							opacity: 0.9;
 						}
 					`;
+				case "cafe-review-search":
+					return css`
+						display: inline-block;
+						width: 15%;
+						height: ${calcRem(55)};
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						font-weight: 700;
+						letter-spacing: 0.2em;
+						background-color: ${({ theme }) => theme.colors.main};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 5px;
+						padding: 15px 20px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						&:hover {
+							opacity: 0.8;
+						}
+					`;
+				case "cafe-review-post":
+					return css`
+						display: inline-block;
+						width: 33%;
+						height: ${calcRem(70)};
+						font-size: ${({ theme }) => theme.fontSizes.xl};
+						font-weight: 700;
+						letter-spacing: 0.2em;
+						background-color: ${({ theme }) => theme.colors.main};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						border-radius: 5px;
+						padding: 15px 30px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						&:hover {
+							opacity: 0.8;
+						}
+					`;
 				default:
 					break;
 			}

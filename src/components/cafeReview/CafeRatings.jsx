@@ -1,16 +1,24 @@
 import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { Fragment } from "react";
-import { Box, Text, Flex, ThirdHeading } from "../../common";
+import { Box, Text, Flex, ThirdHeading, Image } from "../../common";
+import {
+	coffee,
+	dessert,
+	kindness,
+	mood,
+	parking,
+	price,
+} from "../../assets/icons/fields";
 
 const CafeRatings = ({ ratings, setRatings }) => {
 	// 카페 별점
 	const reviewRate = [
-		["커피", 1, 2, 3, 4, 5],
-		["디저트", 1, 2, 3, 4, 5],
-		["가격", 1, 2, 3, 4, 5],
-		["분위기", 1, 2, 3, 4, 5],
-		["친절", 1, 2, 3, 4, 5],
-		["주차", 1, 2, 3, 4, 5],
+		[coffee, "커피", 1, 2, 3, 4, 5],
+		[dessert, "디저트", 1, 2, 3, 4, 5],
+		[price, "가격", 1, 2, 3, 4, 5],
+		[mood, "분위기", 1, 2, 3, 4, 5],
+		[kindness, "친절", 1, 2, 3, 4, 5],
+		[parking, "주차", 1, 2, 3, 4, 5],
 	];
 	// 별점 클릭시 실행 핸들러
 	// - 각 카테고리별 별점 rating state(props)에 추가
@@ -29,8 +37,13 @@ const CafeRatings = ({ ratings, setRatings }) => {
 					<Box key={rateList[idx]} variant="cafe-review-rating-item">
 						<Flex ai="center" jc="space-around">
 							<Box variant="cafe-review-rating-title">
+								<Image
+									src={rateList[0]}
+									alt={rateList[1]}
+									variant="cafe-review-rating-item"
+								/>
 								<ThirdHeading variant="cafe-review-rating-title">
-									{rateList[0]}
+									{rateList[1]}
 								</ThirdHeading>
 							</Box>
 							<Box variant="cafe-review-rating">
@@ -38,7 +51,7 @@ const CafeRatings = ({ ratings, setRatings }) => {
 									{rateList.map((star, index) => {
 										return (
 											<Fragment key={Math.floor(Math.random() * 1000000)}>
-												{index !== 0 ? (
+												{index !== 0 && index !== 1 ? (
 													<FaStar
 														onClick={handleStarClick(idx, star)}
 														className={

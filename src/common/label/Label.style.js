@@ -13,9 +13,9 @@ export const Label = styled.label`
 				case "cafe-review-file-button":
 					return css`
 						display: block;
-						width: 25%;
-						max-width: ${calcRem(215)};
-						height: ${calcRem(215)};
+						width: 27%;
+						max-width: ${calcRem(210)};
+						height: ${calcRem(210)};
 						background-color: ${({ theme }) => theme.colors.main};
 						border-radius: 5px;
 						cursor: pointer;

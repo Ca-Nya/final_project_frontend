@@ -10,7 +10,7 @@ import {
 } from "../../common";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEditProfileImage } from "../../querys/my_page";
+import { useEditProfileImage } from "../../querys/myPage";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
 
@@ -129,7 +129,7 @@ const MyAll = () => {
 									></Image>
 									<Margin margin="8px auto 0 auto">
 										<Text
-										variant="all-title"
+											variant="all-title"
 											onClick={() => {
 												navigate(`/detail/post/${item.boardId}`);
 											}}

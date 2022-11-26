@@ -25,6 +25,9 @@ export const TextArea = styled.textarea`
 					::placeholder {
 						font-size: ${({ theme }) => theme.fontSizes.xl};
 					}
+					&:focus {
+						border: 1px solid ${({ theme }) => theme.colors.main_purple};
+					}
 				`;
 			default:
 				break;

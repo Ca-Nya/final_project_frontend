@@ -52,15 +52,7 @@ export const Image = styled.img`
 						border: 3px solid ${({ theme }) => theme.colors.main};
 					}
 				`;
-			/* 글쓰기 페이지 */
-			case "cafe-review-thumbnail":
-				return css`
-					display: block;
-					width: 100%;
-					max-width: ${calcRem(215)};
-					height: ${calcRem(215)};
-					border-radius: 5px;
-				`;
+
 			/* 마이 페이지 */
 			case "mypage-profile":
 				return css`
@@ -104,6 +96,23 @@ export const Image = styled.img`
 						filter: invert(60%) sepia(41%) saturate(4200%) hue-rotate(240deg)
 							brightness(150%) contrast(60%);
 					}
+				`;
+			/* 글쓰기 페이지 */
+			case "cafe-review-thumbnail":
+				return css`
+					display: block;
+					width: 100%;
+					max-width: ${calcRem(210)};
+					height: ${calcRem(210)};
+					border-radius: 5px;
+				`;
+			case "cafe-review-rating-item":
+				return css`
+					max-width: ${calcRem(42)};
+					height: ${calcRem(42)};
+					position: absolute;
+					top: -11px;
+					left: -30px;
 				`;
 			default:
 				break;
