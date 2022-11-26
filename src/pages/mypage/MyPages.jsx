@@ -9,7 +9,7 @@ const MyPages = () => {
 		<Box>
 			<MainNav />
 			<Image variant="mypage" src={myPageBackground} />
-			<Margin margin="43px 0 100px 0">
+			<Margin margin="43px 0 300px 0">
 				<Box variant="container">
 					<MyPage>
 						<Outlet />

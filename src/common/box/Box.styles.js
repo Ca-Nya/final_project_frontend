@@ -500,3 +500,4 @@ export const Box = styled.div`
 		}}
 	}
 `;
+

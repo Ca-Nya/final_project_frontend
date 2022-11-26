@@ -141,7 +141,6 @@ const MyCommentEdit = ({ comment }) => {
 											required={comment?.commentContent}
 											onChange={handleEdit}
 										/>
-
 										<Text variant="comment-date">
 											{comment.commentCreatedAt}
 										</Text>
