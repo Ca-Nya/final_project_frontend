@@ -6,54 +6,134 @@ import {
 	DataDesc,
 	Strong,
 	Box,
+	Flex,
+	Text,
+	Margin,
+	Hidden,
 } from "../../common";
+import { useNavigate } from "react-router-dom";
 
 const MainCanyaPick = ({ picks }) => {
+	// React Router
+	const navigate = useNavigate();
 	if (!picks) return <Box>게시글이 존재하지 않습니다.</Box>;
 
 	return (
 		<Box>
-			{picks.map((pick, idx) => {
-				return (
-					<Box key={pick.boardId}>
-						<Strong>{idx + 1}</Strong>
-						<ThirdHeading>{pick.boardTitle}</ThirdHeading>
-						<Box>{pick.boardContent}</Box>
-						<Strong>{pick.address}</Strong>
-						<Image
-							src={pick.imageUrl}
-							alt="Ca Nya's Pick3 카페 이미지"
-							variant="main-canya-pick"
-						/>
-						<Box>
+			<Flex gap="24px">
+				{picks.map((pick, idx) => {
+					return (
+						<Box
+							onClick={() => navigate(`/detail/post/${pick.boardId}`)}
+							key={pick.boardId}
+							variant="main-canya-pick-item-wrap"
+						>
+							<Box variant="main-canya-pick-rank">
+								<Flex jc="center" ai="center">
+									<Strong variant="main-canya-pick-rank">{idx + 1}</Strong>
+								</Flex>
+							</Box>
 							<Image
-								src={pick.memberProfileImage}
-								alt="프로필 이미지"
-								variant="main-canya-pick-profile"
+								src={pick.imageUrl}
+								alt="Ca Nya's Pick3 카페 이미지"
+								variant="main-canya-pick"
 							/>
-
-							<DataList>
-								<DataTerm>닉네임</DataTerm>
-								<DataDesc>{pick.memberNickname}</DataDesc>
-							</DataList>
+							<Box variant="main-cany-pick-content-wrap">
+								<Margin margin="0 0 12px 0">
+									<ThirdHeading
+										variant="main-canya-pick-title"
+										className="ellipsis-sm"
+									>
+										{pick.boardTitle}
+									</ThirdHeading>
+								</Margin>
+								<Margin margin="0 0 10px 0">
+									<Box variant="main-canya-pick-content">
+										<Text
+											variant="main-canya-pick-content"
+											className="ellipsis"
+										>
+											{pick.boardContent}
+										</Text>
+									</Box>
+								</Margin>
+								<Margin margin="0 0 15px 0">
+									<Box variant="main-canya-pick-info">
+										<Strong
+											variant="main-canya-pick-address"
+											className="ellipsis-sm"
+										>
+											{pick.address}
+										</Strong>
+										<Margin margin="14px 0 0 0">
+											<DataList variant="main-canya-pick-hashtag">
+												<Box>
+													<Hidden>
+														<DataTerm>높은 점수를 받은 카테고리</DataTerm>
+													</Hidden>
+													<Flex gap="6px">
+														<DataDesc>#커피맛집</DataDesc>
+														<DataDesc>#디저트맛집</DataDesc>
+													</Flex>
+												</Box>
+											</DataList>
+										</Margin>
+									</Box>
+								</Margin>
+								<Flex>
+									<Flex>
+										<Image
+											src={pick.memberProfileImage}
+											alt="프로필 이미지"
+											variant="main-canya-pick-profile"
+										/>
+										<Margin margin="2px 0 0 10px">
+											<Box variant="main-canya-pick-info-content">
+												<DataList>
+													<Hidden>
+														<DataTerm>닉네임</DataTerm>
+													</Hidden>
+													<DataDesc variant="main-canya-pick-content-nickname">
+														{pick.memberNickname}
+													</DataDesc>
+												</DataList>
+												<DataList>
+													<Hidden>
+														<DataTerm>평균 평점</DataTerm>
+													</Hidden>
+													<DataDesc variant="main-canya-pick-content-rate">
+														{pick.totalRating}
+													</DataDesc>
+												</DataList>
+											</Box>
+										</Margin>
+									</Flex>
+									<DataList>
+										<Flex>
+											<Box variant="main-canya-pick-heart-comment-info-wrap">
+												<Flex gap="20px">
+													<Hidden>
+														<DataTerm>좋아요 수</DataTerm>
+													</Hidden>
+													<DataDesc variant="main-canya-pick-content-heart">
+														{pick.heartCount}
+													</DataDesc>
+													<Hidden>
+														<DataTerm>댓글 수</DataTerm>
+													</Hidden>
+													<DataDesc variant="main-canya-pick-content-comment">
+														{pick.commentCount}
+													</DataDesc>
+												</Flex>
+											</Box>
+										</Flex>
+									</DataList>
+								</Flex>
+							</Box>
 						</Box>
-						<DataList>
-							<DataTerm>평균 평점</DataTerm>
-							<DataDesc>{pick.totalRating}</DataDesc>
-						</DataList>
-						<DataList>
-							<Box>
-								<DataTerm>좋아요 수</DataTerm>
-								<DataDesc>{pick.heartCount}</DataDesc>
-							</Box>
-							<Box>
-								<DataTerm>댓글 수</DataTerm>
-								<DataDesc>{pick.commentCount}</DataDesc>
-							</Box>
-						</DataList>
-					</Box>
-				);
-			})}
+					);
+				})}
+			</Flex>
 		</Box>
 	);
 };

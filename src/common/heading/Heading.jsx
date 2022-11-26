@@ -9,5 +9,5 @@ export const SecondHeading = ({ children, ...props }) => {
 };
 
 export const ThirdHeading = ({ children, ...props }) => {
-	return <styles.ThirdHeading>{children}</styles.ThirdHeading>;
+	return <styles.ThirdHeading {...props}>{children}</styles.ThirdHeading>;
 };

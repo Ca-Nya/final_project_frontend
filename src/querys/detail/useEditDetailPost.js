@@ -18,7 +18,6 @@ const useEditDetailPost = payload => {
 
 			return response.data;
 		},
-		enabled: false,
 		suspense: true,
 	});
 };

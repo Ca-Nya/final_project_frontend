@@ -8,10 +8,6 @@ export const Input = styled.input`
 		switch (variant) {
 			case "join":
 				return css`
-					/* &::after {
-						content: "소희님 아프지 마세요오ㅠㅠ";
-						display: block;
-					} */
 					${({ purpose }) => {
 						return purpose === "sign-in"
 							? `background-color: aliceblue;
@@ -35,16 +31,82 @@ export const Input = styled.input`
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.lg};
 				`;
+			case "signup":
+				return css`
+					width: ${calcRem(355)};
+					height: 60px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					background-color: aliceblue;
+					border-radius: 10px;
+					padding-left: 15px;
+				`;
+			case "signup-password":
+				return css`
+					width: ${calcRem(472)};
+					height: 60px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					background-color: aliceblue;
+					border-radius: 10px;
+					padding-left: 15px;
+				`;
+			/* 마이페이지 */
+			case "profile-edit":
+				return css`
+					display: none;
+				`;
+			case "comment-edit":
+				return css`
+					width: ${calcRem(355)};
+					height: 30px;
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					background-color: aliceblue;
+					border-radius: 10px;
+					padding-left: 15px;
+				`;
 			/* 메인 페이지 */
 			case "main-search":
 				return css`
-					width: 81%;
-					max-width: ${calcRem(745)};
-					height: 51px;
+					width: 96%;
+					height: ${calcRem(46)};
 					border: 1px solid ${({ theme }) => theme.colors.line};
-					border-top-right-radius: 20px;
-					border-bottom-right-radius: 20px;
-					padding: ${({ theme }) => theme.paddings.xl};
+					border-radius: 20px;
+					padding: 15px 15px 15px 20%;
+					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+				`;
+			/* 글쓰기 페이지 */
+			case "cafe-review-title":
+				return css`
+					display: block;
+					width: 100%;
+					height: ${calcRem(55)};
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					padding: 15px 30px;
+					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+					&:focus {
+						border: 1px solid ${({ theme }) => theme.colors.main_purple};
+					}
+				`;
+			case "cafe-review-search":
+				return css`
+					display: block;
+					width: 85%;
+					height: ${calcRem(55)};
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					padding: 15px 30px;
+					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+					&:focus {
+						border: 1px solid ${({ theme }) => theme.colors.main_purple};
+					}
 				`;
 			default:
 				break;

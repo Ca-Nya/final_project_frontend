@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+import { Box, ThirdHeading, Text } from "../../common";
 
 const CafeMap = ({ searchPlace }) => {
 	const { kakao } = window;
@@ -54,39 +55,37 @@ const CafeMap = ({ searchPlace }) => {
 	}, [searchPlace]);
 
 	return (
-		<div>
-			<div
+		<Box>
+			<Box
 				ref={mapContainer}
 				style={{
 					width: "500px",
 					height: "500px",
 				}}
-			></div>
-
-			{Places.map((item, i) => {
-				console.log("item =>", item);
+			></Box>
+			{Places.map(item => {
 				return (
-					<div id="result-list" key={item.id}>
-						<div style={{ marginTop: "20px" }}>
-							<div>
+					<Box id="result-list" key={item.id}>
+						<Box style={{ marginTop: "20px" }}>
+							<Box>
 								<a href={item.place_url} target="_blank" rel="noreferrer">
-									<h5>{item.place_name}</h5>
+									<ThirdHeading>{item.place_name}</ThirdHeading>
 									{item.road_address_name ? (
-										<div>
-											<span>{item.road_address_name}</span>
-											<span>{item.address_name}</span>
-										</div>
+										<Box>
+											<Text>{item.road_address_name}</Text>
+											<Text>{item.address_name}</Text>
+										</Box>
 									) : (
-										<span>{item.address_name}</span>
+										<Text>{item.address_name}</Text>
 									)}
 								</a>
 								<a href={`tel:${item.phone}`}>{item.phone}</a>
-							</div>
-						</div>
-					</div>
+							</Box>
+						</Box>
+					</Box>
 				);
 			})}
-		</div>
+		</Box>
 	);
 };
 

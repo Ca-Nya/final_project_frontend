@@ -1,5 +1,4 @@
-import Router from "./shared/Router";
-import GlobalStyles from "./GlobalStyles";
+import { GlobalStyles, Router } from "./shared";
 import { resetToken } from "../src/redux/modules/join/joinSlice";
 import { theme } from "./themes";
 import { Suspense, useEffect } from "react";

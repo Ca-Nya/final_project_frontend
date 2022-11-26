@@ -3,6 +3,7 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_SERVER;
 const Authorization = localStorage.getItem("Authorization") ?? "";
 
+// axios.instance
 const http = axios.create({
 	baseURL: BASE_URL,
 	headers: {
