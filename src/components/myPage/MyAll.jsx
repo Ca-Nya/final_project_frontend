@@ -1,19 +1,10 @@
-import {
-	Box,
-	Input,
-	Button,
-	Image,
-	Text,
-	Label,
-	Margin,
-	Flex,
-} from "../../common";
+import { Box, Image, Text, Margin, Flex } from "../../common";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEditProfileImage } from "../../querys/my_page";
+import { useEditProfileImage } from "../../querys/myPage";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
-import Spinner from "../../assets/icons/spinner.gif"
+import Spinner from "../../assets/icons/spinner.gif";
 
 const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -59,7 +50,12 @@ const MyAll = () => {
 
 	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
 
-	if (isLoading) return <Box><Image src={Spinner}/></Box>;
+	if (isLoading)
+		return (
+			<Box>
+				<Image src={Spinner} />
+			</Box>
+		);
 	if (isError) return <Box>에러</Box>;
 
 	return (
@@ -130,7 +126,7 @@ const MyAll = () => {
 									></Image>
 									<Margin margin="8px auto 0 auto">
 										<Text
-										variant="all-title"
+											variant="all-title"
 											onClick={() => {
 												navigate(`/detail/post/${item.boardId}`);
 											}}
@@ -168,7 +164,9 @@ const MyAll = () => {
 										<Box variant="guide">
 											<Flex jc="space-between">
 												<Text variant="comment">{item.commentContent}</Text>
-												<Text variant="comment-date">{item.commentCreatedAt}</Text>
+												<Text variant="comment-date">
+													{item.commentCreatedAt}
+												</Text>
 											</Flex>
 										</Box>
 									</Margin>

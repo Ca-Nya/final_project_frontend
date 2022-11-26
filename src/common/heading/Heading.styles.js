@@ -91,6 +91,7 @@ export const SecondHeading = styled.h2`
 						font-size: ${({ theme }) => theme.fontSizes.xxl};
 						font-weight: 600;
 						width: 100%;
+						letter-spacing: 0.1rem;
 					`;
 				default:
 					break;

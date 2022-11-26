@@ -17,7 +17,7 @@ import {
 } from "../../common";
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { CafeSearch, CafeRatings } from "../../components/cafe_review";
+import { CafeSearch, CafeRatings } from "../../components/cafeReview";
 import { cafe_review_image_upload } from "../../assets/icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -167,8 +167,8 @@ const CafeReview = ({ id }) => {
 	return (
 		<Margin margin="165px 0 0 0">
 			<Box variant="container">
-				<Margin margin="0 0 60px 0">
-					<FirstHeading variant="title">리뷰 작성</FirstHeading>
+				<Margin margin="0 0 55px 0">
+					<FirstHeading variant="title">리뷰 작성☕️</FirstHeading>
 				</Margin>
 				<Margin margin="0 0 25px 0">
 					<Input
@@ -236,10 +236,21 @@ const CafeReview = ({ id }) => {
 					<SecondHeading variant="title">별점평가⭐️</SecondHeading>
 				</Margin>
 				<CafeRatings ratings={ratings} setRatings={setRatings} />
+				<Margin margin="60px 0 25px 0">
+					<SecondHeading variant="title">카페등록☕️</SecondHeading>
+				</Margin>
 				<CafeSearch setPlace={setPlace} place={place} />
-				<Button type="button" onClick={handlePostReview}>
-					등록
-				</Button>
+				<Margin margin="98px 0 200px 0">
+					<Flex jc="center" ai="center">
+						<Button
+							type="button"
+							onClick={handlePostReview}
+							variant="cafe-review-post"
+						>
+							리뷰 등록하기
+						</Button>
+					</Flex>
+				</Margin>
 			</Box>
 		</Margin>
 	);

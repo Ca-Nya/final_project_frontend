@@ -8,7 +8,7 @@ import {
 } from "../../common";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CafeSearch, CafeRatings } from "../cafe_review";
+import { CafeSearch, CafeRatings } from "../../components/cafeReview";
 import { useFetchDetailPost, useEditDetailPost } from "../../querys/detail";
 import { useNavigate } from "react-router-dom";
 

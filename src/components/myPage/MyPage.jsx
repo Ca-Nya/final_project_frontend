@@ -10,7 +10,7 @@ import {
 } from "../../common";
 import { Outlet, useNavigate, useMatch } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEditProfileImage } from "../../querys/my_page";
+import { useEditProfileImage } from "../../querys/myPage";
 import { useDeleteDetailPost } from "../../querys/detail";
 import Edit from "../../assets/icons/edit-profile.png";
 import Comment from "../../assets/icons/comment.png";
@@ -277,7 +277,7 @@ const MyPage = () => {
 								</Flex>
 							</Box>
 						</Flex>
-					</Box>					
+					</Box>
 					{/* <Box>
 						<Box variant="guide">
 							<Text>내가 쓴 글</Text>

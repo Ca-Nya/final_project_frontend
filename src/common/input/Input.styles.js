@@ -90,6 +90,23 @@ export const Input = styled.input`
 					border-radius: 5px;
 					padding: 15px 30px;
 					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+					&:focus {
+						border: 1px solid ${({ theme }) => theme.colors.main_purple};
+					}
+				`;
+			case "cafe-review-search":
+				return css`
+					display: block;
+					width: 85%;
+					height: ${calcRem(55)};
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					padding: 15px 30px;
+					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+					&:focus {
+						border: 1px solid ${({ theme }) => theme.colors.main_purple};
+					}
 				`;
 			default:
 				break;

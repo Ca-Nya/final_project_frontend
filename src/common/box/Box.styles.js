@@ -441,6 +441,10 @@ export const Box = styled.div`
 							color: #fdd237;
 						}
 					`;
+				case "cafe-review-rating-title":
+					return css`
+						position: relative;
+					`;
 				case "cafe-review-thumbnail-wraper":
 					return css`
 						position: relative;
@@ -448,6 +452,47 @@ export const Box = styled.div`
 				case "cafe-review-rating-info":
 					return css`
 						width: ${calcRem(122)};
+					`;
+				case "cafe-review-map-item":
+					return css`
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+					`;
+				case "cafe-review-map":
+					return css`
+						width: ${calcRem(772)};
+						height: ${calcRem(509)};
+					`;
+				case "cafe-review-map-content-wraper":
+					return css`
+						width: ${calcRem(363)};
+						height: ${calcRem(509)};
+						padding: 25px 25px;
+						overflow: scroll;
+						::-webkit-scrollbar {
+							display: none;
+						}
+					`;
+				case "cafe-write-pick-info":
+					return css`
+						/* height: ${calcRem(105)}; */
+						height: 100%;
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 10px 0 20px 0;
+						&::before {
+							content: "";
+							background-image: url(${location});
+							background-position: center center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							width: 6%;
+							max-width: ${calcRem(19)};
+							height: ${calcRem(23)};
+							display: inline-block;
+							position: relative;
+							margin: 0 5px 0 0;
+							top: 2px;
+						}
 					`;
 				default:
 					break;
