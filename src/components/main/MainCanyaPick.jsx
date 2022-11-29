@@ -85,7 +85,7 @@ const MainCanyaPick = ({ picks }) => {
 										<Image
 											src={pick.memberProfileImage}
 											alt="프로필 이미지"
-											variant="main-canya-pick-profile"
+											variant="small-profile"
 										/>
 										<Margin margin="2px 0 0 10px">
 											<Box variant="main-canya-pick-info-content">

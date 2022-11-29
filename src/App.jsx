@@ -13,7 +13,8 @@ function App() {
 		if (!localStorage.getItem("Authorization")) {
 			dispatch(resetToken());
 		}
-	}, [dispatch]);
+	}, [dispatch]); // 의존성
+
 	return (
 		<>
 			<Suspense fallback={<div>Loading</div>}>

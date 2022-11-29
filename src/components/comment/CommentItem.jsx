@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Button, Form } from "../../common";
+import { Input, Button, Form, Text } from "../../common";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
@@ -29,7 +29,7 @@ const CommentItem = () => {
 		{
 			onSuccess: () => {
 				queryClient.invalidateQueries("getComments");
-				alert("댓글이 등록되었습니다.")
+				alert("댓글이 등록되었습니다.");
 			},
 		},
 	);
@@ -48,7 +48,7 @@ const CommentItem = () => {
 
 	return (
 		<>
-			{nickname ? <p>{nickname}</p> : null}
+			{nickname ? <Text>{nickname}</Text> : null}
 			<Form onSubmit={onClickHandler}>
 				<Input
 					type="text"

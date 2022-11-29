@@ -34,7 +34,7 @@ const SignUpForm = () => {
 
 	//닉네임, 아이디 중복검사 redux
 	const { isCheckedId, isCheckedNickname, isExistNickname, isExistId } =
-		useSelector(state => state.join);
+		useSelector(state => state.join); // join이 아닌 signup
 
 	//비밀번호 확인
 	const password = useRef();
@@ -49,7 +49,7 @@ const SignUpForm = () => {
 						const { memberName, memberNickname, password } = value;
 						dispatch(__requestSignUp({ memberName, memberNickname, password }));
 						alert("카냐에 오신걸 환영합니다.");
-						navigate("/join");
+						navigate("/join"); // 네비게이트에 join
 					} else if (!isCheckedId && !isCheckedNickname) {
 						alert("아이디와 닉네임 중복체크를 해주세요.");
 					} else if (!isCheckedId) {
@@ -104,12 +104,10 @@ const SignUpForm = () => {
 					{errors.memberNickname &&
 					errors.memberNickname.type === "required" ? (
 						<Margin margin="5px 0 0 10px ">
-						<Flex>
-							<Text variant="join-warning">
-							닉네임을 입력해주세요.
-							</Text>
-						</Flex>
-					</Margin>
+							<Flex>
+								<Text variant="join-warning">닉네임을 입력해주세요.</Text>
+							</Flex>
+						</Margin>
 					) : (
 						""
 					)}
@@ -293,11 +291,14 @@ const SignUpForm = () => {
 					<Margin margin="18px 0 0 90px">
 						<Flex gap="30px">
 							<Text>이미 아이디가 있으신가요?</Text>
-							<Text variant="join-signup"
-							onClick={() => {
-								navigate("/join");
-							}}
-							>로그인 하기</Text>
+							<Text
+								variant="join-signup"
+								onClick={() => {
+									navigate("/join");
+								}}
+							>
+								로그인 하기
+							</Text>
 						</Flex>
 					</Margin>
 				</Margin>

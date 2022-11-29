@@ -1,5 +1,15 @@
 import { useEffect, useState } from "react";
-import { Box, Input, Button, Form } from "../../common";
+import {
+	Box,
+	Input,
+	Button,
+	Image,
+	DataList,
+	DataTerm,
+	DataDesc,
+	Text,
+	Hidden,
+} from "../../common";
 import {
 	QueryClient,
 	useMutation,
@@ -42,10 +52,10 @@ const CommentEdit = ({ item }) => {
 			return response;
 		},
 		{
-			onSuccess: ({ status,data }) => {
+			onSuccess: ({ status, data }) => {
 				if (status === "200") {
-					console.log("data =>", data)				
-					console.log("status =>", status)
+					console.log("data =>", data);
+					console.log("status =>", status);
 					// queryClient.invalidateQueries("getComments");
 					// alert(data);
 				}
@@ -76,22 +86,24 @@ const CommentEdit = ({ item }) => {
 		console.log("editComment=>", editComment);
 		if (editComment === "") {
 			alert("댓글을 수정해주세요!");
-		} 
-		else {
-			editMutation({
-				commentId: item.commentId,
-				commentContent: editComment,
-			}, {
-				onError: (error, variables, context) => {
-					console.log("error => ", error)
+		} else {
+			editMutation(
+				{
+					commentId: item.commentId,
+					commentContent: editComment,
 				},
-				onSuccess: (data, variables, context) => {					
-					queryClient.invalidateQueries("getComments");
-					alert(data.data);
-				}
-			});			
+				{
+					onError: (error, variables, context) => {
+						console.log("error => ", error);
+					},
+					onSuccess: (data, variables, context) => {
+						queryClient.invalidateQueries("getComments");
+						alert(data.data);
+					},
+				},
+			);
 		}
-		setEdit(false);		
+		setEdit(false);
 	};
 
 	//댓글 삭제하기 쿼리요청
@@ -123,9 +135,17 @@ const CommentEdit = ({ item }) => {
 						</Box>
 					) : (
 						<>
-							<p>
+							<Image src={item.memberProfileImage} />
+							<DataList>
+								<Hidden>
+									<DataTerm>작성일</DataTerm>
+								</Hidden>
+								<DataDesc>{item.date}</DataDesc>
+							</DataList>
+							<Text>
 								{item.memberNickname}님: {item.commentContent}
-							</p>
+							</Text>
+
 							<Button
 								onClick={() => {
 									setEdit(!edit);

@@ -77,6 +77,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 			return response.data;
 		} catch (error) {
 			console.log("error =>", error);
+			throw error;
 		}
 	};
 	// 게시글 아이디 요청 Hook
@@ -90,6 +91,8 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 		},
 		onError: (error, variables) => {
 			console.log("onError =>", error, "variables =>", variables);
+			// 알아보자아! 에러 처리
+			alert("게시글을 작성할 수 없습니다!");
 		},
 	});
 	// postId get요청

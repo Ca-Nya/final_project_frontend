@@ -215,14 +215,17 @@ export const Box = styled.div`
 					`;
 				case "main-best-item-wraper":
 					return css`
+						width: 100%;
 						overflow: hidden;
 						border-radius: 5px;
 						cursor: pointer;
 					`;
 				case "main-best-item":
 					return css`
-						width: ${calcRem(556)};
+						width: 100%;
+						max-width: ${calcRem(556)};
 						height: ${calcRem(230)};
+						padding: 30px;
 						background-image: linear-gradient(
 								rgba(0, 0, 0, 0.03),
 								rgba(0, 0, 0, 0.4)
@@ -498,6 +501,7 @@ export const Box = styled.div`
 					return css`
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						border-radius: 5px;
 					`;
 				case "cafe-review-map":
 					return css`
@@ -534,6 +538,103 @@ export const Box = styled.div`
 							margin: 0 5px 0 0;
 							top: 2px;
 						}
+					`;
+				/* 상세 페이지 */
+				case "detail-container":
+					return css`
+						padding: 0 0 30px 0;
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
+				case "detail-info":
+					return css`
+						padding: 23px 0;
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
+
+				case "detail-content":
+					return css`
+						padding: 50px 0 60px 0;
+					`;
+				case "detail-content-image-wraper":
+					return css`
+						width: 45%;
+						max-width: ${calcRem(460)};
+						height: ${calcRem(460)};
+						overflow: hidden;
+						border-radius: 5px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+					`;
+				case "detail-content-desc":
+					return css`
+						width: 55%;
+						max-width: ${calcRem(652)};
+						height: ${calcRem(460)};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 30px;
+						border-radius: 5px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						font-size: ${({ theme }) => theme.fontSizes.xl};
+						line-height: 1.2;
+						letter-spacing: 0.01rem;
+						overflow: scroll;
+						::-webkit-scrollbar {
+							display: none;
+						}
+					`;
+				case "cafe-detail-rating":
+					return css`
+						width: ${calcRem(282)};
+						& svg {
+							color: #c4c4c4;
+							cursor: pointer;
+						}
+						.active {
+							color: #fdd237;
+						}
+					`;
+				case "detail-map":
+					return css`
+						border-radius: 5px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						overflow: hidden;
+					`;
+				case "detail-map-desc":
+					return css`
+						width: 100%;
+						height: ${calcRem(100)};
+						background-color: ${({ theme }) => theme.colors.white};
+						padding: 20px 40px;
+						position: relative;
+					`;
+				case "detail-map-desc-content":
+					return css`
+						&::before {
+							content: "";
+							background-image: url(${location});
+							background-position: center center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							width: 6%;
+							max-width: ${calcRem(19)};
+							height: ${calcRem(25)};
+							display: inline-block;
+							position: absolute;
+							top: 36px;
+						}
+					`;
+				case "detail-map-desc-address":
+					return css`
+						padding: 0 0 0 24px;
+					`;
+				case "cafe-write-address":
+					return css`
+						color: ${({ theme }) => theme.colors.dark_gray};
+					`;
+				/* 상세페이지 댓글 */
+				case "comment-wrap":
+					return css`
+						background-color: ${({ theme }) => theme.colors.gray};
 					`;
 				default:
 					break;
