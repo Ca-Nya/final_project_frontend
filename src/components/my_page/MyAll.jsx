@@ -13,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEditProfileImage } from "../../querys/my_page";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
-import Spinner from "../../assets/icons/spinner.gif"
+import Spinner from "../../assets/icons/spinner.gif";
 
 const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -59,11 +59,16 @@ const MyAll = () => {
 
 	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
 
-	if (isLoading) return <Box><Image src={Spinner}/></Box>;
+	if (isLoading)
+		return (
+			<Box>
+				<Image src={Spinner} />
+			</Box>
+		);
 	if (isError) return <Box>에러</Box>;
 
 	return (
-		<Box>
+		<Box variant="mypage-category">
 			<Box>
 				<Margin margin="30px 3px 10px 3px">
 					<Box variant="guide">
@@ -78,11 +83,49 @@ const MyAll = () => {
 						</Text>
 					</Box>
 				</Margin>
-				<Box variant="guide">
+				<Flex jc="space-between" style={{ border: "1px solid black" }}>
 					{recentlyMyBoardList?.map(item => {
 						return (
 							<Box key={item.boardId}>
-								<Box>
+								<Image
+									variant="mypage-post"
+									src={item.imageList[0].imageUrl}
+									alt={item.boardTitle}
+								></Image>
+								<Margin margin="0.7vw auto 0 auto">
+									<Text
+										variant="all-title"
+										onClick={() => {
+											navigate(`/detail/post/${item.boardId}`);
+										}}
+									>
+										{item.boardTitle}
+									</Text>
+								</Margin>
+							</Box>
+						);
+					})}
+				</Flex>
+			</Box>
+			<Box>
+				<Margin margin="60px 0 10px 0">
+					<Box variant="guide">
+						<Text variant="title">좋아요 한 글 ❣️ </Text>
+						<Text
+							variant="add"
+							onClick={() => {
+								navigate(`/mypage/mylike`);
+							}}
+						>
+							더보기
+						</Text>
+					</Box>
+				</Margin>
+				<Flex jc="space-between" style={{ border: "1px solid black" }}>
+					{recentlyMyHeartBoardList?.map(item => {
+						return (
+							<Box key={item.boardId}>
+								<Box key={item.boardId}>
 									<Image
 										variant="mypage-post"
 										src={item.imageList[0].imageUrl}
@@ -102,47 +145,7 @@ const MyAll = () => {
 							</Box>
 						);
 					})}
-				</Box>
-			</Box>
-			<Box>
-				<Margin margin="60px 0 10px 0">
-					<Box variant="guide">
-						<Text variant="title">좋아요 한 글 ❣️ </Text>
-						<Text
-							variant="add"
-							onClick={() => {
-								navigate(`/mypage/mylike`);
-							}}
-						>
-							더보기
-						</Text>
-					</Box>
-				</Margin>
-				<Box variant="guide">
-					{recentlyMyHeartBoardList?.map(item => {
-						return (
-							<Box key={item.boardId}>
-								<Box key={item.boardId}>
-									<Image
-										variant="mypage-post"
-										src={item.imageList[0].imageUrl}
-										alt={item.boardTitle}
-									></Image>
-									<Margin margin="8px auto 0 auto">
-										<Text
-										variant="all-title"
-											onClick={() => {
-												navigate(`/detail/post/${item.boardId}`);
-											}}
-										>
-											{item.boardTitle}
-										</Text>
-									</Margin>
-								</Box>
-							</Box>
-						);
-					})}
-				</Box>
+				</Flex>
 			</Box>
 			<Box>
 				<Margin margin="60px 0 10px 0">
@@ -162,17 +165,19 @@ const MyAll = () => {
 				{recentlyMyCommentList?.map(item => {
 					return (
 						<Box key={item.commentId}>
-							<Margin margin="0 0 10px 0">
+							<Margin margin="0 0 0.9vw 0">
 								<Box variant="comment-box" key={item.commentId}>
-									<Margin margin="26px 22px 0 22px">
-										<Box variant="guide">
-											<Flex jc="space-between">
+									<Margin margin="1.2vw 1.9vw 0 1.9vw">
+										<Box>
+											<Flex jc="space-between" ai="center">
 												<Text variant="comment">{item.commentContent}</Text>
-												<Text variant="comment-date">{item.commentCreatedAt}</Text>
+												<Text variant="comment-date">
+													{item.commentCreatedAt}
+												</Text>
 											</Flex>
 										</Box>
 									</Margin>
-									<Margin margin="10px 0 0 22px">
+									<Margin margin="0.9vw 0 0 1.9vw">
 										<Text
 											variant="comment-title"
 											onClick={() => {

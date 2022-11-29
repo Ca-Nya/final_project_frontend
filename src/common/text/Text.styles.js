@@ -69,6 +69,16 @@ export const Text = styled.p`
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.white};
+					width: 80px;
+					height: 25px;
+					background-color: #f6cd3c;
+					border-radius: 50px;
+					text-align: center;
+					line-height: ${calcRem(25)};
+				`;
+			case "level-name":
+				return css`
+					white-space: nowrap;
 				`;
 			case "profile-base":
 				return css`
@@ -142,7 +152,7 @@ export const Text = styled.p`
 					width: 600px;
 					white-space: nowrap;
 					overflow: hidden;
-                    text-overflow: ellipsis;
+					text-overflow: ellipsis;
 				`;
 			case "comment-title":
 				return css`
@@ -175,6 +185,7 @@ export const Text = styled.p`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.dark_gray};
 					font-weight: 600;
+					text-align: center;
 					&:hover {
 						cursor: pointer;
 						color: ${({ theme }) => theme.colors.main_purple};
@@ -189,7 +200,7 @@ export const Text = styled.p`
 					width: 500px;
 					white-space: nowrap;
 					overflow: hidden;
-                    text-overflow: ellipsis;
+					text-overflow: ellipsis;
 					white-space: normal;
 					line-height: 1.2;
 					max-height: 1.2;

@@ -11,11 +11,18 @@ export const Box = styled.div`
 				/* 공통 */
 				case "container":
 					return css`
-						width: 100%;
+						width: 100vw;
 						max-width: ${calcRem(1136)} !important;
 						margin: 0 auto;
-						padding: 0 40px;
+						padding: 0 3.5vw;
 						/* background-color: #eceaeade; */
+					`;
+					case "container-2":
+					return css`
+						width: 100vw;
+						max-width: ${calcRem(1136)} !important;
+						margin: 0 auto;				
+						border: 1px solid blue;
 					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
@@ -336,27 +343,58 @@ export const Box = styled.div`
 				/* 마이페이지 */
 				case "pofile":
 					return css`
-						width: ${calcRem(245)};
+						width: 21.6vw;
+						max-width: ${calcRem(245)};
 						height: ${calcRem(472)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
 					`;
+				case "pofile-namebox":
+					return css`
+						width: 20vw;
+						max-width: ${calcRem(200)};
+						height: ${calcRem(112)};
+						background-color: ${({ theme }) => theme.colors.white};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
 				case "level":
 					return css`
-						width: ${calcRem(50)};
+						width: 4.5vw;
+						max-width: ${calcRem(50)};
 						height: ${calcRem(25)};
 						background-color: #f6cd3c;
 						border-radius: 50px;
+						text-align: center;
+						position: relative;
+					`;
+				case "category-box":
+					return css`
+						width: 20vw;
+						max-width: ${calcRem(200)};
+					`;
+						case "category-title-box":
+					return css`
+						width: 18vw;
+						max-width: ${calcRem(200)};
 					`;
 				case "mypage-nav":
 					return css`
-						width: ${calcRem(846)};
+						width: 74.5vw;
+						max-width: ${calcRem(846)};
 						height: ${calcRem(30)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding-bottom: 40px;
 						padding-left: 10px;
+						border:1px solid black;
+					`;
+					case "mypage-category":
+					return css`
+						width: 74.5vw;
+						max-width: ${calcRem(846)};
+						border: 1px solid ${({ theme }) => theme.colors.black};
+				
 					`;
 				case "guide":
 					return css`
@@ -378,11 +416,14 @@ export const Box = styled.div`
 					`;
 				case "comment-box":
 					return css`
-						width: ${calcRem(846)};
+					    width: 74.5vw;
+						max-width: ${calcRem(846)};
 						height: ${calcRem(105)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
+						justify-content: center;
+						align-items: center;
 					`;
 				case "board-box":
 					return css`
@@ -455,4 +496,3 @@ export const Box = styled.div`
 		}}
 	}
 `;
-

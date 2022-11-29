@@ -64,8 +64,10 @@ export const Image = styled.img`
 			/* 마이 페이지 */
 			case "mypage-profile":
 				return css`
-					width: 128px;
-					height: 128px;
+					width: 11.3vw;
+					height: 11.3vw;
+					max-width: ${calcRem(128)};
+					max-height: ${calcRem(128)};
 					border-radius: 50%;
 					border: 5px solid #f6cd3c;
 					object-fit: cover;
@@ -73,9 +75,20 @@ export const Image = styled.img`
 				`;
 			case "mypage-post":
 				return css`
-					width: ${calcRem(266)};
-					height: ${calcRem(266)};
+					width: 23.5vw;
+					height: 23.5vw;
+					max-width: ${calcRem(266)};
+					max-height: ${calcRem(266)};
 					border-radius: 5%;
+				`;
+			case "mypage-icon":
+				return css`
+					width: 2vw;
+					height: 2vw;
+					max-width: ${calcRem(38)};
+					max-height: ${calcRem(38)};
+					min-width: ${calcRem(25)};
+					min-height: ${calcRem(25)};
 				`;
 			case "mypage":
 				return css`
