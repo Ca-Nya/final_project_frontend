@@ -218,6 +218,13 @@ export const Text = styled.p`
 					font-weight: 400;
 					text-align: center;
 				`;
+			case "cafe-write-address":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.regular};
+					color: ${({ theme }) => theme.colors.gray};
+					font-weight: 400;
+					padding: 4px 0;
+				`;
 			default:
 				break;
 		}

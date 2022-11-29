@@ -1,5 +1,5 @@
 import { MainNav, MainFooter } from "../../components/main";
-import { MyPage } from "../../components/my_page";
+import { MyPage } from "../../components/myPage";
 import { Box, Image, Margin } from "../../common";
 import myPageBackground from "../../assets/images/mypage-background.png";
 import { Outlet } from "react-router-dom";

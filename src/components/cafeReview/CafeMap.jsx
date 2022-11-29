@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button, Box, Text, ThirdHeading } from "../../common";
+import { Button, Box, Text, Flex, Strong, Margin } from "../../common";
 
 const CafeMap = ({ searchPlace }) => {
 	const { kakao } = window;
@@ -61,37 +61,44 @@ const CafeMap = ({ searchPlace }) => {
 	}, [searchPlace]);
 
 	return (
-		<Box>
-			<Box
-				ref={mapContainer}
-				style={{
-					width: "500px",
-					height: "500px",
-				}}
-			></Box>
-			{Places.map((item, idx) => {
-				console.log("item =>", item);
-				return (
-					<Box id="result-list" key={item.id}>
-						<Box style={{ marginTop: "20px" }}>
-							<Text>{idx + 1}</Text>
-							<Box>
-								<ThirdHeading>{item.place_name}</ThirdHeading>
-								{item.road_address_name ? (
-									<Box>
-										<Text>{item.road_address_name}</Text>
-										<Text>{item.address_name}</Text>
-									</Box>
-								) : (
-									<Text>{item.address_name}</Text>
-								)}
-								<Text>{item.phone}</Text>
-							</Box>
-							<Button>선택</Button>
-						</Box>
-					</Box>
-				);
-			})}
+		<Box variant="cafe-review-map-item">
+			<Flex>
+				<Box ref={mapContainer} variant="cafe-review-map" />
+				<Box variant="cafe-review-map-content-wraper">
+					{Places.map((item, idx) => {
+						console.log("item =>", item);
+						return (
+							<Margin margin="10px">
+								<Box
+									id="result-list"
+									key={item.id}
+									variant="cafe-write-pick-info"
+								>
+									<Strong variant="cafe-write-address">
+										{item.place_name}
+									</Strong>
+									<Margin margin="10px 0 0 0">
+										{item.road_address_name ? (
+											<>
+												<Text variant="cafe-write-address">
+													{item.road_address_name}
+												</Text>
+												<Text variant="cafe-write-address">
+													{item.address_name}
+												</Text>
+											</>
+										) : (
+											<>
+												<Text>{item.address_name}</Text>
+											</>
+										)}
+									</Margin>
+								</Box>
+							</Margin>
+						);
+					})}
+				</Box>
+			</Flex>
 		</Box>
 	);
 };

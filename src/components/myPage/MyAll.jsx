@@ -1,16 +1,7 @@
-import {
-	Box,
-	Input,
-	Button,
-	Image,
-	Text,
-	Label,
-	Margin,
-	Flex,
-} from "../../common";
+import { Box, Image, Text, Margin, Flex } from "../../common";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEditProfileImage } from "../../querys/my_page";
+import { useEditProfileImage } from "../../querys/myPage";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
 import Spinner from "../../assets/icons/spinner.gif";
@@ -146,6 +137,46 @@ const MyAll = () => {
 						);
 					})}
 				</Flex>
+			</Box>
+			<Box>
+				<Margin margin="60px 0 10px 0">
+					<Box variant="guide">
+						<Text variant="title">좋아요 한 글 ❣️ </Text>
+						<Text
+							variant="add"
+							onClick={() => {
+								navigate(`/mypage/mylike`);
+							}}
+						>
+							더보기
+						</Text>
+					</Box>
+				</Margin>
+				<Box variant="guide">
+					{recentlyMyHeartBoardList?.map(item => {
+						return (
+							<Box key={item.boardId}>
+								<Box key={item.boardId}>
+									<Image
+										variant="mypage-post"
+										src={item.imageList[0].imageUrl}
+										alt={item.boardTitle}
+									></Image>
+									<Margin margin="8px auto 0 auto">
+										<Text
+											variant="all-title"
+											onClick={() => {
+												navigate(`/detail/post/${item.boardId}`);
+											}}
+										>
+											{item.boardTitle}
+										</Text>
+									</Margin>
+								</Box>
+							</Box>
+						);
+					})}
+				</Box>
 			</Box>
 			<Box>
 				<Margin margin="60px 0 10px 0">

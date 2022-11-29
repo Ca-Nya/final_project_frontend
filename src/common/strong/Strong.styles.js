@@ -28,6 +28,26 @@ export const Strong = styled.strong`
 						background-color: ${({ theme }) => theme.colors.main};
 						font-weight: 700;
 					`;
+				case "cafe-write-address-info":
+					return css`
+						display: inline-block;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						font-size: ${({ theme }) => theme.fontSizes.xl};
+						background-color: ${({ theme }) => theme.colors.main};
+						font-weight: 700;
+					`;
+				case "cafe-write-address":
+					return css`
+						display: inline-block;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						font-size: ${({ theme }) => theme.fontSizes.xl};
+						background-color: ${({ theme }) => theme.colors.main};
+						font-weight: 700;
+					`;
 				default:
 					break;
 			}
