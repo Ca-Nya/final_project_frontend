@@ -142,7 +142,7 @@ export const Text = styled.p`
 					width: 600px;
 					white-space: nowrap;
 					overflow: hidden;
-                    text-overflow: ellipsis;
+					text-overflow: ellipsis;
 				`;
 			case "comment-title":
 				return css`
@@ -189,7 +189,7 @@ export const Text = styled.p`
 					width: 500px;
 					white-space: nowrap;
 					overflow: hidden;
-                    text-overflow: ellipsis;
+					text-overflow: ellipsis;
 					white-space: normal;
 					line-height: 1.2;
 					max-height: 1.2;

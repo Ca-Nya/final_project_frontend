@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Box, ThirdHeading, Text } from "../../common";
+import { Box, Text, Flex, Strong } from "../../common";
 
 const CafeMap = ({ searchPlace }) => {
 	const { kakao } = window;
@@ -55,33 +55,46 @@ const CafeMap = ({ searchPlace }) => {
 	}, [searchPlace]);
 
 	return (
-		<Box>
+		<Box variant="detail-map">
 			<Box
 				ref={mapContainer}
 				style={{
-					width: "500px",
-					height: "500px",
+					width: "100%",
+					height: "450px",
 				}}
-			></Box>
+			/>
 			{Places.map(item => {
 				return (
-					<Box id="result-list" key={item.id}>
-						<Box style={{ marginTop: "20px" }}>
-							<Box>
-								<a href={item.place_url} target="_blank" rel="noreferrer">
-									<ThirdHeading>{item.place_name}</ThirdHeading>
-									{item.road_address_name ? (
-										<Box>
-											<Text>{item.road_address_name}</Text>
-											<Text>{item.address_name}</Text>
-										</Box>
-									) : (
-										<Text>{item.address_name}</Text>
-									)}
-								</a>
-								<a href={`tel:${item.phone}`}>{item.phone}</a>
+					<Box id="result-list" key={item.id} variant="detail-map-desc">
+						<Flex ai="center">
+							<Box variant="detail-map-desc-content">
+								<Box variant="detail-map-desc-address">
+									<a href={item.place_url} target="_blank" rel="noreferrer">
+										<Flex ai="center" gap="30px">
+											<Strong variant="cafe-write-address">
+												{item.place_name}
+											</Strong>
+											{item.road_address_name ? (
+												<Box variant="cafe-write-address">
+													<Flex fd="column" gap="5px">
+														<Text>{item.road_address_name}</Text>
+														<Text>{item.address_name}</Text>
+														<Text>{item.phone}</Text>
+													</Flex>
+												</Box>
+											) : (
+												<Box variant="cafe-write-address">
+													<Flex fd="column" gap="5px">
+														<Text>{item.address_name}</Text>
+														<Text>{item.phone}</Text>
+													</Flex>
+												</Box>
+											)}
+										</Flex>
+									</a>
+								</Box>
 							</Box>
-						</Box>
+						</Flex>
 					</Box>
 				);
 			})}

@@ -10,10 +10,8 @@ const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
-
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
-
 	//내가좋아요한 게시물 get요청
 	const {
 		data: myContent,
@@ -56,7 +54,7 @@ const MyAll = () => {
 				<Image src={Spinner} />
 			</Box>
 		);
-	if (isError) return <Box>에러</Box>;
+	if (isError) return <Box>에러입니다.</Box>;
 
 	return (
 		<Box>

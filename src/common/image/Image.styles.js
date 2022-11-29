@@ -18,8 +18,8 @@ export const Image = styled.img`
 				`;
 			case "detail-review":
 				return css`
-					width: 300px;
-					height: 300px;
+					width: 100%;
+					height: 100%;
 					object-fit: cover;
 					object-position: center;
 				`;
@@ -31,10 +31,10 @@ export const Image = styled.img`
 					object-fit: cover;
 					object-position: center;
 				`;
-			case "main-canya-pick-profile":
+			case "small-profile":
 				return css`
-					width: 37px;
-					height: 37px;
+					width: ${calcRem(37)};
+					height: ${calcRem(37)};
 					object-fit: cover;
 					object-position: center;
 					border-radius: 50%;

@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect } from "react";
-import { Box, Input, Button, Form } from "../../common";
+import { Box } from "../../common";
 import CommentEdit from "./CommentEdit";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
@@ -12,10 +11,10 @@ const CommentList = () => {
 		const response = await axios.get(`${BASE_URL}/get/comments`);
 		return response.data;
 	});
-	console.log("CommentList=>", data);
+	console.log("CommentList ===============>", data);
 	if (status === "error") {
 		return <div>error입니다.</div>;
-	};
+	}
 
 	return (
 		<Box>

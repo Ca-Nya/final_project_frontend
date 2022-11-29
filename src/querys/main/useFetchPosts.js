@@ -6,6 +6,7 @@ const fetchPosts = () => {
 	return getRequest({
 		method: "get",
 		url: "/board/main",
+		throwWhenError: true,
 	});
 };
 

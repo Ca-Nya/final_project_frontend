@@ -17,7 +17,7 @@ const MainCarousel = () => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
-		autoplaySpeed: 9500,
+		autoplaySpeed: 2000,
 		arrows: true,
 		pauseOnHover: true,
 		nextArrow: (
