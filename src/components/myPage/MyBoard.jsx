@@ -55,7 +55,7 @@ const MyBoard = () => {
 
 	return (
 		<Box>
-			<Margin margin="30px 3px 10px 3px">
+			<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
 				<Box variant="mypage-nav">
 					<Text variant="title">내가 쓴 글 ✍🏻</Text>
 				</Box>
@@ -66,71 +66,66 @@ const MyBoard = () => {
 					{data?.map(item => {
 						return (
 							<Box variant="board-box" key={item.boardId}>
-								<Margin margin="30px 3px 10px 3px">
-									<Box variant="guide">
-										<Flex>
-											<Image
-												variant="myboard-post"
-												src={item.imageList[0].imageUrl}
-												alt={item.boardTitle}
-											/>
-											<Box>
-												<Flex fd="column">
-													<Box variant="board-smaillbox">
-														<Margin margin="10px 0 0 25px">
-															<Text
-																variant="board-title"
-																onClick={() => {
-																	navigate(`/detail/post/${item.boardId}`);
-																}}
-															>
-																{item.boardTitle}
+								<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
+									<Flex jc="space-between">
+										<Image
+											variant="myboard-post"
+											src={item.imageList[0].imageUrl}
+											alt={item.boardTitle}
+										/>
+										<Box>
+											<Flex fd="column">
+												<Box variant="board-smaillbox">
+													<Margin margin="0.9vw 0 0 2.2vw">
+														<Text
+															variant="board-title"
+															onClick={() => {
+																navigate(`/detail/post/${item.boardId}`);
+															}}
+														>
+															{item.boardTitle}
+														</Text>
+														<Margin margin="1.8vw 0 0 0.4vw">
+															<Text variant="board-content">
+																{item.boardContent}
 															</Text>
-															<Margin margin="20px 0 0 5px">
-																<Text variant="board-content">
-																	{item.boardContent}
-																</Text>
-															</Margin>
 														</Margin>
-													</Box>
-													<Margin margin="10px 0 5px 25px">
-														<Box variant="board-inbox">
-															<Flex jc="space-between">
-																<Text variant="comment-date">
-																	{item.createdAt}
-																</Text>
-
-																<Box variant="board-minibutton">
-																	<Flex gap="10px">
-																		<Button
-																			variant="mypage"
-																			onClick={handleEditPost(item)}
-																		>
-																			수정
-																			<Image
-																				variant="profile-edit"
-																				src={Edit}
-																			/>
-																		</Button>
-																		<Button
-																			variant="mypage"
-																			onClick={handelDeletePost(item)}
-																		>
-																			삭제
-																			<Image
-																				variant="profile-edit"
-																				src={Delete}
-																			/>
-																		</Button>
-																	</Flex>
-																</Box>
-															</Flex>
-														</Box>
 													</Margin>
-												</Flex>
-											</Box>
-										</Flex>
-									</Box>
+												</Box>
+												<Margin margin="0.9vw 0 0.4vw 2.2vw">
+													<Box variant="board-inbox">
+														<Flex jc="space-between">
+															<Text variant="comment-date">
+																{item.createdAt}
+															</Text>
+
+															<Box variant="board-minibutton">
+																<Flex gap="0.9vw">
+																	<Button
+																		variant="mypage"
+																		onClick={handleEditPost(item)}
+																	>
+																		수정
+																		<Image variant="profile-edit" src={Edit} />
+																	</Button>
+																	<Button
+																		variant="mypage"
+																		onClick={handelDeletePost(item)}
+																	>
+																		삭제
+																		<Image
+																			variant="profile-edit"
+																			src={Delete}
+																		/>
+																	</Button>
+																</Flex>
+															</Box>
+														</Flex>
+													</Box>
+												</Margin>
+											</Flex>
+										</Box>
+									</Flex>
 								</Margin>
 
 								{/* {item.commentContent && item.commentContent ? (

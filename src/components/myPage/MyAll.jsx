@@ -59,7 +59,7 @@ const MyAll = () => {
 	return (
 		<Box variant="mypage-category">
 			<Box>
-				<Margin margin="30px 3px 10px 3px">
+				<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
 					<Box variant="guide">
 						<Text variant="title">내가 쓴 글 ✍🏻</Text>
 						<Text
@@ -72,7 +72,7 @@ const MyAll = () => {
 						</Text>
 					</Box>
 				</Margin>
-				<Flex jc="space-between" style={{ border: "1px solid black" }}>
+				<Flex jc="space-between">
 					{recentlyMyBoardList?.map(item => {
 						return (
 							<Box key={item.boardId}>
@@ -97,7 +97,7 @@ const MyAll = () => {
 				</Flex>
 			</Box>
 			<Box>
-				<Margin margin="60px 0 10px 0">
+				<Margin margin="5.3vw 0 0.9vw 0">
 					<Box variant="guide">
 						<Text variant="title">좋아요 한 글 ❣️ </Text>
 						<Text
@@ -110,7 +110,7 @@ const MyAll = () => {
 						</Text>
 					</Box>
 				</Margin>
-				<Flex jc="space-between" style={{ border: "1px solid black" }}>
+				<Flex jc="space-between">
 					{recentlyMyHeartBoardList?.map(item => {
 						return (
 							<Box key={item.boardId}>
