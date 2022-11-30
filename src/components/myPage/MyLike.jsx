@@ -22,8 +22,8 @@ const MyLike = () => {
 
 	//로컬스토리지 닉네임가져오기
 	const nickname = localStorage.getItem("Nickname");
-	
-	const [page,setPage] = useState(0);
+
+	const [page, setPage] = useState(0);
 
 	//내가좋아요한 게시물 get요청
 	const { data, status } = useQuery(
@@ -46,16 +46,16 @@ const MyLike = () => {
 		},
 	);
 	console.log("MyLike=>", data);
-	
-	// const target = useRef(null); 
+
+	// const target = useRef(null);
 
 	// useEffect(()=>{
 	// 	const observer = new IntersectionObserver();
 	// },[])
-	
+
 	return (
 		<Box>
-			<Margin margin="30px 3px 10px 3px">
+			<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
 				<Box variant="mypage-nav">
 					<Text variant="title">좋아요 한 글 ❣️ </Text>
 				</Box>
@@ -65,7 +65,7 @@ const MyLike = () => {
 					{data?.map(item => {
 						return (
 							<Box variant="board-box" key={item.boardId}>
-								<Margin margin="30px 3px 10px 3px">
+								<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
 									<Box variant="guide">
 										<Flex>
 											<Image
@@ -76,7 +76,7 @@ const MyLike = () => {
 											<Box>
 												<Flex fd="column">
 													<Box variant="board-smaillbox">
-														<Margin margin="10px 0 0 25px">
+														<Margin margin="0.9vw 0 0 2.2vw">
 															<Text
 																variant="board-title"
 																onClick={() => {
@@ -85,22 +85,28 @@ const MyLike = () => {
 															>
 																{item.boardTitle}
 															</Text>
-															<Margin margin="20px 0 0 5px">
+															<Margin margin="1.8vw 0 0 0.4vw">
 																<Text variant="board-content">
 																	{item.boardContent}
 																</Text>
 															</Margin>
 														</Margin>
 													</Box>
-													<Margin margin="10px 0 5px 490px">
+													<Margin margin="0.9vw 0 0 2.2vw">
 														<Box variant="board-inbox">
-															<Flex gap="20px">
-																<Text variant="comment-date">
-																	{item.createdAt}
-																</Text>
-																<Text>💬 {item.commentCount}</Text>
-																<Text>⭐️ {item.totalRating}</Text>
-																<Text>❤️ {item.heartCount}</Text>
+															<Flex gap="1.8vw" jc="space-between">
+																<Box>
+																	<Text variant="comment-date">
+																		{item.boardCreatedAt}
+																	</Text>
+																</Box>
+																<Box>
+																	<Flex gap="1.8vw">
+																		<Text>💬 {item.commentCount}</Text>
+																		<Text>⭐️ {item.totalRating}</Text>
+																		<Text>❤️ {item.heartCount}</Text>
+																	</Flex>
+																</Box>
 															</Flex>
 														</Box>
 													</Margin>

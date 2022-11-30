@@ -99,8 +99,10 @@ export const Image = styled.img`
 				`;
 			case "myboard-post":
 				return css`
-					width: ${calcRem(168)};
-					height: ${calcRem(168)};
+					width: 14.8vw;
+					height: 14.8vw;
+					max-width: ${calcRem(168)};
+					max-height: ${calcRem(168)};
 					border-radius: 5%;
 				`;
 			case "mini-edit":
