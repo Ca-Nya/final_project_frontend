@@ -35,7 +35,7 @@ export const Section = styled.section`
 				/* 로그인 페이지 */
 				case "sign-in":
 					return css`
-						width: 100%;
+						width: 100vw;
 						height: 100vh;
 						display: flex;
 						position: relative;
@@ -43,17 +43,19 @@ export const Section = styled.section`
 						background-repeat: no-repeat;
 						background-size: cover;
 						background-position: center center;
+						overflow: hidden;
 					`;
 				case "sign-up":
 					return css`
-						width: 100%;
+						width: 100vw;
 						height: 100vh;
 						display: flex;
 						position: relative;
 						background-image: url(${signUpBackground});
 						background-repeat: no-repeat;
-						background-size: 83.5vw;
+						background-size: 50vw 100vh;
 						background-position: left;
+						overflow: hidden;
 					`;
 				default:
 					break;
