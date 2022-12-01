@@ -127,12 +127,12 @@ const MyPage = () => {
 					<Flex gap="0.1vw" fd="column" ai="center">
 						<Margin margin="10% 0 0 70%">
 							<Box>
-								<Label htmlFor="imageChange">
+								<Label htmlFor="imageChange" variant="profile">
 									<Image
 										variant="profile-edit"
 										src={Edit}
-										title="프로필이미지 편집"
 									/>
+									<span>프로필이미지 편집</span>
 								</Label>
 								<Input
 									id="imageChange"
@@ -145,7 +145,7 @@ const MyPage = () => {
 						</Margin>
 						<Image
 							src={memberProfileImage}
-							alt={memberProfileImage}
+							alt={"프로필 이미지"}
 							variant="mypage-profile"
 						/>
 						<Box variant="pofile-namebox">

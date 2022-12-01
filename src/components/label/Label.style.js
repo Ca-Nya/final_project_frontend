@@ -20,6 +20,32 @@ export const Label = styled.label`
 						border-radius: 5px;
 						cursor: pointer;
 					`;
+				/* 마이페이지 */
+				case "profile":
+					return css`
+						position: relative;
+						:hover > span {
+							opacity: 1;
+							width: ${calcRem(120)};
+							height: ${calcRem(30)};
+						}
+						span {
+							transition: all 0.5s;
+							opacity: 0;
+							position: absolute;
+							bottom: 30px;
+							left: 20px;
+							width: 0;
+							height: 0;
+							display: block;
+							background-color: ${({ theme }) => theme.colors.main_purple};
+							text-align: center;
+							line-height: 30px;
+							border-radius: 5px;
+							color: ${({ theme }) => theme.colors.white};
+							font-size: ${({ theme }) => theme.fontSizes.base};
+						}
+					`;
 				default:
 					break;
 			}
