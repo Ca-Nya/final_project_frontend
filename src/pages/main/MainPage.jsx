@@ -1,5 +1,5 @@
-import { Box, Main } from "../../common";
-import { MainCarousel, MainList, MainNavButtons } from "../../components/main";
+import { Box, Main } from "../../components";
+import { MainCarousel, MainList, MainNavButtons } from "../../container/main";
 
 function MainPage() {
 	return (

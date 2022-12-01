@@ -1,11 +1,5 @@
-import { Box, Margin } from "../../common";
-import {
-	MainNav,
-	MainCarousel,
-	MainNavButtons,
-	MainList,
-	MainFooter,
-} from "../../components/main";
+import { Box, Margin } from "../../components";
+import { MainNav, MainFooter } from "../../container/main";
 import { useFetchSearchList } from "../../querys/list";
 import { Fragment, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";

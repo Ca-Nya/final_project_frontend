@@ -1,4 +1,4 @@
-import { Box } from "../../common";
+import { Box } from "../../components";
 import { Outlet } from "react-router-dom";
 
 const LikedByFieldsLayout = () => {
