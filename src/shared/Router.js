@@ -8,8 +8,8 @@ import CafeReviewPage from "../pages/cafeReview";
 import DetailPage from "../pages/detail";
 import { SignInPage, SignUpPage } from "../pages/join";
 import { DetailPost, DetailEditPost } from "../components/detail";
-import { LikedByFields } from "../components/likedByFields";
-import { LikedByOveralls } from "../components/likedByOveralls";
+import LikedByFieldList from "../components/likedByFieldList";
+import LikedByOverallList from "../components/likedByOverallList";
 import { MyBoard, MyComment, MyLike, MyAll } from "../components/myPage";
 
 const Router = () => {
@@ -25,10 +25,10 @@ const Router = () => {
 							<Route path="edit/:id" element={<DetailEditPost />} />
 						</Route>
 						<Route path="/overalls" element={<LikedByOverallsLayout />}>
-							<Route path=":category" element={<LikedByOveralls />} />
+							<Route path=":category" element={<LikedByOverallList />} />
 						</Route>
 						<Route path="/fields" element={<LikedByFieldsLayout />}>
-							<Route path=":category" element={<LikedByFields />} />
+							<Route path=":category" element={<LikedByFieldList />} />
 						</Route>
 					</Route>
 					<Route path="/join" element={<SignInPage />} />
