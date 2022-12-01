@@ -22,7 +22,7 @@ const MyPage = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
-	
+
 	//mypage category outlet useMatch
 	const myLikeMatch = useMatch("/mypage/mylike");
 	const myBoardMatch = useMatch("/mypage/myboard");
@@ -121,21 +121,19 @@ const MyPage = () => {
 	if (isError) return <Box>에러</Box>;
 
 	return (
-		<Box>
+		<Box variant="container-2">
 			<Flex>
-				<Margin margin="0 0 0 0">
-					<Box variant="pofile">
-						<Flex gap="1px" fd="column" ai="center">
+				<Box variant="pofile">
+					<Flex gap="0.1vw" fd="column" ai="center">
+						<Margin margin="10% 0 0 70%">
 							<Box>
-								<Margin margin="16px 16px 0 206px">
-									<Label htmlFor="imageChange">
-										<Image
-											variant="profile-edit"
-											src={Edit}
-											title="프로필이미지 편집"
-										/>
-									</Label>
-								</Margin>
+								<Label htmlFor="imageChange">
+									<Image
+										variant="profile-edit"
+										src={Edit}
+										title="프로필이미지 편집"
+									/>
+								</Label>
 								<Input
 									id="imageChange"
 									variant="profile-edit"
@@ -143,61 +141,84 @@ const MyPage = () => {
 									accept="image/*"
 									onChange={handleChangeProfileImage}
 								/>
-
-								<Margin margin="11px 60px 0 60px">
-									<Image
-										src={memberProfileImage}
-										alt={memberProfileImage}
-										variant="mypage-profile"
-									/>
-								</Margin>
 							</Box>
-							<Margin margin="16px 60px 10px 60px">
-								<Text variant="join">{nickname}</Text>
-							</Margin>
-							<Box>
-								<Flex gap="15px">
-									<Box variant="level">
-										<Margin margin="4px 0 0 18px">
-											<Text variant="level">Lv</Text>
-										</Margin>
-									</Box>
-									<Margin margin="4px 0 20px 0">
-										<Text>톨 💛</Text>
-									</Margin>
-								</Flex>
-							</Box>
-							<hr size="1" width="202px" color="#EAEAEA"></hr>
-							<Box>
-								<Margin margin="20px 0 0 0">
-									<Flex gap="20px">
-										<Image src={Write} />
-										<Image src={Heart} />
-										<Image src={Comment} />
+						</Margin>
+						<Image
+							src={memberProfileImage}
+							alt={memberProfileImage}
+							variant="mypage-profile"
+						/>
+						<Box variant="pofile-namebox">
+							<Flex jc="center" gap="5%">
+								<Margin margin="8%">
+									<Flex jc="center">
+										<Text variant="join">{nickname}</Text>
 									</Flex>
+									<Margin margin="10%">
+										<Box>
+											<Flex gap="5%" ai="center" jc="center">
+												<Text variant="level">Lv</Text>
+												<Text variant="level-name">톨 💛</Text>
+											</Flex>
+										</Box>
+									</Margin>
 								</Margin>
-							</Box>
-							<Margin margin="0 0 5px 3px">
-								<Flex gap="11px">
-									<Text variant="profile-base">내가쓴글</Text>
-									<Text variant="profile-base">좋아요</Text>
-									<Text variant="profile-base">작성댓글</Text>
+							</Flex>
+						</Box>
+
+						<Margin margin="10% 0 0 0">
+							<Box variant="category-box">
+								<Flex gap="10%" jc="center">
+									<Image variant="mypage-icon" src={Write} />
+									<Image variant="mypage-icon" src={Heart} />
+									<Image variant="mypage-icon" src={Comment} />
 								</Flex>
+							</Box>
+							<Margin margin="2% 2% 0 0">
+								<Box variant="category-title-box">
+									<Flex jc="center" gap="7%">
+										<Text
+											variant="profile-base"
+											onClick={() => {
+												navigate("myboard");
+											}}
+										>
+											내가쓴글
+										</Text>
+										<Text
+											variant="profile-base"
+											onClick={() => {
+												navigate("mylike");
+											}}
+										>
+											좋아요
+										</Text>
+										<Text
+											variant="profile-base"
+											onClick={() => {
+												navigate("mycomment");
+											}}
+										>
+											작성댓글
+										</Text>
+									</Flex>
+								</Box>
 							</Margin>
-							<Margin margin="10px 5px 0 5px">
-								<Flex gap="40px">
+						</Margin>
+						<Margin margin="6% 0 0 0">
+							<Box variant="category-title-box">
+								<Flex gap="18%" jc="center">
 									<Text variant="join">{memberBoardCount}</Text>
 									<Text variant="join">{memberHeartCount}</Text>
 									<Text variant="join">{memberCommentCount}</Text>
 								</Flex>
-							</Margin>
-						</Flex>
-					</Box>
-				</Margin>
-
-				<Margin margin="8px 0 0 40px">
+							</Box>
+						</Margin>
+					</Flex>
+				</Box>
+				<Margin margin="2% 0 0 4vw">
 					<Box variant="mypage-nav">
-						<Flex gap="40px">
+						<Flex gap="4%">
 							<Text
 								variant="button"
 								onClick={() => {
@@ -208,7 +229,7 @@ const MyPage = () => {
 								모두보기
 							</Text>
 							<Box>
-								<Flex jc="center" gap="2px">
+								<Flex jc="center" gap="0.2vw">
 									<Text
 										variant="button"
 										onClick={() => {
@@ -219,7 +240,7 @@ const MyPage = () => {
 										내가쓴글
 									</Text>
 									<Box variant="guide-point" isActive={myBoardMatch !== null}>
-										<Margin margin="1px 0 0 0">
+										<Margin margin="0.1vw 0 0 0">
 											<Text
 												variant="button-count"
 												isActive={myBoardMatch !== null}
@@ -231,7 +252,7 @@ const MyPage = () => {
 								</Flex>
 							</Box>
 							<Box>
-								<Flex jc="center" gap="2px">
+								<Flex jc="center" gap="0.2vw">
 									<Text
 										variant="button"
 										onClick={() => {
@@ -242,7 +263,7 @@ const MyPage = () => {
 										좋아요한글
 									</Text>
 									<Box variant="guide-point" isActive={myLikeMatch !== null}>
-										<Margin margin="1px 0 0 0">
+										<Margin margin="0.1vw 0 0 0">
 											<Text
 												variant="button-count"
 												isActive={myLikeMatch !== null}
@@ -254,7 +275,7 @@ const MyPage = () => {
 								</Flex>
 							</Box>
 							<Box>
-								<Flex jc="center" gap="2px">
+								<Flex jc="center" gap="0.2vw">
 									<Text
 										variant="button"
 										onClick={() => {
@@ -265,7 +286,7 @@ const MyPage = () => {
 										작성댓글
 									</Text>
 									<Box variant="guide-point" isActive={myCommentMatch !== null}>
-										<Margin margin="1px 0 0 0">
+										<Margin margin="0.1vw0 0 0">
 											<Text
 												variant="button-count"
 												isActive={myCommentMatch !== null}

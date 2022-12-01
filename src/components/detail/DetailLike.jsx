@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
-	console.log("isLike =>", isLike);
+	console.log("isLike ================>", isLike);
 	const navigate = useNavigate();
 
 	//로컬스토리지 토큰가져오기
@@ -43,7 +43,6 @@ const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
 				console.log(data);
 				if (data === "좋아요 생성 완료.") {
 					detailpostRefetch();
-					alert("좋아요❤️");
 				} else {
 					detailpostRefetch();
 					// alert("좋아요 취소🥹");
@@ -73,16 +72,18 @@ const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
 			setLike(boardId);
 		} else {
 			alert("로그인 후 좋아요해주세요!");
-			navigate("/join");
+			// 소희님께 말씀드리기
+			// navigate("/join");
 		}
 	};
 
 	return (
 		<Box>
 			<Box variant="detail-heart">
-				<FaHeart className={isLike ? "liked" : ""} size="20" />
+				<Button onClick={handleLike}>
+					<FaHeart className={isLike ? "liked" : ""} size="33" />
+				</Button>
 			</Box>
-			<Button onClick={handleLike}>좋아요</Button>
 		</Box>
 	);
 };

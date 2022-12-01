@@ -24,6 +24,45 @@ export const DataList = styled.dl`
 					font-weight: 600;
 					color: ${({ theme }) => theme.colors.dark_gray};
 				`;
+			case "small-date":
+				return css`
+					width: 22%;
+					text-align: end;
+					color: ${({ theme }) => theme.colors.gray};
+					font-weight: 600;
+					letter-spacing: 0.02em;
+				`;
+			case "detail-rating":
+				return css`
+					height: ${calcRem(90)};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					background-color: ${({ theme }) => theme.colors.main};
+					font-size: ${({ theme }) => theme.fontSizes.xxl};
+					font-weight: 700;
+					letter-spacing: 0.02em;
+				`;
+			case "detail-heart-count":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					font-weight: 600;
+				`;
+			/* 글쓰기 페이지 댓글 */
+			case "comment-count":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					font-weight: 700;
+					font-weight: 600;
+					letter-spacing: 0.02em;
+				`;
+			case "comment-date":
+				return css`
+					width: 100%;
+					text-align: end;
+					color: ${({ theme }) => theme.colors.gray};
+					font-weight: 600;
+					letter-spacing: 0.02em;
+				`;
 			default:
 				break;
 		}
@@ -117,6 +156,14 @@ export const DataDesc = styled.dd`
 					font-size: ${({ theme }) => theme.fontSizes.regular};
 					color: ${({ theme }) => theme.colors.gray};
 				`;
+			/* 상세 페이지 */
+			case "small-profile":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.regular};
+					font-weight: 600;
+					letter-spacing: 0.02em;
+				`;
+
 			default:
 				break;
 		}

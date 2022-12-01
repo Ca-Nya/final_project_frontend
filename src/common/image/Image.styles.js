@@ -18,8 +18,8 @@ export const Image = styled.img`
 				`;
 			case "detail-review":
 				return css`
-					width: 300px;
-					height: 300px;
+					width: 100%;
+					height: 100%;
 					object-fit: cover;
 					object-position: center;
 				`;
@@ -31,10 +31,10 @@ export const Image = styled.img`
 					object-fit: cover;
 					object-position: center;
 				`;
-			case "main-canya-pick-profile":
+			case "small-profile":
 				return css`
-					width: 37px;
-					height: 37px;
+					width: ${calcRem(37)};
+					height: ${calcRem(37)};
 					object-fit: cover;
 					object-position: center;
 					border-radius: 50%;
@@ -56,8 +56,10 @@ export const Image = styled.img`
 			/* 마이 페이지 */
 			case "mypage-profile":
 				return css`
-					width: 128px;
-					height: 128px;
+					width: 11.3vw;
+					height: 11.3vw;
+					max-width: ${calcRem(128)};
+					max-height: ${calcRem(128)};
 					border-radius: 50%;
 					border: 5px solid #f6cd3c;
 					object-fit: cover;
@@ -65,9 +67,20 @@ export const Image = styled.img`
 				`;
 			case "mypage-post":
 				return css`
-					width: ${calcRem(266)};
-					height: ${calcRem(266)};
+					width: 23.5vw;
+					height: 23.5vw;
+					max-width: ${calcRem(266)};
+					max-height: ${calcRem(266)};
 					border-radius: 5%;
+				`;
+			case "mypage-icon":
+				return css`
+					width: 2vw;
+					height: 2vw;
+					max-width: ${calcRem(38)};
+					max-height: ${calcRem(38)};
+					min-width: ${calcRem(25)};
+					min-height: ${calcRem(25)};
 				`;
 			case "mypage":
 				return css`
@@ -86,8 +99,10 @@ export const Image = styled.img`
 				`;
 			case "myboard-post":
 				return css`
-					width: ${calcRem(168)};
-					height: ${calcRem(168)};
+					width: 14.8vw;
+					height: 14.8vw;
+					max-width: ${calcRem(168)};
+					max-height: ${calcRem(168)};
 					border-radius: 5%;
 				`;
 			case "mini-edit":
@@ -113,6 +128,15 @@ export const Image = styled.img`
 					position: absolute;
 					top: -11px;
 					left: -30px;
+				`;
+			/* 상세 페이지 댓글 */
+			case "comment-profile":
+				return css`
+					max-width: ${calcRem(70)};
+					height: ${calcRem(70)};
+					object-fit: cover;
+					object-position: center;
+					border-radius: 50%;
 				`;
 			default:
 				break;

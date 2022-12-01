@@ -11,11 +11,18 @@ export const Box = styled.div`
 				/* 공통 */
 				case "container":
 					return css`
-						width: 100%;
+						width: 100vw;
 						max-width: ${calcRem(1136)} !important;
 						margin: 0 auto;
-						padding: 0 40px;
+						padding: 0 3.5vw;
 						/* background-color: #eceaeade; */
+					`;
+				case "container-2":
+					return css`
+						width: 100vw;
+						max-width: ${calcRem(1136)} !important;
+						margin: 0 auto;
+						border: 1px solid blue;
 					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
@@ -208,14 +215,17 @@ export const Box = styled.div`
 					`;
 				case "main-best-item-wraper":
 					return css`
+						width: 100%;
 						overflow: hidden;
 						border-radius: 5px;
 						cursor: pointer;
 					`;
 				case "main-best-item":
 					return css`
-						width: ${calcRem(556)};
+						width: 100%;
+						max-width: ${calcRem(556)};
 						height: ${calcRem(230)};
+						padding: 30px;
 						background-image: linear-gradient(
 								rgba(0, 0, 0, 0.03),
 								rgba(0, 0, 0, 0.4)
@@ -312,15 +322,22 @@ export const Box = styled.div`
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`
-						width: 557px;
-						height: 700px;
+						width: 49vw;
+						height: 61.6vh;
+						max-width: ${calcRem(557)};
+						max-height: ${calcRem(700)};
 						position: absolute;
-						top: 163px;
-						left: 1103px;
+						top: 20%;
+						right: 10%;
 						background-color: ${({ theme }) => theme.colors.white};
 						border-radius: 5px;
 						align-items: center;
 						/* margin: 163px 240px 217px 1103px;				 */
+					`;
+				case "join-text":
+					return css`
+						width: 49vw;
+						max-width: ${calcRem(557)};
 					`;
 				case "join-info":
 					return css`
@@ -336,27 +353,57 @@ export const Box = styled.div`
 				/* 마이페이지 */
 				case "pofile":
 					return css`
-						width: ${calcRem(245)};
+						width: 21.6vw;
+						max-width: ${calcRem(245)};
 						height: ${calcRem(472)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
 					`;
+				case "pofile-namebox":
+					return css`
+						width: 20vw;
+						max-width: ${calcRem(200)};
+						height: ${calcRem(112)};
+						background-color: ${({ theme }) => theme.colors.white};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
 				case "level":
 					return css`
-						width: ${calcRem(50)};
+						width: 4.5vw;
+						max-width: ${calcRem(50)};
 						height: ${calcRem(25)};
 						background-color: #f6cd3c;
 						border-radius: 50px;
+						text-align: center;
+						position: relative;
+					`;
+				case "category-box":
+					return css`
+						width: 20vw;
+						max-width: ${calcRem(200)};
+					`;
+				case "category-title-box":
+					return css`
+						width: 18vw;
+						max-width: ${calcRem(200)};
 					`;
 				case "mypage-nav":
 					return css`
-						width: ${calcRem(846)};
+						width: 74.5vw;
+						max-width: ${calcRem(846)};
 						height: ${calcRem(30)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding-bottom: 40px;
 						padding-left: 10px;
+						border: 1px solid black;
+					`;
+				case "mypage-category":
+					return css`
+						width: 74.5vw;
+						max-width: ${calcRem(846)};
+						border: 1px solid ${({ theme }) => theme.colors.black};
 					`;
 				case "guide":
 					return css`
@@ -378,28 +425,34 @@ export const Box = styled.div`
 					`;
 				case "comment-box":
 					return css`
-						width: ${calcRem(846)};
+						width: 74.5vw;
+						max-width: ${calcRem(846)};
 						height: ${calcRem(105)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
+						justify-content: center;
+						align-items: center;
 					`;
 				case "board-box":
 					return css`
-						width: ${calcRem(846)};
+						width: 74.5vw;
+						max-width: ${calcRem(846)};
 						height: ${calcRem(198)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
-						border-radius: 5px;
+						/* border-radius: 5px; */
 					`;
 				case "board-inbox":
 					return css`
-						width: ${calcRem(639)};
+						width: 56.3vw;
+						max-width: ${calcRem(639)};
 						height: ${calcRem(27)};
 					`;
 				case "board-smaillbox":
 					return css`
-						width: ${calcRem(556)};
+						width: 48.9vw;
+						max-width: ${calcRem(556)};
 						height: ${calcRem(121)};
 					`;
 				case "board-minibutton":
@@ -457,6 +510,7 @@ export const Box = styled.div`
 					return css`
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						border-radius: 5px;
 					`;
 				case "cafe-review-map":
 					return css`
@@ -494,10 +548,133 @@ export const Box = styled.div`
 							top: 2px;
 						}
 					`;
+				/* 상세 페이지 */
+				case "detail-container":
+					return css`
+						padding: 0 0 30px 0;
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
+				case "detail-info":
+					return css`
+						padding: 23px 0;
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
+
+				case "detail-content":
+					return css`
+						padding: 50px 0 60px 0;
+					`;
+				case "detail-content-image-wraper":
+					return css`
+						width: 45%;
+						max-width: ${calcRem(460)};
+						height: ${calcRem(460)};
+						overflow: hidden;
+						border-radius: 5px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+					`;
+				case "detail-content-desc":
+					return css`
+						width: 55%;
+						max-width: ${calcRem(652)};
+						height: ${calcRem(460)};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 30px;
+						border-radius: 5px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						font-size: ${({ theme }) => theme.fontSizes.xl};
+						line-height: 1.2;
+						letter-spacing: 0.01rem;
+						overflow: scroll;
+						::-webkit-scrollbar {
+							display: none;
+						}
+					`;
+				case "cafe-detail-rating":
+					return css`
+						width: ${calcRem(282)};
+						& svg {
+							color: #c4c4c4;
+							cursor: pointer;
+						}
+						.active {
+							color: #fdd237;
+						}
+					`;
+				case "detail-map":
+					return css`
+						border-radius: 5px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						overflow: hidden;
+					`;
+				case "detail-map-desc":
+					return css`
+						width: 100%;
+						height: ${calcRem(100)};
+						background-color: ${({ theme }) => theme.colors.white};
+						padding: 20px 40px;
+						position: relative;
+					`;
+				case "detail-map-desc-content":
+					return css`
+						&::before {
+							content: "";
+							background-image: url(${location});
+							background-position: center center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							width: 6%;
+							max-width: ${calcRem(19)};
+							height: ${calcRem(25)};
+							display: inline-block;
+							position: absolute;
+							top: 36px;
+						}
+					`;
+				case "detail-map-desc-address":
+					return css`
+						padding: 0 0 0 24px;
+					`;
+				case "cafe-write-address":
+					return css`
+						color: ${({ theme }) => theme.colors.dark_gray};
+					`;
+				/* 상세페이지 댓글 */
+				case "comment-wrap":
+					return css``;
+				case "comment-item-wrap":
+					return css`
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 0 18px;
+					`;
+				case "comment-user-info":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(750)};
+						height: ${calcRem(80)};
+					`;
+				case "comment-info":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(150)};
+						height: ${calcRem(80)};
+					`;
+				case "comment-input-wrap":
+					return css`
+						width: 100%;
+						height: ${calcRem(190)};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						border-radius: 5px;
+						padding: 25px;
+						&:focus {
+							border: 1px solid ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
 				default:
 					break;
 			}
 		}}
 	}
 `;
-

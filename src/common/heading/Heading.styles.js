@@ -46,9 +46,14 @@ export const SecondHeading = styled.h2`
 				case "main-best-item":
 					return css`
 						font-weight: 700;
+						width: 100%;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
 						color: ${({ theme }) => theme.colors.white};
 						font-size: ${({ theme }) => theme.fontSizes.xxl};
 						letter-spacing: 0.1rem;
+						text-align: center;
 					`;
 				case "main-new-address":
 					return css`
@@ -81,7 +86,7 @@ export const SecondHeading = styled.h2`
 							left: -3px;
 						}
 					`;
-				/* 글쓰기 페이지 */
+				/* 글쓰기 페이지 / 상세 페이지 */
 				case "title":
 					return css`
 						display: inline-block;
@@ -91,7 +96,14 @@ export const SecondHeading = styled.h2`
 						font-size: ${({ theme }) => theme.fontSizes.xxl};
 						font-weight: 600;
 						width: 100%;
-						letter-spacing: 0.1rem;
+						letter-spacing: 0.03rem;
+					`;
+				/* 글쓰기 페이지 댓글 */
+				case "comment-user-nickname":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						font-weight: 700;
+						letter-spacing: 0.03rem;
 					`;
 				default:
 					break;

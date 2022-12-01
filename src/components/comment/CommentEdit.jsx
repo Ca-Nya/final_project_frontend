@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react";
-import { Box, Input, Button, Form } from "../../common";
 import {
-	QueryClient,
-	useMutation,
-	useQueryClient,
-	useQuery,
-} from "@tanstack/react-query";
+	Box,
+	Input,
+	Button,
+	Image,
+	DataList,
+	DataTerm,
+	DataDesc,
+	Text,
+	Hidden,
+	SecondHeading,
+	Flex,
+	Margin,
+} from "../../common";
+import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
@@ -42,10 +50,10 @@ const CommentEdit = ({ item }) => {
 			return response;
 		},
 		{
-			onSuccess: ({ status,data }) => {
+			onSuccess: ({ status, data }) => {
 				if (status === "200") {
-					console.log("data =>", data)				
-					console.log("status =>", status)
+					console.log("data =>", data);
+					console.log("status =>", status);
 					// queryClient.invalidateQueries("getComments");
 					// alert(data);
 				}
@@ -76,22 +84,24 @@ const CommentEdit = ({ item }) => {
 		console.log("editComment=>", editComment);
 		if (editComment === "") {
 			alert("댓글을 수정해주세요!");
-		} 
-		else {
-			editMutation({
-				commentId: item.commentId,
-				commentContent: editComment,
-			}, {
-				onError: (error, variables, context) => {
-					console.log("error => ", error)
+		} else {
+			editMutation(
+				{
+					commentId: item.commentId,
+					commentContent: editComment,
 				},
-				onSuccess: (data, variables, context) => {					
-					queryClient.invalidateQueries("getComments");
-					alert(data.data);
-				}
-			});			
+				{
+					onError: (error, variables, context) => {
+						console.log("error => ", error);
+					},
+					onSuccess: (data, variables, context) => {
+						queryClient.invalidateQueries("getComments");
+						alert(data.data);
+					},
+				},
+			);
 		}
-		setEdit(false);		
+		setEdit(false);
 	};
 
 	//댓글 삭제하기 쿼리요청
@@ -107,7 +117,7 @@ const CommentEdit = ({ item }) => {
 	};
 
 	return (
-		<Box>
+		<Box variant="comment-item-wrap">
 			{item.memberNickname === nickname ? (
 				<Box>
 					{edit ? (
@@ -123,24 +133,60 @@ const CommentEdit = ({ item }) => {
 						</Box>
 					) : (
 						<>
-							<p>
-								{item.memberNickname}님: {item.commentContent}
-							</p>
-							<Button
-								onClick={() => {
-									setEdit(!edit);
-								}}
-							>
-								수정
-							</Button>
-							<Button onClick={handleRemove}>삭제</Button>
+							<Margin margin="10px 0">
+								<Flex gap="17px">
+									<Image
+										src={item.memberProfileImage}
+										alt="유저 프로필"
+										variant="comment-profile"
+									/>
+									<Box variant="comment-user-info">
+										<Flex fd="column" jc="center" gap="7px">
+											<SecondHeading variant="comment-user-nickname">
+												{item.memberNickname}
+											</SecondHeading>
+											<Text variant="comment-user-content">
+												{item.commentContent}
+											</Text>
+										</Flex>
+									</Box>
+									<Box variant="comment-info">
+										<Flex fd="column" jc="center" ai="flex-end" gap="10px">
+											<DataList variant="comment-date">
+												<Hidden>
+													<DataTerm>작성일</DataTerm>
+												</Hidden>
+												<DataDesc>{item.date}</DataDesc>
+											</DataList>
+											<Box>
+												<Flex jc="flex-end" gap="30px">
+													<Button
+														onClick={() => {
+															setEdit(!edit);
+														}}
+														variant="comment-edit"
+													>
+														수정
+													</Button>
+													<Button
+														onClick={handleRemove}
+														variant="comment-delete"
+													>
+														삭제
+													</Button>
+												</Flex>
+											</Box>
+										</Flex>
+									</Box>
+								</Flex>
+							</Margin>
 						</>
 					)}
 				</Box>
 			) : (
-				<p key={item.commentId}>
+				<Text key={item.commentId}>
 					{item.memberNickname}님: {item.commentContent}
-				</p>
+				</Text>
 			)}
 		</Box>
 	);

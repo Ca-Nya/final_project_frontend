@@ -8,6 +8,9 @@ import {
 	DataDesc,
 	DataTerm,
 	Image,
+	Margin,
+	Hidden,
+	Flex,
 } from "../../common";
 import { CommentList, CommentItem } from "../../components/comment";
 import { DetailLike } from "../../components/detail";
@@ -68,77 +71,100 @@ const DetailPost = () => {
 	return (
 		<>
 			{data ? (
-				<Box>
-					<DetailLike
-						isLike={data.liked}
-						boardId={+id}
-						detailpostRefetch={detailpostRefetch}
-					/>
-					<Box>
-						{/* 후에 전역 상태로 수정 */}
-						{localStorage.getItem("Nickname") === data.memberNickname ? (
-							<Box>
-								<Button onClick={handleEditPost}>수정</Button>
-								<Button onClick={handleDeletePost}>삭제</Button>
-							</Box>
-						) : (
-							""
-						)}
-						<FirstHeading>{data.boardTitle}</FirstHeading>
-						<DataList>
-							<DataTerm>작성자</DataTerm>
-							<DataList>{data.memberNickname}</DataList>
-							<Image
-								src={data.memberProfileImage}
-								alt="프로필 이미지"
-								variant="detail-review-profile"
-							/>
-							<DataTerm>작성일</DataTerm>
-							<DataDesc>{data.date}</DataDesc>
-						</DataList>
-						<Box>
-							<DataList>
-								<DataTerm>좋아요 수</DataTerm>
-								<Box variant="detail-heart-count">
-									<FaHeart className={data.liked ? "liked" : ""} size="20" />
+				<Margin margin="160px 0 0 0">
+					<Box variant="container">
+						<Box variant="detail-container">
+							{/* 후에 전역 상태로 수정 */}
+							{localStorage.getItem("Nickname") === data.memberNickname ? (
+								<Box>
+									<Button onClick={handleEditPost}>수정</Button>
+									<Button onClick={handleDeletePost}>삭제</Button>
 								</Box>
-								<DataDesc>{data.heartCount}개</DataDesc>
-							</DataList>
-							<DataList>
-								<DataTerm>평균점수</DataTerm>
-								<DataDesc>{data.totalRating}</DataDesc>
-							</DataList>
-						</Box>
-						<Box>
-							<SecondHeading>이미지</SecondHeading>
-							{data.imageList.map(({ imageUrl }) => {
-								return (
-									<Box key={imageUrl}>
+							) : (
+								""
+							)}
+							<FirstHeading variant="title">{data.boardTitle}</FirstHeading>
+							<Box variant="detail-info">
+								<Flex jc="flex-end" ai="center">
+									<Flex ai="center" gap="9px">
 										<Image
-											src={imageUrl}
-											alt="리뷰 이미지"
-											variant="detail-review"
+											src={data.memberProfileImage}
+											alt="프로필 이미지"
+											variant="small-profile"
 										/>
+										<DataList variant="">
+											<Hidden>
+												<DataTerm>작성자</DataTerm>
+											</Hidden>
+											<DataDesc variant="small-profile">
+												{data.memberNickname}
+											</DataDesc>
+										</DataList>
+									</Flex>
+									<DataList variant="small-date">
+										<Hidden>
+											<DataTerm>작성일</DataTerm>
+										</Hidden>
+										<DataDesc>{data.date}</DataDesc>
+									</DataList>
+								</Flex>
+							</Box>
+							<Box variant="detail-content">
+								<Flex gap="30px">
+									<Box variant="detail-content-image-wraper">
+										{data.imageList.map(({ imageUrl }) => {
+											return (
+												<Image
+													src={imageUrl}
+													alt="리뷰 이미지"
+													key={imageUrl}
+													variant="detail-review"
+												/>
+											);
+										})}
 									</Box>
-								);
-							})}
-						</Box>
-						<Box>
-							<SecondHeading>내용</SecondHeading>
-							<Text>{data.boardContent}</Text>
-						</Box>
-						<Box>
-							<SecondHeading>평점</SecondHeading>
-							<DetailRatings ratings={ratings} />
-						</Box>
-						<Box>
-							<SecondHeading>위치</SecondHeading>
+									<Box variant="detail-content-desc">
+										<Text>{data.boardContent}</Text>
+									</Box>
+								</Flex>
+							</Box>
+							<SecondHeading variant="title">카냐인의 점수⭐️</SecondHeading>
+							<Margin margin="20px 0 60px 0">
+								<DetailRatings ratings={ratings} />
+								<Margin margin="10px 0 0 0">
+									<DataList variant="detail-rating">
+										<Flex jc="center" ai="center" gap="10px">
+											<DataTerm>카냐인의 평균 평점</DataTerm>
+											<DataDesc>{data.totalRating}</DataDesc>
+										</Flex>
+									</DataList>
+								</Margin>
+							</Margin>
 							<DetailMap searchPlace={data.address} />
+							<Margin margin="40px 0 0 0">
+								<Flex jc="flex-end">
+									<DataList variant="detail-heart-count">
+										<Flex ai="center" gap="5px">
+											<DetailLike
+												isLike={data.liked}
+												boardId={+id}
+												detailpostRefetch={detailpostRefetch}
+											/>
+											<DataTerm>좋아요</DataTerm>
+											<DataDesc>{data.heartCount}</DataDesc>
+										</Flex>
+									</DataList>
+								</Flex>
+							</Margin>
 						</Box>
+						<Margin margin="30px 0 170px 0">
+							<Box variant="comment-wrap">
+								<CommentList />
+								<CommentItem />
+							</Box>
+						</Margin>
 					</Box>
-					<CommentItem />
-					<CommentList />
-				</Box>
+				</Margin>
 			) : (
 				<Box>불러올 페이지가 없습니다</Box>
 			)}

@@ -10,26 +10,32 @@ export const Input = styled.input`
 				return css`
 					${({ purpose }) => {
 						return purpose === "sign-in"
-							? `background-color: aliceblue;
-						   border-radius: 10px;
+							? `
+						   border-radius: 5px;
 							 background-image: url(${loginId});
 							 background-repeat: no-repeat;
 							 background-position: 15px center;
 							 padding-left: 51px;
 						`
-							: `background-color: aliceblue;
-						     border-radius: 10px;
+							: `
+						     border-radius: 5px;
 							 background-image: url(${password});
 							 background-repeat: no-repeat;
 							 background-position: 15px center;
 							 padding-left: 51px;
 						`;
 					}};
-					width: ${calcRem(472)};
-					height: 60px;
+					width: 41.5vw;
+					height: 5.3vw;
+					max-width: ${calcRem(472)};
+					max-height: ${calcRem(60)};
+					/* min-height: ${calcRem(40)}; */
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 5px;
-					font-size: ${({ theme }) => theme.fontSizes.lg};
+					font-size: 1.6vw max(${({ theme }) => theme.fontSizes.lg});
+					&:placeholder{
+						font-size: 1.6vw;
+					}
 				`;
 			case "signup":
 				return css`
@@ -38,8 +44,7 @@ export const Input = styled.input`
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.lg};
-					background-color: aliceblue;
-					border-radius: 10px;
+					border-radius: 5px;
 					padding-left: 15px;
 				`;
 			case "signup-password":
@@ -49,8 +54,7 @@ export const Input = styled.input`
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.lg};
-					background-color: aliceblue;
-					border-radius: 10px;
+					border-radius: 5px;
 					padding-left: 15px;
 				`;
 			/* 마이페이지 */

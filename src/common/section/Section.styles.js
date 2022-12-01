@@ -52,7 +52,7 @@ export const Section = styled.section`
 						position: relative;
 						background-image: url(${signUpBackground});
 						background-repeat: no-repeat;
-						background-size: 948px;
+						background-size: 83.5vw;
 						background-position: left;
 					`;
 				default:

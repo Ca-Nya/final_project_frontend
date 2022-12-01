@@ -22,13 +22,22 @@ const MainNavButtons = () => {
 	];
 	//  별점별 게시글
 	const fields = [
-		["price", "가성비맛집", price],
-		["mood", "분위기맛집", mood],
-		["coffee", "커피맛집", coffee],
-		["dessert", "디저트맛집", dessert],
-		["kindness", "친절맛집", kindness],
-		["parking", "주차맛집", parking],
+		["가성비", "가성비맛집", price],
+		["분위기", "분위기맛집", mood],
+		["커피", "커피맛집", coffee],
+		["디저트", "디저트맛집", dessert],
+		["친절", "친절맛집", kindness],
+		["주차", "주차맛집", parking],
 	];
+	//
+	// const fields = [
+	// 	["price", "가성비맛집", price],
+	// 	["mood", "분위기맛집", mood],
+	// 	["coffee", "커피맛집", coffee],
+	// 	["dessert", "디저트맛집", dessert],
+	// 	["kindness", "친절맛집", kindness],
+	// 	["parking", "주차맛집", parking],
+	// ];
 
 	return (
 		<Nav variant="main-category-button-group-wrap">
