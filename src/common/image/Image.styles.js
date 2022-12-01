@@ -129,6 +129,15 @@ export const Image = styled.img`
 					top: -11px;
 					left: -30px;
 				`;
+			/* 상세 페이지 댓글 */
+			case "comment-profile":
+				return css`
+					max-width: ${calcRem(70)};
+					height: ${calcRem(70)};
+					object-fit: cover;
+					object-position: center;
+					border-radius: 50%;
+				`;
 			default:
 				break;
 		}

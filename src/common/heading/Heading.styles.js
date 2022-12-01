@@ -98,6 +98,13 @@ export const SecondHeading = styled.h2`
 						width: 100%;
 						letter-spacing: 0.03rem;
 					`;
+				/* 글쓰기 페이지 댓글 */
+				case "comment-user-nickname":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						font-weight: 700;
+						letter-spacing: 0.03rem;
+					`;
 				default:
 					break;
 			}

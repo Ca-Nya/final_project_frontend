@@ -71,7 +71,7 @@ const DetailPost = () => {
 	return (
 		<>
 			{data ? (
-				<Margin margin="150px 0 0 0">
+				<Margin margin="160px 0 0 0">
 					<Box variant="container">
 						<Box variant="detail-container">
 							{/* 후에 전역 상태로 수정 */}
@@ -157,7 +157,7 @@ const DetailPost = () => {
 								</Flex>
 							</Margin>
 						</Box>
-						<Margin margin="40px 0 200px 0">
+						<Margin margin="30px 0 170px 0">
 							<Box variant="comment-wrap">
 								<CommentList />
 								<CommentItem />

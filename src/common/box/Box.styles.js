@@ -22,6 +22,7 @@ export const Box = styled.div`
 						width: 100vw;
 						max-width: ${calcRem(1136)} !important;
 						margin: 0 auto;
+						border: 1px solid blue;
 					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
@@ -333,10 +334,10 @@ export const Box = styled.div`
 						align-items: center;
 						/* margin: 163px 240px 217px 1103px;				 */
 					`;
-						case "join-text":
+				case "join-text":
 					return css`
-						width: 49vw;					
-						max-width: ${calcRem(557)};						
+						width: 49vw;
+						max-width: ${calcRem(557)};
 					`;
 				case "join-info":
 					return css`
@@ -396,11 +397,13 @@ export const Box = styled.div`
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding-bottom: 40px;
 						padding-left: 10px;
+						border: 1px solid black;
 					`;
 				case "mypage-category":
 					return css`
 						width: 74.5vw;
 						max-width: ${calcRem(846)};
+						border: 1px solid ${({ theme }) => theme.colors.black};
 					`;
 				case "guide":
 					return css`
@@ -639,8 +642,35 @@ export const Box = styled.div`
 					`;
 				/* 상세페이지 댓글 */
 				case "comment-wrap":
+					return css``;
+				case "comment-item-wrap":
 					return css`
-						background-color: ${({ theme }) => theme.colors.gray};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 0 18px;
+					`;
+				case "comment-user-info":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(750)};
+						height: ${calcRem(80)};
+					`;
+				case "comment-info":
+					return css`
+						width: 100%;
+						max-width: ${calcRem(150)};
+						height: ${calcRem(80)};
+					`;
+				case "comment-input-wrap":
+					return css`
+						width: 100%;
+						height: ${calcRem(190)};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						border-radius: 5px;
+						padding: 25px;
+						&:focus {
+							border: 1px solid ${({ theme }) => theme.colors.main_purple};
+						}
 					`;
 				default:
 					break;
