@@ -12,6 +12,7 @@ export const TextArea = styled.textarea`
 
 	${({ variant }) => {
 		switch (variant) {
+			/* 리뷰 작성 페이지 */
 			case "cafe-review-desc":
 				return css`
 					display: block;
@@ -27,6 +28,18 @@ export const TextArea = styled.textarea`
 					}
 					&:focus {
 						border: 1px solid ${({ theme }) => theme.colors.main_purple};
+					}
+				`;
+			/* 상세 페이지 댓글 */
+			case "comment":
+				return css`
+					display: block;
+					width: 100%;
+					height: ${calcRem(80)};
+					border-radius: 5px;
+					padding: 10px 0;
+					::placeholder {
+						font-size: ${({ theme }) => theme.fontSizes.base};
 					}
 				`;
 			default:

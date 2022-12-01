@@ -47,6 +47,22 @@ export const DataList = styled.dl`
 					font-size: ${({ theme }) => theme.fontSizes.lg};
 					font-weight: 600;
 				`;
+			/* 글쓰기 페이지 댓글 */
+			case "comment-count":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.lg};
+					font-weight: 700;
+					font-weight: 600;
+					letter-spacing: 0.02em;
+				`;
+			case "comment-date":
+				return css`
+					width: 100%;
+					text-align: end;
+					color: ${({ theme }) => theme.colors.gray};
+					font-weight: 600;
+					letter-spacing: 0.02em;
+				`;
 			default:
 				break;
 		}

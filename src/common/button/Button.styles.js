@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { calcRem } from "../../themes";
 import search from "../../assets/icons/search.png";
 import fixed_write from "../../assets/icons/fixed_write.png";
-import { image_delete } from "../../assets/icons";
+import { image_delete, comment_delete, comment_edit } from "../../assets/icons";
 
 export const Button = styled.button`
 	/* >= 768 (Desktop) */
@@ -162,6 +162,56 @@ export const Button = styled.button`
 						border-radius: 5px;
 						padding: 15px 30px;
 						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						&:hover {
+							opacity: 0.8;
+						}
+					`;
+				/* 글쓰기 페이지 댓글 */
+				case "comment-edit":
+					return css`
+						position: relative;
+						font-weight: 700;
+						&::before {
+							content: "";
+							background-image: url(${comment_edit});
+							background-position: center center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							width: 100%;
+							max-width: ${calcRem(19)};
+							height: ${calcRem(23)};
+							display: inline-block;
+							position: absolute;
+							top: -2px;
+							left: -20px;
+						}
+					`;
+				case "comment-delete":
+					return css`
+						position: relative;
+						font-weight: 700;
+						&::before {
+							content: "";
+							background-image: url(${comment_delete});
+							background-position: center center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							width: 100%;
+							max-width: ${calcRem(19)};
+							height: ${calcRem(23)};
+							display: inline-block;
+							position: absolute;
+							top: -2px;
+							left: -20px;
+						}
+					`;
+				case "comment-add":
+					return css`
+						width: 100%;
+						height: ${calcRem(40)};
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						color: ${({ theme }) => theme.colors.main_purple};
+						font-weight: 700;
 						&:hover {
 							opacity: 0.8;
 						}
