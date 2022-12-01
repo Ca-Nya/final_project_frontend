@@ -123,7 +123,7 @@ const MyPage = () => {
 	return (
 		<Box variant="container-2">
 			<Flex>
-				<Box variant="pofile">
+				<Box variant="profile">
 					<Flex gap="0.1vw" fd="column" ai="center">
 						<Margin margin="10% 0 0 70%">
 							<Box>
@@ -216,7 +216,7 @@ const MyPage = () => {
 						</Margin>
 					</Flex>
 				</Box>
-				<Margin margin="2% 0 0 4vw">
+				<Margin margin="2% 0 0 39px">
 					<Box variant="mypage-nav">
 						<Flex gap="4%">
 							<Text

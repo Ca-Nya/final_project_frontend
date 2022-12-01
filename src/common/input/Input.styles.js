@@ -29,7 +29,7 @@ export const Input = styled.input`
 					height: 5.3vw;
 					max-width: ${calcRem(472)};
 					max-height: ${calcRem(60)};
-					/* min-height: ${calcRem(40)}; */
+					min-height: ${calcRem(60)};
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 5px;
 					font-size: 1.6vw max(${({ theme }) => theme.fontSizes.lg});

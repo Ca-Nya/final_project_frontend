@@ -75,6 +75,7 @@ const GlobalStyles = createGlobalStyle`
     overflow: hidden;
     text-overflow: ellipsis; 
   }
+
 `;
 
 export default GlobalStyles;

@@ -22,7 +22,6 @@ export const Box = styled.div`
 						width: 100vw;
 						max-width: ${calcRem(1136)} !important;
 						margin: 0 auto;
-						border: 1px solid blue;
 					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
@@ -353,10 +352,10 @@ export const Box = styled.div`
 						height: 700px;
 					`;
 				/* 마이페이지 */
-				case "pofile":
+				case "profile":
 					return css`
-						width: 21.6vw;
-						max-width: ${calcRem(245)};
+						width: 245px;
+						/* max-width: ${calcRem(245)}; */
 						height: ${calcRem(472)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
@@ -399,13 +398,12 @@ export const Box = styled.div`
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding-bottom: 40px;
 						padding-left: 10px;
-						border: 1px solid black;
+						/* border: 1px solid black; */
 					`;
 				case "mypage-category":
 					return css`
 						width: 74.5vw;
 						max-width: ${calcRem(846)};
-						border: 1px solid ${({ theme }) => theme.colors.black};
 					`;
 				case "guide":
 					return css`
