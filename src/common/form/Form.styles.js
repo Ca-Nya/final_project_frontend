@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { calcRem } from "../../themes";
 
 export const Form = styled.form`
 	${({ theme }) => theme.device.desktop} {
@@ -8,8 +9,10 @@ export const Form = styled.form`
 				case "join":
 					return css`
 						display: flex;
-						width: 557px;
-						height: 700px;
+						width: 49vw;
+						height: 61.6vw;
+						max-width: ${calcRem(557)};
+						max-height: ${calcRem(700)};
 						flex-direction: column;
 						align-items: center;
 						background-color: ${({ theme }) => theme.colors.white};

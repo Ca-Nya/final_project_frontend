@@ -14,26 +14,26 @@ export const Text = styled.p`
 			case "join":
 				return css`
 					display: flex;
-					font-size: ${({ theme }) => theme.fontSizes.xxxl};
+					font-size: 2.6vw, max(${({ theme }) => theme.fontSizes.xxxl}) ;
+					/* font-size: ${({ theme }) => theme.fontSizes.xxxl}; */
 					font-weight: 700;
 				`;
 			case "join-id":
 				return css`
-					display: flex;
-					width: 557px;
-					font-size: ${({ theme }) => theme.fontSizes.xl};
+					/* display: flex; */
+					width: 49vw;
+					font-size: 1.8vw;
+					/* font-size: max(${({ theme }) => theme.fontSizes.xl}); */
 					font-weight: 500;
 					text-align: left;
 				`;
-			case "join-pw":
-				return css`
-					display: flex;
-					width: 557px;
-					margin: 16px 0 8px 110px;
-					font-size: ${({ theme }) => theme.fontSizes.xl};
-					font-weight: 500;
-					text-align: left;
-				`;
+			// case "join-pw":
+			// 	return css`
+			// 		width: 49vw;
+			// 		font-size: ${({ theme }) => theme.fontSizes.xl};
+			// 		font-weight: 500;
+			// 		text-align: left;
+			// 	`;
 			case "join-info":
 				return css`
 					display: flex;
@@ -84,6 +84,10 @@ export const Text = styled.p`
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.black};
+					&:hover {
+						cursor: pointer;
+						color: ${({ theme }) => theme.colors.main_purple};
+					}
 				`;
 			/* 메인 페이지 */
 			case "main-category":
@@ -182,10 +186,22 @@ export const Text = styled.p`
 				`;
 			case "all-title":
 				return css`
+					width: 23.4vw;
+					max-width: ${calcRem(266)};
 					font-size: ${({ theme }) => theme.fontSizes.base};
 					color: ${({ theme }) => theme.colors.dark_gray};
 					font-weight: 600;
 					text-align: center;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: normal;
+					line-height: 1.2;
+					max-height: 1.2;
+					word-wrap: break-word;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
 					&:hover {
 						cursor: pointer;
 						color: ${({ theme }) => theme.colors.main_purple};
@@ -197,7 +213,8 @@ export const Text = styled.p`
 					color: ${({ theme }) => theme.colors.dark_gray};
 					font-weight: 400;
 					display: inline-block;
-					width: 500px;
+					width: 44vw;
+					max-width: ${calcRem(500)};
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
