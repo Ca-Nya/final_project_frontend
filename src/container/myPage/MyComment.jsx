@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
-import { Box, Button, Image, Text, Margin, Flex } from "../../components";
+import { Box, Text, Margin } from "../../components";
 import MyCommentEdit from "./MyCommentEdit";
+import MyCommentEditPrac from "./MyCommentEditPrac";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -36,7 +37,7 @@ const MyComment = () => {
 			{data && data.length > 0 ? (
 				<Box>
 					{data?.map(comment => {
-						return <MyCommentEdit key={comment.commentId} comment={comment} />;
+						return <MyCommentEditPrac key={comment.commentId} comment={comment} />;
 					})}
 				</Box>
 			) : (
