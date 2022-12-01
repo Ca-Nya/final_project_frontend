@@ -321,15 +321,22 @@ export const Box = styled.div`
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`
-						width: 557px;
-						height: 700px;
+						width: 49vw;
+						height: 61.6vh;
+						max-width: ${calcRem(557)};
+						max-height: ${calcRem(700)};
 						position: absolute;
-						top: 163px;
-						left: 1103px;
+						top: 20%;
+						right: 10%;
 						background-color: ${({ theme }) => theme.colors.white};
 						border-radius: 5px;
 						align-items: center;
 						/* margin: 163px 240px 217px 1103px;				 */
+					`;
+						case "join-text":
+					return css`
+						width: 49vw;					
+						max-width: ${calcRem(557)};						
 					`;
 				case "join-info":
 					return css`

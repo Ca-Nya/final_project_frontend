@@ -38,13 +38,14 @@ export const Button = styled.button`
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`
-						width: ${calcRem(472)};
-						height: 60px;
+						width: 41.5vw;
+						height: 5.3vw;
+						max-width: ${calcRem(472)};
+						max-height: ${calcRem(60)};
 						background-color: ${({ theme }) => theme.colors.main};
 						border-radius: 5px;
 						font-size: ${({ theme }) => theme.fontSizes.xl};
 						font-weight: 700;
-						margin-top: 92px;
 					`;
 				case "join-duplicate":
 					return css`
