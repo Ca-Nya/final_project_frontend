@@ -18,6 +18,19 @@ export const Form = styled.form`
 						background-color: ${({ theme }) => theme.colors.white};
 						border-radius: 5px;
 					`;
+				case "signup":
+					return css`
+						position: absolute;
+						left: 60%;
+						top: 50%;
+						transform: translateY(-50%);
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						/* width: 40.8vw; */
+					width: ${calcRem(464)};
+					`;
 				default:
 					break;
 			}

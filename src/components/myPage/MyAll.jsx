@@ -97,46 +97,6 @@ const MyAll = () => {
 				</Flex>
 			</Box>
 			<Box>
-				<Margin margin="5.3vw 0 0.9vw 0">
-					<Box variant="guide">
-						<Text variant="title">좋아요 한 글 ❣️ </Text>
-						<Text
-							variant="add"
-							onClick={() => {
-								navigate(`/mypage/mylike`);
-							}}
-						>
-							더보기
-						</Text>
-					</Box>
-				</Margin>
-				<Flex jc="space-between">
-					{recentlyMyHeartBoardList?.map(item => {
-						return (
-							<Box key={item.boardId}>
-								<Box key={item.boardId}>
-									<Image
-										variant="mypage-post"
-										src={item.imageList[0].imageUrl}
-										alt={item.boardTitle}
-									></Image>
-									<Margin margin="8px auto 0 auto">
-										<Text
-											variant="all-title"
-											onClick={() => {
-												navigate(`/detail/post/${item.boardId}`);
-											}}
-										>
-											{item.boardTitle}
-										</Text>
-									</Margin>
-								</Box>
-							</Box>
-						);
-					})}
-				</Flex>
-			</Box>
-			<Box>
 				<Margin margin="60px 0 10px 0">
 					<Box variant="guide">
 						<Text variant="title">좋아요 한 글 ❣️ </Text>

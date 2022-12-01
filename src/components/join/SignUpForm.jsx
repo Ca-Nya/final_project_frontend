@@ -43,6 +43,7 @@ const SignUpForm = () => {
 	return (
 		<>
 			<Form
+				variant="signup"
 				onSubmit={handleSubmit(value => {
 					console.log("value=>", value);
 					if (isCheckedId && isCheckedNickname) {
@@ -59,10 +60,8 @@ const SignUpForm = () => {
 					}
 				})}
 			>
-				<Margin margin="150px 0 0 1312px">
-					<Text variant="join">CA NYA</Text>
-				</Margin>
-				<Margin margin="31px 0 0 1132px">
+				<Text variant="join">CA NYA</Text>
+				<Margin margin="31px 0 0 0">
 					<Margin margin="5px 0 8px 8px">
 						<Text variant="join-id"> 닉네임 </Text>
 					</Margin>
@@ -285,7 +284,7 @@ const SignUpForm = () => {
 							</Flex>
 						</Margin>
 					)}
-					<Margin margin="10px 0 0 0">
+					<Margin margin="50px 0 0 0">
 						<Button variant="join">회원가입 하기</Button>
 					</Margin>
 					<Margin margin="18px 0 0 90px">

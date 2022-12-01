@@ -42,6 +42,7 @@ export const Button = styled.button`
 						height: 5.3vw;
 						max-width: ${calcRem(472)};
 						max-height: ${calcRem(60)};
+						min-height: ${calcRem(60)};
 						background-color: ${({ theme }) => theme.colors.main};
 						border-radius: 5px;
 						font-size: ${({ theme }) => theme.fontSizes.xl};

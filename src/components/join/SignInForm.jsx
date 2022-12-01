@@ -52,9 +52,7 @@ const SigninForm = () => {
 				</Margin>
 				<Box variant="join-text">
 					<Margin margin="5% 0 2% 8%">
-						<Margin margin="0 0 0 2%">
-							<Text variant="join-id">아이디(ID)</Text>
-						</Margin>
+						<Text variant="join-id">아이디(ID)</Text>
 						<Margin margin="2% 0 0 0">
 							<Input
 								variant="join"
@@ -75,11 +73,9 @@ const SigninForm = () => {
 					</Margin>
 				</Box>
 
-				<Box variant="join-text" style={{ border: "1px solid black" }}>
+				<Box variant="join-text">
 					<Margin margin="2% 0 2% 8%">
-						<Margin margin="0 0 0 2%">
-							<Text variant="join-id">비밀번호</Text>
-						</Margin>
+						<Text variant="join-id">비밀번호</Text>
 						<Margin margin="2% 0 0 0">
 							<Input
 								variant="join"
@@ -100,12 +96,10 @@ const SigninForm = () => {
 						)}
 					</Margin>
 				</Box>
-				<Margin margin="2% 0 0 0" style={{ border: "1px solid black" }}>
+				<Margin margin="5.75rem 0 0 0">
 					<Button variant="join">로그인</Button>
-				</Margin>
-				<Box variant="join-info">
-					<Margin margin="2.2vw 0 0.7vw 5.3vw">
-						<Flex gap="12.3vw">
+					<Margin margin="3% 2% 0 2%">
+						<Flex jc="space-between">
 							<Text variant="join-info">아직 카냐 회원이 아니세요?</Text>
 							<Text
 								variant="join-signup"
@@ -117,7 +111,7 @@ const SigninForm = () => {
 							</Text>
 						</Flex>
 					</Margin>
-				</Box>
+				</Margin>
 			</Form>
 		</Box>
 	);

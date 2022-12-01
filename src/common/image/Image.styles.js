@@ -56,10 +56,12 @@ export const Image = styled.img`
 			/* 마이 페이지 */
 			case "mypage-profile":
 				return css`
-					width: 11.3vw;
-					height: 11.3vw;
-					max-width: ${calcRem(128)};
-					max-height: ${calcRem(128)};
+					/* width: 11.3vw;
+					height: 11.3vw; */
+					width: ${calcRem(128)};
+					height: ${calcRem(128)};
+					/* max-width: ${calcRem(128)};
+					max-height: ${calcRem(128)}; */
 					border-radius: 50%;
 					border: 5px solid #f6cd3c;
 					object-fit: cover;
