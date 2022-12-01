@@ -72,7 +72,7 @@ const MyAll = () => {
 						</Text>
 					</Box>
 				</Margin>
-				<Flex jc="space-between">
+				<Flex gap="1.5em">
 					{recentlyMyBoardList?.map(item => {
 						return (
 							<Box key={item.boardId}>
@@ -110,7 +110,7 @@ const MyAll = () => {
 						</Text>
 					</Box>
 				</Margin>
-				<Box variant="guide">
+				<Flex gap="1.5em">
 					{recentlyMyHeartBoardList?.map(item => {
 						return (
 							<Box key={item.boardId}>
@@ -134,7 +134,7 @@ const MyAll = () => {
 							</Box>
 						);
 					})}
-				</Box>
+				</Flex>
 			</Box>
 			<Box>
 				<Margin margin="60px 0 10px 0">
