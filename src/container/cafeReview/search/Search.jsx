@@ -9,6 +9,8 @@ import {
 import { CafeMap } from "../../../container/cafeReview";
 
 const Search = ({ onSubmit, onChangePlaceValue, inputText, place }) => {
+	console.log("searchPlace ==>", place);
+
 	return (
 		<>
 			<Margin margin="60px 0 25px 0">

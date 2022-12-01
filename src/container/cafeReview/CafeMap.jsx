@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Box, Text, Flex, Strong, Margin } from "../../components";
 import Map from "./map";
 
 const CafeMap = ({ searchPlace }) => {
@@ -62,46 +61,9 @@ const CafeMap = ({ searchPlace }) => {
 	}, [searchPlace]);
 
 	return (
-		<Box variant="cafe-review-map-item">
+		<>
 			<Map places={places} mapContainer={mapContainer} />
-			<Flex>
-				<Box ref={mapContainer} variant="cafe-review-map" />
-				<Box variant="cafe-review-map-content-wraper">
-					{places.map(item => {
-						console.log("item =>", item);
-						return (
-							<Margin margin="10px">
-								<Box
-									id="result-list"
-									key={item.id}
-									variant="cafe-write-pick-info"
-								>
-									<Strong variant="cafe-write-address">
-										{item.place_name}
-									</Strong>
-									<Margin margin="10px 0 0 0">
-										{item.road_address_name ? (
-											<>
-												<Text variant="cafe-write-address">
-													{item.road_address_name}
-												</Text>
-												<Text variant="cafe-write-address">
-													{item.address_name}
-												</Text>
-											</>
-										) : (
-											<>
-												<Text>{item.address_name}</Text>
-											</>
-										)}
-									</Margin>
-								</Box>
-							</Margin>
-						);
-					})}
-				</Box>
-			</Flex>
-		</Box>
+		</>
 	);
 };
 

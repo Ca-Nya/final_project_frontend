@@ -1,7 +1,8 @@
-import { Box, Button, Margin, Flex } from "../../components";
+import { Box, Margin } from "../../components";
 import Review from "./review";
 import Rating from "./rating";
 import Search from "./search";
+import Submit from "./submit";
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
@@ -186,18 +187,8 @@ const CafeReview = ({ id }) => {
 					inputText={inputText}
 					place={place}
 				/>
+				<Submit onPostReview={handlePostReview} />
 			</Box>
-			<Margin margin="98px 0 200px 0">
-				<Flex jc="center" ai="center">
-					<Button
-						type="button"
-						onClick={handlePostReview}
-						variant="cafe-review-post"
-					>
-						리뷰 등록하기
-					</Button>
-				</Flex>
-			</Margin>
 		</Margin>
 	);
 };
