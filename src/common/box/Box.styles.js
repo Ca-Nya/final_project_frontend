@@ -307,10 +307,12 @@ export const Box = styled.div`
 
 				case "list-item":
 					return css`
-						width: 300px;
-						height: 400px;
-						background-color: blueviolet;
-						margin: 10px;
+						max-width: ${calcRem(243)};
+						width: 100%;
+						height: ${calcRem(480)};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						border-radius: 5px;
 					`;
 				case "list-target":
 					return css`
@@ -414,7 +416,6 @@ export const Box = styled.div`
 					return css`
 						width: ${calcRem(30)};
 						height: ${calcRem(18)};
-						/* background-color: ${({ theme }) => theme.colors.main}; */
 						border-radius: 5px;
 						text-align: center;
 						align-items: center;

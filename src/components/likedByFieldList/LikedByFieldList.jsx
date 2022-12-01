@@ -1,4 +1,4 @@
-import { Box, FirstHeading } from "../../common";
+import { Box, FirstHeading, Margin, Flex } from "../../common";
 import { useFetchList } from "../../querys/list";
 import { useParams } from "react-router-dom";
 import { useEffect, Fragment } from "react";
@@ -24,28 +24,32 @@ const LikedByFieldList = () => {
 	if (status === "error") return <Box>Error</Box>;
 
 	return (
-		<Box>
-			{data?.pages.map(page => {
-				return (
-					<Fragment>
-						{page.list?.map(item => {
-							return (
-								<Box variant="list-item">
-									<FirstHeading>{item.boardTitle}</FirstHeading>
-								</Box>
-							);
-						})}
-					</Fragment>
-				);
-			})}
-			<Box>
-				{isFetchingNextPage ? (
-					<Box>Loading...</Box>
-				) : (
-					<Box ref={ref} variant="list-target" />
-				)}
+		<Margin margin="160px 0 0 0">
+			<Box variant="container">
+				<Flex jc="center" fw="wrap" gap="24px">
+					{data?.pages.map((page, idx) => {
+						return (
+							<Fragment key={page?.list[idx]?.boardId}>
+								{page.list?.map(item => {
+									return (
+										<Box variant="list-item" key={item.boardId}>
+											<FirstHeading>{item.boardTitle}</FirstHeading>
+										</Box>
+									);
+								})}
+							</Fragment>
+						);
+					})}
+				</Flex>
+				<Box>
+					{isFetchingNextPage ? (
+						<Box>Loading...</Box>
+					) : (
+						<Box ref={ref} variant="list-target" />
+					)}
+				</Box>
 			</Box>
-		</Box>
+		</Margin>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { Box, FirstHeading, Button } from "../../common";
+import { Box, FirstHeading, Button, Margin } from "../../common";
 import { useFetchList } from "../../querys/list";
 import { useParams } from "react-router-dom";
 import { useEffect, Fragment } from "react";
@@ -14,7 +14,12 @@ const LikedByOverallList = () => {
 	// 리스트 요청 무한스크롤 Hook
 	const { data, status, fetchNextPage, isFetchingNextPage } =
 		useFetchList(category);
-	console.log("data =>", data, "isFetchingNextPage =>", isFetchingNextPage);
+	console.log(
+		"useFetchList data ==>",
+		data,
+		"isFetchingNextPage =>",
+		isFetchingNextPage,
+	);
 	// observe
 	const { ref, inView } = useInView();
 	console.log("inView =>", inView);
@@ -27,8 +32,8 @@ const LikedByOverallList = () => {
 	if (status === "error") return <Box>Error</Box>;
 
 	return (
-		<>
-			<Box>
+		<Margin margin="160px 0 0 0 ">
+			<Box variant="container">
 				<Box>
 					<Button
 						onClick={() => {
@@ -73,7 +78,7 @@ const LikedByOverallList = () => {
 					)}
 				</Box>
 			</Box>
-		</>
+		</Margin>
 	);
 };
 
