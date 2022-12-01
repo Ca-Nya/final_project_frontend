@@ -14,26 +14,26 @@ export const Text = styled.p`
 			case "join":
 				return css`
 					display: flex;
-					font-size: ${({ theme }) => theme.fontSizes.xxxl};
+					font-size: 2.6vw, max(${({ theme }) => theme.fontSizes.xxxl}) ;
+					/* font-size: ${({ theme }) => theme.fontSizes.xxxl}; */
 					font-weight: 700;
 				`;
 			case "join-id":
 				return css`
-					display: flex;
-					width: 557px;
-					font-size: ${({ theme }) => theme.fontSizes.xl};
+					/* display: flex; */
+					width: 49vw;
+					font-size: 1.8vw;
+					/* font-size: max(${({ theme }) => theme.fontSizes.xl}); */
 					font-weight: 500;
 					text-align: left;
 				`;
-			case "join-pw":
-				return css`
-					display: flex;
-					width: 557px;
-					margin: 16px 0 8px 110px;
-					font-size: ${({ theme }) => theme.fontSizes.xl};
-					font-weight: 500;
-					text-align: left;
-				`;
+			// case "join-pw":
+			// 	return css`
+			// 		width: 49vw;
+			// 		font-size: ${({ theme }) => theme.fontSizes.xl};
+			// 		font-weight: 500;
+			// 		text-align: left;
+			// 	`;
 			case "join-info":
 				return css`
 					display: flex;
