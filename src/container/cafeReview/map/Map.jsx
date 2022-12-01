@@ -6,10 +6,10 @@ const Map = ({ places, mapContainer }) => {
 			<Flex>
 				<Box ref={mapContainer} variant="cafe-review-map" />
 				<Box variant="cafe-review-map-content-wraper">
-					{places.map(item => {
+					{places.map((item, idx) => {
 						console.log("item =>", item);
 						return (
-							<Margin margin="10px">
+							<Margin margin="10px" key={idx}>
 								<Box
 									id="result-list"
 									key={item.id}
