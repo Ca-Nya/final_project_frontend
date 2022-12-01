@@ -10,7 +10,8 @@ import { SignInPage, SignUpPage } from "../pages/join";
 import { DetailPost, DetailEditPost } from "../container/detail";
 import LikedByFieldList from "../container/likedByFieldList";
 import LikedByOverallList from "../container/likedByOverallList";
-import { MyBoard, MyComment, MyLike, MyAll } from "../container/myPage";
+import { MyBoard, MyComment, MyLike, MyAll, MyAllPrac, MyBoardPrac, MyLikePrac } from "../container/myPage";
+
 
 const Router = () => {
 	return (
@@ -34,10 +35,10 @@ const Router = () => {
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
 					<Route path="/mypage" element={<MyPageLayout />}>
-						<Route path="myall" element={<MyAll />} />
-						<Route path="myboard" element={<MyBoard />} />
+						<Route path="myall" element={<MyAllPrac />} />
+						<Route path="myboard" element={<MyBoardPrac />} />
 						<Route path="mycomment" element={<MyComment />} />
-						<Route path="mylike" element={<MyLike />} />
+						<Route path="mylike" element={<MyLikePrac />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
