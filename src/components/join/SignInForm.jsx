@@ -75,7 +75,7 @@ const SigninForm = () => {
 					</Margin>
 				</Box>
 
-				<Box variant="join-text" style={{border:"1px solid black"}}>
+				<Box variant="join-text" style={{ border: "1px solid black" }}>
 					<Margin margin="2% 0 2% 8%">
 						<Margin margin="0 0 0 2%">
 							<Text variant="join-id">비밀번호</Text>
@@ -100,7 +100,7 @@ const SigninForm = () => {
 						)}
 					</Margin>
 				</Box>
-				<Margin margin="2% 0 0 0" style={{border:"1px solid black"}}>
+				<Margin margin="2% 0 0 0" style={{ border: "1px solid black" }}>
 					<Button variant="join">로그인</Button>
 				</Margin>
 				<Box variant="join-info">
