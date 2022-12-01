@@ -1,5 +1,5 @@
-import { SignUpForm } from "../../components/join";
-import { Section } from "../../common";
+import { SignUpForm } from "../../container/join";
+import { Section } from "../../components";
 
 const SignUpPage = () => {
 	return (

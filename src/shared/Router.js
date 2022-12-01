@@ -7,10 +7,10 @@ import MainPage from "../pages/main";
 import CafeReviewPage from "../pages/cafeReview";
 import DetailPage from "../pages/detail";
 import { SignInPage, SignUpPage } from "../pages/join";
-import { DetailPost, DetailEditPost } from "../components/detail";
-import LikedByFieldList from "../components/likedByFieldList";
-import LikedByOverallList from "../components/likedByOverallList";
-import { MyBoard, MyComment, MyLike, MyAll } from "../components/myPage";
+import { DetailPost, DetailEditPost } from "../container/detail";
+import LikedByFieldList from "../container/likedByFieldList";
+import LikedByOverallList from "../container/likedByOverallList";
+import { MyBoard, MyComment, MyLike, MyAll } from "../container/myPage";
 
 const Router = () => {
 	return (

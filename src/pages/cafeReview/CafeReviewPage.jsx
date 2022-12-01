@@ -1,5 +1,5 @@
-import { Main } from "../../common";
-import { CafeReview } from "../../components/cafeReview";
+import { Main } from "../../components";
+import { CafeReview } from "../../container/cafeReview";
 import { useParams } from "react-router-dom";
 
 const CafeReviewPage = () => {
