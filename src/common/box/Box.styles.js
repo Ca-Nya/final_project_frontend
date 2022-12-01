@@ -670,6 +670,8 @@ export const Box = styled.div`
 							border: 1px solid ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
+				case "":
+					return css``;
 				default:
 					break;
 			}

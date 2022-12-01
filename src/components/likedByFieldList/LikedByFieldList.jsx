@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, Fragment } from "react";
 import { useInView } from "react-intersection-observer";
 
-const LikedByFields = () => {
+const LikedByFieldList = () => {
 	// 리스트 카테고리 param
 	const { category } = useParams();
 	console.log("category =>", category);
@@ -49,4 +49,4 @@ const LikedByFields = () => {
 	);
 };
 
-export default LikedByFields;
+export default LikedByFieldList;

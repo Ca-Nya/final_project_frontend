@@ -5,7 +5,7 @@ import { useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-const LikedByOveralls = () => {
+const LikedByOverallList = () => {
 	// React Router
 	const navigate = useNavigate();
 	// 리스트 카테고리 param
@@ -77,4 +77,4 @@ const LikedByOveralls = () => {
 	);
 };
 
-export default LikedByOveralls;
+export default LikedByOverallList;
