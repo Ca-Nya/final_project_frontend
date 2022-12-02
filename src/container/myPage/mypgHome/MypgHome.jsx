@@ -7,7 +7,7 @@ import {
 	Margin,
 	Flex,
 } from "../../../components";
-import { Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Edit from "../../../assets/icons/edit-profile.png";
 import Comment from "../../../assets/icons/comment.png";
 import Heart from "../../../assets/icons/heart.png";

@@ -18,6 +18,7 @@ const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
 					console.log("value =>", value);
 					const { memberName, password } = value;
 					dispatch(__requestSignIn({ memberName, password }));
+					alert("카냐에 오신걸 환영합니다!");
 				})}
 			>
 				<Margin margin="15% 0 0 0">
