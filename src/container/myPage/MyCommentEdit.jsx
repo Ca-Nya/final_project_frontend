@@ -1,14 +1,5 @@
-import { useEffect, useState } from "react";
-import {
-	Box,
-	Input,
-	Button,
-	Image,
-	Text,
-	Label,
-	Margin,
-	Flex,
-} from "../../components";
+import { useState } from "react";
+import { Box } from "../../components";
 import {
 	QueryClient,
 	useMutation,
@@ -16,9 +7,8 @@ import {
 	useQuery,
 } from "@tanstack/react-query";
 import axios from "axios";
-import Edit from "../../assets/icons/edit.png";
-import Delete from "../../assets/icons/delete.png";
 import { useNavigate } from "react-router-dom";
+import Comment from "./comment";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -90,7 +80,7 @@ const MyCommentEdit = ({ comment }) => {
 	const handleEditComplete = e => {
 		console.log("editComment=>", editComment);
 		if (editComment === "") {
-			alert("댓글을 수정해주세요!");
+			alert("변경내용이 없습니다.");
 		} else {
 			editMutation(
 				{
@@ -125,99 +115,19 @@ const MyCommentEdit = ({ comment }) => {
 	console.log("mycommenitem=>", comment);
 
 	return (
-		<Box>
-			{edit ? (
-				<Box>
-					<Margin margin="0 0 10px 0">
-						<Box variant="comment-box">
-							<Margin margin="26px 22px 0 22px">
-								<Box variant="guide">
-									<Flex jc="space-between">
-										<Input
-											variant="comment-edit"
-											type="text"
-											name="commentContent"
-											defaultValue={comment?.commentContent}
-											required={comment?.commentContent}
-											onChange={handleEdit}
-										/>
-										<Text variant="comment-date">
-											{comment.commentCreatedAt}
-										</Text>
-									</Flex>
-								</Box>
-							</Margin>
-							<Margin margin="10px 20px 0 22px">
-								<Box variant="board-minibutton">
-									<Flex gap="10px" jc="space-between">
-										<Text
-											variant="comment-title"
-											onClick={() => {
-												navigate(`/detail/post/${comment.boardId}`);
-											}}
-										>
-											{comment.boardTitle}
-										</Text>
-										<Box>
-											<Button variant="mypage" onClick={handleEditComplete}>
-												완료
-												<Image variant="profile-edit" src={Edit} />
-											</Button>
-										</Box>
-									</Flex>
-								</Box>
-							</Margin>
-						</Box>
-					</Margin>
-				</Box>
-			) : (
-				<Box>
-					<Margin margin="0 0 10px 0">
-						<Box variant="comment-box">
-							<Margin margin="26px 22px 0 22px">
-								<Box variant="guide">
-									<Flex jc="space-between">
-										<Text variant="comment">{comment.commentContent}</Text>
-										<Text variant="comment-date">
-											{comment.commentCreatedAt}
-										</Text>
-									</Flex>
-								</Box>
-							</Margin>
-							<Margin margin="10px 20px 0 22px">
-								<Box variant="board-minibutton">
-									<Flex gap="10px" jc="space-between">
-										<Text
-											variant="comment-title"
-											onClick={() => {
-												navigate(`/detail/post/${comment.boardId}`);
-											}}
-										>
-											{comment.boardTitle}
-										</Text>
-										<Box>
-											<Button
-												variant="mypage"
-												onClick={() => {
-													setEdit(!edit);
-												}}
-											>
-												수정
-												<Image variant="profile-edit" src={Edit} />
-											</Button>
-											<Button variant="mypage" onClick={handleRemove}>
-												삭제
-												<Image variant="profile-edit" src={Delete} />
-											</Button>
-										</Box>
-									</Flex>
-								</Box>
-							</Margin>
-						</Box>
-					</Margin>
-				</Box>
-			)}
-		</Box>
+        <Box>
+            <Comment
+             edit={edit}
+             setEdit={setEdit}
+             editComment={editComment}
+             navigate={navigate}
+             onDeleteComment={handleRemove}
+             onEditComment={handleEditComplete}
+             onhandleEdit={handleEdit}
+             ondelMutation={delMutation}
+             comment={comment}
+            />
+        </Box>
 	);
 };
 

@@ -3,7 +3,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Box, Text, Margin } from "../../components";
 import MyCommentEdit from "./MyCommentEdit";
-import MyCommentEditPrac from "./MyCommentEditPrac";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -37,7 +36,7 @@ const MyComment = () => {
 			{data && data.length > 0 ? (
 				<Box>
 					{data?.map(comment => {
-						return <MyCommentEditPrac key={comment.commentId} comment={comment} />;
+						return <MyCommentEdit key={comment.commentId} comment={comment} />;
 					})}
 				</Box>
 			) : (
