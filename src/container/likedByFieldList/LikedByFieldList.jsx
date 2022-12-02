@@ -54,14 +54,15 @@ const LikedByFieldList = () => {
 													alt="카페 이미지"
 													variant="main-canya-pick"
 												/>
-												<Flex>
-													<Flex>
-														<Image
-															src={item.memberProfileImage}
-															alt="프로필 이미지"
-															variant="small-profile"
-														/>
-														<Box variant="main-canya-pick-info-content">
+												<Box variant="main-cany-pick-content-wrap">
+													<Box>
+														<Flex>
+															<Image
+																src={item.memberProfileImage}
+																alt="프로필 이미지"
+																variant="small-profile"
+															/>
+															{/* <Box variant="main-canya-pick-info-content"> */}
 															<DataList>
 																<Hidden>
 																	<DataTerm>닉네임</DataTerm>
@@ -70,18 +71,18 @@ const LikedByFieldList = () => {
 																	{item.memberNickname}
 																</DataDesc>
 															</DataList>
-														</Box>
-														<DataList>
-															<Hidden>
-																<DataTerm>평균 평점</DataTerm>
-															</Hidden>
-															<DataDesc variant="main-canya-pick-content-rate">
-																{item.totalRating}
-															</DataDesc>
-														</DataList>
-													</Flex>
-												</Flex>
-												<Box variant="main-cany-pick-content-wrap">
+															{/* </Box> */}
+															<DataList>
+																<Hidden>
+																	<DataTerm>평균 평점</DataTerm>
+																</Hidden>
+																<DataDesc variant="main-canya-pick-content-rate">
+																	{item.totalRating}
+																</DataDesc>
+															</DataList>
+														</Flex>
+													</Box>
+
 													<ThirdHeading
 														variant="list-title"
 														className="ellipsis-sm"
