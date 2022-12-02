@@ -1,5 +1,5 @@
-import { Section } from "../../common";
-import { SignInForm } from "../../components/join";
+import { Section } from "../../components";
+import { SignInForm } from "../../container/join";
 
 const SignInPage = () => {
 	return (

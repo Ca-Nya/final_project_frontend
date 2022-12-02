@@ -2,15 +2,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../layout/main";
 import LikedByFieldsLayout from "../layout/likedByFields";
 import LikedByOverallsLayout from "../layout/likedByOveralls";
-import MyPageLayout from "../layout/mypage";
 import MainPage from "../pages/main";
 import CafeReviewPage from "../pages/cafeReview";
 import DetailPage from "../pages/detail";
 import { SignInPage, SignUpPage } from "../pages/join";
-import { DetailPost, DetailEditPost } from "../components/detail";
-import LikedByFieldList from "../components/likedByFieldList";
-import LikedByOverallList from "../components/likedByOverallList";
-import { MyBoard, MyComment, MyLike, MyAll } from "../components/myPage";
+import { DetailPost, DetailEditPost } from "../container/detail";
+import LikedByFieldList from "../container/likedByFieldList";
+import LikedByOverallList from "../container/likedByOverallList";
+import MyPages from "../pages/mypage";
+import { MyBoard, MyComment, MyLike, MyAll } from "../container/myPage";
+
 
 const Router = () => {
 	return (
@@ -33,7 +34,7 @@ const Router = () => {
 					</Route>
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
-					<Route path="/mypage" element={<MyPageLayout />}>
+					<Route path="/mypage" element={<MyPages />}>
 						<Route path="myall" element={<MyAll />} />
 						<Route path="myboard" element={<MyBoard />} />
 						<Route path="mycomment" element={<MyComment />} />

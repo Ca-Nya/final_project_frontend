@@ -1,4 +1,4 @@
-import { Main } from "../../common";
+import { Main } from "../../components";
 import { Outlet } from "react-router-dom";
 
 const DetailPage = () => {
