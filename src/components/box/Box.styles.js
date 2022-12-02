@@ -303,15 +303,19 @@ export const Box = styled.div`
 					return css`
 						padding: 0 20px 20px 20px;
 					`;
-
 				case "list-item":
 					return css`
-						max-width: ${calcRem(243)};
+						max-width: ${calcRem(224)};
 						width: 100%;
-						height: ${calcRem(480)};
+						height: ${calcRem(400)};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
 						border-radius: 5px;
+						overflow: hidden;
+						transition: transform 900ms;
+						&:hover {
+							transform: translateY(-0.6%);
+						}
 					`;
 				case "list-target":
 					return css`
@@ -670,6 +674,12 @@ export const Box = styled.div`
 						&:focus {
 							border: 1px solid ${({ theme }) => theme.colors.main_purple};
 						}
+					`;
+				/* 카테고리 리스트 페이지 */
+				case "review-title":
+					return css`
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 25px;
 					`;
 				case "":
 					return css``;
