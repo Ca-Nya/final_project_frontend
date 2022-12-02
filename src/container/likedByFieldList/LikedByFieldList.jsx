@@ -1,4 +1,16 @@
-import { Box, FirstHeading, Margin, Flex } from "../../components";
+import {
+	Box,
+	FirstHeading,
+	ThirdHeading,
+	Margin,
+	Flex,
+	Image,
+	Strong,
+	Hidden,
+	DataList,
+	DataTerm,
+	DataDesc,
+} from "../../components";
 import { useFetchList } from "../../querys/list";
 import { useParams } from "react-router-dom";
 import { useEffect, Fragment } from "react";
@@ -26,21 +38,65 @@ const LikedByFieldList = () => {
 	return (
 		<Margin margin="160px 0 0 0">
 			<Box variant="container">
-				<Flex jc="center" fw="wrap" gap="24px">
-					{data?.pages.map((page, idx) => {
-						return (
-							<Fragment key={page?.list[idx]?.boardId}>
-								{page.list?.map(item => {
-									return (
-										<Box variant="list-item" key={item.boardId}>
-											<FirstHeading>{item.boardTitle}</FirstHeading>
-										</Box>
-									);
-								})}
-							</Fragment>
-						);
-					})}
-				</Flex>
+				<Box variant="review-title">
+					<FirstHeading variant="title">Review</FirstHeading>
+				</Box>
+				<Margin margin="45px 0 0 0">
+					<Flex jc="center" fw="wrap" gap="20px">
+						{data?.pages.map((page, idx) => {
+							return (
+								<Fragment key={page?.list[idx]?.boardId}>
+									{page.list?.map(item => {
+										return (
+											<Box variant="list-item" key={item.boardId}>
+												<Image
+													src={item.imageUrl}
+													alt="카페 이미지"
+													variant="main-canya-pick"
+												/>
+												<Flex>
+													<Flex>
+														<Image
+															src={item.memberProfileImage}
+															alt="프로필 이미지"
+															variant="small-profile"
+														/>
+														<Box variant="main-canya-pick-info-content">
+															<DataList>
+																<Hidden>
+																	<DataTerm>닉네임</DataTerm>
+																</Hidden>
+																<DataDesc variant="main-canya-pick-content-nickname">
+																	{item.memberNickname}
+																</DataDesc>
+															</DataList>
+														</Box>
+														<DataList>
+															<Hidden>
+																<DataTerm>평균 평점</DataTerm>
+															</Hidden>
+															<DataDesc variant="main-canya-pick-content-rate">
+																{item.totalRating}
+															</DataDesc>
+														</DataList>
+													</Flex>
+												</Flex>
+												<Box variant="main-cany-pick-content-wrap">
+													<ThirdHeading
+														variant="list-title"
+														className="ellipsis-sm"
+													>
+														{item.boardTitle}
+													</ThirdHeading>
+												</Box>
+											</Box>
+										);
+									})}
+								</Fragment>
+							);
+						})}
+					</Flex>
+				</Margin>
 				<Box>
 					{isFetchingNextPage ? (
 						<Box>Loading...</Box>

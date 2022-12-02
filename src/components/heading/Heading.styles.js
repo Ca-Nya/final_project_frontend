@@ -167,6 +167,13 @@ export const ThirdHeading = styled.h3`
 						text-align: center;
             width: ${calcRem(100)};
 					`;
+				/* 카테고리별 리스트 페이지 */
+				case "list-title":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						font-weight: 700;
+						letter-spacing: 0.07rem;
+					`;
 				default:
 					break;
 			}
