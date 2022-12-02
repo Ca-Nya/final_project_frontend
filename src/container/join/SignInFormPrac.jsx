@@ -1,20 +1,47 @@
+import { useNavigate } from "react-router-dom";
+import { Form, Input, Button, Text, Box, Margin, Flex } from "../../components";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import {
-	Form,
-	Input,
-	Button,
-	Text,
-	Box,
-	Margin,
-	Flex,
-} from "../../../components";
-import { __requestSignIn } from "../../../redux/modules/join/joinSlice";
+	__requestSignIn,
+	resetError,
+} from "../../redux/modules/join/joinSlice";
+import { useEffect } from "react";
 
-const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
+const SigninForm = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	//아이디와 비밀번호가 일치하지 않을 때 redux
+	const errorData = useSelector(state => state.join.error);
+	//아이디와 비밀번호 성공시 redux
+	const { statusCode, token } = useSelector(state => state.join);
+	//React Hook Form
+	const {
+		handleSubmit,
+		register,
+		formState: { errors },
+	} = useForm();
+	//아이디와 비밀번호가 일치하지 않을 때
+	useEffect(() => {
+		if (errorData) {
+			if (errorData?.status === 401) {
+				alert("아이디와 비밀번호가 일치하지않습니다.");
+			}
+		}
+		dispatch(resetError());
+	}, [errorData, errorData?.status, dispatch]);
+	//로그인 성공시
+	useEffect(() => {
+		if (token && statusCode === 200) {
+			navigate("/");
+		}
+	});
+
 	return (
 		<Box variant="join">
 			<Form
 				variant="join"
-				onSubmit={onhandleSubmit(value => {
+				onSubmit={handleSubmit(value => {
 					console.log("value =>", value);
 					const { memberName, password } = value;
 					dispatch(__requestSignIn({ memberName, password }));
@@ -90,4 +117,4 @@ const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
 	);
 };
 
-export default SignIn;
+export default SigninForm;

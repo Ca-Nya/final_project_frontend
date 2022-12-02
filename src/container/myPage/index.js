@@ -6,6 +6,7 @@ import MyAll from "./MyAll";
 import MyAllPrac from "./MyAllPrac";
 import MyBoardPrac from "./MyBoardPrac";
 import MyLikePrac from "./MyLikePrac";
+import MyPagePrac from "./MyPagePrac";
 
 
-export { MyComment, MyLike, MyBoard, MyPage, MyAll, MyAllPrac,MyBoardPrac,MyLikePrac };
+export { MyComment, MyLike, MyBoard, MyPage, MyAll, MyAllPrac,MyBoardPrac,MyLikePrac,MyPagePrac };
