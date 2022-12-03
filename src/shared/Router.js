@@ -11,7 +11,7 @@ import LikedByFieldList from "../container/likedByFieldList";
 import LikedByOverallList from "../container/likedByOverallList";
 import MyPages from "../pages/mypage";
 import { MyBoard, MyComment, MyLike, MyAll } from "../container/myPage";
-import { ComuList, ComuDetail  } from "../container/community";
+import { ComuList, ComuDetail,ComuPost  } from "../container/community";
 
 
 const Router = () => {
@@ -43,6 +43,7 @@ const Router = () => {
 					</Route>
 					<Route path="/community" element={<ComuList/>} />
 					<Route path="/community/:id" element={<ComuDetail/>} />
+					<Route path="/post" element={<ComuPost/>} />
 				</Routes>
 			</BrowserRouter>
 		</>
