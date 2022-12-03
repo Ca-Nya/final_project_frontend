@@ -140,6 +140,14 @@ export const Image = styled.img`
 					object-position: center;
 					border-radius: 50%;
 				`;
+			/* 카테고리 리스트 페이지 */
+			case "list-item":
+				return css`
+					width: 100%;
+					height: ${calcRem(220)};
+					object-fit: cover;
+					object-position: center;
+				`;
 			default:
 				break;
 		}

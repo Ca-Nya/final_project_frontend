@@ -172,7 +172,8 @@ export const ThirdHeading = styled.h3`
 					return css`
 						font-size: ${({ theme }) => theme.fontSizes.lg};
 						font-weight: 700;
-						letter-spacing: 0.07rem;
+						letter-spacing: 0.03rem;
+						text-align: center;
 					`;
 				default:
 					break;

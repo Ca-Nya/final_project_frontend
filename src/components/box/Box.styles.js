@@ -307,7 +307,7 @@ export const Box = styled.div`
 					return css`
 						max-width: ${calcRem(224)};
 						width: 100%;
-						height: ${calcRem(400)};
+						height: ${calcRem(433)};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
 						border-radius: 5px;
@@ -680,6 +680,15 @@ export const Box = styled.div`
 					return css`
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding: 25px;
+					`;
+				case "list-user-info-wrap":
+					return css`
+						padding: 0 0 10px 0;
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
+				case "list-content-desc":
+					return css`
+						height: ${calcRem(60)};
 					`;
 				case "":
 					return css``;
