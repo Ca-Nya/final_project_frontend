@@ -49,7 +49,7 @@ const CommentItem = () => {
 			mutation.mutate({ commentContent: ment });
 			setMent("");
 		} else {
-			alert("로그인해주셔야 댓글입력가능합니다.");
+			alert("로그인해 후 댓글입력해주세요.");
 			navigate("/join");
 		}
 	};
