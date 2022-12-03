@@ -163,6 +163,24 @@ export const DataDesc = styled.dd`
 					font-weight: 600;
 					letter-spacing: 0.02em;
 				`;
+			/* 카테고리별 리스트 페이지 */
+			case "list-content-rate":
+				return css`
+					position: relative;
+					&::before {
+						content: "";
+						background-image: url(${canya_item_star});
+						background-position: center center;
+						background-size: contain;
+						background-repeat: no-repeat;
+						width: ${calcRem(18)};
+						height: ${calcRem(18)};
+						display: inline-block;
+						position: absolute;
+						top: -1px;
+						left: -20px;
+					}
+				`;
 
 			default:
 				break;

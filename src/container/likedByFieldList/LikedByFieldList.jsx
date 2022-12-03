@@ -5,11 +5,11 @@ import {
 	Margin,
 	Flex,
 	Image,
-	Strong,
 	Hidden,
 	DataList,
 	DataTerm,
 	DataDesc,
+	Text,
 } from "../../components";
 import { useFetchList } from "../../querys/list";
 import { useParams } from "react-router-dom";
@@ -36,10 +36,10 @@ const LikedByFieldList = () => {
 	if (status === "error") return <Box>Error</Box>;
 
 	return (
-		<Margin margin="160px 0 0 0">
+		<Margin margin="160px 0 200px 0">
 			<Box variant="container">
 				<Box variant="review-title">
-					<FirstHeading variant="title">Review</FirstHeading>
+					<FirstHeading variant="title">Review☕️</FirstHeading>
 				</Box>
 				<Margin margin="45px 0 0 0">
 					<Flex jc="center" fw="wrap" gap="20px">
@@ -52,43 +52,55 @@ const LikedByFieldList = () => {
 												<Image
 													src={item.imageUrl}
 													alt="카페 이미지"
-													variant="main-canya-pick"
+													variant="list-item"
 												/>
 												<Box variant="main-cany-pick-content-wrap">
-													<Box>
-														<Flex>
-															<Image
-																src={item.memberProfileImage}
-																alt="프로필 이미지"
-																variant="small-profile"
-															/>
-															{/* <Box variant="main-canya-pick-info-content"> */}
-															<DataList>
-																<Hidden>
-																	<DataTerm>닉네임</DataTerm>
-																</Hidden>
-																<DataDesc variant="main-canya-pick-content-nickname">
-																	{item.memberNickname}
-																</DataDesc>
-															</DataList>
-															{/* </Box> */}
+													<Box variant="list-user-info-wrap">
+														<Flex ai="center">
+															<Flex ai="center" gap="7px">
+																<Image
+																	src={item.memberProfileImage}
+																	alt="프로필 이미지"
+																	variant="small-profile"
+																/>
+																<DataList>
+																	<Hidden>
+																		<DataTerm>닉네임</DataTerm>
+																	</Hidden>
+																	<DataDesc variant="main-canya-pick-content-nickname">
+																		{item.memberNickname}
+																	</DataDesc>
+																</DataList>
+															</Flex>
 															<DataList>
 																<Hidden>
 																	<DataTerm>평균 평점</DataTerm>
 																</Hidden>
-																<DataDesc variant="main-canya-pick-content-rate">
+																<DataDesc variant="list-content-rate">
 																	{item.totalRating}
 																</DataDesc>
 															</DataList>
 														</Flex>
 													</Box>
-
-													<ThirdHeading
-														variant="list-title"
-														className="ellipsis-sm"
-													>
-														{item.boardTitle}
-													</ThirdHeading>
+													<Margin margin="12px 0">
+														<ThirdHeading
+															variant="list-title"
+															className="ellipsis-sm"
+														>
+															{item.boardTitle}
+														</ThirdHeading>
+													</Margin>
+													<Box variant="list-content-desc">
+														<Text
+															variant="main-canya-pick-content"
+															className="ellipsis"
+														>
+															{item.boardContent}
+														</Text>
+													</Box>
+													<Margin margin="15px 0 0 0">
+														<Text variant="list-item-date">{item.date}</Text>
+													</Margin>
 												</Box>
 											</Box>
 										);
@@ -99,11 +111,7 @@ const LikedByFieldList = () => {
 					</Flex>
 				</Margin>
 				<Box>
-					{isFetchingNextPage ? (
-						<Box>Loading...</Box>
-					) : (
-						<Box ref={ref} variant="list-target" />
-					)}
+					{isFetchingNextPage ? <Box>Loading...</Box> : <Box ref={ref} />}
 				</Box>
 			</Box>
 		</Margin>
