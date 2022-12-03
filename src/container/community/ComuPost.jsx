@@ -60,7 +60,6 @@ const ComuPost = () => {
 			onSuccess: () => {
 				queryClient.invalidateQueries("community");
 				alert("게시물이 등록되었습니다.");
-
 				navigate("/community");
 			},
 			onError: error => {
