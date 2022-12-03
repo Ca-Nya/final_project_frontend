@@ -43,10 +43,8 @@ const Router = () => {
 					</Route>
 					<Route path="/community" element={<ComuList />} />
 					<Route path="/community/:id" element={<ComuDetail />} />
-					<Route path="/chat" element={<Chat />} />
-					<Route path="/community" element={<ComuList />} />
-					<Route path="/community/:id" element={<ComuDetail />} />
 					<Route path="/post" element={<ComuPost />} />
+					<Route path="/chat" element={<Chat />} />
 				</Routes>
 			</BrowserRouter>
 		</>
