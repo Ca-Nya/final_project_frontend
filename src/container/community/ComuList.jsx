@@ -10,6 +10,8 @@ const ComuList = () => {
 	const navigate = useNavigate();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
+	//로컬스토리지 닉네임가져오기
+	const nickname = localStorage.getItem("Nickname");
 	//커뮤니티 게시물 목록 get요청
 	const { data, isError, isLoading, refetch } = useQuery({
 		queryKey: ["community"],
@@ -43,6 +45,7 @@ const ComuList = () => {
 				navigate={navigate}
 				data={data}
 				authorization={authorization}
+				nickname={nickname}
 			/>
 		</>
 	);
