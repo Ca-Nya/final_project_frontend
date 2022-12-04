@@ -117,6 +117,15 @@ export const Button = styled.button`
 							background-color: ${({ theme }) => theme.colors.main};
 						}
 					`;
+				case "more":
+					return css`
+						font-weight: 700;
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						color: ${({ theme }) => theme.colors.main_purple};
+						&:hover {
+							opacity: 0.7;
+						}
+					`;
 				/* 글쓰기 페이지 */
 				case "cafe-review-thumbnail-delete":
 					return css`

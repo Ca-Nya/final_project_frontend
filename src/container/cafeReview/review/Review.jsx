@@ -17,12 +17,13 @@ import {
 import { cafe_review_image_upload } from "../../../assets/icons";
 
 const Review = ({
+	titleValue,
+	contentValue,
 	onChangeInputTitleState,
 	onGetImage,
 	onDeleteImage,
 	onChangeInputContentState,
 	thumbnailImages,
-	images,
 }) => {
 	return (
 		<>
@@ -31,6 +32,7 @@ const Review = ({
 			</Margin>
 			<Margin margin="0 0 25px 0">
 				<Input
+					defaultValue={titleValue}
 					variant="cafe-review-title"
 					onChange={onChangeInputTitleState}
 					placeholder="제목을 입력해주세요."
@@ -50,7 +52,7 @@ const Review = ({
 									<DataTerm>올린 사진 수</DataTerm>
 								</Hidden>
 								<DataDesc variant="cafe-review-file-count">
-									( {images.length} / 4 )
+									( {thumbnailImages.length} / 4 )
 								</DataDesc>
 							</DataList>
 						</Flex>
@@ -84,6 +86,7 @@ const Review = ({
 				</Flex>
 			</Margin>
 			<TextArea
+				defaultValue={contentValue}
 				onChange={onChangeInputContentState}
 				placeholder="리뷰를 등록해주세요."
 				variant="cafe-review-desc"
