@@ -178,7 +178,6 @@ const CafeReview = ({ id }) => {
 					onDeleteImage={handleDeleteImage}
 					onChangeInputContentState={handleChangeInputContentState}
 					thumbnailImages={thumbnailImages}
-					images={images}
 				/>
 				<Rating ratings={ratings} onStarClick={handleStarClick} />
 				<Search

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { FirstHeading, Box, Margin, Flex } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { FirstHeading, Box, Margin, Flex, Button } from "../../components";
 import { useFetchPosts } from "../../querys/main";
 import {
 	MainCanyaPick,
@@ -10,6 +11,8 @@ import {
 } from "../../container/main";
 
 const MainList = () => {
+	// React Router
+	const navigate = useNavigate();
 	// 전체 게시글 요청 hook
 	const {
 		data: mainPosts,
@@ -55,15 +58,33 @@ const MainList = () => {
 					</Flex>
 					<MainCanyaPick picks={canyaPick} />
 					<Margin margin="130px 0 30px 0">
-						<FirstHeading variant="title">BEST💛</FirstHeading>
+						<Flex jc="space-between" ai="center">
+							<FirstHeading variant="title">BEST💛</FirstHeading>
+							<Button onClick={() => navigate("/overalls/hot")} variant="more">
+								더보기
+							</Button>
+						</Flex>
 					</Margin>
 					<MainBestList bestDto={mainPosts.bestDto} />
 					<Margin margin="130px 0 0 0">
-						<FirstHeading variant="title">NEW🔥</FirstHeading>
+						<Flex jc="space-between" ai="center">
+							<FirstHeading variant="title">NEW🔥</FirstHeading>
+							<Button
+								onClick={() => navigate("/overalls/recent")}
+								variant="more"
+							>
+								더보기
+							</Button>
+						</Flex>
 					</Margin>
 					<MainNewList newDto={mainPosts.newDto} />
 					<Margin margin="130px 0 33px 0">
-						<FirstHeading variant="title">ALL☕️</FirstHeading>
+						<Flex jc="space-between" ai="center">
+							<FirstHeading variant="title">ALL☕️</FirstHeading>
+							<Button onClick={() => navigate("/overalls/all")} variant="more">
+								더보기
+							</Button>
+						</Flex>
 					</Margin>
 					<Margin margin="0 0 200px 0">
 						<MainAllList allDto={mainPosts.allDto} />

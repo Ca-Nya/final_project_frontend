@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { CafeMap } from "../../container/cafeReview";
-import { Form, Input, Button, Flex, Margin } from "../../components";
+import {
+	Form,
+	Input,
+	Button,
+	Flex,
+	Margin,
+	SecondHeading,
+} from "../../components";
 
 const CafeSearch = ({ place, setPlace }) => {
 	// 검색 값 state
@@ -19,6 +26,9 @@ const CafeSearch = ({ place, setPlace }) => {
 	return (
 		<>
 			<Margin margin="0 0 30px 0">
+				<Margin margin="60px 0 25px 0">
+					<SecondHeading variant="title">카페등록☕️</SecondHeading>
+				</Margin>
 				<Form onSubmit={handleSubmit}>
 					<Flex gap="10px">
 						<Input
