@@ -1,4 +1,4 @@
-const Edit = ({ data, onhandleRemove }) => {
+const Edit = ({ data }) => {
 	return (
 		<div>
 			<button>수정완료</button>
