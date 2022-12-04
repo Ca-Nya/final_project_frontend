@@ -137,7 +137,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 						</Box>
 						{jwtToken ? (
 							<Box variant="main-user-info">
-								<Flex>
+								<Flex gap="10px">
 									<Text
 										onClick={() => {
 											dispatch(resetToken());

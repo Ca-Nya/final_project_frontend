@@ -7,7 +7,7 @@ export const Text = styled.p`
 	width: ${({ width }) => (width ? width : "")};
 	padding: ${({ pd }) => (pd ? pd : "")};
 	font-size: ${({ fontSize }) => (fontSize ? fontSize : "")};
-	${({ theme }) => theme.device.desktop}{
+	${({ theme }) => theme.device.desktop} {
 		${({ variant }) => {
 			switch (variant) {
 				/* 로그인 / 회원가입 페이지 */
@@ -241,23 +241,17 @@ export const Text = styled.p`
 						font-weight: 400;
 						padding: 4px 0;
 					`;
+				/* 카테고리별 리스트 */
+				case "list-item-date":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.regular};
+						color: ${({ theme }) => theme.colors.gray};
+						font-weight: 400;
+						text-align: end;
+					`;
 				default:
 					break;
 			}
 		}}
-	};
-	/* ${({ theme }) => theme.device.mobile} {
-		${({ variant }) => {
-			switch (variant) {
-				/* 로그인 / 회원가입 페이지 */
-				case "join-id":
-					return css`
-					font-size: 10px;
-						/* font-size: ${({ theme }) => theme.fontSizes.lg}; */
-					`;
-					default: break;
-			}
-	   } 
-	   }}; */
-		
+	} ;
 `;

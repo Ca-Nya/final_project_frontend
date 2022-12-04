@@ -19,19 +19,22 @@ const SigninForm = () => {
 		register,
 		formState: { errors },
 	} = useForm();
+	
 	//아이디와 비밀번호가 일치하지 않을 때
 	useEffect(() => {
 		if (errorData) {
-			if (errorData?.status === 401) {
+			if (errorData?.errorMessage === "일치하는 계정이 없습니다.") {
 				alert("아이디와 비밀번호가 일치하지않습니다.");
 			}
 		}
 		dispatch(resetError());
 	}, [errorData, errorData?.status, dispatch]);
+
 	//로그인 성공시
 	useEffect(() => {
 		if (token && statusCode === 200) {
 			navigate("/");
+			alert("카냐에 오신걸 환영합니다.")
 		}
 	});
 
@@ -43,6 +46,9 @@ const SigninForm = () => {
 			 onhandleSubmit={handleSubmit}
 			 register={register}
 			 errors={errors}
+			 errorData={errorData}
+			 statusCode={statusCode}
+			 token={token}
 			/>		
 		</Box>
 	);
