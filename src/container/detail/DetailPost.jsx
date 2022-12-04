@@ -17,8 +17,36 @@ import { DetailLike } from "../../container/detail";
 import { DetailMap, DetailRatings } from "../../container/detail";
 import { useFetchDetailPost, useDeleteDetailPost } from "../../querys/detail";
 import { useNavigate, useParams } from "react-router-dom";
+// 캐러셀
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import styled from "styled-components";
+import prev_arrow from "../../assets/icons/prev_arrow.png";
+import next_arrow from "../../assets/icons/next_arrow.png";
 
 const DetailPost = () => {
+	// 캐러셀 설정
+	const settings = {
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		arrows: true,
+		pauseOnHover: true,
+		nextArrow: (
+			<NextArrow>
+				<Image src={next_arrow} alt="next button" />
+			</NextArrow>
+		),
+		prevArrow: (
+			<PreArrow>
+				<Image src={prev_arrow} alt="prev button" />
+			</PreArrow>
+		),
+	};
 	// React Router
 	const navigate = useNavigate();
 	// 게시글 상세 페이지 파라미터
@@ -111,16 +139,18 @@ const DetailPost = () => {
 							<Box variant="detail-content">
 								<Flex gap="30px">
 									<Box variant="detail-content-image-wraper">
-										{data.imageList.map(({ imageUrl }) => {
-											return (
-												<Image
-													src={imageUrl}
-													alt="리뷰 이미지"
-													key={imageUrl}
-													variant="detail-review"
-												/>
-											);
-										})}
+										<StyledSlider {...settings}>
+											{data.imageList.map(({ imageUrl }) => {
+												return (
+													<Image
+														src={imageUrl}
+														alt="리뷰 이미지"
+														key={imageUrl}
+														variant="detail-review"
+													/>
+												);
+											})}
+										</StyledSlider>
 									</Box>
 									<Box variant="detail-content-desc">
 										<Text>{data.boardContent}</Text>
@@ -170,5 +200,34 @@ const DetailPost = () => {
 		</>
 	);
 };
+
+const StyledSlider = styled(Slider)`
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 4;
+	background-color: aliceblue;
+	.slick-prev::before,
+	.slick-next::before {
+		opacity: 0;
+		display: none;
+	}
+`;
+
+const PreArrow = styled.div`
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 4%;
+	z-index: 3;
+`;
+
+const NextArrow = styled.div`
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 4%;
+	z-index: 3;
+`;
 
 export default DetailPost;

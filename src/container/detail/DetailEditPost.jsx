@@ -5,12 +5,15 @@ import {
 	FirstHeading,
 	TextArea,
 	Image,
+	Margin,
 } from "../../components";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../../container/cafeReview";
 import { useFetchDetailPost, useEditDetailPost } from "../../querys/detail";
 import { useNavigate } from "react-router-dom";
+
+import Review from "../../container/cafeReview/review";
 
 const DetailEditPost = () => {
 	// React Router
@@ -142,60 +145,70 @@ const DetailEditPost = () => {
 	if (isDetailPostLoading) return <Box>로딩중...</Box>;
 
 	return (
-		<Box>
-			<FirstHeading>제목</FirstHeading>
-			<Input
-				defaultValue={boardTitle}
-				onChange={e => {
-					setInputValue(prev => {
-						return {
-							...prev,
-							boardTitle: e.target.value,
-						};
-					});
-				}}
-				placeholder="제목을 등록해주세요"
-				type="text"
-			/>
-			<Input
-				type="file"
-				accept="image/*"
-				name="cafe_img"
-				multiple
-				onChange={handleGetImage}
-			/>
-			{thumbnailImages.map((thumbnail, idx) => {
-				return (
-					<Box key={idx}>
-						<Image
-							variant="detail-review"
-							src={thumbnail}
-							alt="카페 리뷰 사진 썸네일"
-						/>
-						<Button onClick={handleDeleteImage(idx)}>삭제</Button>
-					</Box>
-				);
-			})}
-			<FirstHeading>리뷰</FirstHeading>
-			<TextArea
-				defaultValue={boardContent}
-				onChange={e => {
-					setInputValue(prev => {
-						return {
-							...prev,
-							boardContent: e.target.value,
-						};
-					});
-				}}
-				placeholder="리뷰를 등록해주세요"
-				type="text"
-			/>
-			<CafeRatings ratings={ratings} setRatings={setRatings} />
-			<CafeSearch setPlace={setPlace} place={place} />
-			<Button type="button" onClick={handleEditPost}>
-				수정완료
-			</Button>
-		</Box>
+		<Margin margin="160px 0 0 0">
+			<Box variant="container">
+				{/* <Review
+					onChangeInputTitleState={handleChangeInputTitleState}
+					onGetImage={handleGetImage}
+					onDeleteImage={handleDeleteImage}
+					onChangeInputContentState={handleChangeInputContentState}
+					thumbnailImages={thumbnailImages}
+					images={images}
+				/> */}
+				<Input
+					defaultValue={boardTitle}
+					onChange={e => {
+						setInputValue(prev => {
+							return {
+								...prev,
+								boardTitle: e.target.value,
+							};
+						});
+					}}
+					placeholder="제목을 등록해주세요"
+					type="text"
+					variant="cafe-review-title"
+				/>
+				<Input
+					type="file"
+					accept="image/*"
+					name="cafe_img"
+					multiple
+					onChange={handleGetImage}
+				/>
+				{thumbnailImages.map((thumbnail, idx) => {
+					return (
+						<Box key={idx}>
+							<Image
+								variant="detail-review"
+								src={thumbnail}
+								alt="카페 리뷰 사진 썸네일"
+							/>
+							<Button onClick={handleDeleteImage(idx)}>삭제</Button>
+						</Box>
+					);
+				})}
+				<FirstHeading>리뷰</FirstHeading>
+				<TextArea
+					defaultValue={boardContent}
+					onChange={e => {
+						setInputValue(prev => {
+							return {
+								...prev,
+								boardContent: e.target.value,
+							};
+						});
+					}}
+					placeholder="리뷰를 등록해주세요"
+					type="text"
+				/>
+				<CafeRatings ratings={ratings} setRatings={setRatings} />
+				<CafeSearch setPlace={setPlace} place={place} />
+				<Button type="button" onClick={handleEditPost}>
+					수정완료
+				</Button>
+			</Box>
+		</Margin>
 	);
 };
 

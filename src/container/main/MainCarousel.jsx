@@ -62,7 +62,6 @@ const MainCarousel = () => {
 
 const StyledSlider = styled(Slider)`
 	height: 100%;
-	/* max-width: 1924px; */
 	width: 100vw;
 	margin: 0 auto;
 	position: relative;
