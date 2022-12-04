@@ -11,15 +11,15 @@ export const Image = styled.img`
 			/* 상세 페이지 */
 			case "detail-review-profile":
 				return css`
-					width: 50px;
-					height: 50px;
+					width: ${calcRem(50)};
+					height: ${calcRem(50)};
 					object-fit: cover;
 					object-position: center;
 				`;
 			case "detail-review":
 				return css`
 					width: 100%;
-					height: 100%;
+					height: ${calcRem(460)};
 					object-fit: cover;
 					object-position: center;
 				`;
@@ -42,7 +42,7 @@ export const Image = styled.img`
 			case "main-category":
 				return css`
 					width: 100%;
-					max-height: 90px;
+					max-height: ${calcRem(90)};
 					border-radius: 50%;
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					padding: 22%;
@@ -147,7 +147,11 @@ export const Image = styled.img`
 					height: ${calcRem(220)};
 					object-fit: cover;
 					object-position: center;
+					&:hover {
+						filter: brightness(80%);
+					}
 				`;
+
 			default:
 				break;
 		}
