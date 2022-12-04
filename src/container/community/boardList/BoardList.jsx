@@ -1,33 +1,24 @@
-import {
-	Input,
-	Button,
-	Form,
-	Text,
-	Margin,
-	Flex,
-	Box,
-} from "../../../components";
 
 const BoardList = ({ navigate, data, authorization, nickname }) => {
 	console.log("BoardList==>", data);
 	return (
 		<>
 			{data && data.length > 0 ? (
-				<Box>
+				<div>
 					{data.map(item => {
 						return (
-							<Box key={item.communityId}>
-								<Text
+							<div key={item.communityId}>
+								<p
 									onClick={() => {
 										navigate(`/community/${item.communityId}`);
 									}}
 								>
 									{item.communityTitle}
-								</Text>
-							</Box>
+								</p>
+							</div>
 						);
 					})}
-				</Box>
+				</div>
 			) : (
 				<p>작성된 게시글이 없습니다.</p>
 			)}

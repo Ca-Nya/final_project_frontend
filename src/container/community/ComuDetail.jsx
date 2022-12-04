@@ -81,6 +81,7 @@ const ComuDetail = () => {
 				authorization={authorization}
 				navigate={navigate}
 				onhandleRemove={handleRemove}
+				id={id}
 			/>
 		</>
 	);
