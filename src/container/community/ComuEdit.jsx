@@ -1,4 +1,5 @@
 import Edit from "./edit";
+import { Margin } from "../../components";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -19,8 +20,13 @@ const ComuEdit = () => {
 	const queryClient = useQueryClient();
 
 	//커뮤니티 수정 게시물 목록 get요청
-	const { data: detailComuData, isError, isLoading, refetch } = useQuery({
-		queryKey: ["community"],
+	const {
+		data: detailComuData,
+		isError,
+		isLoading,
+		refetch,
+	} = useQuery({
+		queryKey: ["community", id],
 		queryFn: async () => {
 			try {
 				const response = await axios.get(`${BASE_URL}/community/${id}`);
@@ -34,19 +40,20 @@ const ComuEdit = () => {
 		suspense: true,
 	});
 
-	const { communityTitle, communityContent, communityImage} = detailComuData;
 	//수정 내용 저장 스테이트
 	const [edit, setEdit] = useState({
-		communityTitle: "",
-		communityContent: "",
+		communityTitle: detailComuData?.communityTitle,
+		communityContent: detailComuData?.communityContent,
 	});
-	const [editImg, setEditImg] = useState("");
+	const [editImg, setEditImg] = useState(detailComuData?.communityImage);
+
 	// 이미지 미리보기 스테이트
 	const [imageSrc, setImageSrc] = useState("");
+
 	//이미지 스테이트저장, 미리보기 온체인지 핸들러
 	const onChangeImage = e => {
 		setEditImgSrc(!editImgSrc);
-		const { name, files } = e.target;
+		const { files } = e.target;
 		setEditImg(files[0]);
 		let reader = new FileReader();
 		if (files[0]) {
@@ -58,6 +65,11 @@ const ComuEdit = () => {
 				setImageSrc([...imageSrc, previewImgUrl]);
 			}
 		};
+	};
+	// 수정 내용 onChange
+	const handleChangeComu = e => {
+		const { name, value } = e.target;
+		setEdit({ ...edit, [name]: value });
 	};
 
 	// 댓글 수정하기 put요청
@@ -79,49 +91,39 @@ const ComuEdit = () => {
 				console.log("error => ", error);
 			},
 			onSuccess: (data, variables, context) => {
-				queryClient.invalidateQueries("communityDetail");				
+				queryClient.invalidateQueries("communityDetail");
 				alert("게시물이 수정되었습니다.");
-				navigate(`/community/${id}`);				
+				navigate(`/community/${id}`);
 			},
-			
+
 			suspense: true,
-		},		
+		},
 	);
 
-	//게시물 수정하기 쿼리 요청(온클릭)
+	//게시물 수정하기 쿼리 요청(onClick)
 	const onClickHandler = e => {
 		e.preventDefault();
 		const formData = new FormData();
-		formData.append("data", JSON.stringify(edit));
-		// formData.append("image", editImg);
-		if (editImg !== null) {
+		if (
+			editImg === detailComuData?.communityImage &&
+			edit.communityTitle === detailComuData?.communityTitle &&
+			edit.communityContent === detailComuData?.communityContent
+		) {
+			alert("변경된 내용이 없습니다.");
+			navigate("/community");
+		} else if (editImg === detailComuData?.communityImage) {
+			formData.append("data", JSON.stringify(edit));
+			formData.append("url", editImg);
+			editMutation(formData);
+		} else {
+			formData.append("data", JSON.stringify(edit));
 			formData.append("image", editImg);
+			editMutation(formData);
 		}
-		editMutation(formData);
 		let entries = formData.entries();
 		for (const pair of entries) {
 			console.log(pair[0] + ", " + pair[1]);
 		}
-		// if (edit && editImg === "") {
-		// 	alert("수정내용이 없습니다.");
-		// }
-		// else {
-		editMutation(
-			{
-				// data: formData.append(JSON.stringify(edit),
-				// ),
-				communityTitle: formData.append(
-					"data",
-					JSON.stringify(edit.communityTitle),
-				),
-				communityContent: formData.append(
-					"data",
-					JSON.stringify(edit.communityContent),
-				),
-				communityImage: formData.append("image", editImg),
-			},
-		);
-		// }
 		setEdit(false);
 	};
 
@@ -136,51 +138,17 @@ const ComuEdit = () => {
 
 	return (
 		<>
-			<input
-				type="text"
-				name="communityTitle"
-				defaultValue={communityTitle}
-				required={communityTitle}
-				onChange={e=>{
-					setEdit(prev=>{
-						return {
-                            ...prev,
-                            communityTitle: e.target.value,
-                        };
-					})
-				}}
-			/>
-			<input
-				type="text"
-				name="communityContent"
-				defaultValue={communityContent}
-				required={communityContent}
-				onChange={e=>{
-					setEdit(prev=>{
-						return {
-                            ...prev,
-                            communityContent: e.target.value,
-                        };
-					})
-				}}
-			/>
-			<input
-				name="editImg"
-				type={"file"}
-				accept={"image/*"}
-				defaultValue={communityImage}
-				placeholder="이미지업로드"
-				onChange={onChangeImage}
-			/>
-			{editImgSrc ? (
-				<>
-					<img src={imageSrc} alt={"수정이미지"} />
-				</>
-			) : (
-				<img src={communityImage} alt={communityTitle} />
-			)}
-
-			<button onClick={onClickHandler}>수정완료</button>
+			<Margin margin="160px 0 0 0">
+				<Edit
+					onChangeComu={handleChangeComu}
+					onChangeImage={onChangeImage}
+					editImgSrc={editImgSrc}
+					edit={edit}
+					detailComuData={detailComuData}
+					onClickHandler={onClickHandler}
+					imageSrc={imageSrc}
+				/>
+			</Margin>
 		</>
 	);
 };

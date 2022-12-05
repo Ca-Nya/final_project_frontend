@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import BoardList from "./boardList";
-import { Box, Image } from "../../components";
+import { Box, Image, Margin } from "../../components";
 import Spinner from "../../assets/icons/spinner.gif";
 
 const ComuList = () => {
@@ -41,12 +41,14 @@ const ComuList = () => {
 
 	return (
 		<>
-			<BoardList
-				navigate={navigate}
-				data={data}
-				authorization={authorization}
-				nickname={nickname}
-			/>
+			<Margin margin="160px 0 0 0">
+				<BoardList
+					navigate={navigate}
+					data={data}
+					authorization={authorization}
+					nickname={nickname}
+				/>
+			</Margin>
 		</>
 	);
 };

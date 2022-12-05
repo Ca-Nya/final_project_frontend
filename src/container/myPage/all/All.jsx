@@ -107,7 +107,7 @@ const All = ({
 						<Box key={item.commentId}>
 							<Margin margin="0 0 0.9vw 0">
 								<Box variant="comment-box" key={item.commentId}>
-									<Margin margin="3% 3% 0 3%">
+									<Margin margin="27px 3% 0 22px">
 										<Box>
 											<Flex jc="space-between" ai="center">
 												<Text variant="comment">{item.commentContent}</Text>
@@ -117,7 +117,7 @@ const All = ({
 											</Flex>
 										</Box>
 									</Margin>
-									<Margin margin="3% 0 0 4%">
+									<Margin margin="9px 0 0 22px">
 										<Text
 											variant="comment-title"
 											onClick={() => {

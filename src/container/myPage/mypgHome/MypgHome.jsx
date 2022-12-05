@@ -29,6 +29,8 @@ const MypgHome = ({
 	myBoardMatch,
 	myCommentMatch,
 	myAllMatch,
+	myComuCommentMatch,
+	myComuBoardMatch,
 	nickname,
 }) => {
 	return (
@@ -205,66 +207,54 @@ const MypgHome = ({
 									</Box>
 								</Flex>
 							</Box>
+							<Box>
+								<Flex jc="center" gap="0.2vw">
+									<Text
+										variant="button"
+										onClick={() => {
+											navigate("mycommunityboard");
+										}}
+										isActive={myComuBoardMatch !== null}
+									>
+										커뮤니티 글
+									</Text>
+									<Box variant="guide-point" isActive={myComuBoardMatch !== null}>
+										<Margin margin="0.1vw0 0 0">
+											<Text
+												variant="button-count"
+												isActive={myComuBoardMatch !== null}
+											>
+												{memberCommentCount}
+											</Text>
+										</Margin>
+									</Box>
+								</Flex>
+							</Box>
+							<Box>
+								<Flex jc="center" gap="0.2vw">
+									<Text
+										variant="button"
+										onClick={() => {
+											navigate("mycommunitycomment");
+										}}
+										isActive={myComuCommentMatch !== null}
+									>
+										커뮤니티 댓글
+									</Text>
+									<Box variant="guide-point" isActive={myComuCommentMatch !== null}>
+										<Margin margin="0.1vw0 0 0">
+											<Text
+												variant="button-count"
+												isActive={myComuCommentMatch !== null}
+											>
+												{memberCommentCount}
+											</Text>
+										</Margin>
+									</Box>
+								</Flex>
+							</Box>
 						</Flex>
 					</Box>
-					{/* <Box>
-                <Box variant="guide">
-                    <Text>내가 쓴 글</Text>
-                    <Text>더보기</Text>
-                </Box>
-                <Box variant="guide">
-                    {recentlyMyBoardList?.map(item => {
-                        return (
-                            <Box key={item.boardId}>
-                                <Box>
-                                    <Image
-                                        variant="mypage-post"
-                                        src={item.imageList[0].imageUrl}
-                                        alt={item.boardTitle}
-                                    ></Image>
-                                    <Text>{item.boardTitle}</Text>
-                                </Box>
-                                <Button onClick={handleEditPost(item)}>수정</Button>
-                                <Button onClick={handelDeletePost(item)}>삭제</Button>
-                            </Box>
-                        );
-                    })}
-                </Box>
-            </Box>
-            <Box>
-                <Text>좋아요 한 글</Text>
-                {recentlyMyHeartBoardList?.map(item => {
-                    return (
-                        <Box key={item.boardId}>
-                            <Box key={item.boardId}>
-                                <Image
-                                    variant="mypage-post"
-                                    src={item.imageList[0].imageUrl}
-                                    alt={item.boardTitle}
-                                ></Image>
-                                <Text>{item.boardTitle}</Text>
-                            </Box>
-                            <Button onClick={handleEditPost(item)}>수정</Button>
-                            <Button onClick={handelDeletePost(item)}>삭제</Button>
-                        </Box>
-                    );
-                })}
-            </Box>
-            <Box>
-                <Text>내가 작성한 댓글</Text>
-                {recentlyMyCommentList?.map(item => {
-                    return (
-                        <Box key={item.commentId}>
-                            <Box key={item.commentId}>
-                                <Text>{item.commentContent}</Text>
-                                <Text>{item.boardTitle}</Text>
-                            </Box>
-                            <Button onClick={handleEditPost(item)}>수정</Button>
-                            <Button onClick={handelDeletePost(item)}>삭제</Button>
-                        </Box>
-                    );
-                })}
-            </Box> */}
 					<Outlet />
 				</Margin>
 			</Flex>
