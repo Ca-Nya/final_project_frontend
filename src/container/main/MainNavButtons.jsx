@@ -29,15 +29,6 @@ const MainNavButtons = () => {
 		["친절", "친절맛집", kindness],
 		["주차", "주차맛집", parking],
 	];
-	//
-	// const fields = [
-	// 	["price", "가성비맛집", price],
-	// 	["mood", "분위기맛집", mood],
-	// 	["coffee", "커피맛집", coffee],
-	// 	["dessert", "디저트맛집", dessert],
-	// 	["kindness", "친절맛집", kindness],
-	// 	["parking", "주차맛집", parking],
-	// ];
 
 	return (
 		<Nav variant="main-category-button-group-wrap">

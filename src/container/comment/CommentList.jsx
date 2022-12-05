@@ -20,7 +20,7 @@ const CommentList = () => {
 		const response = await axios.get(`${BASE_URL}/get/${id}/comments`);
 		return response.data;
 	});
-	console.log("CommentList ===============>", data);
+
 	if (status === "error") {
 		return <div>error입니다.</div>;
 	}
