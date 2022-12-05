@@ -2,10 +2,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Detail from "./detail";
-import ComuEdit from "./ComuEdit";
 import { Box, Image } from "../../components";
 import Spinner from "../../assets/icons/spinner.gif";
 import { useEffect } from "react";
+import ComuComment from "./ComuComment";
+import ComuCommentList from "./ComuCommentList";
+
 
 const ComuDetail = () => {
 	const { id } = useParams();
@@ -83,6 +85,8 @@ const ComuDetail = () => {
 				onhandleRemove={handleRemove}
 				id={id}
 			/>
+			<ComuCommentList />
+			<ComuComment />
 		</>
 	);
 };

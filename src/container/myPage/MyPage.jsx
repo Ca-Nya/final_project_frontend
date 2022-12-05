@@ -17,6 +17,8 @@ const MyPage = () => {
 	const myBoardMatch = useMatch("/mypage/myboard");
 	const myCommentMatch = useMatch("/mypage/mycomment");
 	const myAllMatch = useMatch("/mypage/myall");
+	const myComuBoardMatch = useMatch("/mypage/mycommunityboard");
+	const myComuCommentMatch = useMatch("/mypage/mycommunitycomment"); 
 
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
@@ -126,6 +128,8 @@ const MyPage = () => {
 				myBoardMatch={myBoardMatch}
 				myCommentMatch={myCommentMatch}
 				myAllMatch={myAllMatch}
+				myComuBoardMatch={myComuBoardMatch}
+				myComuCommentMatch={myComuCommentMatch}
                 nickname={nickname}
 			/>
 	);
