@@ -74,7 +74,6 @@ const CommentItem = () => {
 							variant="comment"
 						/>
 					</Margin>
-
 					<Button variant="comment-add">
 						<Flex jc="flex-end">등록 </Flex>
 					</Button>

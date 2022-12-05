@@ -12,7 +12,7 @@ export const Box = styled.div`
 				case "container":
 					return css`
 						width: 100vw;
-						max-width: ${calcRem(1200)} !important;
+						max-width: ${calcRem(1180)} !important;
 						margin: 0 auto;
 						padding: 0 3.5vw;
 						/* background-color: #eceaeade; */
@@ -689,7 +689,7 @@ export const Box = styled.div`
 					`;
 				case "list-content-desc":
 					return css`
-						height: ${calcRem(60)};
+						height: ${calcRem(57)};
 					`;
 				case "":
 					return css``;

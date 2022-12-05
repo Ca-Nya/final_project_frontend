@@ -7,6 +7,7 @@ import styled from "styled-components";
 import test1 from "../../assets/images/signin-background.png";
 import test2 from "../../assets/images/signup-background.png";
 import test3 from "../../assets/images/cafe.jpg";
+import fkj from "../../assets/images/fkj.jpg";
 import prev_arrow from "../../assets/icons/prev_arrow.png";
 import next_arrow from "../../assets/icons/next_arrow.png";
 
@@ -51,8 +52,13 @@ const MainCarousel = () => {
 				<Box variant="main-carousel-item" bg={test3}>
 					<Flex jc="center" ai="center">
 						<Strong variant="main-carousel">
-							여유로운 오후, 성수동 카페에서
+							여유로운 저녁, 성수동 카페에서
 						</Strong>
+					</Flex>
+				</Box>
+				<Box variant="main-carousel-item" bg={fkj}>
+					<Flex jc="center" ai="center">
+						<Strong variant="main-carousel">우연히 들어간 카페에서</Strong>
 					</Flex>
 				</Box>
 			</StyledSlider>

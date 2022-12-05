@@ -19,7 +19,7 @@ const useFetchList = category => {
 				data: { boardResponseDto: list, lastPage: isLast },
 			} = await fetchList({
 				category,
-				params: { page: pageParam, size: 10 },
+				params: { page: pageParam, size: 16 },
 			});
 
 			console.log("list =======>", list);

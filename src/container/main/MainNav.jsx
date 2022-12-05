@@ -110,7 +110,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 		<>
 			<Nav variant="main">
 				<Box variant="main-nav-wraper">
-					<Flex jc="center" ai="center">
+					<Flex jc="center" ai="center" gap="12px">
 						<Box variant="main-logo">
 							<Flex ai="center" jc="center">
 								<Button onClick={handleResetMain}>
@@ -138,7 +138,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 						</Box>
 						{jwtToken ? (
 							<Box variant="main-user-info">
-								<Flex ai="center" gap="10px">
+								<Flex ai="center" gap="12px">
 									<Button
 										onClick={() => {
 											navigate("/mypage/myall");

@@ -155,7 +155,7 @@ export const Image = styled.img`
 			/* 상세 페이지 댓글 */
 			case "comment-profile":
 				return css`
-					max-width: ${calcRem(70)};
+					width: 70px;
 					height: ${calcRem(70)};
 					object-fit: cover;
 					object-position: center;
