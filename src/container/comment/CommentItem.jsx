@@ -37,7 +37,6 @@ const CommentItem = () => {
 		{
 			onSuccess: () => {
 				queryClient.invalidateQueries("getComments");
-				alert("댓글이 등록되었습니다.");
 			},
 		},
 	);
@@ -49,7 +48,7 @@ const CommentItem = () => {
 			mutation.mutate({ commentContent: ment });
 			setMent("");
 		} else {
-			alert("로그인해 후 댓글입력해주세요.");
+			alert("로그인 후 댓글을 입력해주세요.");
 			navigate("/join");
 		}
 	};

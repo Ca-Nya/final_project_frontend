@@ -36,13 +36,13 @@ const MainAllList = ({ allDto }) => {
 												>
 													{allItem.address}
 												</SecondHeading>
-												<Margin margin="9px 0 0 9%">
+												<Margin margin="9px 0">
 													<DataList variant="main-all-item-hashtag">
 														<Box>
 															<Hidden>
 																<DataTerm>높은 점수를 받은 카테고리</DataTerm>
 															</Hidden>
-															<Flex gap="6px">
+															<Flex jc="center" gap="6px">
 																<DataDesc>#커피맛집</DataDesc>
 																<DataDesc>#디저트맛집</DataDesc>
 															</Flex>
@@ -88,13 +88,13 @@ const MainAllList = ({ allDto }) => {
 											>
 												{allItem.address}
 											</SecondHeading>
-											<Margin margin="9px 0 0 9%">
+											<Margin margin="9px 0">
 												<DataList variant="main-all-item-hashtag">
 													<Box>
 														<Hidden>
 															<DataTerm>높은 점수를 받은 카테고리</DataTerm>
 														</Hidden>
-														<Flex gap="6px">
+														<Flex jc="center" gap="6px">
 															<DataDesc>#커피맛집</DataDesc>
 															<DataDesc>#디저트맛집</DataDesc>
 														</Flex>

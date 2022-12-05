@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
-const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
+const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
 	console.log("isLike ================>", isLike);
 	const navigate = useNavigate();
 
@@ -42,9 +42,9 @@ const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
 			onSuccess: ({ data }) => {
 				console.log(data);
 				if (data === "좋아요 생성 완료.") {
-					detailpostRefetch();
+					detailPostRefetch();
 				} else {
-					detailpostRefetch();
+					detailPostRefetch();
 					// alert("좋아요 취소🥹");
 				}
 			},
@@ -72,8 +72,6 @@ const DetailLike = ({ isLike, boardId, detailpostRefetch }) => {
 			setLike(boardId);
 		} else {
 			alert("로그인 후 좋아요해주세요!");
-			// 소희님께 말씀드리기
-			// navigate("/join");
 		}
 	};
 

@@ -53,14 +53,14 @@ const DetailPost = () => {
 	const { id } = useParams();
 	// 게시글 상세 페이지 정보 요청 hook
 	const {
-		data,
+		data: detailPostData,
 		isError,
 		isLoading,
-		refetch: detailpostRefetch,
+		refetch: detailPostRefetch,
 	} = useFetchDetailPost(+id);
 	console.log(
 		"DetailPost data ===>",
-		data,
+		detailPostData,
 		"isError =>",
 		isError,
 		"isLoading =>",
@@ -68,8 +68,8 @@ const DetailPost = () => {
 	);
 	// 별점을 담은 객체 배열화
 	const ratings = [];
-	for (let rate in data.rating) {
-		ratings.push(data.rating[rate]);
+	for (let rate in detailPostData.rating) {
+		ratings.push(detailPostData.rating[rate]);
 	}
 	// 게시글 삭제 요청 hook
 	const { mutate: deletePostMutate } = useDeleteDetailPost();
@@ -97,12 +97,13 @@ const DetailPost = () => {
 
 	return (
 		<>
-			{data ? (
+			{detailPostData ? (
 				<Margin margin="160px 0 0 0">
 					<Box variant="container">
 						<Box variant="detail-container">
 							{/* 후에 전역 상태로 수정 */}
-							{localStorage.getItem("Nickname") === data.memberNickname ? (
+							{localStorage.getItem("Nickname") ===
+							detailPostData.memberNickname ? (
 								<Box>
 									<Button onClick={handleEditPost}>수정</Button>
 									<Button onClick={handleDeletePost}>삭제</Button>
@@ -110,21 +111,24 @@ const DetailPost = () => {
 							) : (
 								""
 							)}
-							<FirstHeading variant="title">{data.boardTitle}</FirstHeading>
+							<FirstHeading variant="title">
+								{detailPostData.boardTitle}
+							</FirstHeading>
 							<Box variant="detail-info">
 								<Flex jc="flex-end" ai="center">
 									<Flex ai="center" gap="9px">
 										<Image
-											src={data.memberProfileImage}
+											src={detailPostData.memberProfileImage}
 											alt="프로필 이미지"
-											variant="small-profile"
+											variant="medium-profile"
+											rank={localStorage.getItem("memberStatus")}
 										/>
 										<DataList variant="">
 											<Hidden>
 												<DataTerm>작성자</DataTerm>
 											</Hidden>
 											<DataDesc variant="small-profile">
-												{data.memberNickname}
+												{detailPostData.memberNickname}
 											</DataDesc>
 										</DataList>
 									</Flex>
@@ -132,7 +136,7 @@ const DetailPost = () => {
 										<Hidden>
 											<DataTerm>작성일</DataTerm>
 										</Hidden>
-										<DataDesc>{data.date}</DataDesc>
+										<DataDesc>{detailPostData.date}</DataDesc>
 									</DataList>
 								</Flex>
 							</Box>
@@ -140,7 +144,7 @@ const DetailPost = () => {
 								<Flex gap="30px">
 									<Box variant="detail-content-image-wraper">
 										<StyledSlider {...settings}>
-											{data.imageList.map(({ imageUrl }) => {
+											{detailPostData.imageList.map(({ imageUrl }) => {
 												return (
 													<Image
 														src={imageUrl}
@@ -153,34 +157,40 @@ const DetailPost = () => {
 										</StyledSlider>
 									</Box>
 									<Box variant="detail-content-desc">
-										<Text>{data.boardContent}</Text>
+										<Text>{detailPostData.boardContent}</Text>
 									</Box>
 								</Flex>
 							</Box>
-							<SecondHeading variant="title">카냐인의 점수⭐️</SecondHeading>
+							<SecondHeading variant="title">
+								카냐인 {detailPostData.memberNickname}님의 평가⭐️
+							</SecondHeading>
 							<Margin margin="20px 0 60px 0">
 								<DetailRatings ratings={ratings} />
 								<Margin margin="10px 0 0 0">
 									<DataList variant="detail-rating">
 										<Flex jc="center" ai="center" gap="10px">
 											<DataTerm>카냐인의 평균 평점</DataTerm>
-											<DataDesc>{data.totalRating}</DataDesc>
+											<DataDesc>{detailPostData.totalRating}</DataDesc>
 										</Flex>
 									</DataList>
 								</Margin>
 							</Margin>
-							<DetailMap searchPlace={data.address} />
+							{/* searchPlace 추후에 address혹은 place로 변경 */}
+							<DetailMap
+								searchPlace={detailPostData.address}
+								addressId={detailPostData.addressId}
+							/>
 							<Margin margin="40px 0 0 0">
 								<Flex jc="flex-end">
 									<DataList variant="detail-heart-count">
 										<Flex ai="center" gap="5px">
 											<DetailLike
-												isLike={data.liked}
+												isLike={detailPostData.liked}
 												boardId={+id}
-												detailpostRefetch={detailpostRefetch}
+												detailPostRefetch={detailPostRefetch}
 											/>
 											<DataTerm>좋아요</DataTerm>
-											<DataDesc>{data.heartCount}</DataDesc>
+											<DataDesc>{detailPostData.heartCount}</DataDesc>
 										</Flex>
 									</DataList>
 								</Flex>

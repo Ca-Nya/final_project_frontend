@@ -14,17 +14,20 @@ const CafeReview = ({ id }) => {
 	// Base Url
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// 지도 장소 검색값 state
-	const [place, setPlace] = useState("");
-	// 검색값이 있을 경우에만 게시글 state에 등록
+	const [place, setPlace] = useState({ address: "", addressId: "" });
+	console.log("place =======>", place);
+
 	useEffect(() => {
 		if (place)
 			setInputValue(prev => {
 				return {
 					...prev,
-					address: place,
+					address: place.address,
+					addressId: place.addressId,
 				};
 			});
 	}, [place]);
+
 	// 데이터 전송을 위한 form 객체
 	const formData = new FormData();
 	// 이미지 썸네일 state
@@ -63,9 +66,13 @@ const CafeReview = ({ id }) => {
 	const [inputValue, setInputValue] = useState({
 		boardTitle: "",
 		boardContent: "",
-		address: place,
+		address: place.address,
+		addressId: place.addressId,
 		ratings,
 	});
+
+	console.log("inputValueAddressId ============>", inputValue.addressId);
+
 	// inputValue state - boardTitle 변경 핸들러
 	const handleChangeInputTitleState = e => {
 		setInputValue(prev => {
@@ -127,24 +134,28 @@ const CafeReview = ({ id }) => {
 	// 리뷰 등록 핸들러
 	const handlePostReview = () => {
 		if (place) {
-			formData.append("data", JSON.stringify(inputValue));
-			for (let i = 0; i < images.length; i++) {
-				console.log(`${images[i]}  =>`, images[i]);
-				formData.append("image", images[i]);
+			if (!images.length) {
+				alert("한 개 이상의 이미지를 등록해주세요!");
+			} else {
+				formData.append("data", JSON.stringify(inputValue));
+				for (let i = 0; i < images.length; i++) {
+					console.log(`${images[i]}  =>`, images[i]);
+					formData.append("image", images[i]);
+				}
+				for (let key of formData.keys()) {
+					console.log("formData ===>", key, ":", formData.get(key));
+				}
+				addPost.mutate(formData, {
+					onSuccess: () => {
+						alert("리뷰 작성이 완료되었습니다");
+						navigate(`/detail/post/${+id}`);
+					},
+					onError: error => {
+						console.log("error =>", error);
+						alert("리뷰 작성을 실패했습니다");
+					},
+				});
 			}
-			for (let key of formData.keys()) {
-				console.log("formData ===>", key, ":", formData.get(key));
-			}
-			addPost.mutate(formData, {
-				onSuccess: () => {
-					alert("리뷰 작성이 완료되었습니다");
-					navigate(`/detail/post/${+id}`);
-				},
-				onError: error => {
-					console.log("error =>", error);
-					alert("리뷰 작성을 실패했습니다");
-				},
-			});
 		} else if (!place) alert("장소를 선택해주세요");
 	};
 	// 별점 클릭시 실행 핸들러
@@ -165,7 +176,9 @@ const CafeReview = ({ id }) => {
 	// 검색 핸들러
 	const handleSubmit = e => {
 		e.preventDefault();
-		setPlace(inputText);
+		setPlace(prev => {
+			return { ...prev, address: inputText, addressId: "" };
+		});
 		setInputText("");
 	};
 
@@ -185,6 +198,7 @@ const CafeReview = ({ id }) => {
 					onChangePlaceValue={handleChangePlaceValue}
 					inputText={inputText}
 					place={place}
+					setPlace={setPlace}
 				/>
 				<Submit onPostReview={handlePostReview} />
 			</Box>

@@ -62,6 +62,7 @@ const LikedByFieldList = () => {
 																	src={item.memberProfileImage}
 																	alt="프로필 이미지"
 																	variant="small-profile"
+																	rank={localStorage.getItem("memberStatus")}
 																/>
 																<DataList>
 																	<Hidden>

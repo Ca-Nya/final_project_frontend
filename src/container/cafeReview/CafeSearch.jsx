@@ -43,7 +43,7 @@ const CafeSearch = ({ place, setPlace }) => {
 					</Flex>
 				</Form>
 			</Margin>
-			<CafeMap searchPlace={place} />
+			<CafeMap searchPlace={place} setPlace={setPlace} />
 		</>
 	);
 };

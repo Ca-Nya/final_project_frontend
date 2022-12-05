@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Box, Text, Flex, Strong } from "../../components";
 
-const CafeMap = ({ searchPlace }) => {
+const CafeMap = ({ searchPlace, addressId }) => {
 	const { kakao } = window;
 	// 검색결과를 담을 배열
 	const [Places, setPlaces] = useState([]);
@@ -16,24 +16,28 @@ const CafeMap = ({ searchPlace }) => {
 
 		const ps = new kakao.maps.services.Places();
 
-		if (searchPlace) ps.keywordSearch(searchPlace, placesSearch);
-
 		function placesSearch(data, status) {
 			if (status === kakao.maps.services.Status.OK) {
 				// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성
 				let bounds = new kakao.maps.LatLngBounds();
-
 				for (let i = 0; i < data.length; i++) {
-					displayMarker(data[i]);
-					// LatLngBounds 객체에 좌표를 추가
-					bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+					if (addressId === data[i].id) {
+						displayMarker(data[i]);
+						// LatLngBounds 객체에 좌표를 추가
+						bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+						// LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정
+						// 이때 지도의 중심좌표와 레벨이 변경될 수 있다
+						map.setBounds(bounds);
+						setPlaces(prev => {
+							return [...prev, data[i]];
+						});
+					}
 				}
-				// LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정
-				// 이때 지도의 중심좌표와 레벨이 변경될 수 있다
-				map.setBounds(bounds);
-				setPlaces(data);
 			}
 		}
+
+		// 검색 키워드 변경시 키워드 검색
+		if (searchPlace) ps.keywordSearch(searchPlace, placesSearch);
 
 		function displayMarker(place) {
 			let marker = new kakao.maps.Marker({
@@ -60,7 +64,7 @@ const CafeMap = ({ searchPlace }) => {
 				ref={mapContainer}
 				style={{
 					width: "100%",
-					height: "450px",
+					height: "460px",
 				}}
 			/>
 			{Places.map(item => {

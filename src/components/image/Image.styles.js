@@ -9,12 +9,23 @@ export const Image = styled.img`
 	${({ variant }) => {
 		switch (variant) {
 			/* 상세 페이지 */
-			case "detail-review-profile":
+			case "medium-profile":
 				return css`
 					width: ${calcRem(50)};
 					height: ${calcRem(50)};
 					object-fit: cover;
 					object-position: center;
+					border-radius: 50%;
+					${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									border: 3px solid ${({ theme }) => theme.colors.point};
+								`;
+							default:
+								break;
+						}
+					}}
 				`;
 			case "detail-review":
 				return css`
@@ -38,6 +49,16 @@ export const Image = styled.img`
 					object-fit: cover;
 					object-position: center;
 					border-radius: 50%;
+					${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									border: 3px solid ${({ theme }) => theme.colors.point};
+								`;
+							default:
+								break;
+						}
+					}}
 				`;
 			case "main-category":
 				return css`
