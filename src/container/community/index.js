@@ -4,5 +4,6 @@ import ComuPost from "./ComuPost";
 import ComuEdit from "./ComuEdit";
 import ComuComment from "./ComuComment";
 import ComuCommentList from "./ComuCommentList";
+import ComuCommentEdit from "./ComuCommentEdit";
 
-export { ComuList,ComuDetail,ComuPost,ComuEdit,ComuComment,ComuCommentList}
+export { ComuList,ComuDetail,ComuPost,ComuEdit,ComuComment,ComuCommentList,ComuCommentEdit}
