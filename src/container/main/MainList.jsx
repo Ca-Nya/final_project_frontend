@@ -1,35 +1,24 @@
 import { useEffect, useState } from "react";
-import { FirstHeading, Box, Margin, Flex } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { FirstHeading, Box, Margin, Flex, Button } from "../../components";
 import { useFetchPosts } from "../../querys/main";
 import {
 	MainCanyaPick,
-	MainCanyaButtons,
 	MainBestList,
 	MainNewList,
 	MainAllList,
 } from "../../container/main";
 
 const MainList = () => {
+	// React Router
+	const navigate = useNavigate();
 	// 전체 게시글 요청 hook
-	const {
-		data: mainPosts,
-		isError,
-		isLoading,
-		error,
-		isSuccess,
-	} = useFetchPosts();
-	console.log(
-		"useFetchPosts query data =>",
-		mainPosts,
-		"isError =>",
-		isError,
-		"error =>",
-		error,
-		"isSucsess =>",
-		isSuccess,
-	);
+	const { data: mainPosts, isError, isLoading, error } = useFetchPosts();
+	console.log("useFetchPosts query data =>", mainPosts, "error =>", error);
 	// 카냐's Pick state
 	const [canyaPick, setCanyaPick] = useState(null);
+
+	console.log("REACT_APP_SERVER =====>", process.env.REACT_APP_SERVER);
 
 	useEffect(() => {
 		setCanyaPick(mainPosts?.coffeePick);
@@ -42,28 +31,39 @@ const MainList = () => {
 		<Box>
 			{mainPosts && (
 				<>
-					<Flex>
-						<Margin margin="120px 57px 0 0">
-							<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
-						</Margin>
-						<Margin margin="130px 0 30px 0">
-							<MainCanyaButtons
-								setCanyaPick={setCanyaPick}
-								mainPosts={mainPosts}
-							/>
-						</Margin>
-					</Flex>
-					<MainCanyaPick picks={canyaPick} />
+					<MainCanyaPick
+						picks={canyaPick}
+						setCanyaPick={setCanyaPick}
+						mainPosts={mainPosts}
+					/>
 					<Margin margin="130px 0 30px 0">
-						<FirstHeading variant="title">BEST💛</FirstHeading>
+						<Flex jc="space-between" ai="center">
+							<FirstHeading variant="title">BEST💛</FirstHeading>
+							<Button onClick={() => navigate("/overalls/hot")} variant="more">
+								더보기
+							</Button>
+						</Flex>
 					</Margin>
 					<MainBestList bestDto={mainPosts.bestDto} />
 					<Margin margin="130px 0 0 0">
-						<FirstHeading variant="title">NEW🔥</FirstHeading>
+						<Flex jc="space-between" ai="center">
+							<FirstHeading variant="title">NEW🔥</FirstHeading>
+							<Button
+								onClick={() => navigate("/overalls/recent")}
+								variant="more"
+							>
+								더보기
+							</Button>
+						</Flex>
 					</Margin>
 					<MainNewList newDto={mainPosts.newDto} />
 					<Margin margin="130px 0 33px 0">
-						<FirstHeading variant="title">ALL☕️</FirstHeading>
+						<Flex jc="space-between" ai="center">
+							<FirstHeading variant="title">ALL☕️</FirstHeading>
+							<Button onClick={() => navigate("/overalls/all")} variant="more">
+								더보기
+							</Button>
+						</Flex>
 					</Margin>
 					<Margin margin="0 0 200px 0">
 						<MainAllList allDto={mainPosts.allDto} />

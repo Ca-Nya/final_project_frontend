@@ -92,7 +92,7 @@ const MainNavButtons = () => {
 						<Button
 							variant="main-category"
 							onClick={() => {
-								navigate(`/`);
+								navigate(`/community`);
 							}}
 						>
 							<>

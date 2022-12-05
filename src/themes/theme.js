@@ -3,11 +3,14 @@ export const calcRem = size => `${size / 16}rem`;
 const fontSizes = {
 	small: calcRem(10),
 	base: calcRem(15),
-	lg: calcRem(18),
+	// lg: calcRem(18),
+	lg: calcRem(17),
 	xl: calcRem(20),
-	xxl: calcRem(25),
+	// xxl: calcRem(25),
+	xxl: calcRem(22),
 	xxxl: calcRem(30),
-	titleSize: calcRem(40),
+	// titleSize: calcRem(40),
+	titleSize: calcRem(38),
 };
 
 const paddings = {

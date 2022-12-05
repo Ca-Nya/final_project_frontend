@@ -12,7 +12,7 @@ export const Box = styled.div`
 				case "container":
 					return css`
 						width: 100vw;
-						max-width: ${calcRem(1136)} !important;
+						max-width: ${calcRem(1200)} !important;
 						margin: 0 auto;
 						padding: 0 3.5vw;
 						/* background-color: #eceaeade; */
@@ -62,13 +62,15 @@ export const Box = styled.div`
 					`;
 				case "nav-container":
 					return css`
-						width: 100%;
-						max-width: 1136px !important;
-						margin: 0 10px;
+						width: 63%;
+						max-width: 900px !important;
+						@media screen and (min-width: 900px) {
+							width: 80%;
+						}
 					`;
 				case "main-logo":
 					return css`
-						width: 10%;
+						width: 6%;
 						max-width: ${calcRem(120)};
 						height: 50px;
 					`;
@@ -81,15 +83,14 @@ export const Box = styled.div`
 					return css`
 						position: relative;
 						width: 100%;
-						max-width: ${calcRem(967)};
+						max-width: ${calcRem(900)};
 						margin: 0 auto;
 					`;
 				case "main-search-wraper":
 					return css`
 						position: absolute;
-						left: 10px;
-						width: 19%;
-						max-width: ${calcRem(222)};
+						width: 27%;
+						max-width: ${calcRem(190)};
 					`;
 				case "main-selcet-wraper":
 					return css`
@@ -180,9 +181,9 @@ export const Box = styled.div`
 					`;
 				case "main-canya-pick-content":
 					return css`
-						height: ${calcRem(75)};
+						height: ${calcRem(77)};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
-						padding: 0 0 14px 0;
+						padding: 1px 0 17px 0;
 					`;
 				case "main-canya-pick-info":
 					return css`

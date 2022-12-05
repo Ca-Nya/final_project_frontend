@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Map from "./map";
 
-const CafeMap = ({ searchPlace }) => {
+const CafeMap = ({ searchPlace, setPlace }) => {
 	const { kakao } = window;
 	// 검색결과를 담을 배열 state
 	const [places, setPlaces] = useState([]);
@@ -28,18 +28,30 @@ const CafeMap = ({ searchPlace }) => {
 				let bounds = new kakao.maps.LatLngBounds();
 
 				for (let i = 0; i < data.length; i++) {
-					displayMarker(data[i]);
-					// LatLngBounds 객체에 좌표를 추가
-					bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+					if (!searchPlace.addressId) {
+						displayMarker(data[i]);
+						// LatLngBounds 객체에 좌표를 추가
+						bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+						map.setBounds(bounds);
+						setPlaces(data);
+					} else if (searchPlace.addressId === data[i].id) {
+						displayMarker(data[i]);
+						// LatLngBounds 객체에 좌표를 추가
+						bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+						map.setBounds(bounds);
+						setPlaces(() => {
+							return [data[i]];
+						});
+					}
 				}
 				// LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정
 				// 이때 지도의 중심좌표와 레벨이 변경될 수 있다
-				map.setBounds(bounds);
-				setPlaces(data);
 			}
 		};
 		// 검색 키워드 변경시 키워드 검색
-		if (searchPlace) ps.keywordSearch(searchPlace, placesSearch);
+		// porps 전달 시점에 이미 address만 전달되도록 리펙토링
+		if (searchPlace.address)
+			ps.keywordSearch(searchPlace.address, placesSearch);
 		// 마커 출력 함수
 		const displayMarker = place => {
 			let marker = new kakao.maps.Marker({
@@ -62,7 +74,7 @@ const CafeMap = ({ searchPlace }) => {
 
 	return (
 		<>
-			<Map places={places} mapContainer={mapContainer} />
+			<Map places={places} mapContainer={mapContainer} setPlace={setPlace} />
 		</>
 	);
 };

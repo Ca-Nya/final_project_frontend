@@ -83,7 +83,7 @@ const ComuPost = () => {
 				console.log(pair[0] + ", " + pair[1]);
 			}
 		} else {
-			alert("로그인해 후 게시물을 등록해주세요.");
+			alert("로그인 후 게시물을 등록해주세요.");
 			navigate("/join");
 		}
 	};

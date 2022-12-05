@@ -1,18 +1,9 @@
-import {
-	Box,
-	Input,
-	Button,
-	FirstHeading,
-	TextArea,
-	Image,
-	Margin,
-} from "../../components";
+import { Box, Button, Flex, Margin } from "../../components";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../../container/cafeReview";
 import { useFetchDetailPost, useEditDetailPost } from "../../querys/detail";
 import { useNavigate } from "react-router-dom";
-
 import Review from "../../container/cafeReview/review";
 
 const DetailEditPost = () => {
@@ -47,7 +38,10 @@ const DetailEditPost = () => {
 				return editRates;
 			});
 		}
-	}, [rating]);
+		setInputValue(prev => {
+			return { ...prev, boardTitle, boardContent };
+		});
+	}, [detailPostData]);
 	// 지도 장소 검색값 state
 	const [place, setPlace] = useState(address);
 	// 검색값이 있을 경우에만 게시글 state에 등록
@@ -99,6 +93,24 @@ const DetailEditPost = () => {
 		address: place,
 		ratings,
 	});
+	// inputValue state - boardTitle 변경 핸들러
+	const handleChangeInputTitleState = e => {
+		setInputValue(prev => {
+			return {
+				...prev,
+				boardTitle: e.target.value,
+			};
+		});
+	};
+	// inputValue state - boardContent 변경 핸들러
+	const handleChangeInputContentState = e => {
+		setInputValue(prev => {
+			return {
+				...prev,
+				boardContent: e.target.value,
+			};
+		});
+	};
 	// 별점 state 변경시 게시글 state 변경
 	useEffect(() => {
 		setInputValue(prev => {
@@ -110,33 +122,37 @@ const DetailEditPost = () => {
 	// 상세페이지 수정 핸들러
 	const handleEditPost = () => {
 		if (place) {
-			formData.append("data", JSON.stringify(inputValue));
-			const imageUrls = [];
-			for (let i = 0; i < images.length; i++) {
-				if (typeof images[i] === "string") {
-					imageUrls.push(images[i]);
-				} else {
-					formData.append("images", images[i]);
+			if (!images.length) {
+				alert("한 장 이상의 이미지를 등록해주세요!");
+			} else {
+				formData.append("data", JSON.stringify(inputValue));
+				const imageUrls = [];
+				for (let i = 0; i < images.length; i++) {
+					if (typeof images[i] === "string") {
+						imageUrls.push(images[i]);
+					} else {
+						formData.append("images", images[i]);
+					}
 				}
-			}
-			formData.append("url", JSON.stringify({ urlList: imageUrls }));
+				formData.append("url", JSON.stringify({ urlList: imageUrls }));
 
-			for (let key of formData.keys()) {
-				console.log("formData ===>", key, ":", formData.get(key));
-			}
+				for (let key of formData.keys()) {
+					console.log("formData ===>", key, ":", formData.get(key));
+				}
 
-			editPostMutate(
-				{ boardId: +id, payload: formData },
-				{
-					onSuccess: (data, variables, context) => {
-						alert("수정이 완료되었습니다");
-						navigate(`/detail/post/${+id}`);
+				editPostMutate(
+					{ boardId: +id, payload: formData },
+					{
+						onSuccess: (data, variables, context) => {
+							alert("수정이 완료되었습니다");
+							navigate(`/detail/post/${+id}`);
+						},
+						onError: (error, variables, context) => {
+							alert("수정을 실패했습니다");
+						},
 					},
-					onError: (error, variables, context) => {
-						alert("수정을 실패했습니다");
-					},
-				},
-			);
+				);
+			}
 		} else if (!place) alert("장소를 선택해주세요");
 	};
 
@@ -147,66 +163,28 @@ const DetailEditPost = () => {
 	return (
 		<Margin margin="160px 0 0 0">
 			<Box variant="container">
-				{/* <Review
+				<Review
+					titleValue={boardTitle}
+					contentValue={boardContent}
 					onChangeInputTitleState={handleChangeInputTitleState}
 					onGetImage={handleGetImage}
 					onDeleteImage={handleDeleteImage}
 					onChangeInputContentState={handleChangeInputContentState}
 					thumbnailImages={thumbnailImages}
-					images={images}
-				/> */}
-				<Input
-					defaultValue={boardTitle}
-					onChange={e => {
-						setInputValue(prev => {
-							return {
-								...prev,
-								boardTitle: e.target.value,
-							};
-						});
-					}}
-					placeholder="제목을 등록해주세요"
-					type="text"
-					variant="cafe-review-title"
-				/>
-				<Input
-					type="file"
-					accept="image/*"
-					name="cafe_img"
-					multiple
-					onChange={handleGetImage}
-				/>
-				{thumbnailImages.map((thumbnail, idx) => {
-					return (
-						<Box key={idx}>
-							<Image
-								variant="detail-review"
-								src={thumbnail}
-								alt="카페 리뷰 사진 썸네일"
-							/>
-							<Button onClick={handleDeleteImage(idx)}>삭제</Button>
-						</Box>
-					);
-				})}
-				<FirstHeading>리뷰</FirstHeading>
-				<TextArea
-					defaultValue={boardContent}
-					onChange={e => {
-						setInputValue(prev => {
-							return {
-								...prev,
-								boardContent: e.target.value,
-							};
-						});
-					}}
-					placeholder="리뷰를 등록해주세요"
-					type="text"
 				/>
 				<CafeRatings ratings={ratings} setRatings={setRatings} />
 				<CafeSearch setPlace={setPlace} place={place} />
-				<Button type="button" onClick={handleEditPost}>
-					수정완료
-				</Button>
+				<Margin margin="98px 0 200px 0">
+					<Flex jc="center" ai="center">
+						<Button
+							type="button"
+							onClick={handleEditPost}
+							variant="cafe-review-post"
+						>
+							수정완료
+						</Button>
+					</Flex>
+				</Margin>
 			</Box>
 		</Margin>
 	);

@@ -12,7 +12,12 @@ import LikedByOverallList from "../container/likedByOverallList";
 import MyPages from "../pages/mypage";
 import { MyBoard, MyComment, MyLike, MyAll } from "../container/myPage";
 import { Chat } from "../container/chat";
-import { ComuList, ComuDetail, ComuPost } from "../container/community";
+import {
+	ComuList,
+	ComuDetail,
+	ComuPost,
+	ComuEdit,
+} from "../container/community";
 
 const Router = () => {
 	return (
@@ -32,19 +37,20 @@ const Router = () => {
 						<Route path="/fields" element={<LikedByFieldsLayout />}>
 							<Route path=":category" element={<LikedByFieldList />} />
 						</Route>
+						<Route path="/mypage" element={<MyPages />}>
+							<Route path="myall" element={<MyAll />} />
+							<Route path="myboard" element={<MyBoard />} />
+							<Route path="mycomment" element={<MyComment />} />
+							<Route path="mylike" element={<MyLike />} />
+						</Route>
+						<Route path="/community" element={<ComuList />} />
+						<Route path="/community/:id" element={<ComuDetail />} />
+						<Route path="/post" element={<ComuPost />} />
 					</Route>
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
-					<Route path="/mypage" element={<MyPages />}>
-						<Route path="myall" element={<MyAll />} />
-						<Route path="myboard" element={<MyBoard />} />
-						<Route path="mycomment" element={<MyComment />} />
-						<Route path="mylike" element={<MyLike />} />
-					</Route>
-					<Route path="/community" element={<ComuList />} />
-					<Route path="/community/:id" element={<ComuDetail />} />
-					<Route path="/post" element={<ComuPost />} />
 					<Route path="/chat" element={<Chat />} />
+					<Route path="/edit/:id" element={<ComuEdit />} />
 				</Routes>
 			</BrowserRouter>
 		</>

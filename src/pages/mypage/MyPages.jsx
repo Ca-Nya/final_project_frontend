@@ -6,12 +6,12 @@ import myPageBackground from "../../assets/images/mypage-background.png";
 const MyPages = () => {
 	return (
 		<Box>
-			<MainNav />
+			{/* <MainNav /> */}
 			<Image variant="mypage" src={myPageBackground} />
 			<Margin margin="3.8vw 0 26.5vw 0">
 				<MyPage />
 			</Margin>
-			<MainFooter />
+			{/* <MainFooter /> */}
 		</Box>
 	);
 };

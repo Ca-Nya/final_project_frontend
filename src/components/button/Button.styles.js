@@ -73,6 +73,7 @@ export const Button = styled.button`
 				case "main-login":
 					return css`
 						width: 100%;
+						min-width: 50px;
 						max-width: ${calcRem(99)};
 						height: 38px;
 						background-color: ${({ theme }) => theme.colors.main};
@@ -80,16 +81,39 @@ export const Button = styled.button`
 						font-size: ${({ theme }) => theme.fontSizes.base};
 						color: ${({ theme }) => theme.colors.darkgray};
 						border: 1px solid ${({ theme }) => theme.colors.line};
-
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
 						&:hover {
 							opacity: 0.8;
+						}
+					`;
+				case "main-logout":
+					return css`
+						width: 100%;
+						min-width: 50px;
+						max-width: ${calcRem(99)};
+						height: 38px;
+						background-color: ${({ theme }) => theme.colors.white};
+						border-radius: 50px;
+						font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.darkgray};
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 0 4px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						transition: all 300ms;
+						&:hover {
+							background-color: ${({ theme }) => theme.colors.main};
+						}
+						@media screen and (min-width: 1000px) {
+							width: 100%;
+							white-space: nowrap;
+							min-width: 73px;
 						}
 					`;
 				case "main-search":
 					return css`
 						position: absolute;
 						top: 11px;
-						right: 42px;
+						right: 25px;
 						width: ${calcRem(21)};
 						height: ${calcRem(21)};
 						background-color: ${({ theme }) => theme.colors.white};
@@ -115,6 +139,15 @@ export const Button = styled.button`
 						}};
 						&:hover {
 							background-color: ${({ theme }) => theme.colors.main};
+						}
+					`;
+				case "more":
+					return css`
+						font-weight: 700;
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						color: ${({ theme }) => theme.colors.main_purple};
+						&:hover {
+							opacity: 0.7;
 						}
 					`;
 				/* 글쓰기 페이지 */
@@ -216,6 +249,12 @@ export const Button = styled.button`
 						font-weight: 700;
 						&:hover {
 							opacity: 0.8;
+						}
+					`;
+				case "main-user-info":
+					return css`
+						&:hover {
+							opacity: 0.9;
 						}
 					`;
 				default:
