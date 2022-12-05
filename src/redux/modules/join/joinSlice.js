@@ -10,6 +10,8 @@ const initialState = {
 	nickname: null,
 	statusMessage: null,
 	statusCode: null,
+	memberStatus: "",
+	profileImageUrl: "",
 	// 로그인 여부 확인 후 변하지 않는 값
 	isInitialized: null,
 	isLogin: null,
@@ -51,8 +53,10 @@ export const __requestSignIn = createAsyncThunk(
 				data: { msg },
 				headers: { authorization },
 			} = response;
-			const { aud, sub } = jwt_decode(authorization);
-			console.log("aud =>", aud);
+			const { aud, sub, memberStatus, profileImageUrl } =
+				jwt_decode(authorization);
+			const jwtDecode = jwt_decode(authorization);
+			console.log("jwtDecode =>", jwtDecode);
 
 			return thunkAPI.fulfillWithValue({
 				statusCode: status,
@@ -60,6 +64,8 @@ export const __requestSignIn = createAsyncThunk(
 				id: sub,
 				nickname: aud,
 				token: authorization,
+				memberStatus,
+				profileImageUrl,
 			});
 		} catch (error) {
 			console.log("__requestSignIn error =>", error);
@@ -176,6 +182,8 @@ const joinSlice = createSlice({
 			localStorage.setItem("Authorization", action.payload.token);
 			// localStorage.setItem("Refresh-Token", action.payload.refreshtoken);
 			localStorage.setItem("Nickname", action.payload.nickname);
+			localStorage.setItem("memberStatus", action.payload.memberStatus);
+			localStorage.setItem("profileImageUrl", action.payload.profileImageUrl);
 		},
 		[__requestSignIn.rejected]: (state, action) => {
 			console.log("__requestSignIn.rejected =>", action.payload);

@@ -33,7 +33,7 @@ export const Input = styled.input`
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 5px;
 					font-size: 1.6vw max(${({ theme }) => theme.fontSizes.lg});
-					&:placeholder{
+					&:placeholder {
 						font-size: 1.6vw;
 					}
 				`;
@@ -76,7 +76,7 @@ export const Input = styled.input`
 			/* 메인 페이지 */
 			case "main-search":
 				return css`
-					width: 96%;
+					width: 100%;
 					height: ${calcRem(46)};
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 20px;
@@ -101,7 +101,7 @@ export const Input = styled.input`
 			case "cafe-review-search":
 				return css`
 					display: block;
-					width: 85%;
+					width: 100%;
 					height: ${calcRem(55)};
 					font-size: ${({ theme }) => theme.fontSizes.lg};
 					border: 1px solid ${({ theme }) => theme.colors.line};

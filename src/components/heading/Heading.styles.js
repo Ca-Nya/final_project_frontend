@@ -94,7 +94,7 @@ export const SecondHeading = styled.h2`
 						overflow: hidden;
 						text-overflow: ellipsis;
 						font-size: ${({ theme }) => theme.fontSizes.xxl};
-						font-weight: 600;
+						font-weight: 700;
 						width: 100%;
 						letter-spacing: 0.03rem;
 					`;

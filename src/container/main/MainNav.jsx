@@ -2,10 +2,11 @@ import {
 	Box,
 	Button,
 	Input,
-	Text,
 	Nav,
 	Flex,
 	FirstHeading,
+	Image,
+	Margin,
 } from "../../components";
 import { MainSelectBox } from "../../container/main";
 import { resetToken } from "../../redux/modules/join/joinSlice";
@@ -120,8 +121,8 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 							</Flex>
 						</Box>
 						<Box variant="nav-container">
-							<Box variant="main-search">
-								<Flex jc="center">
+							<Margin margin="0 3%">
+								<Box variant="main-search">
 									<MainSelectBox setSelectValue={setSelectValue} />
 									<Input
 										variant="main-search"
@@ -132,13 +133,28 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 										area-label="리뷰 검색 버튼"
 										onClick={handleSubmitSearchValue}
 									/>
-								</Flex>
-							</Box>
+								</Box>
+							</Margin>
 						</Box>
 						{jwtToken ? (
 							<Box variant="main-user-info">
-								<Flex gap="10px">
-									<Text
+								<Flex ai="center" gap="10px">
+									<Button
+										onClick={() => {
+											navigate("/mypage/myall");
+										}}
+										aria-label="사용자 정보 관리 버튼"
+										variant="main-user-info"
+									>
+										<Image
+											src={localStorage.getItem("profileImageUrl")}
+											alt="프로필 이미지"
+											variant="medium-profile"
+											rank={localStorage.getItem("memberStatus")}
+										/>
+									</Button>
+									<Button
+										variant="main-logout"
 										onClick={() => {
 											dispatch(resetToken());
 											localStorage.clear();
@@ -146,14 +162,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 										}}
 									>
 										로그아웃
-									</Text>
-									<Text
-										onClick={() => {
-											navigate("/mypage/myall");
-										}}
-									>
-										마이페이지
-									</Text>
+									</Button>
 								</Flex>
 							</Box>
 						) : (

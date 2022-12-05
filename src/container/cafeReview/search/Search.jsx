@@ -14,8 +14,6 @@ const Search = ({
 	inputText,
 	place,
 	setPlace,
-	detailedAddress,
-	setDetailedAddress,
 }) => {
 	console.log("searchPlace ==>", place);
 
@@ -39,12 +37,7 @@ const Search = ({
 					</Flex>
 				</Form>
 			</Margin>
-			<CafeMap
-				searchPlace={place}
-				setPlace={setPlace}
-				detailedAddress={detailedAddress}
-				setDetailedAddress={setDetailedAddress}
-			/>
+			<CafeMap searchPlace={place} setPlace={setPlace} />
 		</>
 	);
 };
