@@ -15,6 +15,9 @@ const CafeReview = ({ id }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// 지도 장소 검색값 state
 	const [place, setPlace] = useState("");
+	// 지도 상세 주소 state
+	const [detailedAddress, setDetailedAddress] = useState("");
+	console.log("detailedAddress =======>", detailedAddress);
 	// 검색값이 있을 경우에만 게시글 state에 등록
 	useEffect(() => {
 		if (place)
@@ -127,24 +130,28 @@ const CafeReview = ({ id }) => {
 	// 리뷰 등록 핸들러
 	const handlePostReview = () => {
 		if (place) {
-			formData.append("data", JSON.stringify(inputValue));
-			for (let i = 0; i < images.length; i++) {
-				console.log(`${images[i]}  =>`, images[i]);
-				formData.append("image", images[i]);
+			if (!images.length) {
+				alert("한 개 이상의 이미지를 등록해주세요!");
+			} else {
+				formData.append("data", JSON.stringify(inputValue));
+				for (let i = 0; i < images.length; i++) {
+					console.log(`${images[i]}  =>`, images[i]);
+					formData.append("image", images[i]);
+				}
+				for (let key of formData.keys()) {
+					console.log("formData ===>", key, ":", formData.get(key));
+				}
+				addPost.mutate(formData, {
+					onSuccess: () => {
+						alert("리뷰 작성이 완료되었습니다");
+						navigate(`/detail/post/${+id}`);
+					},
+					onError: error => {
+						console.log("error =>", error);
+						alert("리뷰 작성을 실패했습니다");
+					},
+				});
 			}
-			for (let key of formData.keys()) {
-				console.log("formData ===>", key, ":", formData.get(key));
-			}
-			addPost.mutate(formData, {
-				onSuccess: () => {
-					alert("리뷰 작성이 완료되었습니다");
-					navigate(`/detail/post/${+id}`);
-				},
-				onError: error => {
-					console.log("error =>", error);
-					alert("리뷰 작성을 실패했습니다");
-				},
-			});
 		} else if (!place) alert("장소를 선택해주세요");
 	};
 	// 별점 클릭시 실행 핸들러
@@ -185,6 +192,9 @@ const CafeReview = ({ id }) => {
 					onChangePlaceValue={handleChangePlaceValue}
 					inputText={inputText}
 					place={place}
+					setPlace={setPlace}
+					detailedAddress={detailedAddress}
+					setDetailedAddress={setDetailedAddress}
 				/>
 				<Submit onPostReview={handlePostReview} />
 			</Box>

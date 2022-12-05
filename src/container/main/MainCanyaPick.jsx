@@ -1,4 +1,5 @@
 import {
+	FirstHeading,
 	ThirdHeading,
 	Image,
 	DataList,
@@ -11,15 +12,24 @@ import {
 	Margin,
 	Hidden,
 } from "../../components";
+import { MainCanyaButtons } from "../../container/main";
 import { useNavigate } from "react-router-dom";
 
-const MainCanyaPick = ({ picks }) => {
+const MainCanyaPick = ({ picks, setCanyaPick, mainPosts }) => {
 	// React Router
 	const navigate = useNavigate();
 	if (!picks) return <Box>게시글이 존재하지 않습니다.</Box>;
 
 	return (
 		<Box>
+			<Flex>
+				<Margin margin="120px 57px 0 0">
+					<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
+				</Margin>
+				<Margin margin="130px 0 30px 0">
+					<MainCanyaButtons setCanyaPick={setCanyaPick} mainPosts={mainPosts} />
+				</Margin>
+			</Flex>
 			<Flex gap="24px">
 				{picks.map((pick, idx) => {
 					return (
@@ -111,7 +121,7 @@ const MainCanyaPick = ({ picks }) => {
 									<DataList>
 										<Flex>
 											<Box variant="main-canya-pick-heart-comment-info-wrap">
-												<Flex gap="20px">
+												<Flex gap="15px">
 													<Hidden>
 														<DataTerm>좋아요 수</DataTerm>
 													</Hidden>

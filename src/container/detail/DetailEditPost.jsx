@@ -122,33 +122,37 @@ const DetailEditPost = () => {
 	// 상세페이지 수정 핸들러
 	const handleEditPost = () => {
 		if (place) {
-			formData.append("data", JSON.stringify(inputValue));
-			const imageUrls = [];
-			for (let i = 0; i < images.length; i++) {
-				if (typeof images[i] === "string") {
-					imageUrls.push(images[i]);
-				} else {
-					formData.append("images", images[i]);
+			if (!images.length) {
+				alert("한 장 이상의 이미지를 등록해주세요!");
+			} else {
+				formData.append("data", JSON.stringify(inputValue));
+				const imageUrls = [];
+				for (let i = 0; i < images.length; i++) {
+					if (typeof images[i] === "string") {
+						imageUrls.push(images[i]);
+					} else {
+						formData.append("images", images[i]);
+					}
 				}
-			}
-			formData.append("url", JSON.stringify({ urlList: imageUrls }));
+				formData.append("url", JSON.stringify({ urlList: imageUrls }));
 
-			for (let key of formData.keys()) {
-				console.log("formData ===>", key, ":", formData.get(key));
-			}
+				for (let key of formData.keys()) {
+					console.log("formData ===>", key, ":", formData.get(key));
+				}
 
-			editPostMutate(
-				{ boardId: +id, payload: formData },
-				{
-					onSuccess: (data, variables, context) => {
-						alert("수정이 완료되었습니다");
-						navigate(`/detail/post/${+id}`);
+				editPostMutate(
+					{ boardId: +id, payload: formData },
+					{
+						onSuccess: (data, variables, context) => {
+							alert("수정이 완료되었습니다");
+							navigate(`/detail/post/${+id}`);
+						},
+						onError: (error, variables, context) => {
+							alert("수정을 실패했습니다");
+						},
 					},
-					onError: (error, variables, context) => {
-						alert("수정을 실패했습니다");
-					},
-				},
-			);
+				);
+			}
 		} else if (!place) alert("장소를 선택해주세요");
 	};
 

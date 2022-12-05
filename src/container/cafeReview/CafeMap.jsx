@@ -1,7 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import Map from "./map";
 
-const CafeMap = ({ searchPlace }) => {
+const CafeMap = ({
+	searchPlace,
+	setPlace,
+	detailedAddress,
+	setDetailedAddress,
+}) => {
 	const { kakao } = window;
 	// 검색결과를 담을 배열 state
 	const [places, setPlaces] = useState([]);
@@ -28,7 +33,16 @@ const CafeMap = ({ searchPlace }) => {
 				let bounds = new kakao.maps.LatLngBounds();
 
 				for (let i = 0; i < data.length; i++) {
+					// if (detailedAddress === data[i].id) {
+					// 	console.log("일치함!");
+					// }
 					displayMarker(data[i]);
+					console.log(
+						"data[i].id ======>",
+						data[i].id,
+						"detailedAddress ======>",
+						detailedAddress,
+					);
 					// LatLngBounds 객체에 좌표를 추가
 					bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
 				}
@@ -62,7 +76,13 @@ const CafeMap = ({ searchPlace }) => {
 
 	return (
 		<>
-			<Map places={places} mapContainer={mapContainer} />
+			<Map
+				places={places}
+				mapContainer={mapContainer}
+				setPlace={setPlace}
+				detailedAddress={detailedAddress}
+				setDetailedAddress={setDetailedAddress}
+			/>
 		</>
 	);
 };

@@ -103,6 +103,7 @@ export const DataDesc = styled.dd`
 				`;
 			case "main-canya-pick-content-heart":
 				return css`
+					text-align: end;
 					&::before {
 						content: "";
 						background-image: url(${canya_item_heart});
@@ -114,11 +115,12 @@ export const DataDesc = styled.dd`
 						display: inline-block;
 						position: relative;
 						top: 20px;
-						left: -25px;
+						left: -10px;
 					}
 				`;
 			case "main-canya-pick-content-comment":
 				return css`
+					text-align: end;
 					&::before {
 						content: "";
 						background-image: url(${canya_item_comment});
@@ -130,7 +132,7 @@ export const DataDesc = styled.dd`
 						display: inline-block;
 						position: relative;
 						top: 20px;
-						left: -24px;
+						left: -10px;
 					}
 				`;
 			case "main-all-item-rate":

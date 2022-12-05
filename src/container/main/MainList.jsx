@@ -45,18 +45,11 @@ const MainList = () => {
 		<Box>
 			{mainPosts && (
 				<>
-					<Flex>
-						<Margin margin="120px 57px 0 0">
-							<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
-						</Margin>
-						<Margin margin="130px 0 30px 0">
-							<MainCanyaButtons
-								setCanyaPick={setCanyaPick}
-								mainPosts={mainPosts}
-							/>
-						</Margin>
-					</Flex>
-					<MainCanyaPick picks={canyaPick} />
+					<MainCanyaPick
+						picks={canyaPick}
+						setCanyaPick={setCanyaPick}
+						mainPosts={mainPosts}
+					/>
 					<Margin margin="130px 0 30px 0">
 						<Flex jc="space-between" ai="center">
 							<FirstHeading variant="title">BEST💛</FirstHeading>

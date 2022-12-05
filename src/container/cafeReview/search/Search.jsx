@@ -8,7 +8,15 @@ import {
 } from "../../../components";
 import { CafeMap } from "../../../container/cafeReview";
 
-const Search = ({ onSubmit, onChangePlaceValue, inputText, place }) => {
+const Search = ({
+	onSubmit,
+	onChangePlaceValue,
+	inputText,
+	place,
+	setPlace,
+	detailedAddress,
+	setDetailedAddress,
+}) => {
 	console.log("searchPlace ==>", place);
 
 	return (
@@ -31,7 +39,12 @@ const Search = ({ onSubmit, onChangePlaceValue, inputText, place }) => {
 					</Flex>
 				</Form>
 			</Margin>
-			<CafeMap searchPlace={place} />
+			<CafeMap
+				searchPlace={place}
+				setPlace={setPlace}
+				detailedAddress={detailedAddress}
+				setDetailedAddress={setDetailedAddress}
+			/>
 		</>
 	);
 };

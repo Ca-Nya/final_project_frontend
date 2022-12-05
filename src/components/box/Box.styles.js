@@ -12,7 +12,7 @@ export const Box = styled.div`
 				case "container":
 					return css`
 						width: 100vw;
-						max-width: ${calcRem(1136)} !important;
+						max-width: ${calcRem(1200)} !important;
 						margin: 0 auto;
 						padding: 0 3.5vw;
 						/* background-color: #eceaeade; */

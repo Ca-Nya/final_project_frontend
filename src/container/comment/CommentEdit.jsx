@@ -130,20 +130,28 @@ const CommentEdit = ({ item }) => {
 					) : (
 						<>
 							<Margin margin="10px 0">
-								<Flex gap="17px">
-									<Image
-										src={item.memberProfileImage}
-										alt="유저 프로필"
-										variant="comment-profile"
-									/>
-									<Box variant="comment-user-info">
-										<Flex fd="column" jc="center" gap="7px">
-											<SecondHeading variant="comment-user-nickname">
-												{item.memberNickname}
-											</SecondHeading>
-											<Text variant="comment-user-content">
-												{item.commentContent}
-											</Text>
+								<Flex jc="space-between" ai="center" gap="17px">
+									<Box>
+										<Flex jc="center" ai="center" gap="10px">
+											<Box>
+												<Flex ai="center" jc="center">
+													<Image
+														src={item.memberProfileImage}
+														alt="유저 프로필"
+														variant="comment-profile"
+													/>
+												</Flex>
+											</Box>
+											<Box variant="comment-user-info">
+												<Flex fd="column" jc="center" gap="7px">
+													<SecondHeading variant="comment-user-nickname">
+														{item.memberNickname}
+													</SecondHeading>
+													<Text variant="comment-user-content">
+														{item.commentContent}
+													</Text>
+												</Flex>
+											</Box>
 										</Flex>
 									</Box>
 									<Box variant="comment-info">

@@ -1,6 +1,12 @@
-import { Box, Margin, Flex, Strong, Text } from "../../../components";
+import { Box, Margin, Flex, Strong, Text, Button } from "../../../components";
 
-const Map = ({ places, mapContainer }) => {
+const Map = ({
+	places,
+	mapContainer,
+	setPlace,
+	detailedAddress,
+	setDetailedAddress,
+}) => {
 	return (
 		<Box variant="cafe-review-map-item">
 			<Flex>
@@ -33,6 +39,14 @@ const Map = ({ places, mapContainer }) => {
 												<Text>{item.address_name}</Text>
 											</>
 										)}
+										<Button
+											onClick={() => {
+												setPlace(item.place_name);
+												setDetailedAddress(item.id);
+											}}
+										>
+											선택
+										</Button>
 									</Margin>
 								</Box>
 							</Margin>
