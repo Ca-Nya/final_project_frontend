@@ -702,10 +702,36 @@ export const Box = styled.div`
 	/* 모바일 사이즈 */
 	${({ size }) => {
 		switch (size) {
+			case "container":
+				return css`
+					width: ${calcRem(360)};
+					margin: 0 auto;
+				`;
 			case "xl":
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(312)};
+					background-color: aliceblue;
+					border-radius: 5px;
+				`;
+			case "l":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(156)};
+					background-color: aliceblue;
+					border-radius: 5px;
+				`;
+			case "m":
+				return css`
+					width: ${calcRem(153)};
+					height: ${calcRem(153)};
+					background-color: aliceblue;
+					border-radius: 5px;
+				`;
+			case "s":
+				return css`
+					width: ${calcRem(100)};
+					height: ${calcRem(100)};
 					background-color: aliceblue;
 					border-radius: 5px;
 				`;
