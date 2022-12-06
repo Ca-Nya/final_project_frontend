@@ -18,8 +18,6 @@ const MainList = () => {
 	// 카냐's Pick state
 	const [canyaPick, setCanyaPick] = useState(null);
 
-	console.log("REACT_APP_SERVER =====>", process.env.REACT_APP_SERVER);
-
 	useEffect(() => {
 		setCanyaPick(mainPosts?.coffeePick);
 	}, [mainPosts]);

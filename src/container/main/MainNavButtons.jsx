@@ -16,9 +16,9 @@ const MainNavButtons = () => {
 	const navigate = useNavigate();
 	//  최신, 인기, 전체 게시글
 	const overalls = [
-		["recent", "최신리뷰", recent],
-		["hot", "인기리뷰", hot],
-		["all", "전체리뷰", all],
+		["최신", "최신리뷰", recent],
+		["인기", "인기리뷰", hot],
+		["전체", "전체리뷰", all],
 	];
 	//  별점별 게시글
 	const fields = [

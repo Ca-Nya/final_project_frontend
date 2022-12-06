@@ -32,6 +32,14 @@ export const DataList = styled.dl`
 					font-weight: 600;
 					letter-spacing: 0.02em;
 				`;
+			/* 상세 페이지 */
+			case "detail-date":
+				return css`
+					width: 100%;
+					color: ${({ theme }) => theme.colors.gray};
+					font-weight: 600;
+					letter-spacing: 0.02em;
+				`;
 			case "detail-rating":
 				return css`
 					height: ${calcRem(90)};

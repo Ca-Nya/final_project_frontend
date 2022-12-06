@@ -20,6 +20,7 @@ export const FirstHeading = styled.h1`
 					`;
 				case "title":
 					return css`
+						width: 100%;
 						font-size: ${({ theme }) => theme.fontSizes.titleSize};
 						font-weight: 700;
 						letter-spacing: ${calcRem(1)};
