@@ -20,7 +20,7 @@ const useFetchSearchList = ({ category, keyword }) => {
 			} = await fetchSearchList({
 				category,
 				keyword,
-				params: { page: pageParam, size: 3 },
+				params: { page: pageParam, size: 100 },
 			});
 
 			console.log("list =======>", list);
