@@ -314,6 +314,7 @@ export const Box = styled.div`
 						border-radius: 5px;
 						overflow: hidden;
 						transition: transform 900ms;
+						cursor: pointer;
 						&:hover {
 							transform: translateY(-0.6%);
 						}

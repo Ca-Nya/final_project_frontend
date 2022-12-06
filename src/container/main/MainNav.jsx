@@ -21,7 +21,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// select값 state
 	const [selectValues, setSelectValue] = useState({
-		category: "all",
+		category: "memberNickname",
 		keyword: "",
 	});
 	// 검색 input value 변경 핸들러

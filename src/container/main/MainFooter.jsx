@@ -26,7 +26,7 @@ const MainFooter = () => {
 									<Flex>
 										<ListItem variant="main-footer">
 											<a
-												href="https://cocoder.tistory.com"
+												href="https://github.com/Ca-Nya/final_project_frontend"
 												target="_blank"
 												rel="noreferrer"
 											>
@@ -36,7 +36,7 @@ const MainFooter = () => {
 										<ListItem variant="main-footer">|</ListItem>
 										<ListItem variant="main-footer">
 											<a
-												href="https://github.com/cocoder16"
+												href="https://github.com/Ca-Nya/Ca-Nya-final_project_CaNya_Backend"
 												target="_blank"
 												rel="noreferrer"
 											>
