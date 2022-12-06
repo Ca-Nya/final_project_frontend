@@ -31,6 +31,9 @@ const All = ({
 									variant="mypage-post"
 									src={item.imageList[0].imageUrl}
 									alt={item.boardTitle}
+									onClick={() => {
+										navigate(`/detail/post/${item.boardId}`);
+									}}
 								></Image>
 								<Margin margin="0.7vw auto 0 auto">
 									<Text
@@ -70,6 +73,9 @@ const All = ({
 										variant="mypage-post"
 										src={item.imageList[0].imageUrl}
 										alt={item.boardTitle}
+										onClick={() => {
+											navigate(`/detail/post/${item.boardId}`);
+										}}
 									></Image>
 									<Margin margin="8px auto 0 auto">
 										<Text

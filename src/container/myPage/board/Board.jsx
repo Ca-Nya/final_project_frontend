@@ -39,7 +39,7 @@ const Board = ({
                                                 >
                                                     {item.boardTitle}
                                                 </Text>
-                                                <Margin margin="1.8vw 0 0 0.4vw">
+                                                <Margin margin="1.1vw 0 0 0.4vw">
                                                     <Text variant="board-content">
                                                         {item.boardContent}
                                                     </Text>
@@ -50,7 +50,7 @@ const Board = ({
                                             <Box variant="board-inbox">
                                                 <Flex jc="space-between">
                                                     <Text variant="comment-date">
-                                                        {item.createdAt}
+                                                        {item.boardCreatedAt}
                                                     </Text>
 
                                                     <Box variant="board-minibutton">

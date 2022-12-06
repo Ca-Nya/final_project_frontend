@@ -42,7 +42,7 @@ const Like = ({
 															>
 																{item.boardTitle}
 															</Text>
-															<Margin margin="1.8vw 0 0 0.4vw">
+															<Margin margin="1.1vw 0 0 0.4vw">
 																<Text variant="board-content">
 																	{item.boardContent}
 																</Text>
