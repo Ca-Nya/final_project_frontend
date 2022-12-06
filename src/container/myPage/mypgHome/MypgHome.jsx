@@ -216,7 +216,7 @@ const MypgHome = ({
 										}}
 										isActive={myComuBoardMatch !== null}
 									>
-										커뮤니티 글
+										커뮤니티
 									</Text>
 									<Box variant="guide-point" isActive={myComuBoardMatch !== null}>
 										<Margin margin="0.1vw0 0 0">
@@ -239,7 +239,7 @@ const MypgHome = ({
 										}}
 										isActive={myComuCommentMatch !== null}
 									>
-										커뮤니티 댓글
+										커뮤댓글
 									</Text>
 									<Box variant="guide-point" isActive={myComuCommentMatch !== null}>
 										<Margin margin="0.1vw0 0 0">
