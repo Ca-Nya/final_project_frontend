@@ -691,6 +691,7 @@ export const Box = styled.div`
 					return css`
 						height: ${calcRem(57)};
 					`;
+
 				case "":
 					return css``;
 				default:
@@ -698,4 +699,18 @@ export const Box = styled.div`
 			}
 		}}
 	}
+	/* 모바일 사이즈 */
+	${({ size }) => {
+		switch (size) {
+			case "xl":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(312)};
+					background-color: aliceblue;
+					border-radius: 5px;
+				`;
+			default:
+				break;
+		}
+	}}
 `;

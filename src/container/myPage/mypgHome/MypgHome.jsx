@@ -62,7 +62,7 @@ const MypgHome = ({
 							<Flex jc="center" gap="5%">
 								<Margin margin="8%">
 									<Flex jc="center">
-										<Text variant="join">{nickname}</Text>
+										<Text variant="user-name">{nickname}</Text>
 									</Flex>
 									<Margin margin="10%">
 										<Box>
@@ -218,7 +218,10 @@ const MypgHome = ({
 									>
 										커뮤니티 글
 									</Text>
-									<Box variant="guide-point" isActive={myComuBoardMatch !== null}>
+									<Box
+										variant="guide-point"
+										isActive={myComuBoardMatch !== null}
+									>
 										<Margin margin="0.1vw0 0 0">
 											<Text
 												variant="button-count"
@@ -241,7 +244,10 @@ const MypgHome = ({
 									>
 										커뮤니티 댓글
 									</Text>
-									<Box variant="guide-point" isActive={myComuCommentMatch !== null}>
+									<Box
+										variant="guide-point"
+										isActive={myComuCommentMatch !== null}
+									>
 										<Margin margin="0.1vw0 0 0">
 											<Text
 												variant="button-count"

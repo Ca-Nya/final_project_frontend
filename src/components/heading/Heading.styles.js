@@ -40,7 +40,7 @@ export const SecondHeading = styled.h2`
 				case "main-footer":
 					return css`
 						font-weight: 700;
-						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-size: ${({ theme }) => theme.fontSizes.xxxxl};
 						color: ${({ theme }) => theme.colors.main};
 					`;
 				case "main-best-item":
