@@ -115,5 +115,36 @@ export const Input = styled.input`
 			default:
 				break;
 		}
+	}};
+	/* 모바일 사이즈 */
+	${({ size }) => {
+		switch (size) {
+			case "l":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(40)};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					&:placeholder {
+						font-size: ${({ theme }) => theme.fontSizes.medium}
+					}
+					padding: 12px 12px 12px 20px;
+				`;
+			case "m":
+				return css`
+					width: ${calcRem(248)};
+					height: ${calcRem(40)};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					&:placeholder {
+						font-size: ${({ theme }) => theme.fontSizes.medium}
+					}
+					padding: 12px 12px 12px 20px;
+				`;
+			default:
+				break;
+		}
 	}}
 `;

@@ -277,4 +277,36 @@ export const Button = styled.button`
 			}
 		}}
 	}
+	/* 모바일 사이즈 */
+	${({ size }) => {
+		switch (size) {
+			case "l":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(40)};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					padding: "12px auto";
+				`;
+			case "s":
+				return css`
+					width: ${calcRem(58)};
+					height: ${calcRem(40)};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					padding: "12px auto";
+				`;
+					case "xs":
+				return css`
+					width: ${calcRem(46)};
+					height: ${calcRem(24)};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.small};
+					color: ${({ theme }) => theme.colors.black};
+					padding: "12px auto";
+				`;
+			default:
+				break;
+		}
+	}}
 `;
