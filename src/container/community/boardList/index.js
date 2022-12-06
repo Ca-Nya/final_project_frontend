@@ -1,3 +1,4 @@
 import BoardList from "./BoardList"
+import MblBoardList from "./MblBoardList";
 
-export default BoardList;
+export {BoardList,MblBoardList};

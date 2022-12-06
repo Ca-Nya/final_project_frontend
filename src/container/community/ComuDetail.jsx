@@ -39,7 +39,7 @@ const ComuDetail = () => {
 	//queryClient 선언하기
 	const queryClient = useQueryClient();
 
-	//댓글 삭제하기 delete요청
+	//커뮤게시글 삭제하기 delete요청
 	const delMutation = useMutation(
 		data => {
 			return axios.delete(`${BASE_URL}/auth/community/delete/${id}`, {
@@ -56,7 +56,7 @@ const ComuDetail = () => {
 			},
 		},
 	);
-	//댓글 삭제하기 쿼리요청
+	//커뮤게시글 삭제하기 쿼리요청
 	const handleRemove = e => {
 		e.preventDefault();
 		const delRes = window.confirm("정말 삭제하시겠습니까?");

@@ -176,5 +176,54 @@ export const Image = styled.img`
 			default:
 				break;
 		}
+	}};
+	/* 모바일 사이즈 */
+	${({ size }) => {
+		switch (size) {
+			case "xl":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(312)};
+					border-radius: 5px;
+				`;
+			case "l":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(156)};
+					border-radius: 5px;
+				`;
+			case "m":
+				return css`
+					width: ${calcRem(153)};
+					height: ${calcRem(153)};
+					border-radius: 5px;
+				`;
+			case "s":
+				return css`
+					width: ${calcRem(100)};
+					height: ${calcRem(100)};
+					border-radius: 5px;
+				`;
+			case "s-r":
+				return css`
+					width: ${calcRem(100)};
+					height: ${calcRem(100)};
+					border-radius: 50%;
+				`;
+			case "xs":
+				return css`
+					width: ${calcRem(34)};
+					height: ${calcRem(34)};
+					border-radius: 5px;
+				`;
+			case "xs-r":
+				return css`
+					width: ${calcRem(34)};
+					height: ${calcRem(34)};
+					border-radius: 50%;
+				`;
+			default:
+				break;
+		}
 	}}
 `;

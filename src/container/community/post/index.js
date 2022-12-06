@@ -1,3 +1,4 @@
 import Post from "./Post";
+import MblPost from "./MblPost";
 
-export default Post;
+export {Post,MblPost};

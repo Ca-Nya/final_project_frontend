@@ -32,6 +32,10 @@ const MypgHome = ({
 	myComuCommentMatch,
 	myComuBoardMatch,
 	nickname,
+	recentlyMyCommunityList,
+	recentlyMyCommunityCommentList,
+	memberCommunityCount,
+	memberCommunityCommentCount,
 }) => {
 	return (
 		<Box variant="container-2">
@@ -227,7 +231,7 @@ const MypgHome = ({
 												variant="button-count"
 												isActive={myComuBoardMatch !== null}
 											>
-												{memberCommentCount}
+												{memberCommunityCount}
 											</Text>
 										</Margin>
 									</Box>
@@ -253,7 +257,7 @@ const MypgHome = ({
 												variant="button-count"
 												isActive={myComuCommentMatch !== null}
 											>
-												{memberCommentCount}
+												{memberCommunityCommentCount}
 											</Text>
 										</Margin>
 									</Box>

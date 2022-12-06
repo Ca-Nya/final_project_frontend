@@ -249,5 +249,21 @@ export const Text = styled.p`
 					break;
 			}
 		}}
-	} ;
+	}
+
+	/* 모바일 사이즈 */
+	${({ size }) => {
+		switch (size) {
+			case "s":
+				return css`
+				font-size: ${({ theme }) => theme.fontSizes.small};
+				`;
+			case "m":
+				return css`
+				font-size: ${({ theme }) => theme.fontSizes.medium};
+				`;			
+			default:
+				break;
+		}
+	}}
 `;
