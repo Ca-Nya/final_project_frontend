@@ -143,6 +143,8 @@ export const Button = styled.button`
 					`;
 				case "more":
 					return css`
+						width: 100%;
+						text-align: end;
 						font-weight: 700;
 						font-size: ${({ theme }) => theme.fontSizes.lg};
 						color: ${({ theme }) => theme.colors.main_purple};
@@ -255,6 +257,19 @@ export const Button = styled.button`
 					return css`
 						&:hover {
 							opacity: 0.9;
+						}
+					`;
+				/* 인기 / 상세 / 전체 리스트 페이지 */
+				case "detail-edit":
+					return css`
+						&:hover {
+							opacity: 0.8;
+						}
+					`;
+				case "detail-delete":
+					return css`
+						&:hover {
+							opacity: 0.8;
 						}
 					`;
 				default:

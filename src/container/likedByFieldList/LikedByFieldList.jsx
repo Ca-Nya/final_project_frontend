@@ -59,7 +59,7 @@ const LikedByFieldList = () => {
 	if (status === "error") return <Box>Error</Box>;
 
 	return (
-		<Margin margin="160px 0 200px 0">
+		<Margin margin="100px 0 200px 0">
 			<Nav variant="main-category-button-group-wrap">
 				<Flex jc="center" ai="center" gap="14px">
 					{fields.map(category => {
@@ -87,153 +87,150 @@ const LikedByFieldList = () => {
 				</Flex>
 			</Nav>
 			<Box variant="container">
-				<Margin margin="70px 0 0 0">
+				<Margin margin="80px 0 25px 0">
 					<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
 				</Margin>
-				{/* 내일 확인하기 */}
-				<Flex gap="13px">
-					{data?.pages.map((page, idx) => {
-						return (
-							<Fragment key={page?.list[idx]?.boardId}>
-								{page.list?.map((pick, idx) => {
-									return (
-										<Fragment>
-											{idx <= 2 && (
-												<Box>
-													<Flex gap="24px">
-														<Box
-															onClick={() =>
-																navigate(`/detail/post/${pick.boardId}`)
-															}
-															key={pick.boardId}
-															variant="main-canya-pick-item-wrap"
-														>
-															<Box variant="main-canya-pick-rank">
-																<Flex jc="center" ai="center">
-																	<Strong variant="main-canya-pick-rank">
-																		{idx + 1}
-																	</Strong>
-																</Flex>
-															</Box>
-															<Image
-																src={pick.imageUrl}
-																alt="Ca Nya's Pick3 카페 이미지"
-																variant="main-canya-pick"
-															/>
-															<Box variant="main-cany-pick-content-wrap">
-																<Margin margin="0 0 12px 0">
-																	<ThirdHeading
-																		variant="main-canya-pick-title"
+				{data?.pages.map((page, idx) => {
+					return (
+						<Box>
+							<Flex gap="24px">
+								<Fragment key={page?.list[idx]?.boardId}>
+									{page.list?.map((pick, idx) => {
+										return (
+											<Fragment>
+												{idx <= 2 && (
+													<Box
+														onClick={() =>
+															navigate(`/detail/post/${pick.boardId}`)
+														}
+														key={pick.boardId}
+														variant="main-canya-pick-item-wrap"
+													>
+														<Box variant="main-canya-pick-rank">
+															<Flex jc="center" ai="center">
+																<Strong variant="main-canya-pick-rank">
+																	{idx + 1}
+																</Strong>
+															</Flex>
+														</Box>
+														<Image
+															src={pick.imageUrl}
+															alt="Ca Nya's Pick3 카페 이미지"
+															variant="main-canya-pick"
+														/>
+														<Box variant="main-cany-pick-content-wrap">
+															<Margin margin="0 0 12px 0">
+																<ThirdHeading
+																	variant="main-canya-pick-title"
+																	className="ellipsis-sm"
+																>
+																	{pick.boardTitle}
+																</ThirdHeading>
+															</Margin>
+															<Margin margin="0 0 10px 0">
+																<Box variant="main-canya-pick-content">
+																	<Text
+																		variant="main-canya-pick-content"
+																		className="ellipsis"
+																	>
+																		{pick.boardContent}
+																	</Text>
+																</Box>
+															</Margin>
+															<Margin margin="0 0 15px 0">
+																<Box variant="main-canya-pick-info">
+																	<Strong
+																		variant="main-canya-pick-address"
 																		className="ellipsis-sm"
 																	>
-																		{pick.boardTitle}
-																	</ThirdHeading>
-																</Margin>
-																<Margin margin="0 0 10px 0">
-																	<Box variant="main-canya-pick-content">
-																		<Text
-																			variant="main-canya-pick-content"
-																			className="ellipsis"
-																		>
-																			{pick.boardContent}
-																		</Text>
-																	</Box>
-																</Margin>
-																<Margin margin="0 0 15px 0">
-																	<Box variant="main-canya-pick-info">
-																		<Strong
-																			variant="main-canya-pick-address"
-																			className="ellipsis-sm"
-																		>
-																			{pick.address}
-																		</Strong>
-																		<Margin margin="14px 0 0 0">
-																			<DataList variant="main-canya-pick-hashtag">
-																				<Box>
-																					<Hidden>
-																						<DataTerm>
-																							높은 점수를 받은 카테고리
-																						</DataTerm>
-																					</Hidden>
-																					<Flex gap="6px">
-																						<DataDesc>#커피맛집</DataDesc>
-																						<DataDesc>#디저트맛집</DataDesc>
-																					</Flex>
-																				</Box>
-																			</DataList>
-																		</Margin>
-																	</Box>
-																</Margin>
-																<Flex>
-																	<Flex>
-																		<Image
-																			src={pick.memberProfileImage}
-																			alt="프로필 이미지"
-																			variant="small-profile"
-																			rank={localStorage.getItem(
-																				"memberStatus",
-																			)}
-																		/>
-																		<Margin margin="2px 0 0 10px">
-																			<Box variant="main-canya-pick-info-content">
-																				<DataList>
-																					<Hidden>
-																						<DataTerm>닉네임</DataTerm>
-																					</Hidden>
-																					<DataDesc variant="main-canya-pick-content-nickname">
-																						{pick.memberNickname}
-																					</DataDesc>
-																				</DataList>
-																				<DataList>
-																					<Hidden>
-																						<DataTerm>평균 평점</DataTerm>
-																					</Hidden>
-																					<DataDesc variant="main-canya-pick-content-rate">
-																						{pick.totalRating}
-																					</DataDesc>
-																				</DataList>
-																			</Box>
-																		</Margin>
-																	</Flex>
-																	<DataList>
-																		<Flex>
-																			<Box variant="main-canya-pick-heart-comment-info-wrap">
-																				<Flex gap="15px">
-																					<Hidden>
-																						<DataTerm>좋아요 수</DataTerm>
-																					</Hidden>
-																					<DataDesc variant="main-canya-pick-content-heart">
-																						{pick.heartCount}
-																					</DataDesc>
-																					<Hidden>
-																						<DataTerm>댓글 수</DataTerm>
-																					</Hidden>
-																					<DataDesc variant="main-canya-pick-content-comment">
-																						{pick.commentCount}
-																					</DataDesc>
+																		{pick.address}
+																	</Strong>
+																	<Margin margin="14px 0 0 0">
+																		<DataList variant="main-canya-pick-hashtag">
+																			<Box>
+																				<Hidden>
+																					<DataTerm>
+																						높은 점수를 받은 카테고리
+																					</DataTerm>
+																				</Hidden>
+																				<Flex gap="6px">
+																					<DataDesc>#커피맛집</DataDesc>
+																					<DataDesc>#디저트맛집</DataDesc>
 																				</Flex>
 																			</Box>
-																		</Flex>
-																	</DataList>
+																		</DataList>
+																	</Margin>
+																</Box>
+															</Margin>
+															<Flex>
+																<Flex>
+																	<Image
+																		src={pick.memberProfileImage}
+																		alt="프로필 이미지"
+																		variant="small-profile"
+																		rank={localStorage.getItem("memberStatus")}
+																	/>
+																	<Margin margin="2px 0 0 10px">
+																		<Box variant="main-canya-pick-info-content">
+																			<DataList>
+																				<Hidden>
+																					<DataTerm>닉네임</DataTerm>
+																				</Hidden>
+																				<DataDesc variant="main-canya-pick-content-nickname">
+																					{pick.memberNickname}
+																				</DataDesc>
+																			</DataList>
+																			<DataList>
+																				<Hidden>
+																					<DataTerm>평균 평점</DataTerm>
+																				</Hidden>
+																				<DataDesc variant="main-canya-pick-content-rate">
+																					{pick.totalRating}
+																				</DataDesc>
+																			</DataList>
+																		</Box>
+																	</Margin>
 																</Flex>
-															</Box>
+																<DataList>
+																	<Flex>
+																		<Box variant="main-canya-pick-heart-comment-info-wrap">
+																			<Flex gap="15px">
+																				<Hidden>
+																					<DataTerm>좋아요 수</DataTerm>
+																				</Hidden>
+																				<DataDesc variant="main-canya-pick-content-heart">
+																					{pick.heartCount}
+																				</DataDesc>
+																				<Hidden>
+																					<DataTerm>댓글 수</DataTerm>
+																				</Hidden>
+																				<DataDesc variant="main-canya-pick-content-comment">
+																					{pick.commentCount}
+																				</DataDesc>
+																			</Flex>
+																		</Box>
+																	</Flex>
+																</DataList>
+															</Flex>
 														</Box>
-													</Flex>
-												</Box>
-											)}
-										</Fragment>
-									);
-								})}
-							</Fragment>
-						);
-					})}
-				</Flex>
+													</Box>
+												)}
+											</Fragment>
+										);
+									})}
+								</Fragment>
+							</Flex>
+						</Box>
+					);
+				})}
 
-				<Box variant="review-title">
-					<FirstHeading variant="title">Review☕️</FirstHeading>
-				</Box>
+				<Margin margin="65px 0 0 0">
+					<Box variant="review-title">
+						<FirstHeading variant="title">{category} 맛집☕️</FirstHeading>
+					</Box>
+				</Margin>
 				<Margin margin="45px 0 0 0">
-					<Flex jc="center" fw="wrap" gap="20px">
+					<Flex jc="center" fw="wrap" gap="24px">
 						{data?.pages.map((page, idx) => {
 							return (
 								<Fragment key={page?.list[idx]?.boardId}>
@@ -241,7 +238,13 @@ const LikedByFieldList = () => {
 										return (
 											<Fragment>
 												{idx > 2 && (
-													<Box variant="list-item" key={item.boardId}>
+													<Box
+														variant="list-item"
+														key={item.boardId}
+														onClick={() =>
+															navigate(`/detail/post/${item.boardId}`)
+														}
+													>
 														<Image
 															src={item.imageUrl}
 															alt="카페 이미지"

@@ -101,19 +101,24 @@ const DetailPost = () => {
 				<Margin margin="160px 0 0 0">
 					<Box variant="container">
 						<Box variant="detail-container">
-							{/* 후에 전역 상태로 수정 */}
-							{localStorage.getItem("Nickname") ===
-							detailPostData.memberNickname ? (
-								<Box>
-									<Button onClick={handleEditPost}>수정</Button>
-									<Button onClick={handleDeletePost}>삭제</Button>
-								</Box>
-							) : (
-								""
-							)}
-							<FirstHeading variant="title">
-								{detailPostData.boardTitle}
-							</FirstHeading>
+							<Flex ai="center">
+								<FirstHeading variant="title">
+									{detailPostData.boardTitle}
+								</FirstHeading>
+								{localStorage.getItem("Nickname") ===
+								detailPostData.memberNickname ? (
+									<Flex jc="flex-end" gap="10px">
+										<Button variant="detail-edit" onClick={handleEditPost}>
+											수정
+										</Button>
+										<Button variant="detail-edit" onClick={handleDeletePost}>
+											삭제
+										</Button>
+									</Flex>
+								) : (
+									""
+								)}
+							</Flex>
 							<Box variant="detail-info">
 								<Flex jc="flex-end" ai="center">
 									<Flex ai="center" gap="9px">
@@ -123,21 +128,28 @@ const DetailPost = () => {
 											variant="medium-profile"
 											rank={localStorage.getItem("memberStatus")}
 										/>
-										<DataList variant="">
-											<Hidden>
-												<DataTerm>작성자</DataTerm>
-											</Hidden>
-											<DataDesc variant="small-profile">
-												{detailPostData.memberNickname}
-											</DataDesc>
-										</DataList>
+										<Flex fd="column" gap="3px">
+											<DataList variant="">
+												<Hidden>
+													<DataTerm>작성자</DataTerm>
+												</Hidden>
+												<DataDesc variant="small-profile">
+													{detailPostData.memberNickname}
+												</DataDesc>
+											</DataList>
+											<DataList variant="detail-date">
+												<Hidden>
+													<DataTerm>작성일</DataTerm>
+												</Hidden>
+												<DataDesc>{detailPostData.date}</DataDesc>
+											</DataList>
+										</Flex>
+										<DetailLike
+											isLike={detailPostData.liked}
+											boardId={+id}
+											detailPostRefetch={detailPostRefetch}
+										/>
 									</Flex>
-									<DataList variant="small-date">
-										<Hidden>
-											<DataTerm>작성일</DataTerm>
-										</Hidden>
-										<DataDesc>{detailPostData.date}</DataDesc>
-									</DataList>
 								</Flex>
 							</Box>
 							<Box variant="detail-content">
@@ -184,13 +196,13 @@ const DetailPost = () => {
 								<Flex jc="flex-end">
 									<DataList variant="detail-heart-count">
 										<Flex ai="center" gap="5px">
+											<DataTerm>좋아요</DataTerm>
+											<DataDesc>{detailPostData.heartCount}</DataDesc>
 											<DetailLike
 												isLike={detailPostData.liked}
 												boardId={+id}
 												detailPostRefetch={detailPostRefetch}
 											/>
-											<DataTerm>좋아요</DataTerm>
-											<DataDesc>{detailPostData.heartCount}</DataDesc>
 										</Flex>
 									</DataList>
 								</Flex>

@@ -5,7 +5,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 const fetchSearchList = ({ category, keyword, params }) => {
 	return getRequest({
 		method: "get",
-		url: `board/search/${category}/${keyword}`,
+		url: `/board/search/${category}/${keyword}`,
 		params,
 	});
 };
