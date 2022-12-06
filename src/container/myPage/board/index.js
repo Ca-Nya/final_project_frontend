@@ -1,3 +1,4 @@
 import Board from "./Board";
+import BoardItem from "./BoardItem";
 
-export default Board;
+export {Board, BoardItem};

@@ -2,7 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
-import Post from "./post";
+import { Default, Mobile } from "../../assets/mediaQuery";
+import { Post, MblPost } from "./post";
 
 const ComuPost = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -89,13 +90,26 @@ const ComuPost = () => {
 	};
 
 	return (
-			<Post
-            onClickHandler={onClickHandler}
-            onChangeInput={onChangeInput}
-            onChangeImage={onChangeImage}
-            navigate={navigate}
-            imageSrc={imageSrc}
-            />	
+		<>
+			<Default>
+				<Post
+					onClickHandler={onClickHandler}
+					onChangeInput={onChangeInput}
+					onChangeImage={onChangeImage}
+					navigate={navigate}
+					imageSrc={imageSrc}
+				/>
+			</Default>
+			<Mobile>
+				<MblPost
+					onClickHandler={onClickHandler}
+					onChangeInput={onChangeInput}
+					onChangeImage={onChangeImage}
+					navigate={navigate}
+					imageSrc={imageSrc}
+				/>
+			</Mobile>
+		</>
 	);
 };
 
