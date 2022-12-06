@@ -3,6 +3,7 @@ import Review from "./review";
 import Rating from "./rating";
 import Search from "./search";
 import Submit from "./submit";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
@@ -183,26 +184,33 @@ const CafeReview = ({ id }) => {
 	};
 
 	return (
-		<Margin margin="165px 0 0 0">
-			<Box variant="container">
-				<Review
-					onChangeInputTitleState={handleChangeInputTitleState}
-					onGetImage={handleGetImage}
-					onDeleteImage={handleDeleteImage}
-					onChangeInputContentState={handleChangeInputContentState}
-					thumbnailImages={thumbnailImages}
-				/>
-				<Rating ratings={ratings} onStarClick={handleStarClick} />
-				<Search
-					onSubmit={handleSubmit}
-					onChangePlaceValue={handleChangePlaceValue}
-					inputText={inputText}
-					place={place}
-					setPlace={setPlace}
-				/>
-				<Submit onPostReview={handlePostReview} />
-			</Box>
-		</Margin>
+		<>
+			<Default>
+				<Margin margin="165px 0 0 0">
+					<Box variant="container">
+						<Review
+							onChangeInputTitleState={handleChangeInputTitleState}
+							onGetImage={handleGetImage}
+							onDeleteImage={handleDeleteImage}
+							onChangeInputContentState={handleChangeInputContentState}
+							thumbnailImages={thumbnailImages}
+						/>
+						<Rating ratings={ratings} onStarClick={handleStarClick} />
+						<Search
+							onSubmit={handleSubmit}
+							onChangePlaceValue={handleChangePlaceValue}
+							inputText={inputText}
+							place={place}
+							setPlace={setPlace}
+						/>
+						<Submit onPostReview={handlePostReview} />
+					</Box>
+				</Margin>
+			</Default>
+			<Mobile>
+				<Box size="xl">쏘히님짱짱걸!!!우주 여신 ㅠㅠㅠ</Box>
+			</Mobile>
+		</>
 	);
 };
 

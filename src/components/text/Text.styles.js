@@ -14,25 +14,15 @@ export const Text = styled.p`
 				case "join":
 					return css`
 						display: flex;
-						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-size: ${({ theme }) => theme.fontSizes.xxxxl};
 						font-weight: 700;
 					`;
 				case "join-id":
 					return css`
-						/* display: flex; */
-						/* width: 49vw; */
-						/* font-size: 1.8vw; */
 						font-size: ${({ theme }) => theme.fontSizes.xl};
 						font-weight: 500;
 						text-align: left;
 					`;
-				// case "join-pw":
-				// 	return css`
-				// 		width: 49vw;
-				// 		font-size: ${({ theme }) => theme.fontSizes.xl};
-				// 		font-weight: 500;
-				// 		text-align: left;
-				// 	`;
 				case "join-info":
 					return css`
 						display: flex;
@@ -140,6 +130,12 @@ export const Text = styled.p`
 							cursor: pointer;
 							transform: scale(0.9, 0.9);
 						}
+					`;
+				case "user-name":
+					return css`
+						display: flex;
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-weight: 700;
 					`;
 				case "title":
 					return css`
