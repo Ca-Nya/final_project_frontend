@@ -10,7 +10,7 @@ import { DetailPost, DetailEditPost } from "../container/detail";
 import LikedByFieldList from "../container/likedByFieldList";
 import LikedByOverallList from "../container/likedByOverallList";
 import MyPages from "../pages/mypage";
-import { MyBoard, MyComment, MyLike, MyAll } from "../container/myPage";
+import { MyBoard, MyComment, MyLike, MyAll, MyComuBoard, MyComuComment } from "../container/myPage";
 import { Chat } from "../container/chat";
 import {
 	ComuList,
@@ -42,6 +42,8 @@ const Router = () => {
 							<Route path="myboard" element={<MyBoard />} />
 							<Route path="mycomment" element={<MyComment />} />
 							<Route path="mylike" element={<MyLike />} />
+							<Route path="mycommunityboard" element={<MyComuBoard/>} />
+							<Route path="mycommunitycomment" element={<MyComuComment />} />
 						</Route>
 						<Route path="/community" element={<ComuList />} />
 						<Route path="/community/:id" element={<ComuDetail />} />

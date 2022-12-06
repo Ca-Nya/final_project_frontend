@@ -8,11 +8,10 @@ import {
 } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Comment from "./comment";
+import ComuComment from "./comuComment/ComuComment";
 
-const BASE_URL = process.env.REACT_APP_SERVER;
-
-const MyCommentEdit = ({ comment }) => {
+const MyComuCommentEdit = ({ comment }) => {
+	const BASE_URL = process.env.REACT_APP_SERVER;
 	const navigate = useNavigate();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
@@ -32,7 +31,7 @@ const MyCommentEdit = ({ comment }) => {
 	const { mutate: editMutation } = useMutation(
 		async commentEdit => {
 			const response = await axios.put(
-				`${BASE_URL}/auth/comment/${commentEdit.commentId}/update`,
+				`${BASE_URL}/auth/communityComment/${commentEdit.communityCommentId}/update`,
 				commentEdit,
 				{
 					headers: {
@@ -59,11 +58,14 @@ const MyCommentEdit = ({ comment }) => {
 
 	//댓글 삭제하기 delete요청
 	const delMutation = useMutation(commentId =>
-		axios.delete(`${BASE_URL}/auth/comment/${commentId.commentId}/delete`, {
-			headers: {
-				authorization,
+		axios.delete(
+			`${BASE_URL}/auth/communityComment/${commentId.communityCommentId}/delete`,
+			{
+				headers: {
+					authorization,
+				},
 			},
-		}),
+		),
 	);
 
 	//댓글 수정하기 이벤트핸들러(온체인지)
@@ -74,14 +76,14 @@ const MyCommentEdit = ({ comment }) => {
 
 	//댓글 수정하기 쿼리 요청(온클릭)
 	const handleEditComplete = e => {
-		console.log("editComment=>", editComment);
+		console.log("editComuComment=>", editComment);
 		if (editComment === "") {
 			alert("변경내용이 없습니다.");
 		} else {
 			editMutation(
 				{
-					commentId: comment.commentId,
-					commentContent: editComment,
+					communityCommentId: comment.communityCommentId,
+					communityCommentContent: editComment,
 				},
 				{
 					onError: (error, variables, context) => {
@@ -103,28 +105,26 @@ const MyCommentEdit = ({ comment }) => {
 		const delRes = window.confirm("정말 삭제하시겠습니까?");
 		if (delRes) {
 			alert("삭제되었습니다.");
-			delMutation.mutate({ commentId: comment.commentId });
+			delMutation.mutate({ communityCommentId: comment.communityCommentId });
 		} else {
 			alert("취소합니다.");
 		}
 	};
-	console.log("mycommenitem=>", comment);
+	console.log("myComucommenitem=>", comment);
 
 	return (
-		<Box>
-			<Comment
-				edit={edit}
-				setEdit={setEdit}
-				editComment={editComment}
-				navigate={navigate}
-				onDeleteComment={handleRemove}
-				onEditComment={handleEditComplete}
-				onhandleEdit={handleEdit}
-				ondelMutation={delMutation}
-				comment={comment}
-			/>
-		</Box>
+		<ComuComment
+			edit={edit}
+			setEdit={setEdit}
+			editComment={editComment}
+			navigate={navigate}
+			onDeleteComment={handleRemove}
+			onEditComment={handleEditComplete}
+			onhandleEdit={handleEdit}
+			ondelMutation={delMutation}
+			comment={comment}
+		/>
 	);
 };
 
-export default MyCommentEdit;
+export default MyComuCommentEdit;

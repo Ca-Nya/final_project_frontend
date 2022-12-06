@@ -80,7 +80,7 @@ export const Input = styled.input`
 					height: ${calcRem(46)};
 					border: 1px solid ${({ theme }) => theme.colors.line};
 					border-radius: 20px;
-					padding: 15px 15px 15px 20%;
+					padding: 15px 15px 15px 28%;
 					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
 				`;
 			/* 글쓰기 페이지 */

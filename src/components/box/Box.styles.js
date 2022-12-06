@@ -12,7 +12,7 @@ export const Box = styled.div`
 				case "container":
 					return css`
 						width: 100vw;
-						max-width: ${calcRem(1200)} !important;
+						max-width: ${calcRem(1180)} !important;
 						margin: 0 auto;
 						padding: 0 3.5vw;
 						/* background-color: #eceaeade; */
@@ -181,7 +181,7 @@ export const Box = styled.div`
 					`;
 				case "main-canya-pick-content":
 					return css`
-						height: ${calcRem(77)};
+						height: ${calcRem(76)};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding: 1px 0 17px 0;
 					`;
@@ -680,7 +680,7 @@ export const Box = styled.div`
 				case "review-title":
 					return css`
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
-						padding: 25px;
+						padding: 25px 0;
 					`;
 				case "list-user-info-wrap":
 					return css`
@@ -689,13 +689,31 @@ export const Box = styled.div`
 					`;
 				case "list-content-desc":
 					return css`
-						height: ${calcRem(60)};
+						height: ${calcRem(57)};
 					`;
-				case "":
-					return css``;
+				/* 최신, 인기, 전체 리스트 페이지 */
+				case "overalls-nav":
+					return css`
+						padding: 0 0 20px 0;
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
 				default:
 					break;
 			}
 		}}
 	}
+	/* 모바일 사이즈 */
+	${({ size }) => {
+		switch (size) {
+			case "xl":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(312)};
+					background-color: aliceblue;
+					border-radius: 5px;
+				`;
+			default:
+				break;
+		}
+	}}
 `;

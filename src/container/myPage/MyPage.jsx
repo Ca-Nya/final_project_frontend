@@ -7,7 +7,6 @@ import axios from "axios";
 import MypgHome from "./mypgHome/MypgHome";
 
 const MyPage = () => {
-
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
@@ -17,6 +16,8 @@ const MyPage = () => {
 	const myBoardMatch = useMatch("/mypage/myboard");
 	const myCommentMatch = useMatch("/mypage/mycomment");
 	const myAllMatch = useMatch("/mypage/myall");
+	const myComuBoardMatch = useMatch("/mypage/mycommunityboard");
+	const myComuCommentMatch = useMatch("/mypage/mycommunitycomment");
 
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
@@ -55,10 +56,14 @@ const MyPage = () => {
 		recentlyMyBoardList,
 		recentlyMyCommentList,
 		recentlyMyHeartBoardList,
+		recentlyMyCommunityList,
+		recentlyMyCommunityCommentList,
 		memberBoardCount,
 		memberCommentCount,
 		memberHeartCount,
 		memberProfileImage,
+		memberCommunityCount,
+		memberCommunityCommentCount,
 	} = myContent;
 
 	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
@@ -110,24 +115,30 @@ const MyPage = () => {
 	if (isError) return <Box>에러</Box>;
 
 	return (
-			<MypgHome
-				onEditPost={handleEditPost}
-				onDeletePost={handelDeletePost}
-				onChangeProfileImage={handleChangeProfileImage}
-				recentlyMyBoardList={recentlyMyBoardList}
-				recentlyMyCommentList={recentlyMyCommentList}
-				recentlyMyHeartBoardList={recentlyMyHeartBoardList}
-				memberBoardCount={memberBoardCount}
-				memberCommentCount={memberCommentCount}
-				memberHeartCount={memberHeartCount}
-				memberProfileImage={memberProfileImage}
-				navigate={navigate}
-				myLikeMatch={myLikeMatch}
-				myBoardMatch={myBoardMatch}
-				myCommentMatch={myCommentMatch}
-				myAllMatch={myAllMatch}
-                nickname={nickname}
-			/>
+		<MypgHome
+			onEditPost={handleEditPost}
+			onDeletePost={handelDeletePost}
+			onChangeProfileImage={handleChangeProfileImage}
+			recentlyMyBoardList={recentlyMyBoardList}
+			recentlyMyCommentList={recentlyMyCommentList}
+			recentlyMyHeartBoardList={recentlyMyHeartBoardList}
+			memberBoardCount={memberBoardCount}
+			memberCommentCount={memberCommentCount}
+			memberHeartCount={memberHeartCount}
+			memberProfileImage={memberProfileImage}
+			navigate={navigate}
+			myLikeMatch={myLikeMatch}
+			myBoardMatch={myBoardMatch}
+			myCommentMatch={myCommentMatch}
+			myAllMatch={myAllMatch}
+			myComuBoardMatch={myComuBoardMatch}
+			myComuCommentMatch={myComuCommentMatch}
+			nickname={nickname}
+			recentlyMyCommunityList={recentlyMyCommunityList}
+			recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
+			memberCommunityCount={memberCommunityCount}
+			memberCommunityCommentCount={memberCommunityCommentCount}
+		/>
 	);
 };
 

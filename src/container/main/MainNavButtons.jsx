@@ -16,9 +16,9 @@ const MainNavButtons = () => {
 	const navigate = useNavigate();
 	//  최신, 인기, 전체 게시글
 	const overalls = [
-		["recent", "최신리뷰", recent],
-		["hot", "인기리뷰", hot],
-		["all", "전체리뷰", all],
+		["최신", "최신리뷰", recent],
+		["인기", "인기리뷰", hot],
+		["전체", "전체리뷰", all],
 	];
 	//  별점별 게시글
 	const fields = [
@@ -29,15 +29,6 @@ const MainNavButtons = () => {
 		["친절", "친절맛집", kindness],
 		["주차", "주차맛집", parking],
 	];
-	//
-	// const fields = [
-	// 	["price", "가성비맛집", price],
-	// 	["mood", "분위기맛집", mood],
-	// 	["coffee", "커피맛집", coffee],
-	// 	["dessert", "디저트맛집", dessert],
-	// 	["kindness", "친절맛집", kindness],
-	// 	["parking", "주차맛집", parking],
-	// ];
 
 	return (
 		<Nav variant="main-category-button-group-wrap">

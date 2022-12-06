@@ -2,10 +2,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Detail from "./detail";
-import ComuEdit from "./ComuEdit";
 import { Box, Image } from "../../components";
 import Spinner from "../../assets/icons/spinner.gif";
 import { useEffect } from "react";
+import ComuComment from "./ComuComment";
+import ComuCommentList from "./ComuCommentList";
+
 
 const ComuDetail = () => {
 	const { id } = useParams();
@@ -37,7 +39,7 @@ const ComuDetail = () => {
 	//queryClient 선언하기
 	const queryClient = useQueryClient();
 
-	//댓글 삭제하기 delete요청
+	//커뮤게시글 삭제하기 delete요청
 	const delMutation = useMutation(
 		data => {
 			return axios.delete(`${BASE_URL}/auth/community/delete/${id}`, {
@@ -54,7 +56,7 @@ const ComuDetail = () => {
 			},
 		},
 	);
-	//댓글 삭제하기 쿼리요청
+	//커뮤게시글 삭제하기 쿼리요청
 	const handleRemove = e => {
 		e.preventDefault();
 		const delRes = window.confirm("정말 삭제하시겠습니까?");
@@ -83,6 +85,8 @@ const ComuDetail = () => {
 				onhandleRemove={handleRemove}
 				id={id}
 			/>
+			<ComuCommentList />
+			<ComuComment />
 		</>
 	);
 };

@@ -12,13 +12,12 @@ import { IoMdArrowDropup } from "@react-icons/all-files/io/IoMdArrowDropup";
 const MainSelectBox = ({ setSelectValue }) => {
 	// 셀렉트박스 카테고리 배열
 	const selectList = [
-		["all", "통합검색"],
 		["memberNickname", "글쓴이"],
 		["boardTitle", "글제목"],
 		["boardContent", "글내용"],
 	];
 	// 카테고리 선택시 미리보기 state
-	const [selectCategory, setSelectCategory] = useState("통합검색");
+	const [selectCategory, setSelectCategory] = useState("글쓴이");
 	// 셀렉트 박스 화면 출력 state
 	const [selectBoxView, setSelectBoxView] = useState(false);
 	// 검색 select option 변경 핸들러

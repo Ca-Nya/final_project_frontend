@@ -20,6 +20,7 @@ export const FirstHeading = styled.h1`
 					`;
 				case "title":
 					return css`
+						width: 100%;
 						font-size: ${({ theme }) => theme.fontSizes.titleSize};
 						font-weight: 700;
 						letter-spacing: ${calcRem(1)};
@@ -40,7 +41,7 @@ export const SecondHeading = styled.h2`
 				case "main-footer":
 					return css`
 						font-weight: 700;
-						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-size: ${({ theme }) => theme.fontSizes.xxxxl};
 						color: ${({ theme }) => theme.colors.main};
 					`;
 				case "main-best-item":
@@ -173,7 +174,6 @@ export const ThirdHeading = styled.h3`
 						font-size: ${({ theme }) => theme.fontSizes.lg};
 						font-weight: 700;
 						letter-spacing: 0.03rem;
-						text-align: center;
 					`;
 				default:
 					break;

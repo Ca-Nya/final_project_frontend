@@ -5,7 +5,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 const fetchList = ({ category, params }) => {
 	return getRequest({
 		method: "get",
-		url: `board/main/${category}`,
+		url: `/board/main/${category}`,
 		params,
 	});
 };
@@ -19,7 +19,7 @@ const useFetchList = category => {
 				data: { boardResponseDto: list, lastPage: isLast },
 			} = await fetchList({
 				category,
-				params: { page: pageParam, size: 10 },
+				params: { page: pageParam, size: 100 },
 			});
 
 			console.log("list =======>", list);
