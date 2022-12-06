@@ -42,6 +42,8 @@ const MyAll = () => {
 		recentlyMyBoardList,
 		recentlyMyCommentList,
 		recentlyMyHeartBoardList,
+		recentlyMyCommunityList,
+		recentlyMyCommunityCommentList,
 	} = myContent;
 
 	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
@@ -60,6 +62,8 @@ const MyAll = () => {
             recentlyMyBoardList={recentlyMyBoardList}
             recentlyMyCommentList={recentlyMyCommentList}
             recentlyMyHeartBoardList={recentlyMyHeartBoardList}
+			recentlyMyCommunityList={recentlyMyCommunityList}
+			recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
             spinner={Spinner}
             navigate={navigate}
             />

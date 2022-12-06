@@ -4,6 +4,8 @@ const All = ({
 	recentlyMyBoardList,
 	recentlyMyCommentList,
 	recentlyMyHeartBoardList,
+	recentlyMyCommunityList,
+	recentlyMyCommunityCommentList,
 	spinner,
 	navigate,
 }) => {
@@ -107,7 +109,6 @@ const All = ({
 						</Text>
 					</Box>
 				</Margin>
-
 				{recentlyMyCommentList?.map(item => {
 					return (
 						<Box key={item.commentId}>
@@ -131,6 +132,94 @@ const All = ({
 											}}
 										>
 											{item.boardTitle}
+										</Text>
+									</Margin>
+								</Box>
+							</Margin>
+						</Box>
+					);
+				})}
+			</Box>
+			<Box>
+				<Margin margin="60px 0 10px 0">
+					<Box variant="guide">
+						<Text variant="title">커뮤니티 🌈 </Text>
+						<Text
+							variant="add"
+							onClick={() => {
+								navigate(`/mypage/mycommunityboard`);
+							}}
+						>
+							더보기
+						</Text>
+					</Box>
+				</Margin>
+				<Flex gap="1.5em">
+					{recentlyMyCommunityList?.map(item => {
+						return (
+							<Box key={item.communityId}>
+								<Box key={item.communityId}>
+									<Image
+										variant="mypage-post"
+										src={item.communityImage}
+										alt={item.communityTitle}
+										onClick={() => {
+											navigate(`/community/${item.communityId}`);
+										}}
+									></Image>
+									<Margin margin="8px auto 0 auto">
+										<Text
+											variant="all-title"
+											onClick={() => {
+												navigate(`/community/${item.communityId}`);
+											}}
+										>
+											{item.communityTitle}
+										</Text>
+									</Margin>
+								</Box>
+							</Box>
+						);
+					})}
+				</Flex>
+			</Box>
+			<Box>
+				<Margin margin="60px 0 10px 0">
+					<Box variant="guide">
+						<Text variant="title">커뮤 댓글 📋</Text>
+						<Text
+							variant="add"
+							onClick={() => {
+								navigate(`/mypage/mycommunitycomment`);
+							}}
+						>
+							더보기
+						</Text>
+					</Box>
+				</Margin>
+				{recentlyMyCommunityCommentList?.map(item => {
+					return (
+						<Box key={item.communityCommentId}>
+							<Margin margin="0 0 0.9vw 0">
+								<Box variant="comment-box" key={item.communityCommentId}>
+									<Margin margin="27px 3% 0 22px">
+										<Box>
+											<Flex jc="space-between" ai="center">
+												<Text variant="comment">{item.communityCommentContent}</Text>
+												<Text variant="comment-date">
+													{item.communityCommentCreatedAt}
+												</Text>
+											</Flex>
+										</Box>
+									</Margin>
+									<Margin margin="9px 0 0 22px">
+										<Text
+											variant="comment-title"
+											onClick={() => {
+												navigate(`/community/${item.communityId}`);
+											}}
+										>
+											{item.communityTitle}
 										</Text>
 									</Margin>
 								</Box>
