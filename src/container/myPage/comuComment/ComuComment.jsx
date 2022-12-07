@@ -37,7 +37,7 @@ ondelMutation,}) => {
                     onChange={onhandleEdit}
                   />
                   <Text variant="comment-date">
-                    {comment.communityCommentCreatedAt}
+                    {comment?.communityCommentCreatedAt}
                   </Text>
                 </Flex>
               </Box>
@@ -48,10 +48,10 @@ ondelMutation,}) => {
                   <Text
                     variant="comment-title"
                     onClick={() => {
-                      navigate(`/community/${comment.communityId}`);
+                      navigate(`/community/${comment?.communityId}`);
                     }}
                   >
-                    {comment.communityTitle}
+                    {comment?.communityTitle}
                   </Text>
                   <Box>
                     <Button variant="mypage" onClick={onEditComment}>
@@ -72,9 +72,9 @@ ondelMutation,}) => {
             <Margin margin="26px 22px 0 22px">
               <Box variant="guide">
                 <Flex jc="space-between">
-                  <Text variant="comment">{comment.communityCommentContent}</Text>
+                  <Text variant="comment">{comment?.communityCommentContent}</Text>
                   <Text variant="comment-date">
-                    {comment.communityCommentCreatedAt}
+                    {comment?.communityCommentCreatedAt}
                   </Text>
                 </Flex>
               </Box>
@@ -85,10 +85,10 @@ ondelMutation,}) => {
                   <Text
                     variant="comment-title"
                     onClick={() => {
-                      navigate(`/community/${comment.communityId}`);
+                      navigate(`/community/${comment?.communityId}`);
                     }}
                   >
-                    {comment.communityTitle}
+                    {comment?.communityTitle}
                   </Text>
                   <Box>
                     <Button
