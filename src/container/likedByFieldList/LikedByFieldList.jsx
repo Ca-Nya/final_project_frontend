@@ -226,7 +226,7 @@ const LikedByFieldList = () => {
 
 				<Margin margin="65px 0 0 0">
 					<Box variant="review-title">
-						<FirstHeading variant="title">{category} 맛집☕️</FirstHeading>
+						<FirstHeading variant="title">{category} 맛집💛</FirstHeading>
 					</Box>
 				</Margin>
 				<Margin margin="45px 0 0 0">

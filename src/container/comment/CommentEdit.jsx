@@ -11,6 +11,7 @@ import {
 	SecondHeading,
 	Flex,
 	Margin,
+	TextArea,
 } from "../../components";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -92,7 +93,6 @@ const CommentEdit = ({ item }) => {
 					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");
-						alert(data.data);
 					},
 				},
 			);
@@ -118,14 +118,44 @@ const CommentEdit = ({ item }) => {
 				<Box>
 					{edit ? (
 						<Box>
-							<Input
-								type="text"
-								name="commentContent"
-								defaultValue={item?.commentContent}
-								required={item?.commentContent}
-								onChange={handleEdit}
-							/>
-							<Button onClick={handleEditComplete}>완료</Button>
+							<Margin margin="10px 0">
+								<Flex jc="space-between" ai="center" gap="17px">
+									<Box>
+										<Flex jc="center" ai="center" gap="10px">
+											<Box>
+												<Flex ai="center" jc="center">
+													<Image
+														src={item.memberProfileImage}
+														alt="유저 프로필"
+														variant="comment-profile"
+													/>
+												</Flex>
+											</Box>
+											<Box variant="comment-user-info">
+												<Flex fd="column" jc="center">
+													<TextArea
+														name="commentContent"
+														defaultValue={item?.commentContent}
+														required={item?.commentContent}
+														onChange={handleEdit}
+														variant="comment-edit-input"
+													/>
+												</Flex>
+											</Box>
+										</Flex>
+									</Box>
+									<Box variant="comment-info">
+										<Flex fd="column" jc="center" ai="flex-end">
+											<Button
+												onClick={handleEditComplete}
+												variant="comment-edit"
+											>
+												완료
+											</Button>
+										</Flex>
+									</Box>
+								</Flex>
+							</Margin>
 						</Box>
 					) : (
 						<>

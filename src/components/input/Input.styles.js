@@ -127,7 +127,7 @@ export const Input = styled.input`
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.medium};
 					&:placeholder {
-						font-size: ${({ theme }) => theme.fontSizes.medium}
+						font-size: ${({ theme }) => theme.fontSizes.medium};
 					}
 					padding: 12px 12px 12px 20px;
 				`;
@@ -139,7 +139,7 @@ export const Input = styled.input`
 					border-radius: 5px;
 					font-size: ${({ theme }) => theme.fontSizes.medium};
 					&:placeholder {
-						font-size: ${({ theme }) => theme.fontSizes.medium}
+						font-size: ${({ theme }) => theme.fontSizes.medium};
 					}
 					padding: 12px 12px 12px 20px;
 				`;

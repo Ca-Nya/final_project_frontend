@@ -38,47 +38,27 @@ const BoardItem = ({item,navigate,onDeletePost,onEditPost}) => {
                                                         {item?.boardCreatedAt}
                                                     </Text>
 
-                                                    <Box variant="board-minibutton">
-                                                        <Flex gap="0.9vw">
-                                                            <Button
-                                                                variant="mypage"
-                                                                onClick={onEditPost(item)}
-                                                            >
-                                                                수정
-                                                                <Image variant="profile-edit" src={Edit} />
-                                                            </Button>
-                                                            <Button
-                                                                variant="mypage"
-                                                                onClick={onDeletePost(item)}
-                                                            >
-                                                                삭제
-                                                                <Image
-                                                                    variant="profile-edit"
-                                                                    src={Delete}
-                                                                />
-                                                            </Button>
-                                                        </Flex>
-                                                    </Box>
-                                                </Flex>
-                                            </Box>
-                                        </Margin>
-                                    </Flex>
-                                </Box>
-                            </Flex>
-                        </Margin>
+										<Box variant="board-minibutton">
+											<Flex gap="0.9vw">
+												<Button variant="mypage" onClick={onEditPost(item)}>
+													수정
+													<Image variant="profile-edit" src={Edit} />
+												</Button>
+												<Button variant="mypage" onClick={onDeletePost(item)}>
+													삭제
+													<Image variant="profile-edit" src={Delete} />
+												</Button>
+											</Flex>
+										</Box>
+									</Flex>
+								</Box>
+							</Margin>
+						</Flex>
+					</Box>
+				</Flex>
+			</Margin>
+		</Box>
+	);
+};
 
-                        {/* {item.commentContent && item.commentContent ? (
-                            <li>댓글:{item.commentContent}</li>
-                        ) : (
-                            <li>
-                                <p>댓글이 없습니다.</p>
-                            </li>
-                        )} */}
-                        {/* <li>총댓글갯수:{item.commentCount}</li> */}
-                        {/* <li>주소:{item.address}</li> */}
-                        {/* <li>평점:{item.totalRating}</li> */}
-                    </Box>
-  )
-}
-
-export default BoardItem
+export default BoardItem;
