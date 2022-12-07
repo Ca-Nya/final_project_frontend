@@ -10,8 +10,8 @@ const LikeItem = ({ like, data, navigate, isFetchingNextPage }) => {
 						<Flex>
 							<Image
 								variant="myboard-post"
-								src={like.imageList[0].imageUrl}
-								alt={like.boardTitle}
+								src={like?.imageList[0]?.imageUrl}
+								alt={like?.boardTitle}
 							/>
 							<Box>
 								<Flex fd="column">
@@ -23,7 +23,7 @@ const LikeItem = ({ like, data, navigate, isFetchingNextPage }) => {
 													navigate(`/detail/post/${like.boardId}`);
 												}}
 											>
-												{like.boardTitle}
+												{like?.boardTitle}
 											</Text>
 											<Margin margin="1.1vw 0 0 0.4vw">
 												<Text variant="board-content">{like.boardContent}</Text>

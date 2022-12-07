@@ -1,4 +1,4 @@
 import Like from "./Like";
 import LikeItem from "./LikeItem";
 
-export {Like,LikeItem};
+export { Like, LikeItem };

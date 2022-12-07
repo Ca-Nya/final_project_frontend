@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button, Image, Text, Margin, Flex } from "../../../components";
 import Edit from "../../../assets/icons/edit.png";
 import Delete from "../../../assets/icons/delete.png";
-import { BoardItem } from "../board";
+import  BoardItem from "./BoardItem";
 
 const Board = ({
     data,
@@ -28,7 +28,7 @@ const Board = ({
                             item={item}
                             navigate={navigate}
                             onDeletePost={onDeletePost}
-                            onEditPost={onDeletePost}
+                            onEditPost={onEditPost}
                         />
                     </>
                 ))}

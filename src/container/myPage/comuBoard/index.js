@@ -1,3 +1,4 @@
 import ComuBoard from "./ComuBoard";
+import ComuboardItem from "./ComuboardItem";
 
-export default ComuBoard;
+export {ComuBoard, ComuboardItem};
