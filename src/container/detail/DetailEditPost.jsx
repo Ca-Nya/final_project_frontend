@@ -19,7 +19,7 @@ const DetailEditPost = () => {
 		isDetailPostLoading,
 	} = useFetchDetailPost(+id);
 	// 상세페이지 데이터
-	const { address, boardContent, boardTitle, imageList, rating } =
+	const { address, addressId, boardContent, boardTitle, imageList, rating } =
 		detailPostData;
 	// 객체의 원소인 이미지를 담은 배열 - detailImages
 	const detailImages = imageList.map(({ imageUrl }) => {
@@ -27,6 +27,9 @@ const DetailEditPost = () => {
 	});
 	// 평점 state
 	const [ratings, setRatings] = useState([0, 0, 0, 0, 0, 0]);
+	// 지도 장소 검색값 state
+	const [place, setPlace] = useState({ address: "", addressId: "" });
+	console.log("수정 place =====>", place);
 	// 별점을 담은 객체 배열화
 	useEffect(() => {
 		if (rating) {
@@ -41,16 +44,19 @@ const DetailEditPost = () => {
 		setInputValue(prev => {
 			return { ...prev, boardTitle, boardContent };
 		});
+		setPlace(prev => {
+			return { ...prev, address, addressId };
+		});
 	}, [detailPostData]);
-	// 지도 장소 검색값 state
-	const [place, setPlace] = useState(address);
-	// 검색값이 있을 경우에만 게시글 state에 등록
+
+	// 장소 검색값이 있을 경우에만 게시글 state에 등록
 	useEffect(() => {
 		if (place)
 			setInputValue(prev => {
 				return {
 					...prev,
-					address: place,
+					address: place.address,
+					addressId: place.addressId,
 				};
 			});
 	}, [place]);
@@ -91,6 +97,7 @@ const DetailEditPost = () => {
 		boardTitle: "",
 		boardContent: "",
 		address: place,
+		addressId: place.addressId,
 		ratings,
 	});
 	// inputValue state - boardTitle 변경 핸들러
