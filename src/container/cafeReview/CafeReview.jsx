@@ -17,7 +17,7 @@ const CafeReview = ({ id }) => {
 	// 지도 장소 검색값 state
 	const [place, setPlace] = useState({ address: "", addressId: "" });
 	console.log("place =======>", place);
-
+	// 장소 검색값이 있을 경우에만 게시글 state에 등록
 	useEffect(() => {
 		if (place)
 			setInputValue(prev => {

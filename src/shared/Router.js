@@ -10,8 +10,15 @@ import { DetailPost, DetailEditPost } from "../container/detail";
 import LikedByFieldList from "../container/likedByFieldList";
 import LikedByOverallList from "../container/likedByOverallList";
 import MyPages from "../pages/mypage";
-import { MyBoard, MyComment, MyLike, MyAll, MyComuBoard, MyComuComment } from "../container/myPage";
-import { Chat } from "../container/chat";
+import {
+	MyBoard,
+	MyComment,
+	MyLike,
+	MyAll,
+	MyComuBoard,
+	MyComuComment,
+} from "../container/myPage";
+// import { Chat } from "../container/chat";
 import {
 	ComuList,
 	ComuDetail,
@@ -42,7 +49,7 @@ const Router = () => {
 							<Route path="myboard" element={<MyBoard />} />
 							<Route path="mycomment" element={<MyComment />} />
 							<Route path="mylike" element={<MyLike />} />
-							<Route path="mycommunityboard" element={<MyComuBoard/>} />
+							<Route path="mycommunityboard" element={<MyComuBoard />} />
 							<Route path="mycommunitycomment" element={<MyComuComment />} />
 						</Route>
 						<Route path="/community" element={<ComuList />} />
@@ -51,7 +58,7 @@ const Router = () => {
 					</Route>
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
-					<Route path="/chat" element={<Chat />} />
+					{/* <Route path="/chat" element={<Chat />} /> */}
 					<Route path="/edit/:id" element={<ComuEdit />} />
 				</Routes>
 			</BrowserRouter>
