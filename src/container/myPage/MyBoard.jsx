@@ -1,11 +1,13 @@
-import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
-import { Box } from "../../components";
+import { Image, Box } from "../../components";
 import { Board } from "./board";
+import Spinner from "../../assets/icons/spinner.gif";
+
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 //로컬스토리지 토큰가져오기
@@ -42,29 +44,9 @@ const MyBoard = () => {
 		if (inView) fetchNextPage();
 	}, [inView]);
 
-	//내가쓴게시물 get요청
-	// const { data, status } = useQuery(
-	// 	["getMyBoard"],
-	// 	async () => {
-	// 		const response = await axios.get(
-	// 			`${BASE_URL}/member/auth/mypage/boards`,
-	// 			{
-	// 				headers: {
-	// 					authorization,
-	// 				},
-	// 			},
-	// 		);
-	// 		return response.data;
-	// 	},
-	// 	{
-	// 		if(isError) {
-	// 			alert("내가 작성한 게시물 불러오기 실패");
-	// 		},
-	// 	},
-	// );
-
 	// 마이페이지 게시글 삭제 Hook
 	const { mutate: deletePostMutate } = useDeleteDetailPost();
+
 	// 마이페이지 게시글 삭제 핸들러
 	const handelDeletePost = item => () => {
 		deletePostMutate(item.boardId, {
@@ -81,7 +63,12 @@ const MyBoard = () => {
 		navigate(`/detail/edit/${item.boardId}`);
 	};
 
-	if (status === "loading") return <p>로딩중</p>;
+	if (status === "loading")
+		return (
+			<Box>
+				<Image src={Spinner} alt={"로딩중.."} />
+			</Box>
+		);
 	if (status === "error") return <p>에러입니다.</p>;
 	return (
 		<Box>
@@ -91,7 +78,13 @@ const MyBoard = () => {
 				onDeletePost={handelDeletePost}
 				onEditPost={handleEditPost}
 			/>
-			{isFetchingNextPage ? <p>로딩중</p> : <div ref={ref}></div>}
+			{isFetchingNextPage ? (
+				<Box>
+					<Image src={Spinner} alt={"로딩중.."} />
+				</Box>
+			) : (
+				<div ref={ref}></div>
+			)}
 		</Box>
 	);
 };
