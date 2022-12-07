@@ -105,19 +105,6 @@ const DetailPost = () => {
 								<FirstHeading variant="title">
 									{detailPostData.boardTitle}
 								</FirstHeading>
-								{localStorage.getItem("Nickname") ===
-								detailPostData.memberNickname ? (
-									<Flex jc="flex-end" gap="10px">
-										<Button variant="detail-edit" onClick={handleEditPost}>
-											수정
-										</Button>
-										<Button variant="detail-edit" onClick={handleDeletePost}>
-											삭제
-										</Button>
-									</Flex>
-								) : (
-									""
-								)}
 							</Flex>
 							<Box variant="detail-info">
 								<Flex jc="flex-end" ai="center">
@@ -144,11 +131,34 @@ const DetailPost = () => {
 												<DataDesc>{detailPostData.date}</DataDesc>
 											</DataList>
 										</Flex>
-										<DetailLike
-											isLike={detailPostData.liked}
-											boardId={+id}
-											detailPostRefetch={detailPostRefetch}
-										/>
+
+										<Flex ai="center" jc="flex-end" gap="10px">
+											{localStorage.getItem("Nickname") ===
+											detailPostData.memberNickname ? (
+												<Flex jc="flex-end" gap="4px">
+													<Button
+														variant="detail-edit"
+														onClick={handleEditPost}
+													>
+														수정
+													</Button>
+													|
+													<Button
+														variant="detail-edit"
+														onClick={handleDeletePost}
+													>
+														삭제
+													</Button>
+												</Flex>
+											) : (
+												""
+											)}
+											<DetailLike
+												isLike={detailPostData.liked}
+												boardId={+id}
+												detailPostRefetch={detailPostRefetch}
+											/>
+										</Flex>
 									</Flex>
 								</Flex>
 							</Box>
@@ -187,7 +197,7 @@ const DetailPost = () => {
 									</DataList>
 								</Margin>
 							</Margin>
-							{/* searchPlace 추후에 address혹은 place로 변경 */}
+							{/* searchPlace 추후에 address혹은 place로 리팩토링 */}
 							<DetailMap
 								searchPlace={detailPostData.address}
 								addressId={detailPostData.addressId}

@@ -112,7 +112,7 @@ export const Button = styled.button`
 				case "main-search":
 					return css`
 						position: absolute;
-						top: 11px;
+						top: 13px;
 						right: 25px;
 						width: ${calcRem(21)};
 						height: ${calcRem(21)};
@@ -222,6 +222,9 @@ export const Button = styled.button`
 							top: -2px;
 							left: -20px;
 						}
+						&:hover {
+							opacity: 0.7;
+						}
 					`;
 				case "comment-delete":
 					return css`
@@ -240,6 +243,9 @@ export const Button = styled.button`
 							position: absolute;
 							top: -2px;
 							left: -20px;
+						}
+						&:hover {
+							opacity: 0.7;
 						}
 					`;
 				case "comment-add":
@@ -262,14 +268,10 @@ export const Button = styled.button`
 				/* 인기 / 상세 / 전체 리스트 페이지 */
 				case "detail-edit":
 					return css`
+						width: 40px;
+						font-weight: 700;
 						&:hover {
-							opacity: 0.8;
-						}
-					`;
-				case "detail-delete":
-					return css`
-						&:hover {
-							opacity: 0.8;
+							color: ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
 				default:
@@ -296,7 +298,7 @@ export const Button = styled.button`
 					font-size: ${({ theme }) => theme.fontSizes.medium};
 					padding: "12px auto";
 				`;
-					case "xs":
+			case "xs":
 				return css`
 					width: ${calcRem(46)};
 					height: ${calcRem(24)};

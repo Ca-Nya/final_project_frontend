@@ -69,7 +69,7 @@ const MainLayout = () => {
 							<Box variant="container">
 								<Box variant="overalls-nav">
 									<Margin margin="0 57px 0 0">
-										<FirstHeading variant="title">검색결과☕️</FirstHeading>
+										<FirstHeading variant="title">검색결과🔍</FirstHeading>
 									</Margin>
 								</Box>
 								{data.pages[0].list ? (

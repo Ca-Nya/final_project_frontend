@@ -42,6 +42,15 @@ export const TextArea = styled.textarea`
 						font-size: ${({ theme }) => theme.fontSizes.base};
 					}
 				`;
+			/* 상세 페이지 */
+			case "comment-edit-input":
+				return css`
+					display: block;
+					width: 550px;
+					height: ${calcRem(41)};
+					padding: 10px 0px;
+					color: ${({ theme }) => theme.colors.dark_gray};
+				`;
 			default:
 				break;
 		}

@@ -29,7 +29,7 @@ export const Form = styled.form`
 						align-items: center;
 						justify-content: center;
 						/* width: 40.8vw; */
-					width: ${calcRem(464)};
+						width: ${calcRem(464)};
 					`;
 				default:
 					break;

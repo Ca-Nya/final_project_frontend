@@ -84,15 +84,15 @@ const PreArrow = styled.div`
 	width: 30px;
 	height: 30px;
 	position: absolute;
-	left: 4%;
+	left: 7%;
 	z-index: 3;
 `;
 
 const NextArrow = styled.div`
-	width: 30px;
+	width: 40px;
 	height: 30px;
 	position: absolute;
-	right: 4%;
+	right: 7%;
 	z-index: 3;
 `;
 
