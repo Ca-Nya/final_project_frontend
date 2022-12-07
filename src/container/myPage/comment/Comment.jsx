@@ -39,7 +39,7 @@ const Comment = ({
 											onChange={onhandleEdit}
 										/>
 										<Text variant="comment-date">
-											{comment.commentCreatedAt}
+											{comment?.commentCreatedAt}
 										</Text>
 									</Flex>
 								</Box>
@@ -50,10 +50,10 @@ const Comment = ({
 										<Text
 											variant="comment-title"
 											onClick={() => {
-												navigate(`/detail/post/${comment.boardId}`);
+												navigate(`/detail/post/${comment?.boardId}`);
 											}}
 										>
-											{comment.boardTitle}
+											{comment?.boardTitle}
 										</Text>
 										<Box>
 											<Button variant="mypage" onClick={onEditComment}>
@@ -74,9 +74,9 @@ const Comment = ({
 							<Margin margin="26px 22px 0 22px">
 								<Box variant="guide">
 									<Flex jc="space-between">
-										<Text variant="comment">{comment.commentContent}</Text>
+										<Text variant="comment">{comment?.commentContent}</Text>
 										<Text variant="comment-date">
-											{comment.commentCreatedAt}
+											{comment?.commentCreatedAt}
 										</Text>
 									</Flex>
 								</Box>
@@ -87,10 +87,10 @@ const Comment = ({
 										<Text
 											variant="comment-title"
 											onClick={() => {
-												navigate(`/detail/post/${comment.boardId}`);
+												navigate(`/detail/post/${comment?.boardId}`);
 											}}
 										>
-											{comment.boardTitle}
+											{comment?.boardTitle}
 										</Text>
 										<Box>
 											<Button

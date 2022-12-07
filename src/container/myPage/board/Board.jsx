@@ -10,6 +10,7 @@ const Board = ({
     onDeletePost,
     onEditPost,
 }) => {
+    console.log("Board===>",data.pages[0].page[0])
   return (
     <Box>
     <Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
