@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import {BoardList,MblBoardList }from "./boardList";
+import { BoardList, MblBoardList } from "./boardList";
 import { Box, Image, Margin } from "../../components";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import Spinner from "../../assets/icons/spinner.gif";
@@ -53,11 +53,11 @@ const ComuList = () => {
 				</Margin>
 			</Default>
 			<Mobile>
-				<MblBoardList 
-				navigate={navigate}
-				data={data}
-				authorization={authorization}
-				nickname={nickname}
+				<MblBoardList
+					navigate={navigate}
+					data={data}
+					authorization={authorization}
+					nickname={nickname}
 				/>
 			</Mobile>
 		</>

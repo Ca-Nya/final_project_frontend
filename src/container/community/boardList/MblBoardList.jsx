@@ -1,4 +1,5 @@
 import { Box, Image, Text, Margin, Flex, Button } from "../../../components";
+import hit from "../../../assets/icons/hit.png";
 
 const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 	return (
@@ -6,8 +7,9 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 			{data && data.length > 0 ? (
 				<Box size="container">
 					{authorization ? (
-						<Box size="l" style={{ height: "34px"}}>
-							<Flex jc="flex-end">
+						// <Box size="nav-s" style={{ border: "1px solid black" }}>
+						<Margin margin="0 0 15px 0">
+							<Flex jc="flex-end" ai="center">
 								<Button
 									size="xs"
 									style={{ backgroundColor: "#eaeaea" }}
@@ -18,8 +20,9 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 									글쓰기
 								</Button>
 							</Flex>
-						</Box>
+						</Margin>
 					) : (
+						// </Box>
 						<Button
 							size="xs"
 							style={{ backgroundColor: "#eaeaea" }}
@@ -33,38 +36,66 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 					)}
 					{data.map(item => {
 						return (
-							<Box size="l" style={{ borderBottom :"1px solid #D9D9D9" }}  key={item.communityId}>
-								<Image
-									size="s"
-									src={item.communityImage}
-									alt={item.communityTitle}
-								/>
-								<Text
-									size="m"
-									style={{ fontWeight: "800" }}
-									onClick={() => {
-										navigate(`/community/${item.communityId}`);
-									}}
+							<Margin margin="10px auto">
+								<Box
+									size="container-s"
+									style={{ borderBottom: "1px solid #D9D9D9" }}
+									key={item.communityId}
 								>
-									{item.communityTitle}
-								</Text>
-								<Margin margin="6px auto">
-									<Text
-										size="s"
-										onClick={() => {
-											navigate(`/community/${item.communityId}`);
-										}}
-									>
-										{item.communityContent}
-									</Text>
-								</Margin>
-								<Margin margin="6px auto">
-                  <Flex gap="2px">
-                  <Text size="s" style={{ fontWeight: "500" }}>by </Text>
-									<Text size="s">{item.memberNickname}</Text>
-                  </Flex>
-								</Margin>
-							</Box>
+									<Flex>
+										<Box
+											size="container-m"
+											style={{ border: "1px solid black" }}
+										>
+											<Text
+												size="m"
+												style={{ fontWeight: "800" }}
+												onClick={() => {
+													navigate(`/community/${item.communityId}`);
+												}}
+											>
+												{item.communityTitle}
+											</Text>
+											<Margin margin="6px auto">
+												<Text
+													size="s"
+													style={{ height: "63px" }}
+													onClick={() => {
+														navigate(`/community/${item.communityId}`);
+													}}
+												>
+													{item.communityContent}
+												</Text>
+											</Margin>
+											<Margin margin="6px auto">
+												<Flex gap="2px">
+													<Text size="s" style={{ fontWeight: "500" }}>
+														by{" "}
+													</Text>
+													<Text size="s">{item.memberNickname}</Text>
+												</Flex>
+											</Margin>
+										</Box>
+										<Box>
+											<Flex style={{ position: "relative" }}>
+												<Image
+													size="s"
+													src={item.communityImage}
+													alt={item.communityTitle}
+												/>
+												
+												<Flex gap="2px" style={{ position: "absolute",top:"6px", right:"10px" }} jc="flex-end">
+													<Image src={hit} alt={"조회수"} />
+													<Text size="s" style={{ color: "white" }}>
+														{item.communityHitCount}
+													</Text>
+												</Flex>
+												
+											</Flex>
+										</Box>
+									</Flex>
+								</Box>
+							</Margin>
 						);
 					})}
 				</Box>

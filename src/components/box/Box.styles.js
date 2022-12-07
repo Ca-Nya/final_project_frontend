@@ -708,7 +708,33 @@ export const Box = styled.div`
 			case "container":
 				return css`
 					width: ${calcRem(360)};
+					height: 100%;
 					margin: 0 auto;
+					padding: 0 24px 0 24px;
+					background-color: gray;
+				`;
+			case "container-m":
+				return css`
+					width: ${calcRem(206)};
+					height: ${calcRem(100)};
+					background-color: gray;
+				`;
+			case "container-s":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(111)};
+				`;
+			case "nav":
+				return css`
+					width: ${calcRem(360)};
+					height: ${calcRem(50)};
+					background-color: ${({ theme }) => theme.colors.main};
+				`;
+			case "nav-s":
+				return css`
+					width: ${calcRem(360)};
+					height: ${calcRem(30)};
+					background-color: aliceblue;
 				`;
 			case "xl":
 				return css`
@@ -724,6 +750,7 @@ export const Box = styled.div`
 					background-color: aliceblue;
 					border-radius: 5px;
 				`;
+
 			case "m":
 				return css`
 					width: ${calcRem(153)};
