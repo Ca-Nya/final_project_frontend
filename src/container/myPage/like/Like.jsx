@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Image, Text, Margin, Flex } from "../../../components";
-import LikeItem from "./LikeItem";
+import { LikeItem } from "../like";
 
 const Like = ({ data, navigate }) => {
 	console.log("pages=====>", data.pages);

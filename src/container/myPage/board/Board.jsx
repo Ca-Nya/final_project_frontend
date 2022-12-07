@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button, Image, Text, Margin, Flex } from "../../../components";
 import Edit from "../../../assets/icons/edit.png";
 import Delete from "../../../assets/icons/delete.png";
-import { BoardItem } from "../board";
+import  BoardItem from "./BoardItem";
 
 const Board = ({
     data,
@@ -10,6 +10,7 @@ const Board = ({
     onDeletePost,
     onEditPost,
 }) => {
+    console.log("Board===>",data.pages[0].page[0])
   return (
     <Box>
     <Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
@@ -28,7 +29,7 @@ const Board = ({
                             item={item}
                             navigate={navigate}
                             onDeletePost={onDeletePost}
-                            onEditPost={onDeletePost}
+                            onEditPost={onEditPost}
                         />
                     </>
                 ))}

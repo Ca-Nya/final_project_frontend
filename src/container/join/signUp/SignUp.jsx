@@ -48,7 +48,7 @@ const SignUp = ({
 					alert("아이디 중복체크를 해주세요.");
 				} else if (!isCheckedNickname) {
 					alert("닉네임 중복체크를 해주세요.");
-				}
+				} 
 			})}
 		>
 			<Text variant="join">CA NYA</Text>
@@ -62,10 +62,10 @@ const SignUp = ({
 							variant="signup"
 							id="memberNickname"
 							type="text"
-							placeholder="별명(2~10자)을 입력해주세요."
+							placeholder="별명(2~5자)을 입력해주세요."
 							{...register("memberNickname", {
 								required: true,
-								maxLength: 10,
+								maxLength: 5,
 								minLength: 2,
 							})}
 							onChange={e => {
@@ -104,7 +104,18 @@ const SignUp = ({
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
 							<Text variant="join-warning">
-								닉네임은 10자 이내로 작성바랍니다
+								닉네임은 5자 이내로 작성바랍니다
+							</Text>
+						</Flex>
+					</Margin>
+				) : (
+					""
+				)}
+					{errors.memberNickname && errors.memberNickname.type === "minLength" ? (
+					<Margin margin="5px 0 0 10px ">
+						<Flex>
+							<Text variant="join-warning">
+								닉네임은 2자 이상 ~ 5자 이하로 작성바랍니다
 							</Text>
 						</Flex>
 					</Margin>
@@ -114,7 +125,7 @@ const SignUp = ({
 				{isCheckedNickname && !isExistNickname ? (
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
-							<Text variant="join-available">사용가능한 닉네임입니다.</Text>
+							<Text variant="join-available">중복되지않은 닉네임입니다.</Text>
 						</Flex>
 					</Margin>
 				) : (
@@ -189,7 +200,7 @@ const SignUp = ({
 				{isCheckedId && !isExistId ? (
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
-							<Text variant="join-available">사용가능한 아이디입니다.</Text>
+							<Text variant="join-available">중복되지않은 아이디입니다.</Text>
 						</Flex>
 					</Margin>
 				) : (

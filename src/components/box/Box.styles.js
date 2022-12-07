@@ -15,7 +15,6 @@ export const Box = styled.div`
 						max-width: ${calcRem(1180)} !important;
 						margin: 0 auto;
 						padding: 0 3.5vw;
-						/* background-color: #eceaeade; */
 					`;
 				case "container-2":
 					return css`

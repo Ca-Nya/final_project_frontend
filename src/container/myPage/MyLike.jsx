@@ -3,8 +3,9 @@ import { useInView } from "react-intersection-observer";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box } from "../../components";
-import Like from "./like/Like";
+import { Image, Box  } from "../../components";
+import Spinner from "../../assets/icons/spinner.gif";
+import { Like } from "./like";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -43,43 +44,12 @@ const MyLike = () => {
 
 	const navigate = useNavigate();
 
-	//로컬스토리지 토큰가져오기
-	const authorization = localStorage.getItem("Authorization");
-
-	//로컬스토리지 닉네임가져오기
-	const nickname = localStorage.getItem("Nickname");
-
-	// const [page, setPage] = useState(0);
-
-	//내가좋아요한 게시물 get요청
-	// const { data, status } = useQuery(
-	// 	["getMyBoard"],
-	// 	async () => {
-	// 		const response = await axios.get(
-	// 			`${BASE_URL}/member/auth/mypage/heart-boards`,
-	// 			{
-	// 				headers: {
-	// 					authorization,
-	// 				},
-	// 			},
-	// 		);
-	// 		return response.data;
-	// 	},
-	// 	{
-	// 		if(isError) {
-	// 			alert("내가 좋아요한 게시물 불러오기 실패");
-	// 		},
-	// 	},
-	// );
-	// console.log("MyLike=>", data);
-
-	// const target = useRef(null);
-
-	// useEffect(()=>{
-	// 	const observer = new IntersectionObserver();
-	// },[])
-
-	if (status === "loading") return <p>로딩중</p>;
+	if (status === "loading")
+		return (
+			<Box>
+				<Image src={Spinner} alt={"로딩중.."} />
+			</Box>
+		);
 	if (status === "error") return <p>에러입니다.</p>;
 
 	return (
@@ -88,7 +58,13 @@ const MyLike = () => {
 				data={data}
 				navigate={navigate}
 			/>
-			{isFetchingNextPage ? <p>로딩중</p> : <div ref={ref}></div>}
+				{isFetchingNextPage ? (
+				<Box>
+					<Image src={Spinner} alt={"로딩중.."} />
+				</Box>
+			) : (
+				<div ref={ref}></div>
+			)}
 		</Box>
 	);
 };
