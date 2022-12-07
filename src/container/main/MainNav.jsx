@@ -92,7 +92,6 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 		},
 		onError: (error, variables) => {
 			console.log("onError =>", error, "variables =>", variables);
-			// 알아보자아! 에러 처리
 			alert("게시글을 작성할 수 없습니다!");
 		},
 	});

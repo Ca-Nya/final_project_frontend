@@ -23,10 +23,10 @@ const MainCanyaPick = ({ picks, setCanyaPick, mainPosts }) => {
 	return (
 		<Box>
 			<Flex>
-				<Margin margin="120px 57px 0 0">
+				<Margin margin="110px 57px 0 0">
 					<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
 				</Margin>
-				<Margin margin="130px 0 30px 0">
+				<Margin margin="120px 0 30px 0">
 					<MainCanyaButtons setCanyaPick={setCanyaPick} mainPosts={mainPosts} />
 				</Margin>
 			</Flex>
