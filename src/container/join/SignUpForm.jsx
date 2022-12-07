@@ -6,8 +6,10 @@ import SignUp from "./signUp/SignUp";
 
 const SignUpForm = () => {
 	const dispatch = useDispatch();
+	
 	// const [join,setJoin]=useRecoilState(joinAtom);
 	const navigate = useNavigate();
+	
 	//React Hook Form
 	const {
 		handleSubmit,
@@ -15,15 +17,18 @@ const SignUpForm = () => {
 		watch,
 		formState: { errors },
 	} = useForm();
+	
 	//닉네임, 아이디 중복검사 state
 	const [inputValue, setInputValue] = useState({
 		nickNameValue: "",
 		idValue: "",
 	});
+
 	//닉네임, 아이디 중복검사 redux
 	const { isCheckedId, isCheckedNickname, isExistNickname, isExistId } =
 		useSelector(state => state.join); // join이 아닌 signup
-	//비밀번호 확인
+	
+		//비밀번호 확인
 	const password = useRef();
 	password.current = watch("password");
 

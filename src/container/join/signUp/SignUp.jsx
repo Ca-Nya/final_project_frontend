@@ -111,10 +111,21 @@ const SignUp = ({
 				) : (
 					""
 				)}
+					{errors.memberNickname && errors.memberNickname.type === "minLength" ? (
+					<Margin margin="5px 0 0 10px ">
+						<Flex>
+							<Text variant="join-warning">
+								닉네임은 2자 이상 ~ 5자 이하로 작성바랍니다
+							</Text>
+						</Flex>
+					</Margin>
+				) : (
+					""
+				)}
 				{isCheckedNickname && !isExistNickname ? (
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
-							<Text variant="join-available">사용가능한 닉네임입니다.</Text>
+							<Text variant="join-available">중복되지않은 닉네임입니다.</Text>
 						</Flex>
 					</Margin>
 				) : (
