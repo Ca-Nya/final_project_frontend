@@ -34,7 +34,7 @@ const MainList = () => {
 						setCanyaPick={setCanyaPick}
 						mainPosts={mainPosts}
 					/>
-					<Margin margin="130px 0 30px 0">
+					<Margin margin="110px 0 30px 0">
 						<Flex jc="space-between" ai="center">
 							<FirstHeading variant="title">BEST💛</FirstHeading>
 							<Button onClick={() => navigate("/overalls/hot")} variant="more">
@@ -43,7 +43,7 @@ const MainList = () => {
 						</Flex>
 					</Margin>
 					<MainBestList bestDto={mainPosts.bestDto} />
-					<Margin margin="130px 0 0 0">
+					<Margin margin="110px 0 0 0">
 						<Flex jc="space-between" ai="center">
 							<FirstHeading variant="title">NEW🔥</FirstHeading>
 							<Button
@@ -55,7 +55,7 @@ const MainList = () => {
 						</Flex>
 					</Margin>
 					<MainNewList newDto={mainPosts.newDto} />
-					<Margin margin="130px 0 33px 0">
+					<Margin margin="110px 0 33px 0">
 						<Flex jc="space-between" ai="center">
 							<FirstHeading variant="title">ALL☕️</FirstHeading>
 							<Button onClick={() => navigate("/overalls/all")} variant="more">
