@@ -1,4 +1,5 @@
-import { Box, Image, Margin } from "../../../components";
+import { Box, Image, Text, Margin, Flex, Button } from "../../../components";
+
 const Detail = ({
 	navigate,
 	data,

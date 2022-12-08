@@ -1,13 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import Detail from "./detail";
+import { Detail, MblDetail } from "./detail";
 import { Box, Image } from "../../components";
 import Spinner from "../../assets/icons/spinner.gif";
 import { useEffect } from "react";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import ComuComment from "./ComuComment";
 import ComuCommentList from "./ComuCommentList";
-
 
 const ComuDetail = () => {
 	const { id } = useParams();
@@ -77,16 +77,30 @@ const ComuDetail = () => {
 
 	return (
 		<>
-			<Detail
-				data={data}
-				nickname={nickname}
-				authorization={authorization}
-				navigate={navigate}
-				onhandleRemove={handleRemove}
-				id={id}
-			/>
-			<ComuCommentList />
-			<ComuComment />
+			<Default>
+				<Detail
+					data={data}
+					nickname={nickname}
+					authorization={authorization}
+					navigate={navigate}
+					onhandleRemove={handleRemove}
+					id={id}
+				/>
+				<ComuCommentList />
+				<ComuComment />
+			</Default>
+			<Mobile>
+				<MblDetail
+					data={data}
+					nickname={nickname}
+					authorization={authorization}
+					navigate={navigate}
+					onhandleRemove={handleRemove}
+					id={id} 
+				/>
+				<ComuCommentList />
+				<ComuComment />
+			</Mobile>
 		</>
 	);
 };

@@ -1,44 +1,61 @@
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInView } from "react-intersection-observer";
 import axios from "axios";
-import {BoardList,MblBoardList }from "./boardList";
-import { Box, Image, Margin } from "../../components";
+import { BoardList, MblBoardList } from "./boardList";
+import { Box, Image, Margin, Text } from "../../components";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import Spinner from "../../assets/icons/spinner.gif";
+import { useEffect } from "react";
+import TopButton from "../../components/topButton/TopButton";
 
-const ComuList = () => {
-	const BASE_URL = process.env.REACT_APP_SERVER;
+const BASE_URL = process.env.REACT_APP_SERVER;
+
+//로컬스토리지 토큰가져오기
+const authorization = localStorage.getItem("Authorization");
+
+const fetchPostList = async pageParam => {
+	const { data } = await axios.get(
+		`${BASE_URL}/get/community?page=${pageParam}&size=3`,
+		{
+			headers: {
+				authorization,
+			},
+		},
+	);
+	const { communityList: page, isLast } = data;
+	return { page, nextPage: pageParam + 1, isLast };
+};
+
+const ComuList = () => {	
 	const navigate = useNavigate();
 	//로컬스토리지 토큰가져오기
-	const authorization = localStorage.getItem("Authorization");
+	const authorization = localStorage.getItem("Authoriztion");
 	//로컬스토리지 닉네임가져오기
 	const nickname = localStorage.getItem("Nickname");
-	//커뮤니티 게시물 목록 get요청
-	const { data, isError, isLoading, refetch } = useQuery({
-		queryKey: ["community"],
-		queryFn: async () => {
-			try {
-				const response = await axios.get(`${BASE_URL}/get/community`);
-				console.log("response =====>", response.data);
-				return response.data;
-			} catch (error) {
-				console.log("error =>", error);
-				return error;
-			}
+	const { ref, inView } = useInView();
+	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+		["page"],
+		({ pageParam = 1 }) => fetchPostList(pageParam),
+		{
+			getNextPageParam: lastPage =>
+				!lastPage.isLast ? lastPage.nextPage : undefined,
 		},
-		suspense: true,
-	});
+	);
 
-	console.log("community=>", data);
-	console.log("isError =>", isError, "isLoading =>", isLoading);
+	console.log("data.pages===>", data?.pages);
 
-	if (isLoading)
-		return (
-			<Box>
-				<Image src={Spinner} alt={"로딩중"} />
-			</Box>
-		);
-	if (isError) return <Box>에러입니다.</Box>;
+	useEffect(() => {
+		if (inView) fetchNextPage();
+	}, [inView]);
+
+	if (status === "loading")
+	return (
+		<Box>
+			<Image src={Spinner} alt={"로딩중.."} />
+		</Box>
+	);
+if (status === "error") return <p>에러입니다.</p>;
 
 	return (
 		<>
@@ -52,13 +69,21 @@ const ComuList = () => {
 					/>
 				</Margin>
 			</Default>
-			<Mobile>
-				<MblBoardList 
-				navigate={navigate}
-				data={data}
-				authorization={authorization}
-				nickname={nickname}
+			<Mobile>				
+				<MblBoardList
+					navigate={navigate}
+					data={data}
+					authorization={authorization}
+					nickname={nickname}
 				/>
+				{isFetchingNextPage ? (
+				<Box>
+					<Image src={Spinner} alt={"로딩중.."} />
+				</Box>
+			) : (
+				<div ref={ref}></div>
+			)}
+				<TopButton></TopButton>
 			</Mobile>
 		</>
 	);
