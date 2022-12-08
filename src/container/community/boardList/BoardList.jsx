@@ -1,3 +1,10 @@
+import {
+	Box,
+	Flex,
+	Button,
+	Strong,
+} from "../../../components";
+
 const BoardList = ({ navigate, data, authorization, nickname }) => {
 	console.log("BoardList==>", data);
 	return (
@@ -19,7 +26,14 @@ const BoardList = ({ navigate, data, authorization, nickname }) => {
 					})}
 				</div>
 			) : (
-				<p>작성된 없습니다.</p>
+				<Box variant="spinner-wrap">
+					<Flex fd="column" jc="center" ai="center" gap="100px">
+						<Strong variant="warning">작성한 게시글이 없습니다😭</Strong>
+						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+							돌아가기
+						</Button>
+					</Flex>
+				</Box>
 			)}
 			{nickname ? (
 				<button

@@ -5,8 +5,7 @@ const All = ({
 	recentlyMyCommentList,
 	recentlyMyHeartBoardList,
 	recentlyMyCommunityList,
-	recentlyMyCommunityCommentList,
-	spinner,
+	recentlyMyCommunityCommentList,	
 	navigate,
 }) => {
 	return (

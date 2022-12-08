@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Image, Text, Margin, Flex, Button } from "../../../components";
+import { Box, Image, Text, Margin, Flex, Button, Strong } from "../../../components";
 import MblBoardListItem from "./MblBoardListItem";
 import hit from "../../../assets/icons/hit.png";
 
@@ -61,7 +61,14 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 					))}
 				</Box>
 			) : (
-				<p>작성된 게시글이 없습니다.</p>
+				<Box variant="spinner-wrap">
+					<Flex fd="column" jc="center" ai="center" gap="100px">
+						<Strong variant="warning">작성한 게시글이 없습니다😭</Strong>
+						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+							돌아가기
+						</Button>
+					</Flex>
+				</Box>
 			)}
 		</Box>
 	);

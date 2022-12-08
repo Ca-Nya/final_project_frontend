@@ -28,11 +28,8 @@ const MblCommentEdit = ({
 									alt={item.memberNickname}
 									rank={localStorage.getItem("memberStatus")}
 								></Image>
-								<Flex
-									jc="space-evenly"
-									ai="center"
-									style={{ padding: "0px", width: "100%" }}
-								>
+								<Flex jc="space-evenly" ai="center">
+									{" "}
 									<Flex fd="column" gap="2px" style={{ marginLeft: "6px" }}>
 										<Flex ai="center">
 											<Text size="m" style={{ fontWeight: "650" }}>
@@ -88,11 +85,7 @@ const MblCommentEdit = ({
 								alt={item.memberNickname}
 								rank={localStorage.getItem("memberStatus")}
 							></Image>
-							<Flex
-								jc="space-evenly"
-								ai="center"
-								style={{ padding: "0px", width: "100%" }}
-							>
+							<Flex jc="space-evenly" ai="center">
 								<Flex fd="column" gap="2px" style={{ marginLeft: "6px" }}>
 									<Flex ai="center">
 										<Text size="m" style={{ fontWeight: "650" }}>

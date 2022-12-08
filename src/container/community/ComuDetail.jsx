@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { Box, Image, Flex } from "../../components";
+import { Box, Image, Flex,Button,Strong } from "../../components";
 import { Detail, MblDetail } from "./detail";
 import Spinner from "../../assets/icons/spinner.gif";
 import { Default, Mobile } from "../../assets/mediaQuery";
@@ -74,7 +74,18 @@ const ComuDetail = () => {
 				</Flex>
 			</Box>
 		);
-	if (isError) return <Box>에러입니다.</Box>;
+	if (isError) return  (
+		<Box variant="spinner-wrap">
+			<Flex fd="column" jc="center" ai="center" gap="100px">
+				<Strong variant="warning">
+					에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+				</Strong>
+				<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+					돌아가기
+				</Button>
+			</Flex>
+		</Box>
+	);
 
 	return (
 		<>
