@@ -23,22 +23,24 @@ const fetchPostList = async pageParam => {
 		},
 	);
 	const { myPageList: page, isLast } = data;
+	console.log("MyBoarddata==>",data);
 	return { page, nextPage: pageParam + 1, isLast };
+	
 };
 
 const MyBoard = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-		["page"],
-		({ pageParam = 1 }) => fetchPostList(pageParam),
+		["myBoard"],
+		async ({ pageParam = 1 }) =>  await fetchPostList(pageParam),
 		{
 			getNextPageParam: lastPage =>
 				!lastPage.isLast ? lastPage.nextPage : undefined,
 		},
 	);
 
-	console.log("data.pages===>", data?.pages);
+	
 
 	useEffect(() => {
 		if (inView) fetchNextPage();

@@ -27,7 +27,7 @@ const Comment = ({
 				<Box>
 					<Margin margin="0 0 10px 0">
 						<Box variant="comment-box">
-							<Margin margin="26px 22px 0 22px">
+							<Margin margin="17px 22px 0 22px">
 								<Box variant="guide">
 									<Flex jc="space-between">
 										<Input
@@ -71,7 +71,7 @@ const Comment = ({
 				<Box>
 					<Margin margin="0 0 10px 0">
 						<Box variant="comment-box">
-							<Margin margin="26px 22px 0 22px">
+							<Margin margin="17px 22px 0 22px">
 								<Box variant="guide">
 									<Flex jc="space-between">
 										<Text variant="comment">{comment?.commentContent}</Text>

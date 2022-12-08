@@ -80,17 +80,16 @@ const MypgHome = ({
 							</Flex>
 						</Box>
 
-						<Margin margin="10% 0 0 0">
+						<Margin margin="10% 3% 0 10%">
 							<Box variant="category-box">
-								<Flex gap="10%" jc="center">
-									<Image variant="mypage-icon" src={Write} />
-									<Image variant="mypage-icon" src={Heart} />
-									<Image variant="mypage-icon" src={Comment} />
-								</Flex>
-							</Box>
-							<Margin margin="2% 2% 0 0">
-								<Box variant="category-title-box">
-									<Flex jc="center" gap="7%">
+								<Flex
+									gap="5%"
+									jc="center"
+									ai="center"
+									style={{ width: "180px" }}
+								>
+									<Flex fd="column" jc="center" ai="center" gap="5px">
+										<Image variant="mypage-icon" src={Write} />
 										<Text
 											variant="profile-base"
 											onClick={() => {
@@ -99,6 +98,13 @@ const MypgHome = ({
 										>
 											내가쓴글
 										</Text>
+										<Margin margin="6px 0 0 0">
+											<Text variant="user-name">{memberBoardCount}</Text>
+										</Margin>
+									</Flex>
+
+									<Flex fd="column" jc="center" ai="center" gap="5px">
+										<Image variant="mypage-icon" src={Heart} />
 										<Text
 											variant="profile-base"
 											onClick={() => {
@@ -107,6 +113,13 @@ const MypgHome = ({
 										>
 											좋아요
 										</Text>
+										<Margin margin="6px 0 0 0">
+											<Text variant="user-name">{memberHeartCount}</Text>
+										</Margin>
+									</Flex>
+
+									<Flex fd="column" jc="center" ai="center" gap="5px">
+										<Image variant="mypage-icon" src={Comment} />
 										<Text
 											variant="profile-base"
 											onClick={() => {
@@ -115,16 +128,10 @@ const MypgHome = ({
 										>
 											작성댓글
 										</Text>
+										<Margin margin="6px 0 0 0">
+											<Text variant="user-name">{memberCommentCount}</Text>
+										</Margin>
 									</Flex>
-								</Box>
-							</Margin>
-						</Margin>
-						<Margin margin="6% 0 0 0">
-							<Box variant="category-title-box">
-								<Flex gap="18%" jc="center">
-									<Text variant="join">{memberBoardCount}</Text>
-									<Text variant="join">{memberHeartCount}</Text>
-									<Text variant="join">{memberCommentCount}</Text>
 								</Flex>
 							</Box>
 						</Margin>

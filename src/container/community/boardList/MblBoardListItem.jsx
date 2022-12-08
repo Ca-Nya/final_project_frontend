@@ -3,7 +3,7 @@ import hit from "../../../assets/icons/hit.png";
 
 const MblBoardListItem = ({item,navigate}) => {
 	return (
-		<Margin margin="10px auto">
+		<Margin margin="12px auto">
 			<Box
 				size="container-s"
 				style={{ borderBottom: "1px solid #D9D9D9" }}
@@ -12,8 +12,7 @@ const MblBoardListItem = ({item,navigate}) => {
 				<Flex jc="space-between">
 					<Box
 						size="container-m"
-						style={{
-							border: "1px solid black",
+						style={{							
 							display: "flex",
 							flexDirection: "column",
 							justifyContent: "space-between",

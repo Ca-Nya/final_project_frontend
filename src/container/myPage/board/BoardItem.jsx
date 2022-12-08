@@ -1,8 +1,14 @@
 import { Box, Button, Image, Text, Margin, Flex } from "../../../components";
 import Edit from "../../../assets/icons/edit.png";
 import Delete from "../../../assets/icons/delete.png";
+import { useEffect } from "react";
 
-const BoardItem = ({item,navigate,onDeletePost,onEditPost}) => {
+const BoardItem = ({item,navigate,onDeletePost,onEditPost}) => { 
+    useEffect(()=>{
+        if(item.imageList[0].imageUrl < 0){
+           console.log(item.imageList[0].imageUrl)
+        }
+    },[item]) 
   return (
     <Box variant="board-box" key={item?.boardId}>
                         <Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">

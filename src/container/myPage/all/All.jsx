@@ -30,7 +30,7 @@ const All = ({
 						return (
 							<Box key={item.boardId}>
 								<Image
-									variant="mypage-post"
+									variant="mypage-post"									
 									src={item.imageList[0].imageUrl}
 									alt={item.boardTitle}
 									onClick={() => {
@@ -114,7 +114,7 @@ const All = ({
 						<Box key={item.commentId}>
 							<Margin margin="0 0 0.9vw 0">
 								<Box variant="comment-box" key={item.commentId}>
-									<Margin margin="27px 3% 0 22px">
+									<Margin margin="17px 3% 0 22px">
 										<Box>
 											<Flex jc="space-between" ai="center">
 												<Text variant="comment">{item.commentContent}</Text>
@@ -202,7 +202,7 @@ const All = ({
 						<Box key={item.communityCommentId}>
 							<Margin margin="0 0 0.9vw 0">
 								<Box variant="comment-box" key={item.communityCommentId}>
-									<Margin margin="27px 3% 0 22px">
+									<Margin margin="17px 3% 0 22px">
 										<Box>
 											<Flex jc="space-between" ai="center">
 												<Text variant="comment">{item.communityCommentContent}</Text>
