@@ -3,9 +3,17 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 import { BoardList, MblBoardList } from "./boardList";
-import { Box, Image, Margin, Text } from "../../components";
+import {
+	Box,
+	Image,
+	Margin,
+	Text,
+	Flex,
+	Strong,
+	Button,
+} from "../../components";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import Spinner from "../../assets/icons/spinner.gif";
+import spinner from "../../assets/icons/spinner.gif";
 import { useEffect } from "react";
 import TopButton from "../../components/topButton/TopButton";
 
@@ -27,7 +35,7 @@ const fetchPostList = async pageParam => {
 	return { page, nextPage: pageParam + 1, isLast };
 };
 
-const ComuList = () => {	
+const ComuList = () => {
 	const navigate = useNavigate();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authoriztion");
@@ -50,12 +58,26 @@ const ComuList = () => {
 	}, [inView]);
 
 	if (status === "loading")
-	return (
-		<Box>
-			<Image src={Spinner} alt={"로딩중.."} />
-		</Box>
-	);
-if (status === "error") return <p>에러입니다.</p>;
+		return (
+			<Box variant="spinner-wrap">
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
+		);
+	if (status === "error")
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">
+						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+					</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
 
 	return (
 		<>
@@ -69,7 +91,7 @@ if (status === "error") return <p>에러입니다.</p>;
 					/>
 				</Margin>
 			</Default>
-			<Mobile>				
+			<Mobile>
 				<MblBoardList
 					navigate={navigate}
 					data={data}
@@ -77,12 +99,14 @@ if (status === "error") return <p>에러입니다.</p>;
 					nickname={nickname}
 				/>
 				{isFetchingNextPage ? (
-				<Box>
-					<Image src={Spinner} alt={"로딩중.."} />
-				</Box>
-			) : (
-				<div ref={ref}></div>
-			)}
+					<Box variant="spinner-wrap">
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				) : (
+					<div ref={ref}></div>
+				)}
 				<TopButton></TopButton>
 			</Mobile>
 		</>

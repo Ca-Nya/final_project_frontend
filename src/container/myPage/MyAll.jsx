@@ -2,7 +2,7 @@ import { Box, Image, Flex, Strong, Button } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Spinner from "../../assets/icons/spinner.gif";
+import spinner from "../../assets/icons/spinner.gif";
 import All from "./all";
 
 const MyAll = () => {
@@ -50,9 +50,11 @@ const MyAll = () => {
 
 	if (isLoading)
 		return (
-			<Box>
-				<Image src={Spinner} />
-			</Box>
+			<Box variant="spinner-wrap">
+			<Flex jc="center" ai="center">
+				<Image src={spinner} alt="로딩중" variant="spinner" />
+			</Flex>
+		</Box>
 		);
 
 	if (isError)
@@ -79,7 +81,7 @@ const MyAll = () => {
 				recentlyMyHeartBoardList={recentlyMyHeartBoardList}
 				recentlyMyCommunityList={recentlyMyCommunityList}
 				recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
-				spinner={Spinner}
+				spinner={spinner}
 				navigate={navigate}
 			/>
 		</Box>

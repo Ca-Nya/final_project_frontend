@@ -1,10 +1,10 @@
 import Edit from "./edit";
-import { Margin, Box, Image } from "../../components";
+import { Margin, Box, Image, Flex, Button, Strong } from "../../components";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import Spinner from "../../assets/icons/spinner.gif";
+import spinner from "../../assets/icons/spinner.gif";
 
 const ComuEdit = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -129,12 +129,26 @@ const ComuEdit = () => {
 
 	if (!isLoading)
 		return (
-			<Box>
-				<Image src={Spinner} alt={"로딩중"} variant="spinner" />
+			<Box variant="spinner-wrap">
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
 			</Box>
 		);
 
-	if (isError) return <div>에러입니다.</div>;
+	if (isError)
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">
+						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+					</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
 
 	return (
 		<>

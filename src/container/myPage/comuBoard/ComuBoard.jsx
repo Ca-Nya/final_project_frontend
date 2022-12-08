@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Image, Text, Margin, Flex } from "../../../components";
+import { Box, Button, Image, Text, Margin, Flex,Strong } from "../../../components";
 import ComuBoardItem  from "./ComuboardItem";
 
 const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
@@ -30,9 +30,14 @@ const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 					 ))}
 				 </>
 				) : (
-					<Box>
-						<Text variant="comment"> 작성한 게시물이 없습니다.</Text>
-					</Box>
+					<Box variant="spinner-wrap">
+					<Flex fd="column" jc="center" ai="center" gap="100px">
+						<Strong variant="warning">작성한 게시글이 없습니다😭</Strong>
+						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+							돌아가기
+						</Button>
+					</Flex>
+				</Box>
 				)}
 			</Box>
 		</Box>
