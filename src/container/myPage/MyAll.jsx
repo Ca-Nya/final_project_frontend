@@ -1,9 +1,9 @@
-import { Box, Image } from "../../components";
+import { Box, Image, Flex, Strong, Button } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Spinner from "../../assets/icons/spinner.gif";
-import All from "./all"
+import All from "./all";
 
 const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -54,19 +54,34 @@ const MyAll = () => {
 				<Image src={Spinner} />
 			</Box>
 		);
-	if (isError) return <Box>에러입니다.</Box>;
+
+	if (isError)
+		return (
+			<>
+				<Box variant="spinner-wrap">
+					<Flex fd="column" jc="center" ai="center" gap="100px">
+						<Strong variant="warning">
+							에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+						</Strong>
+						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+							돌아가기
+						</Button>
+					</Flex>
+				</Box>
+			</>
+		);
 
 	return (
 		<Box variant="mypage-category">
-            <All 
-            recentlyMyBoardList={recentlyMyBoardList}
-            recentlyMyCommentList={recentlyMyCommentList}
-            recentlyMyHeartBoardList={recentlyMyHeartBoardList}
-			recentlyMyCommunityList={recentlyMyCommunityList}
-			recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
-            spinner={Spinner}
-            navigate={navigate}
-            />
+			<All
+				recentlyMyBoardList={recentlyMyBoardList}
+				recentlyMyCommentList={recentlyMyCommentList}
+				recentlyMyHeartBoardList={recentlyMyHeartBoardList}
+				recentlyMyCommunityList={recentlyMyCommunityList}
+				recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
+				spinner={Spinner}
+				navigate={navigate}
+			/>
 		</Box>
 	);
 };

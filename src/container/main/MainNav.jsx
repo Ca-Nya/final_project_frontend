@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+// logo
+import canyaLogo from "../../assets/icons/canya.png";
 
 const MainNav = ({ setResetMain, setSubmitValues }) => {
 	// Base Url
@@ -114,7 +116,11 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 							<Flex ai="center" jc="center">
 								<Button onClick={handleResetMain}>
 									<FirstHeading aria-label="canya logo" variant="main-logo">
-										CA NYA
+										<Image
+											src={canyaLogo}
+											alt="메인 카냐 로고"
+											variant="main-logo"
+										/>
 									</FirstHeading>
 								</Button>
 							</Flex>

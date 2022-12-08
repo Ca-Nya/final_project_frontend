@@ -11,6 +11,7 @@ import {
 	Margin,
 	Hidden,
 	Flex,
+	Strong,
 } from "../../components";
 import { CommentList, CommentItem } from "../../container/comment";
 import { DetailLike } from "../../container/detail";
@@ -24,6 +25,8 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import prev_arrow from "../../assets/icons/prev_arrow.png";
 import next_arrow from "../../assets/icons/next_arrow.png";
+// 로딩 스피너
+import spinner from "../../assets/icons/spinner.gif";
 
 const DetailPost = () => {
 	// 캐러셀 설정
@@ -92,8 +95,34 @@ const DetailPost = () => {
 		navigate(`/detail/edit/${+id}`);
 	};
 
-	if (isLoading) return <Box>로딩중..</Box>;
-	if (isError) return <Box>에러입니다</Box>;
+	if (isLoading)
+		return (
+			<Box variant="spinner-wrap">
+				<Flex ai="center" jc="center">
+					<Box variant="spinner">
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				</Flex>
+			</Box>
+		);
+
+	if (isError)
+		return (
+			<>
+				<Box variant="spinner-wrap">
+					<Flex fd="column" jc="center" ai="center" gap="100px">
+						<Strong variant="warning">
+							에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+						</Strong>
+						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+							돌아가기
+						</Button>
+					</Flex>
+				</Box>
+			</>
+		);
 
 	return (
 		<>
@@ -227,7 +256,11 @@ const DetailPost = () => {
 					</Box>
 				</Margin>
 			) : (
-				<Box>불러올 페이지가 없습니다</Box>
+				<Box variant="spinner-wrap">
+					<Flex jc="center" ai="center">
+						<Strong variant="warning">작성된 리뷰가 없습니다😞</Strong>
+					</Flex>
+				</Box>
 			)}
 		</>
 	);

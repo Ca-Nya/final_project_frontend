@@ -137,8 +137,36 @@ export const Button = styled.button`
 						background-color: ${({ pick, theme }) => {
 							return pick ? theme.colors.main : ``;
 						}};
+
 						&:hover {
 							background-color: ${({ theme }) => theme.colors.main};
+						}
+					`;
+				case "main-carousel-hot":
+					return css`
+						font-weight: 700;
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						color: ${({ theme }) => theme.colors.white};
+						border: 2px solid ${({ theme }) => theme.colors.white};
+						border-radius: 5px;
+						padding: 17px 25px;
+						&:hover {
+							opacity: 0.9;
+							background-color: ${({ theme }) => theme.colors.white};
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
+				case "main-carousel-rate":
+					return css`
+						font-weight: 700;
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						border: 2px solid ${({ theme }) => theme.colors.dark_gray};
+						border-radius: 5px;
+						padding: 17px 25px;
+						&:hover {
+							opacity: 0.9;
+							background-color: ${({ theme }) => theme.colors.white};
 						}
 					`;
 				case "more":

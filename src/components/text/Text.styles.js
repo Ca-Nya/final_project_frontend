@@ -99,6 +99,25 @@ export const Text = styled.p`
 						font-weight: 600;
 						color: ${({ theme }) => theme.colors.main};
 					`;
+				case "main-carousel-hot":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-weight: 600;
+						color: ${({ theme }) => theme.colors.white};
+						line-height: 1.3;
+						letter-spacing: 0.02rem;
+						margin: 17px 0 0 0;
+					`;
+				case "main-carousel-rate":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-weight: 600;
+						line-height: 1.3;
+						color: ${({ theme }) => theme.colors.dark_gray};
+						letter-spacing: 0.03rem;
+						margin: 17px 0 0 0;
+					`;
+
 				/* 마이페이지 */
 				case "button":
 					return css`
@@ -258,7 +277,7 @@ export const Text = styled.p`
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.small};
 					font-weight: 300;
-					>span{
+					> span {
 						font-weight: 500;
 					}
 				`;

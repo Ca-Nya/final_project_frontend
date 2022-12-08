@@ -1,10 +1,12 @@
-import { Box, Button, Flex, Margin } from "../../components";
+import { Box, Button, Flex, Margin, Image, Strong } from "../../components";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CafeSearch, CafeRatings } from "../../container/cafeReview";
 import { useFetchDetailPost, useEditDetailPost } from "../../querys/detail";
 import { useNavigate } from "react-router-dom";
 import Review from "../../container/cafeReview/review";
+// 로딩 스피너
+import spinner from "../../assets/icons/spinner.gif";
 
 const DetailEditPost = () => {
 	// React Router
@@ -13,11 +15,7 @@ const DetailEditPost = () => {
 	const { id } = useParams();
 	console.log("DetailEditPost id ===>", id);
 	// 상세페이지 내용 요청 Hook
-	const {
-		data: detailPostData,
-		isError: isDetailPostError,
-		isDetailPostLoading,
-	} = useFetchDetailPost(+id);
+	const { data: detailPostData, isError, isLoading } = useFetchDetailPost(+id);
 	// 상세페이지 데이터
 	const { address, addressId, boardContent, boardTitle, imageList, rating } =
 		detailPostData;
@@ -163,9 +161,28 @@ const DetailEditPost = () => {
 		} else if (!place) alert("장소를 선택해주세요");
 	};
 
-	if (isDetailPostError) return <Box>에러입니다</Box>;
+	if (isError)
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">
+						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+					</Strong>
+					<Button onClick={() => navigate("/")} variant="cafe-review-post">
+						메인으로 돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
 
-	if (isDetailPostLoading) return <Box>로딩중...</Box>;
+	if (isLoading)
+		return (
+			<Box variant="spinner-wrap">
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
+		);
 
 	return (
 		<Margin margin="160px 0 0 0">
