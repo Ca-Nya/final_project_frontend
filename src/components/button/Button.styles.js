@@ -35,6 +35,24 @@ export const Button = styled.button`
 							position: relative;
 						}
 					`;
+				case "error":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 17px 25px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						color: ${({ theme }) => theme.colors.dark_gray};
+						background-color: ${({ theme }) => theme.colors.main};
+						font-weight: 600;
+						text-align: center;
+						letter-spacing: 1.3;
+						border-radius: 5px;
+            transition: all 300ms; 
+						&:hover {
+							background-color: ${({ theme }) => theme.colors.main_purple};
+            	color: ${({ theme }) => theme.colors.white};
+					`;
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`

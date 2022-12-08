@@ -10,6 +10,15 @@ export const Text = styled.p`
 	${({ theme }) => theme.device.desktop} {
 		${({ variant }) => {
 			switch (variant) {
+				/* 공통 */
+				case "error":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						font-weight: 500;
+						text-align: center;
+						letter-spacing: 1.3;
+					`;
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`

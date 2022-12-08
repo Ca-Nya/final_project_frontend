@@ -32,6 +32,12 @@ export const Box = styled.div`
 						width: 100%;
 						height: 200px;
 					`;
+				case "error-wrap":
+					return css`
+						width: 100vw;
+						height: 100vh;
+						background-color: ${({ theme }) => theme.colors.white};
+					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
 					return css`
@@ -719,9 +725,9 @@ export const Box = styled.div`
 				/* 커뮤니티 */
 				case "top-button":
 					return css`
-					position: fixed;
-					right: 10px;
-					bottom: 5%;
+						position: fixed;
+						right: 10px;
+						bottom: 5%;
 					`;
 				default:
 					break;
@@ -791,12 +797,12 @@ export const Box = styled.div`
 					background-color: aliceblue;
 					border-radius: 5px;
 				`;
-				case "top-button":
-					return css`
+			case "top-button":
+				return css`
 					position: fixed;
 					right: 10px;
 					bottom: 5%;
-					`;
+				`;
 			default:
 				break;
 		}

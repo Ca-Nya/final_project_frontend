@@ -13,6 +13,12 @@ export const Strong = styled.strong`
 						color: ${({ theme }) => theme.colors.main_purple};
 						font-weight: 600;
 					`;
+				case "error":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.titleSize};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						font-weight: 600;
+					`;
 				/* 메인 페이지 */
 				case "main-carousel-hot":
 					return css`

@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 // image
 import main1 from "../../assets/images/main_carousel1.png";
 import main2 from "../../assets/images/main_carousel2.png";
@@ -10,6 +11,9 @@ import prev_arrow from "../../assets/icons/prev_arrow.png";
 import next_arrow from "../../assets/icons/next_arrow.png";
 
 const MainCarousel = () => {
+	// React Router
+	const navigate = useNavigate();
+
 	const settings = {
 		infinite: true,
 		speed: 500,
@@ -46,7 +50,12 @@ const MainCarousel = () => {
 									카냐인이 사랑하는 카페를 보고싶다면?
 								</Text>
 							</Box>
-							<Button variant="main-carousel-rate">인기리뷰 보러가기</Button>
+							<Button
+								onClick={() => navigate("/overalls/인기")}
+								variant="main-carousel-rate"
+							>
+								인기리뷰 보러가기
+							</Button>
 						</Flex>
 					</Box>
 				</Box>
@@ -63,7 +72,12 @@ const MainCarousel = () => {
 									카테고리별 세세한 별점을 통해 취향 저격 카페 찾기
 								</Text>
 							</Box>
-							<Button variant="main-carousel-hot">별점별리뷰 보러가기</Button>
+							<Button
+								onClick={() => navigate("/fields/가성비")}
+								variant="main-carousel-hot"
+							>
+								별점별리뷰 보러가기
+							</Button>
 						</Flex>
 					</Box>
 				</Box>
