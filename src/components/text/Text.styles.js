@@ -276,10 +276,32 @@ export const Text = styled.p`
 			case "s":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.small};
+					font-weight: 300;
+					> span {
+						font-weight: 500;
+					}
 				`;
 			case "m":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.medium};
+				`;
+			case "s-board":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					display: inline-block;
+					width: ${calcRem(180)};
+					/* height: ${calcRem(30)}; */
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: normal;
+					line-height: 1.2;
+					max-height: 1.2;
+					text-align: left;
+					word-wrap: break-word;
+					display: -webkit-box;
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
 				`;
 			default:
 				break;

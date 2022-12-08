@@ -234,6 +234,16 @@ export const Image = styled.img`
 					width: ${calcRem(34)};
 					height: ${calcRem(34)};
 					border-radius: 50%;
+					${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									border: 2px solid ${({ theme }) => theme.colors.point};
+								`;
+							default:
+								break;
+						}
+					}}
 				`;
 			default:
 				break;

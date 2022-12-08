@@ -21,7 +21,7 @@ const BoardList = ({ navigate, data, authorization, nickname }) => {
 			) : (
 				<p>작성된 없습니다.</p>
 			)}
-			{authorization ? (
+			{nickname ? (
 				<button
 					onClick={() => {
 						navigate("/post");
