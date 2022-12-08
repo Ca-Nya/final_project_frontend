@@ -450,7 +450,7 @@ export const Box = styled.div`
 					return css`
 						width: 74.5vw;
 						max-width: ${calcRem(846)};
-						height: ${calcRem(105)};
+						height: ${calcRem(80)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
@@ -719,9 +719,9 @@ export const Box = styled.div`
 				/* 커뮤니티 */
 				case "top-button":
 					return css`
-					position: fixed;
-					right: 10px;
-					bottom: 5%;
+						position: fixed;
+						right: 10px;
+						bottom: 5%;
 					`;
 				default:
 					break;
@@ -737,13 +737,13 @@ export const Box = styled.div`
 					height: 100%;
 					margin: 0 auto;
 					padding: 0 24px 0 24px;
-					background-color: gray;
+					/* background-color: gray; */
 				`;
 			case "container-m":
 				return css`
 					width: ${calcRem(206)};
 					height: ${calcRem(100)};
-					background-color: gray;
+					/* background-color: gray; */
 				`;
 			case "container-s":
 				return css`
@@ -790,12 +790,20 @@ export const Box = styled.div`
 					height: ${calcRem(100)};
 					background-color: aliceblue;
 					border-radius: 5px;
+					word-break: break-all;
 				`;
-				case "top-button":
-					return css`
+			case "top-button":
+				return css`
 					position: fixed;
 					right: 10px;
 					bottom: 5%;
+				`;
+			case "m-box":
+				return css`
+					width: 220px;
+					height: auto;					
+					word-break: break-all;
+					/* margin-bottom: 6px; */
 					`;
 			default:
 				break;

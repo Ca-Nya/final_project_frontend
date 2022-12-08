@@ -132,8 +132,7 @@ const MblDetail = ({
 							<Box
 								size="container-s"
 								style={{
-									height: "35px",
-									border: "1px solid black",
+									height: "35px",									
 									display: "flex",
 									alignItem: "center",
 								}}
@@ -150,7 +149,7 @@ const MblDetail = ({
 									style={{ padding: "6px", width: "100%" }}
 								>
 									<Flex fd="column">
-										<Text size="m" style={{ fontWeight: "800" }}>
+										<Text size="m" style={{ fontWeight: "700" }}>
 											{data.communityTitle}
 										</Text>
 										<Text size="s">
@@ -165,13 +164,13 @@ const MblDetail = ({
 								</Margin>
 							</Box>
 						</Margin>
-						<Margin margin="10px auto">
+						<Margin margin="15px 0 30px 6px">
 							<Text size="m">{data.communityContent}</Text>
 						</Margin>
 						<Margin margin="6px auto">
 							<Box
 								size="container-s"
-								style={{ borderBotton: "1px solid black", height: "30px" }}
+								style={{ borderBottom: "1px solid #d9d9d9", height: "30px" }}
 							>
 								<Flex jc="space-between" ai="center">
 									<Text size="s">{data.createdAt}</Text>

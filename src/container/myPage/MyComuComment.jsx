@@ -22,8 +22,7 @@ const fetchPostList = async pageParam => {
 		},
 	);
 	const { myPageList: page, isLast } = data;
-	return { page, nextPage: pageParam + 1, isLast };
-};
+	return { page, nextPage: pageParam + 1, isLast };};
 
 
 const MyComuComment = () => {  
@@ -54,20 +53,6 @@ const MyComuComment = () => {
 			</Box>
 		);
 	if (status === "error") return <p>에러입니다.</p>;
-
-	//MyComments get요청
-	// const { data, status } = useQuery(["getMyComuComments"], async () => {
-	// 	const response = await axios.get(
-	// 		`${BASE_URL}/member/auth/mypage/communityComments`,
-	// 		{
-	// 			headers: {
-	// 				authorization,
-	// 			},
-	// 		},
-	// 	);
-	// 	return response.data;
-	// });
-	// console.log("MycommunityComments=>", data);
 
   return (
     <Box>

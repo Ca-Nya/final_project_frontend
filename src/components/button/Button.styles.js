@@ -331,6 +331,7 @@ export const Button = styled.button`
 					width: ${calcRem(46)};
 					height: ${calcRem(24)};
 					border-radius: 5px;
+					background-color: ${({ theme }) => theme.colors.gray};
 					font-size: ${({ theme }) => theme.fontSizes.small};
 					color: ${({ theme }) => theme.colors.black};
 					padding: "12px auto";

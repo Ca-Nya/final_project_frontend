@@ -107,7 +107,10 @@ export const Image = styled.img`
 					height: 23.5vw;
 					max-width: ${calcRem(266)};
 					max-height: ${calcRem(266)};
-					border-radius: 5%;
+					border-radius: 5px;
+					&:hover {
+							cursor: pointer;
+						}
 				`;
 			case "mypage-icon":
 				return css`
