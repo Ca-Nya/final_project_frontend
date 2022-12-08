@@ -32,6 +32,12 @@ export const Box = styled.div`
 						width: 100%;
 						height: 200px;
 					`;
+				case "error-wrap":
+					return css`
+						width: 100vw;
+						height: 100vh;
+						background-color: ${({ theme }) => theme.colors.white};
+					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
 					return css`
