@@ -10,6 +10,8 @@ import {
 	Hidden,
 	ThirdHeading,
 	Text,
+	Strong,
+	Button,
 } from "../../components";
 import { MainNav, MainFooter } from "../../container/main";
 import { useFetchSearchList } from "../../querys/list";
@@ -17,6 +19,8 @@ import { Fragment, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { Outlet } from "react-router-dom";
+// 로딩 스피너
+import spinner from "../../assets/icons/spinner.gif";
 
 const MainLayout = () => {
 	// React Router
@@ -56,13 +60,38 @@ const MainLayout = () => {
 		if (inView) fetchNextPage();
 	}, [inView, fetchNextPage]);
 
-	if (status === "error") return <Box>검색 리스트 Error</Box>;
+	if (status === "error")
+		return (
+			<>
+				<MainNav
+					setResetMain={setResetMain}
+					setSubmitValues={setSubmitValues}
+				/>
+				<Box variant="spinner-wrap">
+					<Flex fd="column" jc="center" ai="center" gap="100px">
+						<Strong variant="warning">
+							에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+						</Strong>
+						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+							돌아가기
+						</Button>
+					</Flex>
+				</Box>
+				<MainFooter />
+			</>
+		);
 
 	return (
 		<>
 			<MainNav setResetMain={setResetMain} setSubmitValues={setSubmitValues} />
 			<Margin margin="78px 0 0 0">
-				{status === "loading" && !resetMain && <Box>검색 리스트 Loading</Box>}
+				{status === "loading" && !resetMain && (
+					<Box variant="spinner-wrap">
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				)}
 				{data && !resetMain ? (
 					<>
 						<Margin margin="170px 0 200px 0 ">
@@ -161,7 +190,13 @@ const MainLayout = () => {
 										}
 									</>
 								) : (
-									<Box>검색 결과가 존재하지 않습니다.</Box>
+									<Box variant="spinner-wrap">
+										<Flex jc="center" ai="center">
+											<Strong variant="warning">
+												검색 결과가 존재하지 않습니다.👀
+											</Strong>
+										</Flex>
+									</Box>
 								)}
 							</Box>
 						</Margin>

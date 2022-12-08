@@ -1,4 +1,3 @@
-
 const BoardList = ({ navigate, data, authorization, nickname }) => {
 	console.log("BoardList==>", data);
 	return (
@@ -20,7 +19,7 @@ const BoardList = ({ navigate, data, authorization, nickname }) => {
 					})}
 				</div>
 			) : (
-				<p>작성된 게시글이 없습니다.</p>
+				<p>작성된 없습니다.</p>
 			)}
 			{authorization ? (
 				<button

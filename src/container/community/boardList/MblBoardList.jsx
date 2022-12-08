@@ -6,7 +6,7 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 			{data && data.length > 0 ? (
 				<Box size="container">
 					{authorization ? (
-						<Box size="l" style={{ height: "34px"}}>
+						<Box size="l" style={{ height: "34px" }}>
 							<Flex jc="flex-end">
 								<Button
 									size="xs"
@@ -33,7 +33,11 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 					)}
 					{data.map(item => {
 						return (
-							<Box size="l" style={{ borderBottom :"1px solid #D9D9D9" }}  key={item.communityId}>
+							<Box
+								size="l"
+								style={{ borderBottom: "1px solid #D9D9D9" }}
+								key={item.communityId}
+							>
 								<Image
 									size="s"
 									src={item.communityImage}
@@ -59,10 +63,12 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 									</Text>
 								</Margin>
 								<Margin margin="6px auto">
-                  <Flex gap="2px">
-                  <Text size="s" style={{ fontWeight: "500" }}>by </Text>
-									<Text size="s">{item.memberNickname}</Text>
-                  </Flex>
+									<Flex gap="2px">
+										<Text size="s" style={{ fontWeight: "500" }}>
+											by{" "}
+										</Text>
+										<Text size="s">{item.memberNickname}</Text>
+									</Flex>
 								</Margin>
 							</Box>
 						);

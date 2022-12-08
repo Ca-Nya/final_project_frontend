@@ -8,6 +8,19 @@ export const Image = styled.img`
 
 	${({ variant }) => {
 		switch (variant) {
+			/* 공통 */
+			case "spinner":
+				return css`
+					width: ${calcRem(90)};
+					height: ${calcRem(90)};
+				`;
+			case "main-logo":
+				return css`
+					width: 100%;
+					height: ${calcRem(50)};
+					object-fit: contain;
+					object-position: center;
+				`;
 			/* 상세 페이지 */
 			case "medium-profile":
 				return css`
