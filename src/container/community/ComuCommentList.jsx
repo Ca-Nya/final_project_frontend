@@ -25,13 +25,11 @@ const ComuCommentList = () => {
 	}
 
 	return (
-		<div>
-			<p>댓글</p>
-			<p>{data?.length}</p>
+		<>
 			{data?.map(item => {
 				return <ComuCommentEdit key={item?.communityCommentId} item={item} />;
 			})}
-		</div>
+		</>
 	);
 };
 

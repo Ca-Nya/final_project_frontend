@@ -15,6 +15,8 @@ import {
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { Default, Mobile } from "../../assets/mediaQuery";
+import { Comment, MblComment, CommentEdit, MblCommentEdit } from "./comment";
 
 const ComuCommentEdit = ({ item }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -49,8 +51,6 @@ const ComuCommentEdit = ({ item }) => {
 				if (status === "200") {
 					console.log("data =>", data);
 					console.log("status =>", status);
-					// queryClient.invalidateQueries("getComuComments");
-					// alert(data);
 				}
 			},
 			onError: error => {
@@ -116,42 +116,35 @@ const ComuCommentEdit = ({ item }) => {
 
 	return (
 		<div>
-			{item.memberNickname === nickname ? (
-				<>
-					{edit ? (
-						<>
-							<input
-								type="text"
-								name="communityCommentContent"
-								defaultValue={item?.communityCommentContent}
-								required={item?.communityCommentContent}
-								onChange={handleEdit}
-							/>
-							<button onClick={handleEditComplete}>수정완료</button>
-						</>
-					) : (
-						<>
-							<p>
-								{item?.memberNickname}님 {item?.communityCommentContent}
-							</p>
-							<button
-								onClick={() => {
-									setEdit(!edit);
-								}}
-							>
-								수정
-							</button>
-							<button onClick={handleRemove}>삭제</button>
-						</>
-					)}
-				</>
-			) : (
-				<>
-					<p>
-						{item?.memberNickname}님 {item?.communityCommentContent}
-					</p>
-				</>
-			)}
+			<Default>
+				{item.memberNickname === nickname ? (
+					<CommentEdit
+						item={item}
+						edit={edit}
+						setEdit={setEdit}
+						handleEdit={handleEdit}
+						handleEditComplete={handleEditComplete}
+						handleRemove={handleRemove}
+					/>
+				) : (
+					<Comment item={item}></Comment>
+				)}
+			</Default>
+			
+			<Mobile>
+				{item.memberNickname === nickname ? (
+					<MblCommentEdit
+						item={item}
+						edit={edit}
+						setEdit={setEdit}
+						handleEdit={handleEdit}
+						handleEditComplete={handleEditComplete}
+						handleRemove={handleRemove}
+					/>
+				) : (
+					<MblComment item={item} />
+				)}
+			</Mobile>
 		</div>
 	);
 };

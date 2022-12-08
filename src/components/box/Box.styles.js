@@ -697,6 +697,13 @@ export const Box = styled.div`
 						padding: 0 0 20px 0;
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 					`;
+				/* 커뮤니티 */
+				case "top-button":
+					return css`
+					position: fixed;
+					right: 10px;
+					bottom: 5%;
+					`;
 				default:
 					break;
 			}
@@ -732,7 +739,7 @@ export const Box = styled.div`
 				`;
 			case "nav-s":
 				return css`
-					width: ${calcRem(360)};
+					width: ${calcRem(312)};
 					height: ${calcRem(30)};
 					background-color: aliceblue;
 				`;
@@ -765,6 +772,12 @@ export const Box = styled.div`
 					background-color: aliceblue;
 					border-radius: 5px;
 				`;
+				case "top-button":
+					return css`
+					position: fixed;
+					right: 10px;
+					bottom: 5%;
+					`;
 			default:
 				break;
 		}
