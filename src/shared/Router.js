@@ -10,6 +10,7 @@ import { DetailPost, DetailEditPost } from "../container/detail";
 import LikedByFieldList from "../container/likedByFieldList";
 import LikedByOverallList from "../container/likedByOverallList";
 import MyPages from "../pages/mypage";
+import Error from "../container/error";
 import {
 	MyBoard,
 	MyComment,
@@ -60,6 +61,7 @@ const Router = () => {
 					<Route path="/register" element={<SignUpPage />} />
 					{/* <Route path="/chat" element={<Chat />} /> */}
 					<Route path="/edit/:id" element={<ComuEdit />} />
+					<Route path="*" element={<Error />} />
 				</Routes>
 			</BrowserRouter>
 		</>

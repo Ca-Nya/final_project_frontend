@@ -1,5 +1,5 @@
 import Edit from "./edit";
-import { Margin } from "../../components";
+import { Margin, Box, Image } from "../../components";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -127,11 +127,11 @@ const ComuEdit = () => {
 		setEdit(false);
 	};
 
-	if (isLoading)
+	if (!isLoading)
 		return (
-			<div>
-				<img src={Spinner} alt={"로딩중"} />
-			</div>
+			<Box>
+				<Image src={Spinner} alt={"로딩중"} variant="spinner" />
+			</Box>
 		);
 
 	if (isError) return <div>에러입니다.</div>;

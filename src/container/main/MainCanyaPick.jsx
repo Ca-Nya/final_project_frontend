@@ -14,19 +14,28 @@ import {
 } from "../../components";
 import { MainCanyaButtons } from "../../container/main";
 import { useNavigate } from "react-router-dom";
+import spinner from "../../assets/icons/spinner.gif";
 
 const MainCanyaPick = ({ picks, setCanyaPick, mainPosts }) => {
 	// React Router
 	const navigate = useNavigate();
-	if (!picks) return <Box>게시글이 존재하지 않습니다.</Box>;
+
+	if (!picks)
+		return (
+			<Box variant="spinner-wrap">
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
+		);
 
 	return (
 		<Box>
 			<Flex>
-				<Margin margin="110px 57px 0 0">
+				<Margin margin="100px 57px 0 0">
 					<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
 				</Margin>
-				<Margin margin="120px 0 30px 0">
+				<Margin margin="110px 0 30px 0">
 					<MainCanyaButtons setCanyaPick={setCanyaPick} mainPosts={mainPosts} />
 				</Margin>
 			</Flex>

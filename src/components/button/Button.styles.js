@@ -35,6 +35,24 @@ export const Button = styled.button`
 							position: relative;
 						}
 					`;
+				case "error":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+
+						border: 1px solid ${({ theme }) => theme.colors.line};
+						padding: 17px 25px;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+						color: ${({ theme }) => theme.colors.dark_gray};
+						background-color: ${({ theme }) => theme.colors.main};
+						font-weight: 600;
+						text-align: center;
+						letter-spacing: 1.3;
+						border-radius: 5px;
+            transition: all 300ms; 
+						&:hover {
+							background-color: ${({ theme }) => theme.colors.main_purple};
+            	color: ${({ theme }) => theme.colors.white};
+					`;
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`
@@ -137,8 +155,36 @@ export const Button = styled.button`
 						background-color: ${({ pick, theme }) => {
 							return pick ? theme.colors.main : ``;
 						}};
+
 						&:hover {
 							background-color: ${({ theme }) => theme.colors.main};
+						}
+					`;
+				case "main-carousel-hot":
+					return css`
+						font-weight: 700;
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						color: ${({ theme }) => theme.colors.white};
+						border: 2px solid ${({ theme }) => theme.colors.white};
+						border-radius: 5px;
+						padding: 17px 25px;
+						&:hover {
+							opacity: 0.9;
+							background-color: ${({ theme }) => theme.colors.white};
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
+				case "main-carousel-rate":
+					return css`
+						font-weight: 700;
+						font-size: ${({ theme }) => theme.fontSizes.lg};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						border: 2px solid ${({ theme }) => theme.colors.dark_gray};
+						border-radius: 5px;
+						padding: 17px 25px;
+						&:hover {
+							opacity: 0.9;
+							background-color: ${({ theme }) => theme.colors.white};
 						}
 					`;
 				case "more":
@@ -303,6 +349,7 @@ export const Button = styled.button`
 					width: ${calcRem(46)};
 					height: ${calcRem(24)};
 					border-radius: 5px;
+					background-color: ${({ theme }) => theme.colors.gray};
 					font-size: ${({ theme }) => theme.fontSizes.small};
 					color: ${({ theme }) => theme.colors.black};
 					padding: "12px auto";

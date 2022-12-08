@@ -1,3 +1,4 @@
 import Detail from "./Detail";
+import MblDetail from "./MblDetail";
 
-export default Detail;
+export { Detail , MblDetail };

@@ -10,6 +10,15 @@ export const Text = styled.p`
 	${({ theme }) => theme.device.desktop} {
 		${({ variant }) => {
 			switch (variant) {
+				/* 공통 */
+				case "error":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						font-weight: 500;
+						text-align: center;
+						letter-spacing: 1.3;
+					`;
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
 					return css`
@@ -99,6 +108,25 @@ export const Text = styled.p`
 						font-weight: 600;
 						color: ${({ theme }) => theme.colors.main};
 					`;
+				case "main-carousel-hot":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-weight: 600;
+						color: ${({ theme }) => theme.colors.white};
+						line-height: 1.3;
+						letter-spacing: 0.02rem;
+						margin: 17px 0 0 0;
+					`;
+				case "main-carousel-rate":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.xxxl};
+						font-weight: 600;
+						line-height: 1.3;
+						color: ${({ theme }) => theme.colors.dark_gray};
+						letter-spacing: 0.03rem;
+						margin: 17px 0 0 0;
+					`;
+
 				/* 마이페이지 */
 				case "button":
 					return css`
@@ -145,7 +173,7 @@ export const Text = styled.p`
 					`;
 				case "comment":
 					return css`
-						font-size: ${calcRem(22)};
+						font-size: ${calcRem(18)};
 						color: ${({ theme }) => theme.colors.dark_gray};
 						font-weight: 400;
 						width: 600px;
@@ -256,12 +284,35 @@ export const Text = styled.p`
 		switch (size) {
 			case "s":
 				return css`
-				font-size: ${({ theme }) => theme.fontSizes.small};
+					font-size: ${({ theme }) => theme.fontSizes.small};
+					font-weight: 300;
+					> span {
+						font-weight: 500;
+					}
 				`;
 			case "m":
 				return css`
-				font-size: ${({ theme }) => theme.fontSizes.medium};
-				`;			
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+				`;
+			case "s-board":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.small};
+					color: ${({ theme }) => theme.colors.dark_gray};
+					display: inline-block;
+					width: ${calcRem(180)};
+					/* height: ${calcRem(30)}; */
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: normal;
+					line-height: 1.2;
+					max-height: 1.2;
+					text-align: left;
+					word-wrap: break-word;
+					display: -webkit-box;
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
+				`;
 			default:
 				break;
 		}

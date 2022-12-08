@@ -27,6 +27,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+// 로딩 스피너
+import spinner from "../../assets/icons/spinner.gif";
 
 const LikedByFieldList = () => {
 	// React Router
@@ -55,7 +57,14 @@ const LikedByFieldList = () => {
 		if (inView) fetchNextPage();
 	}, [inView, fetchNextPage]);
 
-	if (status === "loading") return <Box>Loading</Box>;
+	if (status === "loading")
+		return (
+			<Box variant="spinner-wrap">
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
+		);
 	if (status === "error") return <Box>Error</Box>;
 
 	return (
@@ -88,7 +97,7 @@ const LikedByFieldList = () => {
 			</Nav>
 			<Box variant="container">
 				<Margin margin="80px 0 25px 0">
-					<FirstHeading variant="title">CA NYA's PICK3</FirstHeading>
+					<FirstHeading variant="title">카냐인의 선택 TOP3 🏆</FirstHeading>
 				</Margin>
 				{data?.pages.map((page, idx) => {
 					return (

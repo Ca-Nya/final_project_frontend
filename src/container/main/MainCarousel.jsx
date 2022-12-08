@@ -1,17 +1,19 @@
-import { Box, Image, Strong, Flex } from "../../components";
+import { Box, Image, Strong, Flex, Button, Text } from "../../components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 // image
-import test1 from "../../assets/images/signin-background.png";
-import test2 from "../../assets/images/signup-background.png";
-import test3 from "../../assets/images/cafe.jpg";
-import fkj from "../../assets/images/fkj.jpg";
+import main1 from "../../assets/images/main_carousel1.png";
+import main2 from "../../assets/images/main_carousel2.png";
 import prev_arrow from "../../assets/icons/prev_arrow.png";
 import next_arrow from "../../assets/icons/next_arrow.png";
 
 const MainCarousel = () => {
+	// React Router
+	const navigate = useNavigate();
+
 	const settings = {
 		infinite: true,
 		speed: 500,
@@ -37,29 +39,47 @@ const MainCarousel = () => {
 		<Box variant="main-carousel">
 			<StyledSlider {...settings}>
 				{/* 하드코딩 후에 바꾸기 */}
-				<Box variant="main-carousel-item" bg={test1}>
-					<Flex jc="center" ai="center">
-						<Strong variant="main-carousel">차분한 오후의 드립커피</Strong>
-					</Flex>
+				<Box variant="main-carousel-item" bg={main1}>
+					<Box variant="main-carousel-item-desc">
+						<Flex fd="column" jc="center" gap="50px">
+							<Box>
+								<Strong variant="main-carousel-rate">요즘 카페 어디가?</Strong>
+								<Text variant="main-carousel-rate">
+									핫한 카페를 찾고싶은 카페 유목민들을 위한
+									<br />
+									카냐인이 사랑하는 카페를 보고싶다면?
+								</Text>
+							</Box>
+							<Button
+								onClick={() => navigate("/overalls/인기")}
+								variant="main-carousel-rate"
+							>
+								인기리뷰 보러가기
+							</Button>
+						</Flex>
+					</Box>
 				</Box>
-				<Box variant="main-carousel-item" bg={test2}>
-					<Flex jc="center" ai="center">
-						<Strong variant="main-carousel">
-							작은 카페에서 Bruno Major와 Mac Ayres
-						</Strong>
-					</Flex>
-				</Box>
-				<Box variant="main-carousel-item" bg={test3}>
-					<Flex jc="center" ai="center">
-						<Strong variant="main-carousel">
-							여유로운 저녁, 성수동 카페에서
-						</Strong>
-					</Flex>
-				</Box>
-				<Box variant="main-carousel-item" bg={fkj}>
-					<Flex jc="center" ai="center">
-						<Strong variant="main-carousel">우연히 들어간 카페에서</Strong>
-					</Flex>
+				<Box variant="main-carousel-item" bg={main2}>
+					<Box variant="main-carousel-item-desc">
+						<Flex fd="column" jc="center" gap="50px">
+							<Box>
+								<Strong variant="main-carousel-hot">
+									카페 맛집 어디가 좋아?
+								</Strong>
+								<Text variant="main-carousel-hot">
+									커피, 디저트, 친절, 주차까지!
+									<br />
+									카테고리별 세세한 별점을 통해 취향 저격 카페 찾기
+								</Text>
+							</Box>
+							<Button
+								onClick={() => navigate("/fields/가성비")}
+								variant="main-carousel-hot"
+							>
+								별점별리뷰 보러가기
+							</Button>
+						</Flex>
+					</Box>
 				</Box>
 			</StyledSlider>
 		</Box>
@@ -69,7 +89,7 @@ const MainCarousel = () => {
 const StyledSlider = styled(Slider)`
 	height: 100%;
 	width: 100vw;
-	margin: 0 auto;
+	margin: 100px auto 0 auto;
 	position: relative;
 	z-index: 4;
 
@@ -84,7 +104,7 @@ const PreArrow = styled.div`
 	width: 30px;
 	height: 30px;
 	position: absolute;
-	left: 7%;
+	left: 9%;
 	z-index: 3;
 `;
 
@@ -92,7 +112,7 @@ const NextArrow = styled.div`
 	width: 40px;
 	height: 30px;
 	position: absolute;
-	right: 7%;
+	right: 9%;
 	z-index: 3;
 `;
 

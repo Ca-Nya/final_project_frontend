@@ -12,7 +12,7 @@ export const Box = styled.div`
 				case "container":
 					return css`
 						width: 100vw;
-						max-width: ${calcRem(1180)} !important;
+						max-width: ${calcRem(1190)} !important;
 						margin: 0 auto;
 						padding: 0 3.5vw;
 					`;
@@ -21,6 +21,22 @@ export const Box = styled.div`
 						width: 100vw;
 						max-width: ${calcRem(1136)} !important;
 						margin: 0 auto;
+					`;
+				case "spinner-wrap":
+					return css`
+						width: 100%;
+						height: 75vh;
+					`;
+				case "spinner":
+					return css`
+						width: 100%;
+						height: 200px;
+					`;
+				case "error-wrap":
+					return css`
+						width: 100vw;
+						height: 100vh;
+						background-color: ${({ theme }) => theme.colors.white};
 					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
@@ -69,13 +85,13 @@ export const Box = styled.div`
 					`;
 				case "main-logo":
 					return css`
-						width: 6%;
-						max-width: ${calcRem(120)};
+						width: 15%;
+						max-width: ${calcRem(140)};
 						height: 50px;
 					`;
 				case "main-user-info":
 					return css`
-						width: 10%;
+						width: 14%;
 						max-width: ${calcRem(130)};
 					`;
 				case "main-search":
@@ -125,12 +141,21 @@ export const Box = styled.div`
 					return css`
 						background-image: url(${({ bg }) => bg});
 						width: 100vw;
-						/* max-width: ${calcRem(1924)}; */
 						height: 650px;
 						background-position: center center;
 						background-size: cover;
 						background-repeat: no-repeat;
-						filter: brightness(90%);
+						position: relative;
+					`;
+				case "main-carousel-item-desc":
+					return css`
+						height: 650px;
+						margin: 0 auto;
+						background-position: center center;
+						background-size: cover;
+						background-repeat: no-repeat;
+						position: absolute;
+						left: 25%;
 					`;
 				case "main-footer-wrap":
 					return css`
@@ -431,7 +456,7 @@ export const Box = styled.div`
 					return css`
 						width: 74.5vw;
 						max-width: ${calcRem(846)};
-						height: ${calcRem(105)};
+						height: ${calcRem(80)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						border-radius: 5px;
@@ -697,6 +722,13 @@ export const Box = styled.div`
 						padding: 0 0 20px 0;
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 					`;
+				/* 커뮤니티 */
+				case "top-button":
+					return css`
+						position: fixed;
+						right: 10px;
+						bottom: 5%;
+					`;
 				default:
 					break;
 			}
@@ -708,7 +740,33 @@ export const Box = styled.div`
 			case "container":
 				return css`
 					width: ${calcRem(360)};
+					height: 100%;
 					margin: 0 auto;
+					padding: 0 24px 0 24px;
+					/* background-color: gray; */
+				`;
+			case "container-m":
+				return css`
+					width: ${calcRem(206)};
+					height: ${calcRem(100)};
+					/* background-color: gray; */
+				`;
+			case "container-s":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(111)};
+				`;
+			case "nav":
+				return css`
+					width: ${calcRem(360)};
+					height: ${calcRem(50)};
+					background-color: ${({ theme }) => theme.colors.main};
+				`;
+			case "nav-s":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(30)};
+					background-color: aliceblue;
 				`;
 			case "xl":
 				return css`
@@ -724,6 +782,7 @@ export const Box = styled.div`
 					background-color: aliceblue;
 					border-radius: 5px;
 				`;
+
 			case "m":
 				return css`
 					width: ${calcRem(153)};
@@ -737,7 +796,21 @@ export const Box = styled.div`
 					height: ${calcRem(100)};
 					background-color: aliceblue;
 					border-radius: 5px;
+					word-break: break-all;
 				`;
+			case "top-button":
+				return css`
+					position: fixed;
+					right: 10px;
+					bottom: 5%;
+				`;
+			case "m-box":
+				return css`
+					width: 220px;
+					height: auto;					
+					word-break: break-all;
+					/* margin-bottom: 6px; */
+					`;
 			default:
 				break;
 		}

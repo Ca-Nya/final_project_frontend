@@ -8,6 +8,19 @@ export const Image = styled.img`
 
 	${({ variant }) => {
 		switch (variant) {
+			/* 공통 */
+			case "spinner":
+				return css`
+					width: ${calcRem(90)};
+					height: ${calcRem(90)};
+				`;
+			case "main-logo":
+				return css`
+					width: 100%;
+					height: ${calcRem(50)};
+					object-fit: contain;
+					object-position: center;
+				`;
 			/* 상세 페이지 */
 			case "medium-profile":
 				return css`
@@ -94,7 +107,10 @@ export const Image = styled.img`
 					height: 23.5vw;
 					max-width: ${calcRem(266)};
 					max-height: ${calcRem(266)};
-					border-radius: 5%;
+					border-radius: 5px;
+					&:hover {
+							cursor: pointer;
+						}
 				`;
 			case "mypage-icon":
 				return css`
@@ -221,6 +237,16 @@ export const Image = styled.img`
 					width: ${calcRem(34)};
 					height: ${calcRem(34)};
 					border-radius: 50%;
+					${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									border: 2px solid ${({ theme }) => theme.colors.point};
+								`;
+							default:
+								break;
+						}
+					}}
 				`;
 			default:
 				break;
