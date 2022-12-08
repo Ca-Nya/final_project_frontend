@@ -143,6 +143,18 @@ export const Input = styled.input`
 					}
 					padding: 12px 12px 12px 20px;
 				`;
+					case "s":
+				return css`
+					width: ${calcRem(230)};
+					height: ${calcRem(20)};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					&:placeholder {
+						font-size: ${({ theme }) => theme.fontSizes.medium};
+					}
+					padding: 6px 6px 6px 12px;
+				`;
 			default:
 				break;
 		}

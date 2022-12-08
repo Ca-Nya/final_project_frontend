@@ -18,7 +18,7 @@ const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 							 {page?.page?.map(item => (
 								 <>
 									 <ComuBoardItem
-										 key={item.boardId}
+										 key={item?.boardId}
 										 item={item}
 										 navigate={navigate}
 										 onDeleteComuPost={onDeleteComuPost}

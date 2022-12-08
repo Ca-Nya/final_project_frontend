@@ -173,7 +173,7 @@ export const Text = styled.p`
 					`;
 				case "comment":
 					return css`
-						font-size: ${calcRem(22)};
+						font-size: ${calcRem(18)};
 						color: ${({ theme }) => theme.colors.dark_gray};
 						font-weight: 400;
 						width: 600px;
@@ -296,7 +296,8 @@ export const Text = styled.p`
 				`;
 			case "s-board":
 				return css`
-					font-size: ${({ theme }) => theme.fontSizes.medium};
+					font-size: ${({ theme }) => theme.fontSizes.small};
+					color: ${({ theme }) => theme.colors.dark_gray};
 					display: inline-block;
 					width: ${calcRem(180)};
 					/* height: ${calcRem(30)}; */

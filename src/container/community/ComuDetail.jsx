@@ -1,8 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+
 import { Box, Image, Flex } from "../../components";
 import { Detail, MblDetail } from "./detail";
+
+import { Detail, MblDetail } from "./detail";
+import { Box, Image, Flex } from "../../components";
+
 import Spinner from "../../assets/icons/spinner.gif";
 import { useEffect } from "react";
 import { Default, Mobile } from "../../assets/mediaQuery";
