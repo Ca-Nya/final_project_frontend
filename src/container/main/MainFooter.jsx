@@ -7,7 +7,6 @@ import {
 	ListItem,
 	Text,
 	SecondHeading,
-	ThirdHeading,
 } from "../../components";
 
 const MainFooter = () => {
@@ -53,9 +52,13 @@ const MainFooter = () => {
 						<Margin margin="45px 0 0 0">
 							<Box variant="main-footer-info">
 								<Flex fd="column" gap="10px" jc="center">
-									<Text variant="main-footer-info">상호 : 카냐짱</Text>
-									<Text variant="main-footer-info">대표 : 박성민</Text>
-									<Text variant="main-footer-info">email : 123@naver.com</Text>
+									<Text variant="main-footer-info">상호 : CA NYA</Text>
+									<Text variant="main-footer-info">
+										팀원 : 박성민, 서지영, 임소희, 장지윤, 김병기
+									</Text>
+									<Text variant="main-footer-info">
+										email : jen.jyseo@gmail.com
+									</Text>
 									<Text variant="main-footer-info">전화: 1522-8016</Text>
 									<Text variant="main-footer-info">
 										주소 : 주소: 서울특별시 강남구 테헤란로44길 8 12층
