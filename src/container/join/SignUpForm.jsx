@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef } from "react";
-import SignUp from "./signUp/SignUp";
+import { Default, Mobile } from "../../assets/mediaQuery";
+import {SignUp,MblSignUp} from "./signUp";
 
 const SignUpForm = () => {
 	const dispatch = useDispatch();
@@ -33,6 +34,8 @@ const SignUpForm = () => {
 	password.current = watch("password");
 
 	return (
+		<>
+		<Default>
 		<SignUp
 			onhandleSubmit={handleSubmit}
 			register={register}
@@ -48,6 +51,25 @@ const SignUpForm = () => {
 			dispatch={dispatch}
 			navigate={navigate}
 		/>
+		</Default>
+		<Mobile>
+			<MblSignUp 
+			onhandleSubmit={handleSubmit}
+			register={register}
+			watch={watch}
+			errors={errors}
+			isCheckedId={isCheckedId}
+			isCheckedNickname={isCheckedNickname}
+			isExistNickname={isExistNickname}
+			isExistId={isExistId}
+			inputValue={inputValue}
+			setInputValue={setInputValue}
+			password={password}
+			dispatch={dispatch}
+			navigate={navigate}
+			/>
+		</Mobile>
+		</>
 	);
 };
 

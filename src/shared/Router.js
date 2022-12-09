@@ -56,11 +56,11 @@ const Router = () => {
 						<Route path="/community" element={<ComuList />} />
 						<Route path="/community/:id" element={<ComuDetail />} />
 						<Route path="/post" element={<ComuPost />} />
+						<Route path="/edit/:id" element={<ComuEdit />} />
 					</Route>
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
 					{/* <Route path="/chat" element={<Chat />} /> */}
-					<Route path="/edit/:id" element={<ComuEdit />} />
 					<Route path="*" element={<Error />} />
 				</Routes>
 			</BrowserRouter>

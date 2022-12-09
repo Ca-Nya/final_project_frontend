@@ -1,3 +1,4 @@
 import MypgHome from "./MypgHome";
+import MblMypgHome from "./MblMypgHome";
 
-export default MypgHome;
+export {MypgHome, MblMypgHome};

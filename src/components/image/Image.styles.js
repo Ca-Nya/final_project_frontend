@@ -200,7 +200,25 @@ export const Image = styled.img`
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(312)};
-					border-radius: 5px;
+					border-radius: 5px;				
+				`;
+				case "xl-image":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(312)};					
+					/* display:block;
+					position: absolute;
+					z-index: 1;
+					outline: 0; */
+				`;
+				case "l-image":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(40)};					
+					display:block;
+					/* position: absolute;
+					z-index: 1;
+					outline: 0;  */
 				`;
 			case "l":
 				return css`
@@ -208,11 +226,24 @@ export const Image = styled.img`
 					height: ${calcRem(156)};
 					border-radius: 5px;
 				`;
+				case "l-background":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(156)};
+					position: relative;				
+				`;
 			case "m":
 				return css`
 					width: ${calcRem(153)};
 					height: ${calcRem(153)};
 					border-radius: 5px;
+				`;
+				case "m-logo":
+				return css`
+					width: 100%;
+					height: ${calcRem(50)};
+					object-fit: contain;
+					object-position: center;
 				`;
 			case "s":
 				return css`
@@ -225,6 +256,20 @@ export const Image = styled.img`
 					width: ${calcRem(100)};
 					height: ${calcRem(100)};
 					border-radius: 50%;
+					${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									border: 3px solid ${({ theme }) => theme.colors.point};
+								`;
+								case "tall":
+								return css`
+									border: 3px solid #f6cd3c;
+								`;
+							default:
+								break;
+						}
+					}}
 				`;
 			case "xs":
 				return css`

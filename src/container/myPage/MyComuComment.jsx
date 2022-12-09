@@ -42,7 +42,7 @@ const MyComuComment = () => {
 
 	const { ref, inView } = useInView();
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-		["page"],
+		["myComuComment"],
 		({ pageParam = 1 }) => fetchPostList(pageParam),
 		{
 			getNextPageParam: lastPage =>

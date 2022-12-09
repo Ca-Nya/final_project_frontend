@@ -290,9 +290,56 @@ export const Text = styled.p`
 						font-weight: 500;
 					}
 				`;
+			case "s-red":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.small};
+					color: ${({ theme }) => theme.colors.point};
+					font-weight: 300;
+					> span {
+						font-weight: 500;
+					}
+				`;
+			case "s-purple":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.small};
+					color: ${({ theme }) => theme.colors.main_purple};
+					font-weight: 300;
+					> span {
+						font-weight: 500;
+					}
+				`;
 			case "m":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.medium};
+					font-weight: 700;
+					> span {
+						font-weight: 400;
+					}
+				`;
+			case "l":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					font-weight: 700;
+					> span {
+						font-weight: 400;
+					}
+				`;
+				case "xl":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.xxl};
+					font-weight: 700;
+					> span {
+						font-weight: 400;
+					}
+				`;
+			case "l-line":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					font-weight: 700;
+					border-bottom: 2px solid color: ${({ theme }) => theme.colors.gray};;
+					> span {
+						font-weight: 400;
+					}
 				`;
 			case "s-board":
 				return css`
@@ -313,6 +360,31 @@ export const Text = styled.p`
 					-webkit-line-clamp: 3;
 					-webkit-box-orient: vertical;
 				`;
+						case "s-level":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.white};
+						width: ${calcRem(50)};
+						height: ${calcRem(25)};					
+						border-radius: 50px;
+						text-align: center;
+						line-height: ${calcRem(25)};
+						${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									background-color: ${({ theme }) => theme.colors.point};
+								`;
+								case "tall":
+								return css`
+									background-color: #f6cd3c;
+								`;
+							default:
+								break;
+						}
+					}}
+				`;
+					
 			default:
 				break;
 		}

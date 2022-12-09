@@ -142,7 +142,6 @@ const DetailPost = () => {
 											src={detailPostData.memberProfileImage}
 											alt="프로필 이미지"
 											variant="medium-profile"
-											rank={localStorage.getItem("memberStatus")}
 										/>
 										<Flex fd="column" gap="3px">
 											<DataList variant="">
