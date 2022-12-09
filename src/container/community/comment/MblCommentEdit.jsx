@@ -113,9 +113,9 @@ const MblCommentEdit = ({
 									</Box>
 								</Flex>
 							</Flex>
-							<Margin margin="5px 0 0 0" >
+							<Margin margin="5px 0 0 0">
 								<Box size="s-box">
-								<Text size="s">{item.date}</Text>
+									<Text size="s">{item.date}</Text>
 								</Box>
 							</Margin>
 						</Box>
