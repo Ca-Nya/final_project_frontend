@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import spinner from "../../assets/icons/spinner.gif";
-import All from "./all";
+import { Default, Mobile } from "../../assets/mediaQuery";
+import { All, MblAll } from "./all";
 
 const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -51,10 +52,10 @@ const MyAll = () => {
 	if (isLoading)
 		return (
 			<Box variant="spinner-wrap">
-			<Flex jc="center" ai="center">
-				<Image src={spinner} alt="로딩중" variant="spinner" />
-			</Flex>
-		</Box>
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
 		);
 
 	if (isError)
@@ -74,17 +75,32 @@ const MyAll = () => {
 		);
 
 	return (
-		<Box variant="mypage-category">
-			<All
-				recentlyMyBoardList={recentlyMyBoardList}
-				recentlyMyCommentList={recentlyMyCommentList}
-				recentlyMyHeartBoardList={recentlyMyHeartBoardList}
-				recentlyMyCommunityList={recentlyMyCommunityList}
-				recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
-				spinner={spinner}
-				navigate={navigate}
-			/>
-		</Box>
+		<>
+			<Default>
+				<Box variant="mypage-category">
+					<All
+						recentlyMyBoardList={recentlyMyBoardList}
+						recentlyMyCommentList={recentlyMyCommentList}
+						recentlyMyHeartBoardList={recentlyMyHeartBoardList}
+						recentlyMyCommunityList={recentlyMyCommunityList}
+						recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
+						spinner={spinner}
+						navigate={navigate}
+					/>
+				</Box>
+			</Default>
+			<Mobile>
+				<MblAll
+					recentlyMyBoardList={recentlyMyBoardList}
+					recentlyMyCommentList={recentlyMyCommentList}
+					recentlyMyHeartBoardList={recentlyMyHeartBoardList}
+					recentlyMyCommunityList={recentlyMyCommunityList}
+					recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
+					spinner={spinner}
+					navigate={navigate}
+				/>
+			</Mobile>
+		</>
 	);
 };
 

@@ -38,9 +38,7 @@ const MyBoard = () => {
 			getNextPageParam: lastPage =>
 				!lastPage.isLast ? lastPage.nextPage : undefined,
 		},
-	);
-
-	
+	);	
 
 	useEffect(() => {
 		if (inView) fetchNextPage();

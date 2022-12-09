@@ -324,6 +324,14 @@ export const Text = styled.p`
 						font-weight: 400;
 					}
 				`;
+				case "xl":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.xxl};
+					font-weight: 700;
+					> span {
+						font-weight: 400;
+					}
+				`;
 			case "l-line":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
@@ -352,6 +360,31 @@ export const Text = styled.p`
 					-webkit-line-clamp: 3;
 					-webkit-box-orient: vertical;
 				`;
+						case "s-level":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.white};
+						width: ${calcRem(50)};
+						height: ${calcRem(25)};					
+						border-radius: 50px;
+						text-align: center;
+						line-height: ${calcRem(25)};
+						${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									background-color: ${({ theme }) => theme.colors.point};
+								`;
+								case "tall":
+								return css`
+									background-color: #f6cd3c;
+								`;
+							default:
+								break;
+						}
+					}}
+				`;
+					
 			default:
 				break;
 		}
