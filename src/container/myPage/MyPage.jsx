@@ -1,10 +1,13 @@
-import { Box } from "../../components";
+import { Box,Flex,Image,Strong,Button } from "../../components";
 import { useNavigate, useMatch } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useEditProfileImage } from "../../querys/myPage";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
-import MypgHome from "./mypgHome/MypgHome";
+import { MypgHome, MblMypgHome } from "./mypgHome";
+import { Default, Mobile } from "../../assets/mediaQuery";
+// 로딩 스피너
+import spinner from "../../assets/icons/spinner.gif";
 
 const MyPage = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -110,35 +113,84 @@ const MyPage = () => {
 	const handleEditPost = item => () => {
 		navigate(`/detail/edit/${item.boardId}`);
 	};
-
+	if (isLoading)
+	return (
+		<Box variant="spinner-wrap">
+			<Flex jc="center" ai="center">
+				<Image src={spinner} alt="로딩중" variant="spinner" />
+			</Flex>
+		</Box>
+	);
+if (isError) return  (
+	<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">
+						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+					</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+);
 	if (isLoading) return <Box>로딩중</Box>;
 	if (isError) return <Box>에러</Box>;
 
 	return (
-		<MypgHome
-			onEditPost={handleEditPost}
-			onDeletePost={handelDeletePost}
-			onChangeProfileImage={handleChangeProfileImage}
-			recentlyMyBoardList={recentlyMyBoardList}
-			recentlyMyCommentList={recentlyMyCommentList}
-			recentlyMyHeartBoardList={recentlyMyHeartBoardList}
-			memberBoardCount={memberBoardCount}
-			memberCommentCount={memberCommentCount}
-			memberHeartCount={memberHeartCount}
-			memberProfileImage={memberProfileImage}
-			navigate={navigate}
-			myLikeMatch={myLikeMatch}
-			myBoardMatch={myBoardMatch}
-			myCommentMatch={myCommentMatch}
-			myAllMatch={myAllMatch}
-			myComuBoardMatch={myComuBoardMatch}
-			myComuCommentMatch={myComuCommentMatch}
-			nickname={nickname}
-			recentlyMyCommunityList={recentlyMyCommunityList}
-			recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
-			memberCommunityCount={memberCommunityCount}
-			memberCommunityCommentCount={memberCommunityCommentCount}
-		/>
+		<>
+			<Default>
+				<MypgHome
+					onEditPost={handleEditPost}
+					onDeletePost={handelDeletePost}
+					onChangeProfileImage={handleChangeProfileImage}
+					recentlyMyBoardList={recentlyMyBoardList}
+					recentlyMyCommentList={recentlyMyCommentList}
+					recentlyMyHeartBoardList={recentlyMyHeartBoardList}
+					memberBoardCount={memberBoardCount}
+					memberCommentCount={memberCommentCount}
+					memberHeartCount={memberHeartCount}
+					memberProfileImage={memberProfileImage}
+					navigate={navigate}
+					myLikeMatch={myLikeMatch}
+					myBoardMatch={myBoardMatch}
+					myCommentMatch={myCommentMatch}
+					myAllMatch={myAllMatch}
+					myComuBoardMatch={myComuBoardMatch}
+					myComuCommentMatch={myComuCommentMatch}
+					nickname={nickname}
+					recentlyMyCommunityList={recentlyMyCommunityList}
+					recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
+					memberCommunityCount={memberCommunityCount}
+					memberCommunityCommentCount={memberCommunityCommentCount}
+				/>
+			</Default>
+			<Mobile>
+				<MblMypgHome
+					onEditPost={handleEditPost}
+					onDeletePost={handelDeletePost}
+					onChangeProfileImage={handleChangeProfileImage}
+					recentlyMyBoardList={recentlyMyBoardList}
+					recentlyMyCommentList={recentlyMyCommentList}
+					recentlyMyHeartBoardList={recentlyMyHeartBoardList}
+					memberBoardCount={memberBoardCount}
+					memberCommentCount={memberCommentCount}
+					memberHeartCount={memberHeartCount}
+					memberProfileImage={memberProfileImage}
+					navigate={navigate}
+					myLikeMatch={myLikeMatch}
+					myBoardMatch={myBoardMatch}
+					myCommentMatch={myCommentMatch}
+					myAllMatch={myAllMatch}
+					myComuBoardMatch={myComuBoardMatch}
+					myComuCommentMatch={myComuCommentMatch}
+					nickname={nickname}
+					recentlyMyCommunityList={recentlyMyCommunityList}
+					recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
+					memberCommunityCount={memberCommunityCount}
+					memberCommunityCommentCount={memberCommunityCommentCount}
+				/>
+			</Mobile>
+		</>
 	);
 };
 

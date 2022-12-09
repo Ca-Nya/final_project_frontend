@@ -1,3 +1,4 @@
 import All from "./All";
+import MblAll from "./MblAll";
 
-export default All;
+export { All , MblAll };

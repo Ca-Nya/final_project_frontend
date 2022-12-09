@@ -775,10 +775,16 @@ export const Box = styled.div`
 					background-color: aliceblue;
 					border-radius: 5px;
 				`;
-				case "xl-image":
+			case "xl-line":
 				return css`
 					width: ${calcRem(312)};
-					height: ${calcRem(312)};					
+					/* height: ${calcRem(312)}; */
+					border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+				`;
+			case "xl-image":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(312)};
 					/* border-radius: 5px; */
 					position: relative;
 				`;
@@ -818,9 +824,22 @@ export const Box = styled.div`
 					word-break: break-all;
 					/* margin-bottom: 6px; */
 				`;
+			case "position-absolute":
+				return css`
+					position: absolute;
+					z-index: 2;
+					top: 0;
+				`;
+			case "position-relative":
+				return css`
+					width: ${calcRem(312)};
+					/* height: ${calcRem(156)}; */
+					position: relative;
+				`;
+
 			case "s-box":
 				return css`
-					width: ${calcRem(40)};					
+					width: ${calcRem(40)};
 				`;
 			default:
 				break;

@@ -226,6 +226,12 @@ export const Image = styled.img`
 					height: ${calcRem(156)};
 					border-radius: 5px;
 				`;
+				case "l-background":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(156)};
+					position: relative;				
+				`;
 			case "m":
 				return css`
 					width: ${calcRem(153)};
@@ -250,6 +256,20 @@ export const Image = styled.img`
 					width: ${calcRem(100)};
 					height: ${calcRem(100)};
 					border-radius: 50%;
+					${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									border: 3px solid ${({ theme }) => theme.colors.point};
+								`;
+								case "tall":
+								return css`
+									border: 3px solid #f6cd3c;
+								`;
+							default:
+								break;
+						}
+					}}
 				`;
 			case "xs":
 				return css`

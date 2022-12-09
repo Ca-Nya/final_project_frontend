@@ -72,7 +72,7 @@ const MyComment = () => {
 					<Text variant="title">작성 댓글 📋</Text>
 				</Box>
 			</Margin>
-			{data.pages[0].page ? (
+			{data?.pages[0].page.length > 1 ? (
 				<Box>
 					{data?.pages?.map((page, idx) => (
 						<React.Fragment key={idx}>
