@@ -1,3 +1,4 @@
 import SignUp from "./SignUp";
+import MblSignUp from "./MblSignUp";
 
-export default SignUp;
+export {SignUp, MblSignUp };

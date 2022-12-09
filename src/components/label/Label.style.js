@@ -51,4 +51,18 @@ export const Label = styled.label`
 			}
 		}}
 	}
+		/* 모바일 사이즈 */
+		${({ size }) => {
+		switch (size) {
+				case "xl-image":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(312)};					
+					border-radius: 5px;								
+					
+				`;		
+			default:
+				break;
+		}
+	}}
 `;

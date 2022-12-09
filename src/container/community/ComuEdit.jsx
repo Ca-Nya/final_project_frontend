@@ -1,7 +1,8 @@
-import Edit from "./edit";
+import { Edit, MblEdit } from "./edit";
 import { Margin, Box, Image, Flex, Button, Strong } from "../../components";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import spinner from "../../assets/icons/spinner.gif";
@@ -62,7 +63,7 @@ const ComuEdit = () => {
 		reader.onloadend = () => {
 			const previewImgUrl = reader.result;
 			if (previewImgUrl) {
-				setImageSrc([...imageSrc, previewImgUrl]);
+				setImageSrc(previewImgUrl);
 			}
 		};
 	};
@@ -127,7 +128,7 @@ const ComuEdit = () => {
 		setEdit(false);
 	};
 
-	if (!isLoading)
+	if (isLoading)
 		return (
 			<Box variant="spinner-wrap">
 				<Flex jc="center" ai="center">
@@ -152,8 +153,21 @@ const ComuEdit = () => {
 
 	return (
 		<>
-			<Margin margin="160px 0 0 0">
-				<Edit
+			<Default>
+				<Margin margin="160px 0 0 0">
+					<Edit
+						onChangeComu={handleChangeComu}
+						onChangeImage={onChangeImage}
+						editImgSrc={editImgSrc}
+						edit={edit}
+						detailComuData={detailComuData}
+						onClickHandler={onClickHandler}
+						imageSrc={imageSrc}
+					/>
+				</Margin>
+			</Default>
+			<Mobile>
+				<MblEdit
 					onChangeComu={handleChangeComu}
 					onChangeImage={onChangeImage}
 					editImgSrc={editImgSrc}
@@ -162,7 +176,7 @@ const ComuEdit = () => {
 					onClickHandler={onClickHandler}
 					imageSrc={imageSrc}
 				/>
-			</Margin>
+			</Mobile>
 		</>
 	);
 };

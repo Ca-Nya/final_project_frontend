@@ -333,7 +333,9 @@ export const Button = styled.button`
 					width: ${calcRem(312)};
 					height: ${calcRem(40)};
 					border-radius: 5px;
+					background-color: ${({ theme }) => theme.colors.main};
 					font-size: ${({ theme }) => theme.fontSizes.medium};
+					font-weight: 700;
 					padding: "12px auto";
 				`;
 			case "s":
@@ -344,12 +346,32 @@ export const Button = styled.button`
 					font-size: ${({ theme }) => theme.fontSizes.medium};
 					padding: "12px auto";
 				`;
+					case "s-main":
+				return css`
+					width: ${calcRem(58)};
+					height: ${calcRem(40)};
+					border-radius: 5px;
+					background-color: ${({ theme }) => theme.colors.main};
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					padding: "12px auto";
+				`;
 			case "xs":
 				return css`
 					width: ${calcRem(46)};
 					height: ${calcRem(24)};
 					border-radius: 5px;
 					background-color: ${({ theme }) => theme.colors.gray};
+					font-size: ${({ theme }) => theme.fontSizes.small};
+					color: ${({ theme }) => theme.colors.black};
+					padding: "12px auto";
+				`;
+				case "xs-trans":
+				return css`
+					width: ${calcRem(46)};
+					height: ${calcRem(24)};
+					border-radius: 5px;
+					border: 2px solid ${({ theme }) => theme.colors.line};
+					background-color: transparent;
 					font-size: ${({ theme }) => theme.fontSizes.small};
 					color: ${({ theme }) => theme.colors.black};
 					padding: "12px auto";

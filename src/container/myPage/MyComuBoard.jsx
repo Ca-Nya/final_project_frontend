@@ -31,7 +31,7 @@ const MyComuBoard = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-		["page"],
+		["myComuBoard"],
 		({ pageParam = 1 }) => fetchPostList(pageParam),
 		{
 			getNextPageParam: lastPage =>

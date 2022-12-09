@@ -1,3 +1,4 @@
 import Edit from "./Edit";
+import MblEdit from "./MblEdit";
 
-export default Edit;
+export { Edit , MblEdit } ;

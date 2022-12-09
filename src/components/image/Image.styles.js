@@ -200,7 +200,25 @@ export const Image = styled.img`
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(312)};
-					border-radius: 5px;
+					border-radius: 5px;				
+				`;
+				case "xl-image":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(312)};					
+					/* display:block;
+					position: absolute;
+					z-index: 1;
+					outline: 0; */
+				`;
+				case "l-image":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(40)};					
+					display:block;
+					/* position: absolute;
+					z-index: 1;
+					outline: 0;  */
 				`;
 			case "l":
 				return css`
@@ -213,6 +231,13 @@ export const Image = styled.img`
 					width: ${calcRem(153)};
 					height: ${calcRem(153)};
 					border-radius: 5px;
+				`;
+				case "m-logo":
+				return css`
+					width: 100%;
+					height: ${calcRem(50)};
+					object-fit: contain;
+					object-position: center;
 				`;
 			case "s":
 				return css`
