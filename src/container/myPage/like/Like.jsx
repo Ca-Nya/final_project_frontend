@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Image, Text, Margin, Flex } from "../../../components";
+import {
+	Box,
+	Image,
+	Text,
+	Margin,
+	Flex,
+	Strong,
+	Button,
+} from "../../../components";
 import { LikeItem } from "../like";
 
 const Like = ({ data, navigate }) => {
@@ -28,8 +36,13 @@ const Like = ({ data, navigate }) => {
 					))}
 				</>
 			) : (
-				<Box>
-					<Text variant="comment"> 좋아요한 게시물이 없습니다.</Text>
+				<Box variant="spinner-wrap">
+					<Flex fd="column" jc="center" ai="center" gap="100px">
+						<Strong variant="warning">좋아요한 게시물이 없습니다😭</Strong>
+						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+							돌아가기
+						</Button>
+					</Flex>
 				</Box>
 			)}
 		</Box>
