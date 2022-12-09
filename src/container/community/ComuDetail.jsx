@@ -17,7 +17,7 @@ const ComuDetail = () => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 	//커뮤니티 상세페이지 get요청
-	const { data, isError, isLoading, refetch } = useQuery({
+	const { data, isError, isLoading } = useQuery({
 		queryKey: ["communityDetail"],
 		queryFn: async () => {
 			try {
