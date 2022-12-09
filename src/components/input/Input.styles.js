@@ -143,7 +143,7 @@ export const Input = styled.input`
 					}
 					padding: 12px 12px 12px 20px;
 				`;
-					case "s":
+			case "s":
 				return css`
 					width: ${calcRem(230)};
 					height: ${calcRem(20)};
@@ -154,6 +154,12 @@ export const Input = styled.input`
 						font-size: ${({ theme }) => theme.fontSizes.medium};
 					}
 					padding: 6px 6px 6px 12px;
+				`;
+			case "l-image":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(40)};
+					background-color: ${({ theme }) => theme.colors.main};
 				`;
 			default:
 				break;

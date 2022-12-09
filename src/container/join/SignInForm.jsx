@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { resetError } from "../../redux/modules/join/joinSlice";
 import { useEffect } from "react";
-import SignIn from "./signIn/SignIn";
+import { Default, Mobile } from "../../assets/mediaQuery";
+import { SignIn, MblSignIn } from "./signIn";
 
 const SigninForm = () => {
 	const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const SigninForm = () => {
 		register,
 		formState: { errors },
 	} = useForm();
-	
+
 	//아이디와 비밀번호가 일치하지 않을 때
 	useEffect(() => {
 		if (errorData) {
@@ -34,22 +35,36 @@ const SigninForm = () => {
 	useEffect(() => {
 		if (token && statusCode === 200) {
 			navigate("/");
-			alert("카냐에 오신걸 환영합니다.")
+			alert("카냐에 오신걸 환영합니다.");
 		}
 	});
 
 	return (
 		<Box>
-			<SignIn
-			 dispatch={dispatch}
-			 navigate={navigate}
-			 onhandleSubmit={handleSubmit}
-			 register={register}
-			 errors={errors}
-			 errorData={errorData}
-			 statusCode={statusCode}
-			 token={token}
-			/>		
+			<Default>
+				<SignIn
+					dispatch={dispatch}
+					navigate={navigate}
+					onhandleSubmit={handleSubmit}
+					register={register}
+					errors={errors}
+					errorData={errorData}
+					statusCode={statusCode}
+					token={token}
+				/>
+			</Default>
+			<Mobile>
+				<MblSignIn
+					dispatch={dispatch}
+					navigate={navigate}
+					onhandleSubmit={handleSubmit}
+					register={register}
+					errors={errors}
+					errorData={errorData}
+					statusCode={statusCode}
+					token={token} 
+				/>
+			</Mobile>
 		</Box>
 	);
 };

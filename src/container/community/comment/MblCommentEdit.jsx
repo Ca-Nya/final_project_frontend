@@ -93,7 +93,7 @@ const MblCommentEdit = ({
 										</Text>
 										<Flex
 											style={{ width: "50px", margin: "6px 0 0 8px" }}
-											gap="6px"
+											gap="4px"
 										>
 											<Text
 												size="s"
@@ -113,8 +113,10 @@ const MblCommentEdit = ({
 									</Box>
 								</Flex>
 							</Flex>
-							<Margin margin="5px 0 0 0" style={{ width: "50px" }}>
+							<Margin margin="5px 0 0 0" >
+								<Box size="s-box">
 								<Text size="s">{item.date}</Text>
+								</Box>
 							</Margin>
 						</Box>
 					</Margin>

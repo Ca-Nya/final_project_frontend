@@ -80,13 +80,12 @@ const MypgHome = ({
 							</Flex>
 						</Box>
 
-						<Margin margin="10% 3% 0 10%">
+						<Margin margin="10% 3% 0 0">
 							<Box variant="category-box">
 								<Flex
 									gap="5%"
 									jc="center"
-									ai="center"
-									style={{ width: "180px" }}
+									ai="center"									
 								>
 									<Flex fd="column" jc="center" ai="center" gap="5px">
 										<Image variant="mypage-icon" src={Write} />

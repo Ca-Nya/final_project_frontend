@@ -84,6 +84,7 @@ const ComuComment = () => {
 				ment={ment}
 				setMent={setMent}
 				nickname={nickname}
+				navigate={navigate}
 				/>
 			</Mobile>
 		</>

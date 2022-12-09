@@ -23,11 +23,7 @@ const MblComment = ({ item }) => {
 						ai="center"
 						style={{ padding: "0px", width: "100%" }}
 					>
-						<Flex
-							fd="column"
-							gap="2px"
-							style={{ marginLeft: "6px" }}
-						>
+						<Flex fd="column" gap="2px" style={{ marginLeft: "6px" }}>
 							<Flex ai="center">
 								<Text size="m" style={{ fontWeight: "650" }}>
 									{item.memberNickname}
@@ -38,8 +34,10 @@ const MblComment = ({ item }) => {
 							</Box>
 						</Flex>
 					</Flex>
-					<Margin margin="5px 0 0 0" style={{ width: "50px" }}>
-						<Text size="s">{item.date}</Text>
+					<Margin margin="5px 0 0 0">
+						<Box size="s-box">
+							<Text size="s">{item.date}</Text>
+						</Box>
 					</Margin>
 				</Box>
 				<Box

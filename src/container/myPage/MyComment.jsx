@@ -32,7 +32,7 @@ const MyComment = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-		["page"],
+		["myComment"],
 		({ pageParam = 1 }) => fetchPostList(pageParam),
 		{
 			getNextPageParam: lastPage =>
