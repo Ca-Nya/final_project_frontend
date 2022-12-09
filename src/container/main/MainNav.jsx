@@ -23,7 +23,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// select값 state
 	const [selectValues, setSelectValue] = useState({
-		category: "memberNickname",
+		category: "boardTitle",
 		keyword: "",
 	});
 	// 검색 input value 변경 핸들러
@@ -155,7 +155,6 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 											src={localStorage.getItem("profileImageUrl")}
 											alt="프로필 이미지"
 											variant="medium-profile"
-											rank={localStorage.getItem("memberStatus")}
 										/>
 									</Button>
 									<Button

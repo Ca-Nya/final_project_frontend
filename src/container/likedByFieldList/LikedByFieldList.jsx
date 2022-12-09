@@ -177,7 +177,6 @@ const LikedByFieldList = () => {
 																		src={pick.memberProfileImage}
 																		alt="프로필 이미지"
 																		variant="small-profile"
-																		rank={localStorage.getItem("memberStatus")}
 																	/>
 																	<Margin margin="2px 0 0 10px">
 																		<Box variant="main-canya-pick-info-content">
@@ -267,9 +266,6 @@ const LikedByFieldList = () => {
 																			src={item.memberProfileImage}
 																			alt="프로필 이미지"
 																			variant="small-profile"
-																			rank={localStorage.getItem(
-																				"memberStatus",
-																			)}
 																		/>
 																		<DataList>
 																			<Hidden>
