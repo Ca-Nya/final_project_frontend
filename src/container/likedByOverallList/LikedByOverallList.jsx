@@ -17,6 +17,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+// 로딩 스피너
+import spinner from "../../assets/icons/spinner.gif";
 
 const LikedByOverallList = () => {
 	// React Router
@@ -70,7 +72,14 @@ const LikedByOverallList = () => {
 		};
 	};
 
-	if (status === "loading") return <Box>Loading</Box>;
+	if (status === "loading")
+		return (
+			<Box variant="spinner-wrap">
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
+		);
 	if (status === "error") return <Box>Error</Box>;
 
 	return (
