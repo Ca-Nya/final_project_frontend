@@ -36,7 +36,6 @@ const SignUp = ({
 		<Form
 			variant="signup"
 			onSubmit={onhandleSubmit(value => {
-				
 				if (isCheckedId && isCheckedNickname) {
 					const { memberName, memberNickname, password } = value;
 					dispatch(__requestSignUp({ memberName, memberNickname, password }));
@@ -125,7 +124,7 @@ const SignUp = ({
 				{isCheckedNickname && !isExistNickname ? (
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
-							<Text variant="join-available">중복되지않은 닉네임입니다.</Text>
+							<Text variant="join-available">중복되지 않은 닉네임입니다.</Text>
 						</Flex>
 					</Margin>
 				) : (

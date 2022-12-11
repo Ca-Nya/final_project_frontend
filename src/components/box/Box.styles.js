@@ -38,11 +38,10 @@ export const Box = styled.div`
 						height: 100vh;
 						background-color: ${({ theme }) => theme.colors.white};
 					`;
-				case "profile-image":
+				case "profile-image-small":
 					return css`
-						width: 100px
-						height: 100px;
-						background-color: ${({ theme }) => theme.colors.main};
+						width: 100px;
+						height: auto;
 					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
