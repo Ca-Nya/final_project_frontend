@@ -36,9 +36,10 @@ const Post = ({
 						<Margin margin="0 0 25px 0">
 							<Input
 								variant="cafe-review-title"
-								onChange={onChangeInput}
-								placeholder="제목을 입력해주세요."
+								name="communityTitle"
 								type="text"
+								placeholder="제목을 입력해주세요."
+								onChange={onChangeInput}
 							/>
 						</Margin>
 
@@ -87,33 +88,33 @@ const Post = ({
 					</Form>
 				</Box>
 
-				{/* <Margin margin="160px 0 0 0">
-				<form onSubmit={onClickHandler}>
-					<input
-						type="text"
-						name="communityTitle"
-						placeholder="제목을 입력해주세요."
-						onChange={onChangeInput}
-					/>
-					<textarea
-						type="text"
-						autoComplete="off"
-						id="communityContent"
-						name="communityContent"
-						placeholder="내용을 입력해주세요"
-						onChange={onChangeInput}
-					/>
-					
-					<input
-						name="communityImage"
-						type={"file"}
-						accept={"image/*"}
-						placeholder="이미지업로드"
-						onChange={onChangeImage}
-					/>
-					<button>등록</button>
-				</form>
-			</Margin> */}
+				<Margin margin="160px 0 0 0">
+					{/* <form onSubmit={onClickHandler}>
+						<input
+							type="text"
+							name="communityTitle"
+							placeholder="제목을 입력해주세요."
+							onChange={onChangeInput}
+						/>
+						<textarea
+							type="text"
+							autoComplete="off"
+							id="communityContent"
+							name="communityContent"
+							placeholder="내용을 입력해주세요"
+							onChange={onChangeInput}
+						/>
+
+						<input
+							name="communityImage"
+							type={"file"}
+							accept={"image/*"}
+							placeholder="이미지업로드"
+							onChange={onChangeImage}
+						/>
+						<button>등록</button>
+					</form> */}
+				</Margin>
 			</Margin>
 		</>
 	);

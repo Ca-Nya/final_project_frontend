@@ -139,7 +139,6 @@ const SignUp = ({
 				) : (
 					""
 				)}
-
 				<Margin margin="15px 0 8px 8px">
 					<Text variant="join-id">아이디</Text>
 				</Margin>
