@@ -90,7 +90,7 @@ const MyComuBoard = () => {
 					</Flex>
 				</Box>
 	);
-;
+
 
 	return (
 		<Box>
