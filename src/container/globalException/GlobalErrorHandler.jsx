@@ -2,7 +2,7 @@ import error from "../../assets/icons/404.png";
 import { Image, Box, Flex, Strong, Text, Button } from "../../components";
 import { useNavigate } from "react-router-dom";
 
-const Error = () => {
+const GlobalErrorHandler = () => {
 	// React Router
 	const navigate = useNavigate();
 
@@ -26,4 +26,4 @@ const Error = () => {
 	);
 };
 
-export default Error;
+export default GlobalErrorHandler;

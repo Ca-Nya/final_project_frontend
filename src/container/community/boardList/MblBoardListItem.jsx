@@ -29,8 +29,7 @@ const MblBoardListItem = ({item,navigate}) => {
 						</Text>
 						<Margin margin="6px 0 13px 0">
 							<Text
-								size="s-board"
-								style={{ height: "43px" }}
+								size="s-board"								
 								onClick={() => {
 									navigate(`/community/${item.communityId}`);
 								}}

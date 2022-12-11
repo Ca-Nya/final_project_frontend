@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Box } from "../../components";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import {
 	QueryClient,
 	useMutation,
@@ -8,7 +9,7 @@ import {
 } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Comment from "./comment";
+import { Comment, MblComment } from "./comment";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -108,21 +109,35 @@ const MyCommentEdit = ({ comment }) => {
 			alert("취소합니다.");
 		}
 	};
-	console.log("mycommenitem=>", comment);
 
 	return (
 		<Box>
-			<Comment
-				edit={edit}
-				setEdit={setEdit}
-				editComment={editComment}
-				navigate={navigate}
-				onDeleteComment={handleRemove}
-				onEditComment={handleEditComplete}
-				onhandleEdit={handleEdit}
-				ondelMutation={delMutation}
-				comment={comment}
-			/>
+			<Default>
+				<Comment
+					edit={edit}
+					setEdit={setEdit}
+					editComment={editComment}
+					navigate={navigate}
+					onDeleteComment={handleRemove}
+					onEditComment={handleEditComplete}
+					onhandleEdit={handleEdit}
+					ondelMutation={delMutation}
+					comment={comment}
+				/>
+			</Default>
+			<Mobile>
+				<MblComment
+					edit={edit}
+					setEdit={setEdit}
+					editComment={editComment}
+					navigate={navigate}
+					onDeleteComment={handleRemove}
+					onEditComment={handleEditComplete}
+					onhandleEdit={handleEdit}
+					ondelMutation={delMutation}
+					comment={comment}
+				/>
+			</Mobile>
 		</Box>
 	);
 };

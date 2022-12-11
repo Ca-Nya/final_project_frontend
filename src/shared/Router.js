@@ -10,7 +10,6 @@ import { DetailPost, DetailEditPost } from "../container/detail";
 import LikedByFieldList from "../container/likedByFieldList";
 import LikedByOverallList from "../container/likedByOverallList";
 import MyPages from "../pages/mypage";
-import Error from "../container/error";
 import {
 	MyBoard,
 	MyComment,
@@ -26,6 +25,7 @@ import {
 	ComuPost,
 	ComuEdit,
 } from "../container/community";
+import { GlobalErrorHandler } from "../container/globalException";
 
 const Router = () => {
 	return (
@@ -61,7 +61,7 @@ const Router = () => {
 					<Route path="/join" element={<SignInPage />} />
 					<Route path="/register" element={<SignUpPage />} />
 					{/* <Route path="/chat" element={<Chat />} /> */}
-					<Route path="*" element={<Error />} />
+					<Route path="*" element={<GlobalErrorHandler />} />
 				</Routes>
 			</BrowserRouter>
 		</>

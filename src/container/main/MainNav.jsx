@@ -53,7 +53,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 		}
 	}, [dispatch, jwtToken]);
 	// 토큰 전역 state
-	const { token } = useSelector(state => state.join);
+	const { token, profileImage } = useSelector(state => state.join);
 
 	useEffect(() => {
 		if (token) {
@@ -152,7 +152,9 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 										variant="main-user-info"
 									>
 										<Image
-											src={localStorage.getItem("profileImageUrl")}
+											src={
+												profileImage || localStorage.getItem("profileImageUrl")
+											}
 											alt="프로필 이미지"
 											variant="medium-profile"
 										/>

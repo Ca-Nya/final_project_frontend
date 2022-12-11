@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
-import { Image, Box,Flex,Button,Strong } from "../../components";
-import { Board } from "./board";
+import { Image, Box, Flex, Button, Strong } from "../../components";
+import { Board, MblBoard } from "./board";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import spinner from "../../assets/icons/spinner.gif";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
@@ -22,10 +23,8 @@ const fetchPostList = async pageParam => {
 			},
 		},
 	);
-	const { myPageList: page, isLast } = data;
-	console.log("MyBoarddata==>",data);
+	const { myPageList: page, isLast } = data;	
 	return { page, nextPage: pageParam + 1, isLast };
-	
 };
 
 const MyBoard = () => {
@@ -33,12 +32,12 @@ const MyBoard = () => {
 	const { ref, inView } = useInView();
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
 		["myBoard"],
-		async ({ pageParam = 1 }) =>  await fetchPostList(pageParam),
+		async ({ pageParam = 1 }) => await fetchPostList(pageParam),
 		{
 			getNextPageParam: lastPage =>
 				!lastPage.isLast ? lastPage.nextPage : undefined,
 		},
-	);	
+	);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
@@ -66,41 +65,60 @@ const MyBoard = () => {
 	if (status === "loading")
 		return (
 			<Box variant="spinner-wrap">
-			<Flex jc="center" ai="center">
-				<Image src={spinner} alt="로딩중" variant="spinner" />
-			</Flex>
-		</Box>
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
 		);
-	if (status === "error") return (
-		<Box variant="spinner-wrap">
-					<Flex fd="column" jc="center" ai="center" gap="100px">
-						<Strong variant="warning">
-							에러입니다.😭 빠른 시일 내에 해결하겠습니다.
-						</Strong>
-						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-							돌아가기
-						</Button>
-					</Flex>
-				</Box>
-	);
-;
+	if (status === "error")
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">
+						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+					</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
 	return (
 		<Box>
-			<Board
-				data={data}
-				navigate={navigate}
-				onDeletePost={handelDeletePost}
-				onEditPost={handleEditPost}
-			/>
-			{isFetchingNextPage ? (
+			<Default>
+				<Board
+					data={data}
+					navigate={navigate}
+					onDeletePost={handelDeletePost}
+					onEditPost={handleEditPost}
+				/>
+				{isFetchingNextPage ? (
 					<Box variant="spinner-wrap">
-					<Flex jc="center" ai="center">
-						<Image src={spinner} alt="로딩중" variant="spinner" />
-					</Flex>
-				</Box>
-			) : (
-				<div ref={ref}></div>
-			)}
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				) : (
+					<div ref={ref}></div>
+				)}
+			</Default>
+			<Mobile>
+				<MblBoard
+					data={data}
+					navigate={navigate}
+					onDeletePost={handelDeletePost}
+					onEditPost={handleEditPost}
+				/>
+				{isFetchingNextPage ? (
+					<Box variant="spinner-wrap">
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				) : (
+					<div ref={ref}></div>
+				)}
+			</Mobile>
 		</Box>
 	);
 };

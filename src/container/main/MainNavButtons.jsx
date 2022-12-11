@@ -83,6 +83,7 @@ const MainNavButtons = () => {
 						<Button
 							variant="main-category"
 							onClick={() => {
+								// alert("서비스 준비중입니다!");
 								navigate(`/community`);
 							}}
 						>

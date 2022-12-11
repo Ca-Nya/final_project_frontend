@@ -40,11 +40,11 @@ const MblMypgHome = ({
 }) => {
 	return (
 		<Box size="container">
-			<Box size="position-relative" style={{border:"1px solid red"}}>
+			<Box size="position-relative">
 				<Box size="position-relative">
 					<Image size="l-background" src={myPageBackground} />
 				</Box>
-				<Box sixe="position-absolute" style={{border:"1px solid blue"}}>
+				<Box size="position-absolute">
 					<Margin margin="0 0 30px 0">
 						<Flex fd="column" ai="center" jc="center" gap="10px">
 							<Label htmlFor="imageChange" variant="profile">
@@ -53,7 +53,7 @@ const MblMypgHome = ({
 									alt={"프로필 이미지"}
 									size="s-r"
 									rank={localStorage.getItem("memberStatus")}
-								/>
+								/>								
 							</Label>
 							<Input
 								id="imageChange"
@@ -73,7 +73,7 @@ const MblMypgHome = ({
 								<Text size="l">{localStorage.getItem("memberStatus")} ☕️</Text>
 							</Flex>
 						</Flex>
-						<Margin margin="30px 0 30px 0">
+						<Margin margin="30px 0 0 0">
 							<Box size="xl-line"></Box>
 						</Margin>
 					</Margin>

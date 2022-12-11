@@ -7,7 +7,8 @@ import axios from "axios";
 import { Image, Box, Flex,Button,Strong } from "../../components";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
-import { ComuBoard } from "./comuBoard";
+import { Default, Mobile } from "../../assets/mediaQuery";
+import { ComuBoard,MblComuBoard } from "./comuBoard";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -38,8 +39,6 @@ const MyComuBoard = () => {
 				!lastPage.isLast ? lastPage.nextPage : undefined,
 		},
 	);
-
-	console.log("data.pages===>", data?.pages);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
@@ -90,10 +89,11 @@ const MyComuBoard = () => {
 					</Flex>
 				</Box>
 	);
-;
+
 
 	return (
 		<Box>
+			<Default>
 			<ComuBoard
 				data={data}
 				navigate={navigate}
@@ -109,6 +109,24 @@ const MyComuBoard = () => {
 			) : (
 				<div ref={ref}></div>
 			)}
+			</Default>
+			<Mobile>
+			<MblComuBoard
+				data={data}
+				navigate={navigate}
+				onDeleteComuPost={handleRemove}
+				onEditComuPost={handleEditComuPost}
+			/>
+			{isFetchingNextPage ? (
+				<Box variant="spinner-wrap">
+					<Flex jc="center" ai="center">
+						<Image src={spinner} alt="로딩중" variant="spinner" />
+					</Flex>
+				</Box>
+			) : (
+				<div ref={ref}></div>
+			)}
+			</Mobile>
 		</Box>
 	);
 };

@@ -12,22 +12,15 @@ import {
 	Margin,
 	Hidden,
 } from "../../components";
+import { WarningException } from "../../container/globalException";
 import { MainCanyaButtons } from "../../container/main";
 import { useNavigate } from "react-router-dom";
-import spinner from "../../assets/icons/spinner.gif";
 
 const MainCanyaPick = ({ picks, setCanyaPick, mainPosts }) => {
 	// React Router
 	const navigate = useNavigate();
 
-	if (!picks)
-		return (
-			<Box variant="spinner-wrap">
-				<Flex jc="center" ai="center">
-					<Image src={spinner} alt="로딩중" variant="spinner" />
-				</Flex>
-			</Box>
-		);
+	if (!picks) return <WarningException />;
 
 	return (
 		<Box>
@@ -91,8 +84,9 @@ const MainCanyaPick = ({ picks, setCanyaPick, mainPosts }) => {
 														<DataTerm>높은 점수를 받은 카테고리</DataTerm>
 													</Hidden>
 													<Flex gap="6px">
-														<DataDesc>#커피맛집</DataDesc>
-														<DataDesc>#디저트맛집</DataDesc>
+														{pick.highestRatings.map((item, idx) => {
+															return <DataDesc key={idx}>#{item}</DataDesc>;
+														})}
 													</Flex>
 												</Box>
 											</DataList>

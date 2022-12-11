@@ -1,6 +1,9 @@
 import { Box, Image, Flex, Strong, Button } from "../../components";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { resetToken } from "../../redux/modules/join/joinSlice";
 import axios from "axios";
 import spinner from "../../assets/icons/spinner.gif";
 import { Default, Mobile } from "../../assets/mediaQuery";
@@ -10,8 +13,15 @@ const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
+	//토큰 리셋 useEffect
+	useEffect(() => {
+		if (!authorization) {
+			dispatch(resetToken());
+		}
+	}, [dispatch, authorization]);
 	//내가좋아요한 게시물 get요청
 	const {
 		data: myContent,
@@ -26,18 +36,17 @@ const MyAll = () => {
 						authorization,
 					},
 				});
-				console.log("response =====>", response.data);
+				
 				return response.data;
 			} catch (error) {
-				console.log("error =>", error);
+				
 				return error;
 			}
 		},
 		suspense: true,
 	});
 
-	console.log("MyPage=>", myContent);
-	console.log("isError =>", isError, "isLoading =>", isLoading);
+	
 
 	const {
 		recentlyMyBoardList,
@@ -47,7 +56,44 @@ const MyAll = () => {
 		recentlyMyCommunityCommentList,
 	} = myContent;
 
-	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
+
+
+	const fetchPostId = async () => {
+		try {
+			const jwtToken = localStorage.getItem("Authorization");
+			const response = await axios.post(
+				`${BASE_URL}/auth/board/save`,
+				"fetchPostId",
+				{
+					headers: {
+						Authorization: jwtToken,
+						"Content-Type": "application/json",
+					},
+				},
+			);
+			
+			return response.data;
+		} catch (error) {
+			
+			throw error;
+		}
+	};
+	// 게시글 아이디 요청 Hook
+	const getPostId = useMutation(fetchPostId, {
+		onMutate: variables => {
+			console.log("onMutate =>", variables);
+		},
+		onSuccess: data => {
+			navigate(`/write/${data}`);
+		},
+		onError: (error, variables) => {
+			alert("게시글을 작성할 수 없습니다!");
+		},
+	});
+	// postId get요청
+	const handleGetPostId = () => {
+		getPostId.mutate();
+	};
 
 	if (isLoading)
 		return (
@@ -96,6 +142,9 @@ const MyAll = () => {
 					recentlyMyHeartBoardList={recentlyMyHeartBoardList}
 					recentlyMyCommunityList={recentlyMyCommunityList}
 					recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
+					handleGetPostId={handleGetPostId}
+					dispatch={dispatch}
+					resetToken={resetToken}
 					spinner={spinner}
 					navigate={navigate}
 				/>

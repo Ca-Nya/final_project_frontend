@@ -10,7 +10,7 @@ import {
 } from "../../components";
 import axios from "axios";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import { MblCommentPost } from "./comment";
+import { MblCommentPost,CommentPost } from "./comment";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -52,7 +52,6 @@ const ComuComment = () => {
 		e.preventDefault();
 		if (authorization) {
 			mutation.mutate({ communityCommentContent: ment });
-			console.log(mutation);
 			setMent("");
 		} else {
 			alert("로그인해 후 댓글입력해주세요.");
@@ -63,19 +62,13 @@ const ComuComment = () => {
 		<>
 			<Default>
 				<Margin margin="80px 0 0 0">
-					{nickname ? <p>{nickname}</p> : null}
-					<form onSubmit={onClickHandler}>
-						<input
-							name="communityCommentContent"
-							placeholder="댓글을 남겨주세요."
-							value={ment}
-							onChange={e => {
-								const comment = e.target.value;
-								setMent(comment);
-							}}
-						/>
-						<button>등록</button>
-					</form>
+					<CommentPost
+					 onClickHandler={onClickHandler}
+					 ment={ment}
+					 setMent={setMent}
+					 nickname={nickname}
+					 navigate={navigate}
+					/>					
 				</Margin>
 			</Default>
 			<Mobile>

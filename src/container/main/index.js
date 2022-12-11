@@ -9,6 +9,7 @@ import MainAllList from "./MainAllList";
 import MainSelectBox from "./MainSelectBox";
 import MainCarousel from "./MainCarousel";
 import MainFooter from "./MainFooter";
+import MainSearchList from "./MainSearchList";
 
 export {
 	MainList,
@@ -22,4 +23,5 @@ export {
 	MainSelectBox,
 	MainCarousel,
 	MainFooter,
+	MainSearchList,
 };

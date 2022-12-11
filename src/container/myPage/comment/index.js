@@ -1,3 +1,4 @@
 import Comment from "./Comment";
+import MblComment from "./MblComment";
 
-export default Comment;
+export {Comment,MblComment};
