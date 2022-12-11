@@ -34,7 +34,6 @@ const DetailPost = () => {
 		isLoading,
 		refetch: detailPostRefetch,
 	} = useFetchDetailPost(+id);
-	console.log("DetailPost data ===>", detailPostData);
 	// 별점을 담은 객체 배열화
 	const ratings = [];
 	for (let rate in detailPostData.rating) {
