@@ -80,11 +80,11 @@ const MyComuComment = () => {
 
 	return (
 		<Box>
-			<Margin margin="30px 3px 10px 3px">
+			{/* <Margin margin="30px 3px 10px 3px">
 				<Box variant="mypage-nav">
 					<Text variant="title">커뮤 댓글 📋</Text>
 				</Box>
-			</Margin>
+			</Margin> */}
 			{data.pages[0].page ? (
 				<Box>
 					{data?.pages?.map((page, idx) => (

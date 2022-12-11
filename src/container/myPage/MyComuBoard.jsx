@@ -7,6 +7,7 @@ import axios from "axios";
 import { Image, Box, Flex,Button,Strong } from "../../components";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import { ComuBoard } from "./comuBoard";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
@@ -94,6 +95,7 @@ const MyComuBoard = () => {
 
 	return (
 		<Box>
+			<Default>
 			<ComuBoard
 				data={data}
 				navigate={navigate}
@@ -109,6 +111,10 @@ const MyComuBoard = () => {
 			) : (
 				<div ref={ref}></div>
 			)}
+			</Default>
+			<Mobile>
+				
+			</Mobile>
 		</Box>
 	);
 };

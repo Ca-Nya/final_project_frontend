@@ -729,6 +729,21 @@ export const Box = styled.div`
 						right: 10px;
 						bottom: 5%;
 					`;
+				case "comu-container":
+					return css`
+						width: 100vw;
+						height: 17vh;
+						max-width: ${calcRem(1136)};
+						max-height: ${calcRem(198)};
+						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+					`;
+					case "comu-container-text":
+					return css`
+						width: 47.6vw;
+						height: 13.4vh;
+						max-width: ${calcRem(556)};
+						max-height: ${calcRem(156)};						
+					`;
 				default:
 					break;
 			}

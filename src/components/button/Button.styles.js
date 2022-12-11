@@ -48,10 +48,11 @@ export const Button = styled.button`
 						text-align: center;
 						letter-spacing: 1.3;
 						border-radius: 5px;
-            transition: all 300ms; 
+						transition: all 300ms;
 						&:hover {
 							background-color: ${({ theme }) => theme.colors.main_purple};
-            	color: ${({ theme }) => theme.colors.white};
+							color: ${({ theme }) => theme.colors.white};
+						}
 					`;
 				/* 로그인 / 회원가입 페이지 */
 				case "join":
@@ -320,6 +321,20 @@ export const Button = styled.button`
 							color: ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
+					/* 커뮤니티 페이지 */
+				case "post":
+					return css`
+						width: 71px;
+						height: 37px;
+						font-weight:500;
+						background-color:${({ theme }) => theme.colors.line};
+						font-size:${({ theme }) => theme.fontSizes.base};
+						border-radius: 5px;
+						&:hover {
+							cursor: pointer;
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
 				default:
 					break;
 			}
@@ -346,7 +361,7 @@ export const Button = styled.button`
 					font-size: ${({ theme }) => theme.fontSizes.medium};
 					padding: "12px auto";
 				`;
-					case "s-main":
+			case "s-main":
 				return css`
 					width: ${calcRem(58)};
 					height: ${calcRem(40)};
@@ -365,7 +380,7 @@ export const Button = styled.button`
 					color: ${({ theme }) => theme.colors.black};
 					padding: "12px auto";
 				`;
-				case "xs-trans":
+			case "xs-trans":
 				return css`
 					width: ${calcRem(46)};
 					height: ${calcRem(24)};

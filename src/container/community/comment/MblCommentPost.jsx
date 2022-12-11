@@ -30,6 +30,7 @@ const MblCommentPost = ({ onClickHandler, ment, setMent, nickname,navigate }) =>
 							size="m"						
 							name="communityCommentContent"
 							placeholder="댓글을 남겨주세요.(최대 120자)"
+							minLength={1}
 							maxLength={110}
 							value={ment}
 							onChange={e => {

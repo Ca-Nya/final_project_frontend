@@ -273,6 +273,36 @@ export const Text = styled.p`
 						font-weight: 400;
 						text-align: end;
 					`;
+					/* 커뮤니티 리스트 */
+				case "hit":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.white};
+						font-weight: 200;						
+					`;
+					case "comu-title":
+					return css`
+						width: 47.6vw;						
+						max-width: ${calcRem(556)};
+						font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						font-weight: 600;
+						text-align: center;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: normal;
+						line-height: 1.2;
+						max-height: 1.2;
+						word-wrap: break-word;
+						display: -webkit-box;
+						-webkit-line-clamp: 2;
+						-webkit-box-orient: vertical;
+						&:hover {
+							cursor: pointer;
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
 				default:
 					break;
 			}
@@ -324,9 +354,17 @@ export const Text = styled.p`
 						font-weight: 400;
 					}
 				`;
-				case "xl":
+			case "xl":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.xxl};
+					font-weight: 700;
+					> span {
+						font-weight: 400;
+					}
+				`;
+			case "lg":
+				return css`
+					font-size: ${({ theme }) => theme.fontSizes.lg};
 					font-weight: 700;
 					> span {
 						font-weight: 400;
@@ -360,22 +398,22 @@ export const Text = styled.p`
 					-webkit-line-clamp: 3;
 					-webkit-box-orient: vertical;
 				`;
-						case "s-level":
+			case "s-level":
 				return css`
 					font-size: ${({ theme }) => theme.fontSizes.base};
-						color: ${({ theme }) => theme.colors.white};
-						width: ${calcRem(50)};
-						height: ${calcRem(25)};					
-						border-radius: 50px;
-						text-align: center;
-						line-height: ${calcRem(25)};
-						${({ rank }) => {
+					color: ${({ theme }) => theme.colors.white};
+					width: ${calcRem(50)};
+					height: ${calcRem(25)};
+					border-radius: 50px;
+					text-align: center;
+					line-height: ${calcRem(25)};
+					${({ rank }) => {
 						switch (rank) {
 							case "venti":
 								return css`
 									background-color: ${({ theme }) => theme.colors.point};
 								`;
-								case "tall":
+							case "tall":
 								return css`
 									background-color: #f6cd3c;
 								`;
@@ -384,7 +422,7 @@ export const Text = styled.p`
 						}
 					}}
 				`;
-					
+
 			default:
 				break;
 		}

@@ -40,7 +40,7 @@ const MyComment = () => {
 		},
 	);
 
-	console.log("data.pages===>", data?.pages);
+	console.log("data.pages===>", data);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
@@ -72,7 +72,7 @@ const MyComment = () => {
 					<Text variant="title">작성 댓글 📋</Text>
 				</Box>
 			</Margin>
-			{data?.pages[0].page.length > 1 ? (
+			{data.pages[0].page > 0 ? (
 				<Box>
 					{data?.pages?.map((page, idx) => (
 						<React.Fragment key={idx}>
@@ -94,6 +94,12 @@ const MyComment = () => {
 					)}
 				</Box>
 			) : (
+				<>
+				<Margin margin="30px 3px 10px 3px">
+				<Box variant="mypage-nav">
+					<Text variant="title">작성 댓글 📋</Text>
+				</Box>
+			</Margin>
 				<Box variant="spinner-wrap">
 					<Flex fd="column" jc="center" ai="center" gap="100px">
 						<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
@@ -102,6 +108,7 @@ const MyComment = () => {
 						</Button>
 					</Flex>
 				</Box>
+				</>
 			)}
 		</Box>
 	);

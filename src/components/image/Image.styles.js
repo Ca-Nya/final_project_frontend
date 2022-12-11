@@ -109,8 +109,8 @@ export const Image = styled.img`
 					max-height: ${calcRem(266)};
 					border-radius: 5px;
 					&:hover {
-							cursor: pointer;
-						}
+						cursor: pointer;
+					}
 				`;
 			case "mypage-icon":
 				return css`
@@ -188,6 +188,33 @@ export const Image = styled.img`
 						filter: brightness(80%);
 					}
 				`;
+			/* 커뮤니티 리스트 페이지 */
+			case "comu-item":
+				return css`
+					width: 39.2vw;
+					height: 14.4vh;
+					max-width: ${calcRem(458)};
+					max-height: ${calcRem(168)};
+					border-radius: 5px;
+					object-fit: cover;
+					object-position: center;
+					&:hover {
+						cursor: pointer;
+					}
+				`;
+			case "comu-hit":
+				return css`
+					width: 1.4vw;
+					height: 1.4vh;
+					max-width: ${calcRem(16)};
+					max-height: ${calcRem(16)};
+					border-radius: 5px;
+					object-fit: cover;
+					object-position: center;
+					&:hover {
+						cursor: pointer;
+					}
+				`;
 
 			default:
 				break;
@@ -200,22 +227,22 @@ export const Image = styled.img`
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(312)};
-					border-radius: 5px;				
+					border-radius: 5px;
 				`;
-				case "xl-image":
+			case "xl-image":
 				return css`
 					width: ${calcRem(312)};
-					height: ${calcRem(312)};					
+					height: ${calcRem(312)};
 					/* display:block;
 					position: absolute;
 					z-index: 1;
 					outline: 0; */
 				`;
-				case "l-image":
+			case "l-image":
 				return css`
 					width: ${calcRem(312)};
-					height: ${calcRem(40)};					
-					display:block;
+					height: ${calcRem(40)};
+					display: block;
 					/* position: absolute;
 					z-index: 1;
 					outline: 0;  */
@@ -226,11 +253,11 @@ export const Image = styled.img`
 					height: ${calcRem(156)};
 					border-radius: 5px;
 				`;
-				case "l-background":
+			case "l-background":
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(156)};
-					position: relative;				
+					position: relative;
 				`;
 			case "m":
 				return css`
@@ -238,7 +265,7 @@ export const Image = styled.img`
 					height: ${calcRem(153)};
 					border-radius: 5px;
 				`;
-				case "m-logo":
+			case "m-logo":
 				return css`
 					width: 100%;
 					height: ${calcRem(50)};
@@ -262,7 +289,7 @@ export const Image = styled.img`
 								return css`
 									border: 3px solid ${({ theme }) => theme.colors.point};
 								`;
-								case "tall":
+							case "tall":
 								return css`
 									border: 3px solid #f6cd3c;
 								`;
