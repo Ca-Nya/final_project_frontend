@@ -56,11 +56,13 @@ const Review = ({
 			<Box variant="detail-info">
 				<Flex jc="flex-end" ai="center">
 					<Flex ai="center" gap="9px">
-						<Image
-							src={detailPostData.memberProfileImage}
-							alt="프로필 이미지"
-							variant="medium-profile"
-						/>
+						<Box variant="profile-image">
+							<Image
+								src={detailPostData.memberProfileImage}
+								alt="프로필 이미지"
+								variant="medium-profile"
+							/>
+						</Box>
 						<Flex fd="column" gap="3px">
 							<DataList variant="">
 								<Hidden>
