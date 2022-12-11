@@ -81,7 +81,7 @@ const ComuList = () => {
 	return (
 		<>
 			<Default>
-				<Margin margin="160px 0 0 0">
+				<Margin margin="160px 0 180px 0">
 					<Margin margin="170px 0 20px 0 ">
 						<Box variant="container">
 							<Box variant="overalls-nav">

@@ -5,7 +5,7 @@ import hit from "../../../assets/icons/hit.png";
 
 const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 	return (
-		<Box>
+		<Margin margin="0 0 180px 0">
 			{nickname ? (
 				<Box size="container">
 					<Margin margin="0 0 15px 0">
@@ -70,7 +70,7 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 					</Flex>
 				</Box>
 			)}
-		</Box>
+		</Margin>
 	);
 };
 
