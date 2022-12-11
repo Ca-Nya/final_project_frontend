@@ -11,12 +11,10 @@ const editProfileImage = profile => {
 };
 
 // 프로필 이미지 수정 Hook
-const useEditProfileImage = profile => {
-	console.log("profile =>", profile);
+const useEditProfileImage = profile => {	
 	return useMutation({
 		mutationFn: async profile => {
-			const response = await editProfileImage(profile);
-			console.log("useEditProfileImage response =>", response);
+			const response = await editProfileImage(profile);			
 			return response.data;
 		},
 		suspense: true,

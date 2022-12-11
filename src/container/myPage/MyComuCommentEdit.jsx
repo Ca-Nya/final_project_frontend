@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Box } from "../../components";
+import { Box, Margin, Text } from "../../components";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import {
 	QueryClient,
 	useMutation,
@@ -8,7 +9,7 @@ import {
 } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import ComuComment from "./comuComment/ComuComment";
+import { ComuComment, MblComuComment } from "./comuComment";
 
 const MyComuCommentEdit = ({ comment }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -45,9 +46,7 @@ const MyComuCommentEdit = ({ comment }) => {
 			onSuccess: ({ status, data }) => {
 				if (status === "200") {
 					console.log("data =>", data);
-					console.log("status =>", status);
-					// queryClient.invalidateQueries("getComments");
-					// alert(data);
+					console.log("status =>", status);					
 				}
 			},
 			onError: error => {
@@ -76,7 +75,7 @@ const MyComuCommentEdit = ({ comment }) => {
 
 	//댓글 수정하기 쿼리 요청(온클릭)
 	const handleEditComplete = e => {
-		console.log("editComuComment=>", editComment);
+		
 		if (editComment === "") {
 			alert("변경내용이 없습니다.");
 		} else {
@@ -87,7 +86,7 @@ const MyComuCommentEdit = ({ comment }) => {
 				},
 				{
 					onError: (error, variables, context) => {
-						console.log("error => ", error);
+						
 					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");
@@ -110,20 +109,36 @@ const MyComuCommentEdit = ({ comment }) => {
 			alert("취소합니다.");
 		}
 	};
-	console.log("myComucommenitem=>", comment);
-
+	
 	return (
-		<ComuComment
-			edit={edit}
-			setEdit={setEdit}
-			editComment={editComment}
-			navigate={navigate}
-			onDeleteComment={handleRemove}
-			onEditComment={handleEditComplete}
-			onhandleEdit={handleEdit}
-			ondelMutation={delMutation}
-			comment={comment}
-		/>
+		<>
+			<Default>			
+				<ComuComment
+					edit={edit}
+					setEdit={setEdit}
+					editComment={editComment}
+					navigate={navigate}
+					onDeleteComment={handleRemove}
+					onEditComment={handleEditComplete}
+					onhandleEdit={handleEdit}
+					ondelMutation={delMutation}
+					comment={comment}
+				/>
+			</Default>
+			<Mobile>
+				<MblComuComment
+					edit={edit}
+					setEdit={setEdit}
+					editComment={editComment}
+					navigate={navigate}
+					onDeleteComment={handleRemove}
+					onEditComment={handleEditComplete}
+					onhandleEdit={handleEdit}
+					ondelMutation={delMutation}
+					comment={comment}
+				/>
+			</Mobile>
+		</>
 	);
 };
 

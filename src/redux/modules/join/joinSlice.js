@@ -29,12 +29,10 @@ export const __requestSignUp = createAsyncThunk(
 	"join/requestSignUp",
 	async (payload, thunkAPI) => {
 		try {
-			console.log("payload =>", payload);
 			const response = await axios.post(`${BASE_URL}/member/register`, payload);
-			console.log("__requestSignUp response =>", response);
+
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
-			console.log("__requestSignUp error =>", error);
 			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
@@ -45,9 +43,8 @@ export const __requestSignIn = createAsyncThunk(
 	"join/requestSignIn",
 	async (payload, thunkAPI) => {
 		try {
-			console.log("payload =>", payload);
 			const response = await axios.post(`${BASE_URL}/member/login`, payload);
-			console.log("__requestSignIn response =>", response);
+
 			const {
 				status,
 				data: { msg },
@@ -56,7 +53,6 @@ export const __requestSignIn = createAsyncThunk(
 			const { aud, sub, memberStatus, profileImageUrl } =
 				jwt_decode(authorization);
 			const jwtDecode = jwt_decode(authorization);
-			console.log("jwtDecode =>", jwtDecode);
 
 			return thunkAPI.fulfillWithValue({
 				statusCode: status,
@@ -68,7 +64,6 @@ export const __requestSignIn = createAsyncThunk(
 				profileImageUrl,
 			});
 		} catch (error) {
-			console.log("__requestSignIn error =>", error);
 			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
@@ -78,20 +73,18 @@ export const __requestSignIn = createAsyncThunk(
 export const __isIdExist = createAsyncThunk(
 	"join/isIdExist",
 	async (payload, thunkAPI) => {
-		console.log("__isIdExist payload =>", payload);
 		try {
 			const memberName = payload;
 			const response = await axios.get(
 				`${BASE_URL}/member/name/check/${memberName}`,
 			);
-			console.log("__isIdExist response =>", response);
+
 			const data = {
 				statusCode: response.status,
 				isExist: response.data,
 			};
 			return thunkAPI.fulfillWithValue(data);
 		} catch (error) {
-			console.log("__isIdExist error =>", error);
 			const {
 				status,
 				data: { errorMessage },
@@ -105,20 +98,18 @@ export const __isIdExist = createAsyncThunk(
 export const __isNicknameExist = createAsyncThunk(
 	"join/isNicknameExist",
 	async (payload, thunkAPI) => {
-		console.log("__isIdExist payload =>", payload);
 		try {
 			const nickname = payload;
 			const response = await axios.get(
 				`${BASE_URL}/member/nickname/check/${nickname}`,
 			);
-			console.log("__isNicknameExist response =>", response);
+
 			const data = {
 				statusCode: response.status,
 				isExist: response.data,
 			};
 			return thunkAPI.fulfillWithValue(data);
 		} catch (error) {
-			console.log("__isNicknameExist error =>", error);
 			const {
 				status,
 				data: { errorMessage },
@@ -157,24 +148,19 @@ const joinSlice = createSlice({
 	extraReducers: {
 		//회원가입
 		[__requestSignUp.pending]: (state, _) => {
-			console.log("__requestSignUp.pending");
 			state.isLoading = true;
 		},
 		[__requestSignUp.fulfilled]: (state, action) => {
-			console.log("__requestSignUp.fulfilled =>", action.payload);
 			state.isLoading = false;
 		},
 		[__requestSignUp.rejected]: (state, action) => {
-			console.log("__requestSignUp.rejected =>", action.payload);
 			state.isLoading = false;
 		},
 		//로그인
 		[__requestSignIn.pending]: (state, _) => {
-			console.log("__requestSignIn.pending");
 			state.isLoading = true;
 		},
 		[__requestSignIn.fulfilled]: (state, action) => {
-			console.log("__requestSignIn.fulfilled =>", action.payload);
 			state.isLoading = false;
 			state.statusCode = action.payload.statusCode;
 			state.isLogin = true;
@@ -186,17 +172,14 @@ const joinSlice = createSlice({
 			localStorage.setItem("profileImageUrl", action.payload.profileImageUrl);
 		},
 		[__requestSignIn.rejected]: (state, action) => {
-			console.log("__requestSignIn.rejected =>", action.payload);
 			state.isLoading = false;
 			state.error = action.payload;
 		},
 		// 아이디 중복
 		[__isIdExist.pending]: (state, _) => {
-			console.log("__isIdExist.pending");
 			state.isLoading = true;
 		},
 		[__isIdExist.fulfilled]: (state, action) => {
-			console.log("__isIdExist.fulfilled =>", action.payload);
 			state.isLoading = false;
 			state.statusCode = action.payload.statusCode;
 			state.statusMessage = action.payload.msg;
@@ -204,7 +187,6 @@ const joinSlice = createSlice({
 			state.isExistId = false;
 		},
 		[__isIdExist.rejected]: (state, action) => {
-			console.log("__isIdExist.rejected =>", action.payload);
 			state.isLoading = false;
 			if (action.payload.statusCode === 400) {
 				state.isExistId = true;
@@ -212,11 +194,9 @@ const joinSlice = createSlice({
 		},
 		// 닉네임 중복
 		[__isNicknameExist.pending]: (state, _) => {
-			console.log("__isNicknameExist.pending");
 			state.isLoading = true;
 		},
 		[__isNicknameExist.fulfilled]: (state, action) => {
-			console.log("__isNicknameExist.fulfilled =>", action.payload);
 			state.isLoading = false;
 			state.statusCode = action.payload.statusCode;
 			state.statusMessage = action.payload.msg;
@@ -224,7 +204,6 @@ const joinSlice = createSlice({
 			state.isExistNickname = false;
 		},
 		[__isNicknameExist.rejected]: (state, action) => {
-			console.log("__isNicknameExist.rejected =>", action.payload);
 			state.isLoading = false;
 			if (action.payload.statusCode === 400) {
 				state.isExistNickname = true;

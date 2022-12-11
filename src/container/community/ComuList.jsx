@@ -11,6 +11,7 @@ import {
 	Flex,
 	Strong,
 	Button,
+	FirstHeading,
 } from "../../components";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import spinner from "../../assets/icons/spinner.gif";
@@ -51,8 +52,6 @@ const ComuList = () => {
 		},
 	);
 
-	console.log("data.pages===>", data?.pages);
-
 	useEffect(() => {
 		if (inView) fetchNextPage();
 	}, [inView]);
@@ -83,6 +82,18 @@ const ComuList = () => {
 		<>
 			<Default>
 				<Margin margin="160px 0 0 0">
+					<Margin margin="170px 0 20px 0 ">
+						<Box variant="container">
+							<Box variant="overalls-nav">
+								<Flex jc="space-between" ai="center">
+									<Margin margin="0 57px 0 0">
+										<FirstHeading variant="title">커뮤니티 👥</FirstHeading>
+									</Margin>
+								</Flex>
+							</Box>
+						</Box>
+					</Margin>
+
 					<BoardList
 						navigate={navigate}
 						data={data}
@@ -90,14 +101,14 @@ const ComuList = () => {
 						nickname={nickname}
 					/>
 					{isFetchingNextPage ? (
-					<Box variant="spinner-wrap">
-						<Flex jc="center" ai="center">
-							<Image src={spinner} alt="로딩중" variant="spinner" />
-						</Flex>
-					</Box>
-				) : (
-					<div ref={ref}></div>
-				)}
+						<Box variant="spinner-wrap">
+							<Flex jc="center" ai="center">
+								<Image src={spinner} alt="로딩중" variant="spinner" />
+							</Flex>
+						</Box>
+					) : (
+						<div ref={ref}></div>
+					)}
 				</Margin>
 			</Default>
 			<Mobile>

@@ -155,6 +155,18 @@ export const Input = styled.input`
 					}
 					padding: 6px 6px 6px 12px;
 				`;
+				case "xs":
+				return css`
+					width: ${calcRem(200)};
+					height: ${calcRem(20)};
+					border: 1px solid ${({ theme }) => theme.colors.line};
+					border-radius: 5px;
+					font-size: ${({ theme }) => theme.fontSizes.medium};
+					&:placeholder {
+						font-size: ${({ theme }) => theme.fontSizes.medium};
+					}
+					padding: 6px 6px 6px 12px;
+				`;
 			case "l-image":
 				return css`
 					width: ${calcRem(312)};

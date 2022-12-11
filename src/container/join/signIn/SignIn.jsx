@@ -14,20 +14,12 @@ import {
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-const SignIn = ({
-	dispatch,
-	navigate,
-	onhandleSubmit,
-	register,
-	errors,
-}) => {
-
+const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
 	return (
 		<Box variant="join">
 			<Form
 				variant="join"
 				onSubmit={onhandleSubmit(value => {
-					console.log("value =>", value);
 					const { memberName, password } = value;
 					dispatch(__requestSignIn({ memberName, password }));
 				})}
@@ -63,6 +55,7 @@ const SignIn = ({
 						<Text variant="join-id">비밀번호</Text>
 						<Margin margin="2% 0 0 0">
 							<Input
+								type="password"
 								variant="join"
 								placeholder="비밀번호를 입력해주세요."
 								{...register("password", {

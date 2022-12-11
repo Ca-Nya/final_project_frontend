@@ -96,10 +96,23 @@ export const Image = styled.img`
 					height: ${calcRem(128)};
 					/* max-width: ${calcRem(128)};
 					max-height: ${calcRem(128)}; */
-					border-radius: 50%;
-					border: 5px solid #f6cd3c;
+					border-radius: 50%;					
 					object-fit: cover;
 					object-position: center;
+					${({ rank }) => {
+						switch (rank) {
+							case "venti":
+								return css`
+									border: 5px solid ${({ theme }) => theme.colors.point};
+								`;
+							case "tall":
+								return css`
+									border: 5px solid #f6cd3c;
+								`;
+							default:
+								break;
+						}
+					}}
 				`;
 			case "mypage-post":
 				return css`
@@ -200,6 +213,7 @@ export const Image = styled.img`
 					object-position: center;
 					&:hover {
 						cursor: pointer;
+						filter: brightness(80%);
 					}
 				`;
 			case "comu-hit":
@@ -214,6 +228,27 @@ export const Image = styled.img`
 					&:hover {
 						cursor: pointer;
 					}
+				`;
+			case "comu-hit-l":
+				return css`
+					width: 3.4vw;
+					height: 3.4vh;
+					max-width: ${calcRem(40)};
+					max-height: ${calcRem(40)};
+					object-fit: cover;
+					object-position: center;
+					svg > {
+						fill: ${({ theme }) => theme.colors.gray};
+					}
+				`;
+				case "comu-image":
+				return css`
+					width: 68.5vw;
+						height: 68.5vh;
+						max-width: ${calcRem(800)};
+						max-height: ${calcRem(800)};
+					object-fit: cover;
+					object-position: center;					
 				`;
 
 			default:
@@ -314,6 +349,10 @@ export const Image = styled.img`
 							case "venti":
 								return css`
 									border: 2px solid ${({ theme }) => theme.colors.point};
+								`;
+								case "tall":
+								return css`
+									border: 3px solid #f6cd3c;
 								`;
 							default:
 								break;

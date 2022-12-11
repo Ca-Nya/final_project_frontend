@@ -14,7 +14,8 @@ const ComuEdit = () => {
 
 	//이미지 수정 여부 스테이트
 	const [editImgSrc, setEditImgSrc] = useState(false);
-
+	//로컬스토리지 닉네임가져오기
+	const nickname = localStorage.getItem("Nickname");
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 	//queryClient 선언하기
@@ -31,10 +32,8 @@ const ComuEdit = () => {
 		queryFn: async () => {
 			try {
 				const response = await axios.get(`${BASE_URL}/community/${id}`);
-				console.log("response =====>", response.data);
 				return response.data;
-			} catch (error) {
-				console.log("error =>", error);
+			} catch (error) {				
 				return error;
 			}
 		},
@@ -123,7 +122,7 @@ const ComuEdit = () => {
 		}
 		let entries = formData.entries();
 		for (const pair of entries) {
-			console.log(pair[0] + ", " + pair[1]);
+			// console.log(pair[0] + ", " + pair[1]);
 		}
 		setEdit(false);
 	};
@@ -163,6 +162,7 @@ const ComuEdit = () => {
 						detailComuData={detailComuData}
 						onClickHandler={onClickHandler}
 						imageSrc={imageSrc}
+						nickname={nickname}
 					/>
 				</Margin>
 			</Default>

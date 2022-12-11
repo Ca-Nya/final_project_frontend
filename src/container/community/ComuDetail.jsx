@@ -1,12 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { Box, Image, Flex,Button,Strong } from "../../components";
+import { Box, Image, Flex, Button, Strong, Margin } from "../../components";
 import { Detail, MblDetail } from "./detail";
 import Spinner from "../../assets/icons/spinner.gif";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import ComuComment from "./ComuComment";
 import ComuCommentList from "./ComuCommentList";
+import TopButton from "../../components/topButton/TopButton";
 
 const ComuDetail = () => {
 	const { id } = useParams();
@@ -22,18 +23,13 @@ const ComuDetail = () => {
 		queryFn: async () => {
 			try {
 				const response = await axios.get(`${BASE_URL}/community/${id}`);
-				console.log("response =====>", response.data);
 				return response.data;
 			} catch (error) {
-				console.log("error =>", error);
 				return error;
 			}
 		},
 		suspense: true,
 	});
-
-	console.log("communityDetail=>", data);
-	console.log("isError =>", isError, "isLoading =>", isLoading);
 
 	//queryClient 선언하기
 	const queryClient = useQueryClient();
@@ -74,18 +70,19 @@ const ComuDetail = () => {
 				</Flex>
 			</Box>
 		);
-	if (isError) return  (
-		<Box variant="spinner-wrap">
-			<Flex fd="column" jc="center" ai="center" gap="100px">
-				<Strong variant="warning">
-					에러입니다.😭 빠른 시일 내에 해결하겠습니다.
-				</Strong>
-				<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-					돌아가기
-				</Button>
-			</Flex>
-		</Box>
-	);
+	if (isError)
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">
+						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+					</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
 
 	return (
 		<>
@@ -98,8 +95,12 @@ const ComuDetail = () => {
 					onhandleRemove={handleRemove}
 					id={id}
 				/>
-				<ComuCommentList />
-				<ComuComment />
+				<Margin margin="30px 0 170px 0">
+					<Box variant="comment-wrap">
+						<ComuCommentList />
+						<ComuComment />
+					</Box>
+				</Margin>
 			</Default>
 			<Mobile>
 				<MblDetail
@@ -112,6 +113,7 @@ const ComuDetail = () => {
 				/>
 				<ComuCommentList />
 				<ComuComment />
+				<TopButton />
 			</Mobile>
 		</>
 	);

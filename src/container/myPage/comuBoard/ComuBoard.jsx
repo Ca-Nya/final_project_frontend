@@ -8,7 +8,7 @@ const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 			<Box>
 				<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
 					<Box variant="mypage-nav">
-						<Text variant="title">커뮤니티 🌈</Text>
+						<Text variant="title">커뮤니티 👥</Text>
 					</Box>
 				</Margin>
 				{data.pages[0].page ? (
