@@ -321,15 +321,45 @@ export const Button = styled.button`
 							color: ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
-					/* 커뮤니티 페이지 */
+				/* 커뮤니티 페이지 */
 				case "post":
 					return css`
 						width: 71px;
 						height: 37px;
-						font-weight:500;
-						background-color:${({ theme }) => theme.colors.line};
-						font-size:${({ theme }) => theme.fontSizes.base};
+						font-weight: 500;
+						background-color: ${({ theme }) => theme.colors.line};
+						font-size: ${({ theme }) => theme.fontSizes.base};
 						border-radius: 5px;
+						&:hover {
+							cursor: pointer;
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
+				case "chat":
+					return css`
+						width: 68.5vw;
+						height: 7.7vh;
+						max-width: ${calcRem(800)};
+						max-height: ${calcRem(90)};
+						font-weight: 700;
+						background-color: ${({ theme }) => theme.colors.main};
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+						border-radius: 5px;
+						padding: 2.5vh auto;
+						&:hover {
+							cursor: pointer;
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
+					`;
+				case "comu-add":
+					return css`
+						width: 100%;
+						height: ${calcRem(55)};
+						font-weight: 700;
+						background-color: ${({ theme }) => theme.colors.main};
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+						border-radius: 5px;
+						padding: 2.5vh auto;
 						&:hover {
 							cursor: pointer;
 							color: ${({ theme }) => theme.colors.main_purple};

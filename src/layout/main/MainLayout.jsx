@@ -39,7 +39,7 @@ const MainLayout = () => {
 
 	// observe
 	const { ref, inView } = useInView();
-	console.log("inView =>", inView);
+	
 	// observe시 다음 게시글 요청 Effect
 	useEffect(() => {
 		if (inView) fetchNextPage();

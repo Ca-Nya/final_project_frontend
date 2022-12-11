@@ -16,12 +16,12 @@ const MyAll = () => {
 	const dispatch = useDispatch();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
-		//토큰 리셋 useEffect
-		useEffect(() => {
-			if (!authorization) {
-				dispatch(resetToken());
-			}
-		}, [dispatch, authorization]);
+	//토큰 리셋 useEffect
+	useEffect(() => {
+		if (!authorization) {
+			dispatch(resetToken());
+		}
+	}, [dispatch, authorization]);
 	//내가좋아요한 게시물 get요청
 	const {
 		data: myContent,
@@ -36,18 +36,17 @@ const MyAll = () => {
 						authorization,
 					},
 				});
-				console.log("response =====>", response.data);
+				
 				return response.data;
 			} catch (error) {
-				console.log("error =>", error);
+				
 				return error;
 			}
 		},
 		suspense: true,
 	});
 
-	console.log("MyPage=>", myContent);
-	console.log("isError =>", isError, "isLoading =>", isLoading);
+	
 
 	const {
 		recentlyMyBoardList,
@@ -57,7 +56,7 @@ const MyAll = () => {
 		recentlyMyCommunityCommentList,
 	} = myContent;
 
-	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
+
 
 	const fetchPostId = async () => {
 		try {
@@ -72,10 +71,10 @@ const MyAll = () => {
 					},
 				},
 			);
-			console.log("response =>", response);
+			
 			return response.data;
 		} catch (error) {
-			console.log("error =>", error);
+			
 			throw error;
 		}
 	};
@@ -85,11 +84,9 @@ const MyAll = () => {
 			console.log("onMutate =>", variables);
 		},
 		onSuccess: data => {
-			console.log("onSuccess =>", "data =>", data);
 			navigate(`/write/${data}`);
 		},
 		onError: (error, variables) => {
-			console.log("onError =>", error, "variables =>", variables);
 			alert("게시글을 작성할 수 없습니다!");
 		},
 	});

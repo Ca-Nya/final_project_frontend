@@ -43,19 +43,17 @@ const MyPage = () => {
 						authorization,
 					},
 				});
-				console.log("response =====>", response.data);
+				
 				return response.data;
 			} catch (error) {
-				console.log("error =>", error);
+				
 				return error;
 			}
 		},
 		suspense: true,
 	});
 
-	console.log("MyPage=>", myContent);
-	console.log("isError =>", isError, "isLoading =>", isLoading);
-
+	
 	const {
 		recentlyMyBoardList,
 		recentlyMyCommentList,
@@ -70,7 +68,7 @@ const MyPage = () => {
 		memberCommunityCommentCount,
 	} = myContent;
 
-	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
+	
 
 	// 프로필 수정 Hook
 	const { mutate: editProfileImageMutate } = useEditProfileImage();
@@ -85,11 +83,11 @@ const MyPage = () => {
 		formData.append("image", e.target.files[0]);
 		editProfileImageMutate(formData, {
 			onSuccess: (data, variables, context) => {
-				console.log("data =====>", data);
+				
 				refetch();
 			},
 			onError: (error, variables, context) => {
-				console.log("error ====>", error);
+				
 				alert("수정을 실패했습니다");
 			},
 		});

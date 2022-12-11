@@ -6,39 +6,24 @@ const BoardListItem = ({ item, navigate }) => {
 		<Margin margin="12px auto">
 			<Box variant="comu-container" key={item.communityId}>
 				<Flex>
-					<Box>
-						<Flex style={{ position: "relative" }}>
-							<Image
-								variant="comu-item"
-								src={item.communityImage}
-								alt={item.communityTitle}
-							/>
-							<Flex
-								gap="2px"
-								style={{
-									position: "absolute",
-									top: "6px",
-									right: "10px",
-								}}
-								jc="flex-end"
-							>
-								<Image variant="comu-hit" src={hit} alt={"조회수"} />
-								<Text variant="hit">{item.communityHitCount}</Text>
-							</Flex>
-						</Flex>
-					</Box>
-					<Flex jc="space-between">
-						<Box
-							size="container-m"
-							style={{
-								display: "flex",
-								flexDirection: "column",
-								justifyContent: "space-between",
+					<Box variant="relative">
+						<Image
+							variant="comu-item"
+							src={item.communityImage}
+							alt={item.communityTitle}
+							onClick={() => {
+								navigate(`/community/${item.communityId}`);
 							}}
-						>
+						/>
+						<Box variant="hit-position">
+							<Image variant="comu-hit" src={hit} alt={"조회수"} />
+							<Text variant="hit">{item.communityHitCount}</Text>
+						</Box>
+					</Box>
+					<Margin margin="0 0 0 2.1vw">
+						<Box variant="comu-container-text">
 							<Text
-								size="m"
-								style={{ fontWeight: "700" }}
+								variant="comu-title"
 								onClick={() => {
 									navigate(`/community/${item.communityId}`);
 								}}
@@ -47,7 +32,7 @@ const BoardListItem = ({ item, navigate }) => {
 							</Text>
 							<Margin margin="6px 0 13px 0">
 								<Text
-									size="s-board"
+									variant="comu-content"
 									onClick={() => {
 										navigate(`/community/${item.communityId}`);
 									}}
@@ -57,15 +42,15 @@ const BoardListItem = ({ item, navigate }) => {
 							</Margin>
 							<Margin margin="6px 0 0 0">
 								<Flex gap="2px" jc="space-between">
-									<Text size="s">
+									<Text variant="comu-nickname">
 										<span>by </span>
 										{item.memberNickname}
 									</Text>
-									<Text size="s">{item.createdAt}</Text>
+									<Text variant="comu-nickname">{item.createdAt}</Text>
 								</Flex>
 							</Margin>
 						</Box>
-					</Flex>
+					</Margin>
 				</Flex>
 			</Box>
 		</Margin>

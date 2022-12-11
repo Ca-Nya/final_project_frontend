@@ -6,6 +6,13 @@ const BoardList = ({ navigate, data, authorization, nickname }) => {
 	console.log("BoardList==>", data);
 	return (
 		<Box variant="container">
+			
+
+
+
+
+
+			
 			<Flex jc="flex-end">
 				{nickname ? (
 					<Button

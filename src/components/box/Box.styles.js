@@ -731,18 +731,61 @@ export const Box = styled.div`
 					`;
 				case "comu-container":
 					return css`
-						width: 100vw;
 						height: 17vh;
 						max-width: ${calcRem(1136)};
 						max-height: ${calcRem(198)};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 					`;
-					case "comu-container-text":
+				case "comu-container-text":
 					return css`
 						width: 47.6vw;
 						height: 13.4vh;
 						max-width: ${calcRem(556)};
-						max-height: ${calcRem(156)};						
+						max-height: ${calcRem(156)};
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						&:hover {
+							cursor: pointer;
+						}
+					`;
+				case "relative":
+					return css`
+						position: relative;
+					`;
+				case "absolute":
+					return css`
+						position: absolute;
+						z-index: 1;
+					`;
+				case "hit-position":
+					return css`
+						width: ${calcRem(47)};
+						height: ${calcRem(22)};						
+						position: absolute;
+						top: 6px;
+						right: 10px;
+						display: flex;
+						flex-direction: row;
+						justify-content: flex-end;
+						gap: 2px;
+						z-index: 2;
+					`;
+					case "comu-add":
+					return css`
+						width: 100%;
+						height: ${calcRem(55)};
+						font-weight: 700;
+						text-align: center;
+						line-height: ${calcRem(55)};
+						background-color: ${({ theme }) => theme.colors.main};
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+						border-radius: 5px;
+						padding: 2.5vh auto;
+						&:hover {
+							cursor: pointer;
+							color: ${({ theme }) => theme.colors.main_purple};
+						}
 					`;
 				default:
 					break;
@@ -758,7 +801,7 @@ export const Box = styled.div`
 					height: 100%;
 					margin: 0 auto;
 					padding: 0 24px 0 24px;
-					background-color: gray;
+					/* background-color: gray; */
 				`;
 			case "container-m":
 				return css`
@@ -771,6 +814,12 @@ export const Box = styled.div`
 					width: ${calcRem(312)};
 					height: ${calcRem(111)};
 				`;
+				case "container-comment":
+				return css`
+					width: ${calcRem(312)};
+					height: ${calcRem(69)};
+					border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+				`;
 			case "nav":
 				return css`
 					width: ${calcRem(360)};
@@ -781,13 +830,13 @@ export const Box = styled.div`
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(30)};
-					background-color: aliceblue;
+					/* background-color: aliceblue; */
 				`;
 			case "xl":
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(312)};
-					background-color: aliceblue;
+					/* background-color: aliceblue; */
 					border-radius: 5px;
 				`;
 			case "xl-line":
@@ -842,13 +891,16 @@ export const Box = styled.div`
 			case "position-absolute":
 				return css`
 					position: absolute;
+					height: 50%;
+					width:100%
+					
 					z-index: 2;
-					top: 0;
+					top: 100px;
 				`;
 			case "position-relative":
 				return css`
 					width: ${calcRem(312)};
-					/* height: ${calcRem(156)}; */
+					height: ${calcRem(300)};
 					position: relative;
 				`;
 

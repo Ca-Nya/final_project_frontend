@@ -23,8 +23,7 @@ const fetchPostList = async pageParam => {
 			},
 		},
 	);
-	const { myPageList: page, isLast } = data;
-	console.log("MyBoarddata==>", data);
+	const { myPageList: page, isLast } = data;	
 	return { page, nextPage: pageParam + 1, isLast };
 };
 

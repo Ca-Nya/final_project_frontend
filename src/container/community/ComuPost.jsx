@@ -71,6 +71,9 @@ const ComuPost = () => {
 	//게시글 등록하기 쿼리요청
 	const onClickHandler = e => {
 		e.preventDefault();
+		if (input.communityTitle.trim()===""||input.communityContent.trim()===""){
+			return alert("내용을 입력해주세요.")
+		}
 		if (authorization) {
 			const formData = new FormData();
 			formData.append("data", JSON.stringify(input));
@@ -80,7 +83,7 @@ const ComuPost = () => {
 			mutation.mutate(formData);
 			let entries = formData.entries();
 			for (const pair of entries) {
-				console.log(pair[0] + ", " + pair[1]);
+				// console.log(pair[0] + ", " + pair[1]);
 			}
 		} else {
 			alert("로그인 후 게시물을 등록해주세요.");
