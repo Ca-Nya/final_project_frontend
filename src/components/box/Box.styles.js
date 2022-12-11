@@ -38,6 +38,12 @@ export const Box = styled.div`
 						height: 100vh;
 						background-color: ${({ theme }) => theme.colors.white};
 					`;
+				case "profile-image":
+					return css`
+						width: 100px
+						height: 100px;
+						background-color: ${({ theme }) => theme.colors.main};
+					`;
 				/* 상세 페이지 */
 				case "detail-rating-box":
 					return css`
@@ -587,7 +593,6 @@ export const Box = styled.div`
 						padding: 23px 0;
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 					`;
-
 				case "detail-content":
 					return css`
 						padding: 50px 0 60px 0;
@@ -760,7 +765,7 @@ export const Box = styled.div`
 				case "hit-position":
 					return css`
 						width: ${calcRem(47)};
-						height: ${calcRem(22)};						
+						height: ${calcRem(22)};
 						position: absolute;
 						top: 6px;
 						right: 10px;
@@ -770,7 +775,7 @@ export const Box = styled.div`
 						gap: 2px;
 						z-index: 2;
 					`;
-					case "comu-add":
+				case "comu-add":
 					return css`
 						width: 100%;
 						height: ${calcRem(55)};
@@ -813,7 +818,7 @@ export const Box = styled.div`
 					width: ${calcRem(312)};
 					height: ${calcRem(111)};
 				`;
-				case "container-comment":
+			case "container-comment":
 				return css`
 					width: ${calcRem(312)};
 					height: ${calcRem(69)};

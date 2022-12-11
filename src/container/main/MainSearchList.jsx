@@ -54,11 +54,13 @@ const MainSearchList = ({ data, setResetMain }) => {
 																<Box variant="list-user-info-wrap">
 																	<Flex ai="center">
 																		<Flex ai="center" gap="7px">
-																			<Image
-																				src={item.memberProfileImage}
-																				alt="프로필 이미지"
-																				variant="small-profile"
-																			/>
+																			<Box variant="profile-image">
+																				<Image
+																					src={item.memberProfileImage}
+																					alt="프로필 이미지"
+																					variant="small-profile"
+																				/>
+																			</Box>
 																			<DataList>
 																				<Hidden>
 																					<DataTerm>닉네임</DataTerm>
