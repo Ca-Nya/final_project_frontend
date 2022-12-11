@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
-import { Box, Button } from "../../components";
+import {
+	Box,
+	Button,
+	Margin,
+	Flex,
+	DataList,
+	DataTerm,
+	DataDesc,
+} from "../../components";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
@@ -7,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
-const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
+const DetailLike = ({ isLike, boardId, detailPostRefetch, detailPostData }) => {
 	console.log("isLike ================>", isLike);
 	const navigate = useNavigate();
 
@@ -76,12 +84,10 @@ const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
 	};
 
 	return (
-		<Box>
-			<Box variant="detail-heart">
-				<Button onClick={handleLike}>
-					<FaHeart className={isLike ? "liked" : ""} size="33" />
-				</Button>
-			</Box>
+		<Box variant="detail-heart">
+			<Button onClick={handleLike}>
+				<FaHeart className={isLike ? "liked" : ""} size="33" />
+			</Button>
 		</Box>
 	);
 };
