@@ -77,8 +77,7 @@ const CommentEdit = ({ item }) => {
 	};
 
 	//댓글 수정하기 쿼리 요청(온클릭)
-	const handleEditComplete = e => {
-		console.log("editComment=>", editComment);
+	const handleEditComplete = e => {		
 		if (editComment === "") {
 			alert("댓글을 수정해주세요!");
 		} else {

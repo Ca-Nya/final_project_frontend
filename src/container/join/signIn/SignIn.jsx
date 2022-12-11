@@ -15,7 +15,6 @@ const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
 			<Form
 				variant="join"
 				onSubmit={onhandleSubmit(value => {
-					console.log("value =>", value);
 					const { memberName, password } = value;
 					dispatch(__requestSignIn({ memberName, password }));
 				})}

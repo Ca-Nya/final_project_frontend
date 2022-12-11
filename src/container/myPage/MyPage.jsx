@@ -9,6 +9,7 @@ import axios from "axios";
 import { MypgHome, MblMypgHome } from "./mypgHome";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { editProfileImage } from "../../redux/modules/join/joinSlice";
+import TopButton from "../../components/topButton/TopButton";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 
@@ -46,18 +47,14 @@ const MyPage = () => {
 						authorization,
 					},
 				});
-				console.log("response =====>", response.data);
+
 				return response.data;
 			} catch (error) {
-				console.log("error =>", error);
 				return error;
 			}
 		},
 		suspense: true,
 	});
-
-	console.log("MyPage=>", myContent);
-	console.log("isError =>", isError, "isLoading =>", isLoading);
 
 	const {
 		recentlyMyBoardList,
@@ -72,8 +69,6 @@ const MyPage = () => {
 		memberCommunityCount,
 		memberCommunityCommentCount,
 	} = myContent;
-
-	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
 
 	useEffect(() => {
 		dispatch(editProfileImage(memberProfileImage));
@@ -92,7 +87,6 @@ const MyPage = () => {
 		formData.append("image", e.target.files[0]);
 		editProfileImageMutate(formData, {
 			onSuccess: (data, variables, context) => {
-				console.log("data =====>", data);
 				refetch();
 			},
 			onError: (error, variables, context) => {
@@ -199,6 +193,7 @@ const MyPage = () => {
 					memberCommunityCount={memberCommunityCount}
 					memberCommunityCommentCount={memberCommunityCommentCount}
 				/>
+				<TopButton />
 			</Mobile>
 		</>
 	);

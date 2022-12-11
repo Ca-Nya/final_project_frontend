@@ -1,3 +1,4 @@
 import ComuComment from "./ComuComment";
+import MblComuComment from "./MblComuComment"; 
 
-export default ComuComment;
+export {ComuComment,MblComuComment};

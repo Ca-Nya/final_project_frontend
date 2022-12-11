@@ -16,7 +16,6 @@ const useFetchPosts = () => {
 		queryKey: ["posts"],
 		queryFn: async () => {
 			const response = await fetchPosts();
-			console.log("useFetchPosts response => ", response);
 			return response.data;
 		},
 	});

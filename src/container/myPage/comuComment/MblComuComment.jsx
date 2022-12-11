@@ -7,10 +7,8 @@ import {
 	Margin,
 	Flex,
 } from "../../../components";
-import Edit from "../../../assets/icons/edit.png";
-import Delete from "../../../assets/icons/delete.png";
 
-const ComuComment = ({
+const MblComuComment = ({
 	edit,
 	setEdit,
 	editComment,
@@ -24,36 +22,31 @@ const ComuComment = ({
 	return (
 		<Box>
 			{edit ? (
-				<Box>
-					<Margin margin="30px 3px 10px 3px">
-						<Box variant="mypage-nav">
-							<Text variant="title">커뮤 댓글 📋</Text>
-						</Box>
-					</Margin>
+				<Box size="container-comment">
 					<Margin margin="0 0 10px 0">
-						<Box variant="comment-box">
+						<Box>
 							<Margin margin="17px 22px 0 22px">
-								<Box variant="guide">
+								<Box>
 									<Flex jc="space-between">
 										<Input
-											variant="comment-edit"
+											size="xs"
 											type="text"
 											name="commentContent"
 											defaultValue={comment?.communityCommentContent}
 											required={comment?.communityCommentContent}
 											onChange={onhandleEdit}
 										/>
-										<Text variant="comment-date">
+										<Text size="s">
 											{comment?.communityCommentCreatedAt}
 										</Text>
 									</Flex>
 								</Box>
 							</Margin>
 							<Margin margin="10px 20px 0 22px">
-								<Box variant="board-minibutton">
+								<Box>
 									<Flex gap="10px" jc="space-between">
 										<Text
-											variant="comment-title"
+											size="m"
 											onClick={() => {
 												navigate(`/community/${comment?.communityId}`);
 											}}
@@ -61,10 +54,9 @@ const ComuComment = ({
 											{comment?.communityTitle}
 										</Text>
 										<Box>
-											<Button variant="mypage" onClick={onEditComment}>
+											<Text size="m"  onClick={onEditComment}>
 												완료
-												<Image variant="profile-edit" src={Edit} />
-											</Button>
+											</Text>
 										</Box>
 									</Flex>
 								</Box>
@@ -75,24 +67,24 @@ const ComuComment = ({
 			) : (
 				<Box>
 					<Margin margin="0 0 10px 0">
-						<Box variant="comment-box">
-							<Margin margin="17px 22px 0 22px">
+						<Box size="container-comment">
+							<Margin margin="17px auto">
 								<Box variant="guide">
 									<Flex jc="space-between">
-										<Text variant="comment">
+										<Text size="l">
 											{comment?.communityCommentContent}
 										</Text>
-										<Text variant="comment-date">
+										<Text size="s">
 											{comment?.communityCommentCreatedAt}
 										</Text>
 									</Flex>
 								</Box>
 							</Margin>
-							<Margin margin="10px 20px 0 22px">
-								<Box variant="board-minibutton">
+							<Margin margin="10px auto">
+								<Box>
 									<Flex gap="10px" jc="space-between">
 										<Text
-											variant="comment-title"
+											size="m"
 											onClick={() => {
 												navigate(`/community/${comment?.communityId}`);
 											}}
@@ -100,19 +92,19 @@ const ComuComment = ({
 											{comment?.communityTitle}
 										</Text>
 										<Box>
-											<Button
-												variant="mypage"
+                                            <Flex gap="6px">
+											<Text
+												size="m"
 												onClick={() => {
 													setEdit(!edit);
 												}}
 											>
 												수정
-												<Image variant="profile-edit" src={Edit} />
-											</Button>
-											<Button variant="mypage" onClick={onDeleteComment}>
+											</Text>
+											<Text size="m" onClick={onDeleteComment}>
 												삭제
-												<Image variant="profile-edit" src={Delete} />
-											</Button>
+											</Text>
+                                            </Flex>
 										</Box>
 									</Flex>
 								</Box>
@@ -125,4 +117,4 @@ const ComuComment = ({
 	);
 };
 
-export default ComuComment;
+export default MblComuComment;

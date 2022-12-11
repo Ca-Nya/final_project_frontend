@@ -53,7 +53,7 @@ const LikeItem = ({ like, data, navigate, isFetchingNextPage }) => {
 						</Flex>
 					</Box>
 				</Margin>
-			</Box>			
+			</Box>
 		</Box>
 	);
 };

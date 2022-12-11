@@ -11,7 +11,7 @@ import {
 import { LikeItem } from "../like";
 
 const Like = ({ data, navigate }) => {
-	console.log("pages=====>", data.pages);
+	
 	return (
 		<Box>
 			<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
@@ -19,7 +19,7 @@ const Like = ({ data, navigate }) => {
 					<Text variant="title">좋아요 한 글 ❣️ </Text>
 				</Box>
 			</Margin>
-			{data.pages[0].page ? (
+			{data.pages[0].page.length ? (
 				<>
 					{data?.pages.map((page, idx) => (
 						<React.Fragment key={idx}>

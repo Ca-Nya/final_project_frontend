@@ -27,7 +27,6 @@ const MblSignIn = ({
 		<Box size="container">
 			<Form
 				onSubmit={onhandleSubmit(value => {
-					console.log("value =>", value);
 					const { memberName, password } = value;
 					dispatch(__requestSignIn({ memberName, password }));
 				})}
@@ -61,6 +60,7 @@ const MblSignIn = ({
 					<Margin margin="6px auto">
 						<Input
 							size="l"
+							type="password"
 							placeholder="비밀번호를 입력해주세요."
 							{...register("password", {
 								required: true,

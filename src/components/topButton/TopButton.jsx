@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Image, Margin, Text } from "../../components";
+import topArrow from "../../assets/icons/top_arrow.svg"
 
 const TopButton = () => {
 	const [showButton, setShowButton] = useState(false);
@@ -26,11 +27,11 @@ const TopButton = () => {
 		<Box size="top-button">
 			{showButton ? (
 				<button onClick={scrollToTop} style={{ opacity: 1 }}>
-					<Text>🔼Top</Text>
+					<Image src={topArrow} />
 				</button>
 			) : (
 				<button onClick={scrollToTop} style={{ opacity: 1 }}>
-					<Text>🔼Top</Text>
+					<Image src={topArrow} />
 				</button>
 			)}
 		</Box>

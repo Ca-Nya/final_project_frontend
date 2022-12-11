@@ -1,6 +1,7 @@
 import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
+import { Default, Mobile } from "../../assets/mediaQuery";
 import axios from "axios";
 import { useEffect } from "react";
 import {
@@ -41,7 +42,13 @@ const MyComuComment = () => {
 	const navigate = useNavigate();
 
 	const { ref, inView } = useInView();
-	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+	const {
+		data,
+		status,
+		fetchNextPage,
+		isFetchingNextPage,
+		error: infError,
+	} = useInfiniteQuery(
 		["myComuComment"],
 		({ pageParam = 1 }) => fetchPostList(pageParam),
 		{
@@ -49,8 +56,6 @@ const MyComuComment = () => {
 				!lastPage.isLast ? lastPage.nextPage : undefined,
 		},
 	);
-
-	console.log("data.pages===>", data?.pages);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
@@ -64,6 +69,18 @@ const MyComuComment = () => {
 				</Flex>
 			</Box>
 		);
+	if (infError.response.data === "작성한 커뮤니티 댓글이 없습니다.") {
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
+	}
 	if (status === "error")
 		return (
 			<Box variant="spinner-wrap">
@@ -80,45 +97,87 @@ const MyComuComment = () => {
 
 	return (
 		<Box>
-			<Margin margin="30px 3px 10px 3px">
-				<Box variant="mypage-nav">
-					<Text variant="title">커뮤 댓글 📋</Text>
-				</Box>
-			</Margin>
-			{data.pages[0].page ? (
+			<Default>
 				<Box>
-					{data?.pages?.map((page, idx) => (
-						<React.Fragment key={idx}>
-							{page?.page?.map(comment => (
-								<>
-									<MyComuCommentEdit
-										key={comment?.commentId}
-										comment={comment}
-									/>
-								</>
+					<Margin margin="30px 3px 10px 3px">
+						<Box variant="mypage-nav">
+							<Text variant="title">커뮤 댓글 💬</Text>
+						</Box>
+					</Margin>
+					{data?.pages?.[0]?.page.length ? (
+						<Box>
+							{data?.pages?.map((page, idx) => (
+								<React.Fragment key={idx}>
+									{page?.page?.map(comment => (
+										<>
+											<MyComuCommentEdit
+												key={comment?.commentId}
+												comment={comment}
+											/>
+										</>
+									))}
+								</React.Fragment>
 							))}
-						</React.Fragment>
-					))}
-					{isFetchingNextPage ? (
-						<Box variant="spinner-wrap">
-							<Flex jc="center" ai="center">
-								<Image src={spinner} alt="로딩중" variant="spinner" />
-							</Flex>
+							{isFetchingNextPage ? (
+								<Box variant="spinner-wrap">
+									<Flex jc="center" ai="center">
+										<Image src={spinner} alt="로딩중" variant="spinner" />
+									</Flex>
+								</Box>
+							) : (
+								<div ref={ref}></div>
+							)}
 						</Box>
 					) : (
-						<div ref={ref}></div>
+						<Box variant="spinner-wrap">
+							<Flex fd="column" jc="center" ai="center" gap="100px">
+								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+								<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+									돌아가기
+								</Button>
+							</Flex>
+						</Box>
 					)}
 				</Box>
-			) : (
-				<Box variant="spinner-wrap">
-					<Flex fd="column" jc="center" ai="center" gap="100px">
-						<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-							돌아가기
-						</Button>
-					</Flex>
+			</Default>
+			<Mobile>
+				<Box>
+					{data.pages[0].page ? (
+						<Box>
+							{data?.pages?.map((page, idx) => (
+								<React.Fragment key={idx}>
+									{page?.page?.map(comment => (
+										<>
+											<MyComuCommentEdit
+												key={comment?.commentId}
+												comment={comment}
+											/>
+										</>
+									))}
+								</React.Fragment>
+							))}
+							{isFetchingNextPage ? (
+								<Box variant="spinner-wrap">
+									<Flex jc="center" ai="center">
+										<Image src={spinner} alt="로딩중" variant="spinner" />
+									</Flex>
+								</Box>
+							) : (
+								<div ref={ref}></div>
+							)}
+						</Box>
+					) : (
+						<Box variant="spinner-wrap">
+							<Flex fd="column" jc="center" ai="center" gap="100px">
+								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+								<Button size="l" onClick={() => navigate(-1)} variant="cafe-review-post">
+									돌아가기
+								</Button>
+							</Flex>
+						</Box>
+					)}
 				</Box>
-			)}
+			</Mobile>
 		</Box>
 	);
 };

@@ -61,6 +61,7 @@ const MypgHome = ({
 							src={memberProfileImage}
 							alt={"프로필 이미지"}
 							variant="mypage-profile"
+							rank={localStorage.getItem("memberStatus")}
 						/>
 						<Box variant="pofile-namebox">
 							<Flex jc="center" gap="5%">
@@ -71,8 +72,8 @@ const MypgHome = ({
 									<Margin margin="10%">
 										<Box>
 											<Flex gap="5%" ai="center" jc="center">
-												<Text variant="level">Lv</Text>
-												<Text variant="level-name">톨 💛</Text>
+												<Text variant="level" rank={localStorage.getItem("memberStatus")}>Lv</Text>
+												<Text variant="level-name">{localStorage.getItem("memberStatus")} ☕️</Text>
 											</Flex>
 										</Box>
 									</Margin>

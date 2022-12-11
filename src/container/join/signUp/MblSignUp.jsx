@@ -39,7 +39,7 @@ const MblSignUp = ({
 			<Form
 				variant="signup"
 				onSubmit={onhandleSubmit(value => {
-					console.log("value=>", value);
+					
 					if (isCheckedId && isCheckedNickname) {
 						const { memberName, memberNickname, password } = value;
 						dispatch(__requestSignUp({ memberName, memberNickname, password }));
@@ -228,7 +228,7 @@ const MblSignUp = ({
 					<Input
 						size="l"
 						id="password"
-						type="text"
+						type="password"
 						maxLength="20"
 						minLength="6"
 						placeholder="비밀번호를 입력해주세요."
@@ -266,7 +266,7 @@ const MblSignUp = ({
 						size="l"
 						id="passwordCheck"
 						name="passwordCheck"
-						type="text"
+						type="password"
 						placeholder="비밀번호를 한번 더 입력해주세요."
 						{...register("passwordCheck", {
 							required: true,

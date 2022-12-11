@@ -1,22 +1,8 @@
-import {
-	Box,
-	Input,
-	Button,
-	Image,
-	DataList,
-	DataTerm,
-	DataDesc,
-	Text,
-	Hidden,
-	SecondHeading,
-	Flex,
-	Margin,
-} from "../../components";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import { Comment, MblComment, CommentEdit, MblCommentEdit } from "./comment";
+import { Comment, MblComment, MblCommentEdit, CommentEdit } from "./comment";
 
 const ComuCommentEdit = ({ item }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -79,7 +65,6 @@ const ComuCommentEdit = ({ item }) => {
 
 	//댓글 수정하기 쿼리 요청(온클릭)
 	const handleEditComplete = e => {
-		console.log("editComment=>", editComment);
 		if (editComment === "") {
 			alert("댓글을 수정해주세요!");
 		} else {
@@ -117,20 +102,21 @@ const ComuCommentEdit = ({ item }) => {
 	return (
 		<div>
 			<Default>
-				{item.memberNickname === nickname ? (
-					<CommentEdit
-						item={item}
-						edit={edit}
-						setEdit={setEdit}
-						handleEdit={handleEdit}
-						handleEditComplete={handleEditComplete}
-						handleRemove={handleRemove}
-					/>
-				) : (
-					<Comment item={item}></Comment>
-				)}
+				{/* {item.memberNickname === nickname ? ( */}
+				<CommentEdit
+					item={item}
+					edit={edit}
+					setEdit={setEdit}
+					handleEdit={handleEdit}
+					handleEditComplete={handleEditComplete}
+					handleRemove={handleRemove}
+					nickname={nickname}
+				/>
+				{/* ) : (
+					<Comment item={item} />
+				)} */}
 			</Default>
-			
+
 			<Mobile>
 				{item.memberNickname === nickname ? (
 					<MblCommentEdit
