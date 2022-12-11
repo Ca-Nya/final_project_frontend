@@ -62,8 +62,11 @@ const MainAllList = ({ allDto }) => {
 																		</DataTerm>
 																	</Hidden>
 																	<Flex jc="center" gap="6px">
-																		<DataDesc>#커피맛집</DataDesc>
-																		<DataDesc>#디저트맛집</DataDesc>
+																		{allItem.highestRatings.map((item, idx) => {
+																			return (
+																				<DataDesc key={idx}>#{item}</DataDesc>
+																			);
+																		})}
 																	</Flex>
 																</Box>
 															</DataList>
@@ -119,8 +122,11 @@ const MainAllList = ({ allDto }) => {
 																	<DataTerm>높은 점수를 받은 카테고리</DataTerm>
 																</Hidden>
 																<Flex jc="center" gap="6px">
-																	<DataDesc>#커피맛집</DataDesc>
-																	<DataDesc>#디저트맛집</DataDesc>
+																	{allItem.highestRatings.map((item, idx) => {
+																		return (
+																			<DataDesc key={idx}>#{item}</DataDesc>
+																		);
+																	})}
 																</Flex>
 															</Box>
 														</DataList>

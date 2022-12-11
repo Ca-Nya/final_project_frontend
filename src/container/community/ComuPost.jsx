@@ -31,8 +31,8 @@ const ComuPost = () => {
 
 	//이미지 스테이트저장, 미리보기 온체인지 핸들러
 	const onChangeImage = e => {
-		const { name, files } = e.target;	
-		setcommunityImage(files[0]);	
+		const { name, files } = e.target;
+		setcommunityImage(files[0]);
 		let reader = new FileReader();
 		if (files[0]) {
 			reader.readAsDataURL(files[0]);
@@ -71,8 +71,11 @@ const ComuPost = () => {
 	//게시글 등록하기 쿼리요청
 	const onClickHandler = e => {
 		e.preventDefault();
-		if (input.communityTitle.trim()===""||input.communityContent.trim()===""){
-			return alert("내용을 입력해주세요.")
+		if (
+			input.communityTitle.trim() === "" ||
+			input.communityContent.trim() === ""
+		) {
+			return alert(" 입력해주세요.");
 		}
 		if (authorization) {
 			const formData = new FormData();

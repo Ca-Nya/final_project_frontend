@@ -14,6 +14,7 @@ const initialState = {
 	profileImageUrl: "",
 	// 로그인 여부 확인 후 변하지 않는 값
 	isInitialized: null,
+	profileImage: null,
 	isLogin: null,
 	isCheckedId: false,
 	isCheckedNickname: false,
@@ -144,6 +145,10 @@ const joinSlice = createSlice({
 		resetError: (state, _) => {
 			state.error = null;
 		},
+		editProfileImage: (state, action) => {
+			console.log("프로필 수정이에여!!!! ===>", action.payload);
+			state.profileImage = action.payload;
+		},
 	},
 	extraReducers: {
 		//회원가입
@@ -165,6 +170,7 @@ const joinSlice = createSlice({
 			state.statusCode = action.payload.statusCode;
 			state.isLogin = true;
 			state.token = action.payload.token;
+			state.profileImage = action.payload.profileImageUrl;
 			localStorage.setItem("Authorization", action.payload.token);
 			// localStorage.setItem("Refresh-Token", action.payload.refreshtoken);
 			localStorage.setItem("Nickname", action.payload.nickname);
@@ -220,5 +226,6 @@ export const {
 	resetSignUpStatus,
 	resetToken,
 	resetError,
+	editProfileImage,
 } = joinSlice.actions;
 export default joinSlice.reducer;

@@ -35,7 +35,6 @@ const SigninForm = () => {
 	useEffect(() => {
 		if (token && statusCode === 200) {
 			navigate("/");
-			alert("카냐에 오신걸 환영합니다.");
 		}
 	});
 
@@ -62,7 +61,7 @@ const SigninForm = () => {
 					errors={errors}
 					errorData={errorData}
 					statusCode={statusCode}
-					token={token} 
+					token={token}
 				/>
 			</Mobile>
 		</Box>

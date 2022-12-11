@@ -7,12 +7,7 @@ import {
 	Margin,
 	Flex,
 } from "../../../components";
-import {
-	__requestSignIn,
-	resetError,
-} from "../../../redux/modules/join/joinSlice";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { __requestSignIn } from "../../../redux/modules/join/joinSlice";
 
 const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
 	return (
@@ -32,6 +27,7 @@ const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
 						<Text variant="join-id">아이디(ID)</Text>
 						<Margin margin="2% 0 0 0">
 							<Input
+								type="text"
 								variant="join"
 								purpose="sign-in"
 								placeholder="아이디를 입력해주세요."
@@ -49,7 +45,6 @@ const SignIn = ({ dispatch, navigate, onhandleSubmit, register, errors }) => {
 						)}
 					</Margin>
 				</Box>
-
 				<Box variant="join-text">
 					<Margin margin="2% 0 2% 8%">
 						<Text variant="join-id">비밀번호</Text>
