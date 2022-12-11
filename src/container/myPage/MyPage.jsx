@@ -72,6 +72,7 @@ const MyPage = () => {
 
 	useEffect(() => {
 		dispatch(editProfileImage(memberProfileImage));
+		localStorage.setItem("profileImageUrl", memberProfileImage);
 	}, [memberProfileImage]);
 
 	// 프로필 수정 Hook
