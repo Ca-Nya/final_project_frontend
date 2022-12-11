@@ -6,6 +6,7 @@ import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
 import { MypgHome, MblMypgHome } from "./mypgHome";
 import { Default, Mobile } from "../../assets/mediaQuery";
+import TopButton from "../../components/topButton/TopButton";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 
@@ -189,6 +190,7 @@ if (isError) return  (
 					memberCommunityCount={memberCommunityCount}
 					memberCommunityCommentCount={memberCommunityCommentCount}
 				/>
+				<TopButton />
 			</Mobile>
 		</>
 	);

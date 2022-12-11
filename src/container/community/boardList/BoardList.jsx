@@ -1,30 +1,49 @@
-import {
-	Box,
-	Flex,
-	Button,
-	Strong,
-} from "../../../components";
+import React from "react";
+import { Box, Flex, Button, Strong } from "../../../components";
+import BoardListItem from "./BoardListItem";
 
 const BoardList = ({ navigate, data, authorization, nickname }) => {
 	console.log("BoardList==>", data);
 	return (
-		<>
-			{data && data.length > 0 ? (
-				<div>
-					{data.map(item => {
-						return (
-							<div key={item.communityId}>
-								<p
-									onClick={() => {
-										navigate(`/community/${item.communityId}`);
-									}}
-								>
-									{item.communityTitle}
-								</p>
-							</div>
-						);
-					})}
-				</div>
+		<Box variant="container">
+			<Flex jc="flex-end">
+				{nickname ? (
+					<Button
+						variant="post"
+						onClick={() => {
+							navigate("/post");
+						}}
+					>
+						글쓰기
+					</Button>
+				) : (
+					<Button
+						variant="post"
+						onClick={() => {
+							alert("로그인 후 글쓰기 가능합니다.");
+							navigate("/join");
+						}}
+					>
+						글쓰기
+					</Button>
+				)}
+			</Flex>
+			{data.pages[0].page ? (
+				<Box>
+					{data?.pages?.map((page, idx) => (
+						<React.Fragment key={idx}>
+							{page?.page?.map(item => (
+								<>
+									<BoardListItem
+										key={item.communityId}
+										item={item}
+										navigate={navigate}
+									/>
+								</>
+							))}
+						</React.Fragment>
+					))}
+				</Box>
 			) : (
 				<Box variant="spinner-wrap">
 					<Flex fd="column" jc="center" ai="center" gap="100px">
@@ -35,25 +54,7 @@ const BoardList = ({ navigate, data, authorization, nickname }) => {
 					</Flex>
 				</Box>
 			)}
-			{nickname ? (
-				<button
-					onClick={() => {
-						navigate("/post");
-					}}
-				>
-					글쓰기
-				</button>
-			) : (
-				<button
-					onClick={() => {
-						alert("로그인 후 글쓰기 가능합니다.");
-						navigate("/join");
-					}}
-				>
-					글쓰기
-				</button>
-			)}
-		</>
+		</Box>
 	);
 };
 

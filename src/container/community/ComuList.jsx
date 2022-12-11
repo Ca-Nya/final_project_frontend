@@ -89,6 +89,15 @@ const ComuList = () => {
 						authorization={authorization}
 						nickname={nickname}
 					/>
+					{isFetchingNextPage ? (
+					<Box variant="spinner-wrap">
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				) : (
+					<div ref={ref}></div>
+				)}
 				</Margin>
 			</Default>
 			<Mobile>

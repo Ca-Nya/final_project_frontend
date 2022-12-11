@@ -19,7 +19,7 @@ const Like = ({ data, navigate }) => {
 					<Text variant="title">좋아요 한 글 ❣️ </Text>
 				</Box>
 			</Margin>
-			{data.pages[0].page ? (
+			{data.pages[0].page > 0 ? (
 				<>
 					{data?.pages.map((page, idx) => (
 						<React.Fragment key={idx}>
