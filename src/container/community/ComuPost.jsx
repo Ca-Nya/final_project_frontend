@@ -71,11 +71,11 @@ const ComuPost = () => {
 	//게시글 등록하기 쿼리요청
 	const onClickHandler = e => {
 		e.preventDefault();
-		if (input?.communityTitle?.trim() === "") {
-			return alert(" 제목을 입력해주세요.");
-		} else if (input?.communityContent?.trim() === "") {
-			return alert(" 내용을 입력해주세요.");
-		}		
+		// if (input?.communityTitle?.trim() === "") {
+		// 	return alert(" 제목을 입력해주세요.");
+		// } else if (input?.communityContent?.trim() === "") {
+		// 	return alert(" 내용을 입력해주세요.");
+		// }	
 		if (authorization) {
 			const formData = new FormData();
 			formData.append("data", JSON.stringify(input));
