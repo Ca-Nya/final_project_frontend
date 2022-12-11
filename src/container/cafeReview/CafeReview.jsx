@@ -16,7 +16,6 @@ const CafeReview = ({ id }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// 지도 장소 검색값 state
 	const [place, setPlace] = useState({ address: "", addressId: "" });
-	console.log("place =======>", place);
 	// 장소 검색값이 있을 경우에만 게시글 state에 등록
 	useEffect(() => {
 		if (place)
@@ -28,7 +27,6 @@ const CafeReview = ({ id }) => {
 				};
 			});
 	}, [place]);
-
 	// 데이터 전송을 위한 form 객체
 	const formData = new FormData();
 	// 이미지 썸네일 state
@@ -71,9 +69,6 @@ const CafeReview = ({ id }) => {
 		addressId: place.addressId,
 		ratings,
 	});
-
-	console.log("inputValueAddressId ============>", inputValue.addressId);
-
 	// inputValue state - boardTitle 변경 핸들러
 	const handleChangeInputTitleState = e => {
 		setInputValue(prev => {
@@ -148,12 +143,11 @@ const CafeReview = ({ id }) => {
 				}
 				addPost.mutate(formData, {
 					onSuccess: () => {
-						alert("리뷰 작성이 완료되었습니다");
 						navigate(`/detail/post/${+id}`);
 					},
 					onError: error => {
 						console.log("error =>", error);
-						alert("리뷰 작성을 실패했습니다");
+						alert("리뷰 작성을 실패했습니다.😭");
 					},
 				});
 			}

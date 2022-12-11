@@ -58,7 +58,6 @@ export const Box = styled.div`
 					`;
 				case "detail-heart":
 					return css`
-						margin: 0 auto;
 						& svg {
 							color: #c4c4c4;
 						}

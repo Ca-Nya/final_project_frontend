@@ -1,23 +1,12 @@
+import Like from "./like";
 import { useState, useEffect } from "react";
-import {
-	Box,
-	Button,
-	Margin,
-	Flex,
-	DataList,
-	DataTerm,
-	DataDesc,
-} from "../../components";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
-import { useNavigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
-const DetailLike = ({ isLike, boardId, detailPostRefetch, detailPostData }) => {
+const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
 	console.log("isLike ================>", isLike);
-	const navigate = useNavigate();
 
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
@@ -83,13 +72,7 @@ const DetailLike = ({ isLike, boardId, detailPostRefetch, detailPostData }) => {
 		}
 	};
 
-	return (
-		<Box variant="detail-heart">
-			<Button onClick={handleLike}>
-				<FaHeart className={isLike ? "liked" : ""} size="33" />
-			</Button>
-		</Box>
-	);
+	return <Like handleLike={handleLike} isLike={isLike} />;
 };
 
 export default DetailLike;

@@ -55,8 +55,9 @@ const MainNewList = ({ newDto }) => {
 												<DataTerm>높은 점수를 받은 카테고리</DataTerm>
 											</Hidden>
 											<Flex gap="5px" jc="center">
-												<DataDesc>#커피맛집</DataDesc>
-												<DataDesc>#디저트맛집</DataDesc>
+												{newPost.highestRatings.map((item, idx) => {
+													return <DataDesc key={idx}>#{item}</DataDesc>;
+												})}
 											</Flex>
 										</Box>
 									</DataList>

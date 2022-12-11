@@ -1,15 +1,20 @@
-import { Box,Flex,Image,Strong,Button } from "../../components";
+import { Box, Flex, Image, Strong, Button } from "../../components";
 import { useNavigate, useMatch } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { useEditProfileImage } from "../../querys/myPage";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
 import { MypgHome, MblMypgHome } from "./mypgHome";
 import { Default, Mobile } from "../../assets/mediaQuery";
+import { editProfileImage } from "../../redux/modules/join/joinSlice";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 
 const MyPage = () => {
+	const dispatch = useDispatch();
+
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
@@ -26,7 +31,6 @@ const MyPage = () => {
 	const authorization = localStorage.getItem("Authorization");
 	//로컬스토리지 닉네임가져오기
 	const nickname = localStorage.getItem("Nickname");
-
 	//내가좋아요한 게시물 get요청
 	const {
 		data: myContent,
@@ -71,6 +75,10 @@ const MyPage = () => {
 
 	console.log("MyPagerecentlyMyBoardList=>", recentlyMyBoardList);
 
+	useEffect(() => {
+		dispatch(editProfileImage(memberProfileImage));
+	}, [memberProfileImage]);
+
 	// 프로필 수정 Hook
 	const { mutate: editProfileImageMutate } = useEditProfileImage();
 
@@ -89,7 +97,7 @@ const MyPage = () => {
 			},
 			onError: (error, variables, context) => {
 				console.log("error ====>", error);
-				alert("수정을 실패했습니다");
+				alert("수정을 실패했습니다.");
 			},
 		});
 	};
@@ -113,16 +121,18 @@ const MyPage = () => {
 	const handleEditPost = item => () => {
 		navigate(`/detail/edit/${item.boardId}`);
 	};
+
 	if (isLoading)
-	return (
-		<Box variant="spinner-wrap">
-			<Flex jc="center" ai="center">
-				<Image src={spinner} alt="로딩중" variant="spinner" />
-			</Flex>
-		</Box>
-	);
-if (isError) return  (
-	<Box variant="spinner-wrap">
+		return (
+			<Box variant="spinner-wrap">
+				<Flex jc="center" ai="center">
+					<Image src={spinner} alt="로딩중" variant="spinner" />
+				</Flex>
+			</Box>
+		);
+	if (isError)
+		return (
+			<Box variant="spinner-wrap">
 				<Flex fd="column" jc="center" ai="center" gap="100px">
 					<Strong variant="warning">
 						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
@@ -132,8 +142,8 @@ if (isError) return  (
 					</Button>
 				</Flex>
 			</Box>
-);
-	if (isLoading) return <Box>로딩중</Box>;
+		);
+
 	if (isError) return <Box>에러</Box>;
 
 	return (

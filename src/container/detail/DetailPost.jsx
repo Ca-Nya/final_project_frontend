@@ -1,4 +1,11 @@
-import { Margin, Box } from "../../components";
+import {
+	Margin,
+	Box,
+	Flex,
+	DataList,
+	DataDesc,
+	DataTerm,
+} from "../../components";
 import Review from "../detail/review";
 import Rating from "../detail/rating";
 import { DetailMap, DetailLike } from "../../container/detail";
@@ -63,21 +70,39 @@ const DetailPost = () => {
 				<>
 					<Margin margin="160px 0 0 0">
 						<Box variant="container">
-							<Review
-								detailPostData={detailPostData}
-								handleEditPost={handleEditPost}
-								handleDeletePost={handleDeletePost}
-								detailPostRefetch={detailPostRefetch}
-								ratings={ratings}
-								id={id}
-							/>
-							<Rating detailPostData={detailPostData} ratings={ratings} />
-							{/* searchPlace 추후에 address혹은 place로 리팩토링 */}
-							<DetailMap
-								searchPlace={detailPostData.address}
-								addressId={detailPostData.addressId}
-							/>
-
+							<Box variant="detail-container">
+								<Review
+									detailPostData={detailPostData}
+									handleEditPost={handleEditPost}
+									handleDeletePost={handleDeletePost}
+									detailPostRefetch={detailPostRefetch}
+									ratings={ratings}
+									id={id}
+								/>
+								<Rating detailPostData={detailPostData} ratings={ratings} />
+								{/* searchPlace 추후에 address혹은 place로 리팩토링 */}
+								<DetailMap
+									searchPlace={detailPostData.address}
+									addressId={detailPostData.addressId}
+								/>
+								<Margin margin="40px 0 0 0">
+									<Flex jc="flex-end">
+										<DataList variant="detail-heart-count">
+											<Flex ai="center" gap="5px">
+												<DataTerm>좋아요</DataTerm>
+												<DataDesc>{detailPostData.heartCount}</DataDesc>
+												<Box>
+													<DetailLike
+														isLike={detailPostData.liked}
+														boardId={+id}
+														detailPostRefetch={detailPostRefetch}
+													/>
+												</Box>
+											</Flex>
+										</DataList>
+									</Flex>
+								</Margin>
+							</Box>
 							<Margin margin="30px 0 170px 0">
 								<Box variant="comment-wrap">
 									<CommentList />

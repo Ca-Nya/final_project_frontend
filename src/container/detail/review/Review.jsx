@@ -24,7 +24,6 @@ const Review = ({
 	handleEditPost,
 	handleDeletePost,
 	detailPostRefetch,
-
 	id,
 }) => {
 	// 캐러셀 설정
@@ -50,7 +49,7 @@ const Review = ({
 	};
 
 	return (
-		<Box variant="detail-container">
+		<>
 			<Flex ai="center">
 				<FirstHeading variant="title">{detailPostData.boardTitle}</FirstHeading>
 			</Flex>
@@ -78,7 +77,6 @@ const Review = ({
 								<DataDesc>{detailPostData.date}</DataDesc>
 							</DataList>
 						</Flex>
-
 						<Flex ai="center" jc="flex-end" gap="10px">
 							{localStorage.getItem("Nickname") ===
 							detailPostData.memberNickname ? (
@@ -124,7 +122,7 @@ const Review = ({
 					</Box>
 				</Flex>
 			</Box>
-		</Box>
+		</>
 	);
 };
 

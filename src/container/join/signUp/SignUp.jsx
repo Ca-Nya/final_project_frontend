@@ -48,7 +48,7 @@ const SignUp = ({
 					alert("아이디 중복체크를 해주세요.");
 				} else if (!isCheckedNickname) {
 					alert("닉네임 중복체크를 해주세요.");
-				} 
+				}
 			})}
 		>
 			<Text variant="join">CA NYA</Text>
@@ -111,7 +111,7 @@ const SignUp = ({
 				) : (
 					""
 				)}
-					{errors.memberNickname && errors.memberNickname.type === "minLength" ? (
+				{errors.memberNickname && errors.memberNickname.type === "minLength" ? (
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
 							<Text variant="join-warning">
@@ -260,7 +260,7 @@ const SignUp = ({
 					variant="signup-password"
 					id="passwordCheck"
 					name="passwordCheck"
-					type="text"
+					type="password"
 					placeholder="비밀번호를 한번 더 입력해주세요."
 					{...register("passwordCheck", {
 						required: true,
