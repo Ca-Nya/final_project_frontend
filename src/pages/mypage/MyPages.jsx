@@ -2,7 +2,7 @@ import { MainNav, MainFooter } from "../../container/main";
 import { MyPage } from "../../container/myPage";
 import { Box, Image, Margin } from "../../components";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import myPageBackground from "../../assets/images/mypage-background.png";
+import myPageBackground from "../../assets/images/mypage.png";
 
 const MyPages = () => {
 	return (

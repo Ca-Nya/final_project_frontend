@@ -800,7 +800,7 @@ export const Box = styled.div`
 					`;
 				case "reverse":
 					return css`
-						display: flex;
+						/* display: flex; */
 						flex-direction: column-reverse;
 
 						/* -webkit-flex-direction: column-reverse;
