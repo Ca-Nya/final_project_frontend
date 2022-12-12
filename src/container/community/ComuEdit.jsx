@@ -88,7 +88,7 @@ const ComuEdit = () => {
 		},
 		{
 			onError: (error, variables, context) => {
-				console.log("error => ", error);
+				// console.log("error => ", error);
 			},
 			onSuccess: (data, variables, context) => {
 				queryClient.invalidateQueries("communityDetail");

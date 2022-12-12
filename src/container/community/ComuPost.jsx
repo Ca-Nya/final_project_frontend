@@ -85,7 +85,7 @@ const ComuPost = () => {
 			mutation.mutate(formData);
 			let entries = formData.entries();
 			for (const pair of entries) {
-				console.log(pair[0] + ", " + pair[1]);
+				// console.log(pair[0] + ", " + pair[1]);
 			}
 		} else {
 			alert("로그인 후 게시물을 등록해주세요.");
