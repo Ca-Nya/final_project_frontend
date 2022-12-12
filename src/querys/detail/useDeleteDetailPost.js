@@ -12,7 +12,7 @@ const useDeleteDetailPost = payload => {
 	return useMutation({
 		mutationFn: async payload => {
 			const response = await deleteDetailPost(payload);
-			console.log("useDeletePost response =>", response);
+
 			return response.data;
 		},
 		suspense: true,

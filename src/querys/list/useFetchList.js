@@ -22,18 +22,10 @@ const useFetchList = category => {
 				params: { page: pageParam, size: 100 },
 			});
 
-			console.log("list =======>", list);
-
 			return { list, isLast, nextPage: pageParam + 1 };
 		},
 		{
 			getNextPageParam: lastPage => {
-				console.log(
-					"isLast =>",
-					lastPage.isLast,
-					"nextPage =>",
-					lastPage.nextPage,
-				);
 				return !lastPage.isLast ? lastPage.nextPage : undefined;
 			},
 		},

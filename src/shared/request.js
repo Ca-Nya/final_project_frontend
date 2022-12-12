@@ -20,7 +20,7 @@ export const getRequest = async ({
 }) => {
 	try {
 		const response = await http[method](url, { params });
-		console.log("getRequest response =>", response);
+		// console.log("getRequest response =>", response);
 		return response;
 	} catch (error) {
 		if (throwWhenError) throw error;
@@ -36,10 +36,10 @@ export const request = async ({
 }) => {
 	try {
 		const response = await http[method](url, payload);
-		console.log("Request response =>", response);
+		// console.log("Request response =>", response);
 		return response;
 	} catch (error) {
-		console.log("Request error =>", error);
+		// console.log("Request error =>", error);
 		if (throwWhenError) throw error;
 	}
 };

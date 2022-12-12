@@ -146,7 +146,6 @@ const joinSlice = createSlice({
 			state.error = null;
 		},
 		editProfileImage: (state, action) => {
-			console.log("프로필 수정이에여!!!! ===>", action.payload);
 			state.profileImage = action.payload;
 		},
 	},

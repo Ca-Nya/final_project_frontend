@@ -33,7 +33,7 @@ const CafeReview = ({ id }) => {
 	const [thumbnailImages, setThumbnailImages] = useState([]);
 	// 이미지 state
 	const [images, setImages] = useState([]);
-	// console.log("images =>", images);
+
 	// 이미지 파일 추가 핸들러
 	const handleGetImage = e => {
 		const imageList = e.target.files;
@@ -96,7 +96,6 @@ const CafeReview = ({ id }) => {
 	// 게시글 작성 API
 	const fetchAddPost = async payload => {
 		try {
-			console.log("post formdata =>", payload);
 			const formData = payload;
 			const jwtToken = localStorage.getItem("jwtToken");
 			const response = await axios.put(
@@ -109,24 +108,12 @@ const CafeReview = ({ id }) => {
 					},
 				},
 			);
-			console.log("response =>", response);
+
 			return response;
-		} catch (error) {
-			console.log("error =>", error);
-		}
+		} catch (error) {}
 	};
 	// react-query => 게시글 post Mutaite 객체
-	const addPost = useMutation(fetchAddPost, {
-		onMutate: variables => {
-			console.log("onMutate =>", variables);
-		},
-		onSuccess: data => {
-			console.log("onSuccess =>", "data =>", data);
-		},
-		onError: error => {
-			console.log("onError =>", error);
-		},
-	});
+	const addPost = useMutation(fetchAddPost);
 	// 리뷰 등록 핸들러
 	const handlePostReview = () => {
 		if (place) {
@@ -135,18 +122,16 @@ const CafeReview = ({ id }) => {
 			} else {
 				formData.append("data", JSON.stringify(inputValue));
 				for (let i = 0; i < images.length; i++) {
-					console.log(`${images[i]}  =>`, images[i]);
 					formData.append("image", images[i]);
 				}
 				for (let key of formData.keys()) {
-					console.log("formData ===>", key, ":", formData.get(key));
+					// console.log("formData ===>", key, ":", formData.get(key));
 				}
 				addPost.mutate(formData, {
 					onSuccess: () => {
 						navigate(`/detail/post/${+id}`);
 					},
 					onError: error => {
-						console.log("error =>", error);
 						alert("리뷰 작성을 실패했습니다.😭");
 					},
 				});

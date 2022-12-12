@@ -10,11 +10,9 @@ const editDetailPost = ({ boardId, payload }) => {
 };
 
 const useEditDetailPost = payload => {
-	console.log("payload =====>", payload);
 	return useMutation({
 		mutationFn: async payload => {
 			const response = await editDetailPost(payload);
-			console.log("useEditPost response =>", response);
 
 			return response.data;
 		},

@@ -13,7 +13,6 @@ const MainCanyaButtons = ({ setCanyaPick, mainPosts }) => {
 	// 카냐's Pick 게시글 변경 이벤트 핸들러
 	const handleChangeCanyaPick = idx => {
 		return e => {
-			console.log("mainPosts[e.target.vaule] =>", mainPosts[e.target.value]);
 			setCanyaPick(mainPosts[e.target.value]);
 			setCurrentPick(prev => {
 				const newCurrentPick = [...prev].map((_, index) =>

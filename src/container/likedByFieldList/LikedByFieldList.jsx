@@ -44,14 +44,14 @@ const LikedByFieldList = () => {
 	];
 	// 리스트 카테고리 param
 	const { category } = useParams();
-	console.log("category =>", category);
+
 	// 리스트 요청 무한스크롤 Hook
 	const { data, status, fetchNextPage, isFetchingNextPage } =
 		useFetchList(category);
-	console.log("data =>", data, "isFetchingNextPage =>", isFetchingNextPage);
+
 	// observe
 	const { ref, inView } = useInView();
-	console.log("inView =>", inView);
+
 	// observe시 다음 게시글 요청 Effect
 	useEffect(() => {
 		if (inView) fetchNextPage();

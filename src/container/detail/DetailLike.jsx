@@ -6,8 +6,6 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
-	console.log("isLike ================>", isLike);
-
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
@@ -37,7 +35,6 @@ const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
 		},
 		{
 			onSuccess: ({ data }) => {
-				console.log(data);
 				if (data === "좋아요 생성 완료.") {
 					detailPostRefetch();
 				} else {
@@ -54,7 +51,6 @@ const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
 	//좋아요 boardId state useEffect
 	useEffect(() => {
 		if (like !== null) {
-			console.log("like =>", like);
 			likeMutation({
 				boardId: like,
 			});

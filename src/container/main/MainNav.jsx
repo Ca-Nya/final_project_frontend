@@ -76,24 +76,19 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 					},
 				},
 			);
-			console.log("response =>", response);
+
 			return response.data;
 		} catch (error) {
-			console.log("error =>", error);
 			throw error;
 		}
 	};
 	// 게시글 아이디 요청 Hook
 	const getPostId = useMutation(fetchPostId, {
-		onMutate: variables => {
-			console.log("onMutate =>", variables);
-		},
+		onMutate: variables => {},
 		onSuccess: data => {
-			console.log("onSuccess =>", "data =>", data);
 			navigate(`/write/${data}`);
 		},
 		onError: (error, variables) => {
-			console.log("onError =>", error, "variables =>", variables);
 			alert("게시글을 작성할 수 없습니다!");
 		},
 	});
