@@ -21,11 +21,11 @@ const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 				</Margin>
 				<Box>
 					{data?.pages[0]?.page?.length ? (
-						<Box variant="reverse">
+						<Box>
 							{data?.pages?.map((page, idx) => (
 								<React.Fragment key={idx}>
 									{page?.page?.map(item => (
-										<Flex fd="colum-reverse">
+										<>
 											<ComuBoardItem
 												key={item?.boardId}
 												item={item}
@@ -33,7 +33,7 @@ const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 												onDeleteComuPost={onDeleteComuPost}
 												onEditComuPost={onEditComuPost}
 											/>
-										</Flex>
+										</>
 									))}
 								</React.Fragment>
 							))}
