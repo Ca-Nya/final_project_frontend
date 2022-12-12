@@ -1,6 +1,14 @@
 import React from "react";
-import { Box, Button, Image, Text, Margin, Flex,Strong } from "../../../components";
-import ComuBoardItem  from "./ComuboardItem";
+import {
+	Box,
+	Button,
+	Image,
+	Text,
+	Margin,
+	Flex,
+	Strong,
+} from "../../../components";
+import ComuBoardItem from "./ComuboardItem";
 
 const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 	return (
@@ -11,34 +19,36 @@ const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 						<Text variant="title">커뮤니티 👥</Text>
 					</Box>
 				</Margin>
-				{data.pages[0].page ? (
-					 <>
-					 {data?.pages?.map((page, idx) => (
-						 <React.Fragment key={idx}>
-							 {page?.page?.map(item => (
-								 <>
-									 <ComuBoardItem
-										 key={item?.boardId}
-										 item={item}
-										 navigate={navigate}
-										 onDeleteComuPost={onDeleteComuPost}
-										 onEditComuPost={onEditComuPost}
-									 />
-								 </>
-							 ))}
-						 </React.Fragment>
-					 ))}
-				 </>
-				) : (
-					<Box variant="spinner-wrap">
-					<Flex fd="column" jc="center" ai="center" gap="100px">
-						<Strong variant="warning">작성한 게시글이 없습니다😭</Strong>
-						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-							돌아가기
-						</Button>
-					</Flex>
+				<Box>
+					{data?.pages[0]?.page?.length ? (
+						<Box variant="reverse">
+							{data?.pages?.map((page, idx) => (
+								<React.Fragment key={idx}>
+									{page?.page?.map(item => (
+										<Flex fd="colum-reverse">
+											<ComuBoardItem
+												key={item?.boardId}
+												item={item}
+												navigate={navigate}
+												onDeleteComuPost={onDeleteComuPost}
+												onEditComuPost={onEditComuPost}
+											/>
+										</Flex>
+									))}
+								</React.Fragment>
+							))}
+						</Box>
+					) : (
+						<Box variant="spinner-wrap">
+							<Flex fd="column" jc="center" ai="center" gap="100px">
+								<Strong variant="warning">작성한 게시글이 없습니다😭</Strong>
+								<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+									돌아가기
+								</Button>
+							</Flex>
+						</Box>
+					)}
 				</Box>
-				)}
 			</Box>
 		</Box>
 	);

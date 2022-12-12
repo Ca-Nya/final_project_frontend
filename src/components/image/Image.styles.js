@@ -109,6 +109,10 @@ export const Image = styled.img`
 								return css`
 									border: 5px solid #f6cd3c;
 								`;
+								case "grande":
+								return css`
+									border: 5px solid${({ theme }) => theme.colors.main_purple};
+								`;
 							default:
 								break;
 						}
@@ -328,6 +332,10 @@ export const Image = styled.img`
 								return css`
 									border: 3px solid #f6cd3c;
 								`;
+								case "grande":
+								return css`
+									border: 3px solid ${({ theme }) => theme.colors.main_purple};
+								`;
 							default:
 								break;
 						}
@@ -348,11 +356,15 @@ export const Image = styled.img`
 						switch (rank) {
 							case "venti":
 								return css`
-									border: 2px solid ${({ theme }) => theme.colors.point};
+									border: 3px solid ${({ theme }) => theme.colors.point};
 								`;
 								case "tall":
 								return css`
 									border: 3px solid #f6cd3c;
+								`;
+								case "grande":
+								return css`
+									border: 3px solid ${({ theme }) => theme.colors.main_purple};
 								`;
 							default:
 								break;

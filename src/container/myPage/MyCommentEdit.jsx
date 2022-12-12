@@ -47,9 +47,7 @@ const MyCommentEdit = ({ comment }) => {
 			onSuccess: ({ status, data }) => {
 				if (status === "200") {
 					console.log("data =>", data);
-					console.log("status =>", status);
-					// queryClient.invalidateQueries("getComments");
-					// alert(data);
+					console.log("status =>", status);					
 				}
 			},
 			onError: error => {
@@ -74,8 +72,7 @@ const MyCommentEdit = ({ comment }) => {
 	};
 
 	//댓글 수정하기 쿼리 요청(온클릭)
-	const handleEditComplete = e => {
-		console.log("editComment=>", editComment);
+	const handleEditComplete = e => {		
 		if (editComment === "") {
 			alert("변경내용이 없습니다.");
 		} else {

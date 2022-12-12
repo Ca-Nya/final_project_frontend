@@ -24,12 +24,7 @@ const ComuComment = ({
 	return (
 		<Box>
 			{edit ? (
-				<Box>
-					<Margin margin="30px 3px 10px 3px">
-						<Box variant="mypage-nav">
-							<Text variant="title">커뮤 댓글 📋</Text>
-						</Box>
-					</Margin>
+				<Box>					
 					<Margin margin="0 0 10px 0">
 						<Box variant="comment-box">
 							<Margin margin="17px 22px 0 22px">
