@@ -13,7 +13,7 @@ const DetailEditPost = () => {
 	const navigate = useNavigate();
 	// 게시글 상세페이지 수정페이지 파라미터
 	const { id } = useParams();
-	console.log("DetailEditPost id ===>", id);
+
 	// 상세페이지 내용 요청 Hook
 	const { data: detailPostData, isError, isLoading } = useFetchDetailPost(+id);
 	// 상세페이지 데이터
@@ -27,7 +27,7 @@ const DetailEditPost = () => {
 	const [ratings, setRatings] = useState([0, 0, 0, 0, 0, 0]);
 	// 지도 장소 검색값 state
 	const [place, setPlace] = useState({ address: "", addressId: "" });
-	console.log("수정 place =====>", place);
+
 	// 별점을 담은 객체 배열화
 	useEffect(() => {
 		if (rating) {
@@ -64,7 +64,7 @@ const DetailEditPost = () => {
 	const [thumbnailImages, setThumbnailImages] = useState([...detailImages]);
 	// 이미지 state
 	const [images, setImages] = useState([...detailImages]);
-	console.log("images =>", images);
+
 	// 이미지 파일 추가 핸들러
 	const handleGetImage = e => {
 		const imageList = e.target.files;
@@ -142,7 +142,7 @@ const DetailEditPost = () => {
 				formData.append("url", JSON.stringify({ urlList: imageUrls }));
 
 				for (let key of formData.keys()) {
-					console.log("formData ===>", key, ":", formData.get(key));
+					// console.log("formData ===>", key, ":", formData.get(key));
 				}
 
 				editPostMutate(

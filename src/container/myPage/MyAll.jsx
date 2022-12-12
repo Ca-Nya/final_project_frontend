@@ -36,17 +36,14 @@ const MyAll = () => {
 						authorization,
 					},
 				});
-				
+
 				return response.data;
 			} catch (error) {
-				
 				return error;
 			}
 		},
 		suspense: true,
 	});
-
-	
 
 	const {
 		recentlyMyBoardList,
@@ -55,8 +52,6 @@ const MyAll = () => {
 		recentlyMyCommunityList,
 		recentlyMyCommunityCommentList,
 	} = myContent;
-
-
 
 	const fetchPostId = async () => {
 		try {
@@ -71,18 +66,14 @@ const MyAll = () => {
 					},
 				},
 			);
-			
+
 			return response.data;
 		} catch (error) {
-			
 			throw error;
 		}
 	};
 	// 게시글 아이디 요청 Hook
 	const getPostId = useMutation(fetchPostId, {
-		onMutate: variables => {
-			console.log("onMutate =>", variables);
-		},
 		onSuccess: data => {
 			navigate(`/write/${data}`);
 		},

@@ -26,7 +26,6 @@ const MainSelectBox = ({ setSelectValue }) => {
 			if (index === e.target.value) return true;
 		})[0];
 		setSelectCategory(newSelectCategory);
-		console.log("selectValue =>", selectValue);
 		setSelectValue(prev => {
 			return {
 				...prev,

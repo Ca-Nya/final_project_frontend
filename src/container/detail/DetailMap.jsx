@@ -3,7 +3,6 @@ import { Box, Text, Flex, Strong } from "../../components";
 import Map from "./map";
 
 const DetailMap = ({ searchPlace, addressId }) => {
-	console.log("searchPlace 우왕 ======>", searchPlace);
 	const { kakao } = window;
 	// 검색결과를 담을 배열
 	const [places, setPlaces] = useState([]);

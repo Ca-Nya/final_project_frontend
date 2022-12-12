@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useFetchPosts } from "../../querys/main";
 import {
 	MainCanyaPick,
@@ -13,11 +12,9 @@ import {
 } from "../../container/globalException";
 
 const MainList = () => {
-	// React Router
-	const navigate = useNavigate();
 	// 전체 게시글 요청 hook
-	const { data: mainPosts, isError, isLoading, error } = useFetchPosts();
-	console.log("useFetchPosts query data =>", mainPosts, "error =>", error);
+	const { data: mainPosts, isError, isLoading } = useFetchPosts();
+
 	// 카냐's Pick state
 	const [canyaPick, setCanyaPick] = useState(null);
 
