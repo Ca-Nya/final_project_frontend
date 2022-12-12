@@ -282,7 +282,7 @@ export const Box = styled.div`
 					return css`
 						width: 100%;
 						max-width: ${calcRem(169)};
-						min-width: ${calcRem(169)};
+						min-width: ${calcRem(160)};
 						height: ${calcRem(245)};
 						position: relative;
 					`;
