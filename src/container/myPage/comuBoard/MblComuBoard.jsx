@@ -2,9 +2,6 @@ import React from "react";
 import {
 	Box,
 	Button,
-	Image,
-	Text,
-	Margin,
 	Flex,
 	Strong,
 } from "../../../components";

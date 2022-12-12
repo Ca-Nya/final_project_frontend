@@ -1,4 +1,4 @@
-import { Box, Button, Image, Text, Margin, Flex } from "../../../components";
+import { Box, Image, Text, Margin, Flex } from "../../../components";
 
 const MblComuBoardItem = ({
 	item,

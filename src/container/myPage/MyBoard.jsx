@@ -23,13 +23,14 @@ const fetchPostList = async pageParam => {
 			},
 		},
 	);
-	const { myPageList: page, isLast } = data;	
+	const { myPageList: page, isLast } = data;
 	return { page, nextPage: pageParam + 1, isLast };
 };
 
 const MyBoard = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
+
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
 		["myBoard"],
 		async ({ pageParam = 1 }) => await fetchPostList(pageParam),
@@ -83,6 +84,7 @@ const MyBoard = () => {
 				</Flex>
 			</Box>
 		);
+
 	return (
 		<Box>
 			<Default>

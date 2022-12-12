@@ -1,7 +1,4 @@
-import { Box, Image, Text, Margin, Flex, Button } from "../../../components";
-import hit from "../../../assets/icons/hit.png";
-import Edit from "../../../assets/icons/edit.png";
-import Delete from "../../../assets/icons/delete.png";
+import { Box, Image, Text, Margin, Flex,} from "../../../components";
 
 const MlbBoardItem = ({ item, navigate, onDeletePost, onEditPost }) => {
 	return (
