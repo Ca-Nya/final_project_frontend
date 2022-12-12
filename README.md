@@ -18,7 +18,7 @@
 <br>
 
 ### 👉 웹사이트 - [카냐 바로가기](https://ca-nya.com/)
-### 👉 팀 노션 - [카냐 팀노션 바로가기](https://www.notion.so/99-4-dcbf8104c68b4d3a940968c05371e21a)
+### 👉 팀 노션 - [카냐 팀노션 바로가기](https://rocky-mercury-85d.notion.site/Ca-Nya-9304947435c3401fae79601e18ed287a)
 
 <br>
 
@@ -81,8 +81,7 @@
 
 <br>
 
-### 기술 스택 사용이유 - [노션 보러가기](https://rocky-mercury-85d.notion.site/Ca-Nya-4-9304947435c3401fae79601e18ed287a)
-
+### 기술 스택 사용이유 - [노션 보러가기](https://www.notion.so/Ca-Nya-9304947435c3401fae79601e18ed287a#967fb51ddff84181beedeffc5ebbb1b4)
 <br>
 
 ## 🌈 주요기능
