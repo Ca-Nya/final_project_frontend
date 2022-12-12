@@ -18,8 +18,8 @@ const Board = ({
             <Text variant="title">내가 쓴 글 ✍🏻</Text>
         </Box>
     </Margin>
-    {data.pages[0].page ? (
-        <>
+    {data?.pages[0].page.length ? (
+        <Flex fd="column-reverse">
         {data?.pages?.map((page, idx) => (
             <React.Fragment key={idx}>
                 {page?.page?.map(item => (
@@ -35,7 +35,7 @@ const Board = ({
                 ))}
             </React.Fragment>
         ))}
-    </>
+    </Flex>
     ) : (
         <Box variant="spinner-wrap">
         <Flex fd="column" jc="center" ai="center" gap="100px">

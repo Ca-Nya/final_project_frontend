@@ -20,7 +20,7 @@ const Like = ({ data, navigate }) => {
 				</Box>
 			</Margin>
 			{data.pages[0].page.length ? (
-				<>
+				<Box variant="reverse">
 					{data?.pages.map((page, idx) => (
 						<React.Fragment key={idx}>
 							{page.page?.map(like => (
@@ -34,7 +34,7 @@ const Like = ({ data, navigate }) => {
 							))}
 						</React.Fragment>
 					))}
-				</>
+				</Box>
 			) : (
 				<Box variant="spinner-wrap">
 					<Flex fd="column" jc="center" ai="center" gap="100px">

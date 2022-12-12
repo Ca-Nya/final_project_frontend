@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Image, Text, Margin, Flex, Button, Strong } from "../../../components";
+import {
+	Box,
+	Image,
+	Text,
+	Margin,
+	Flex,
+	Button,
+	Strong,
+} from "../../../components";
 import MblBoardListItem from "./MblBoardListItem";
 import hit from "../../../assets/icons/hit.png";
 
@@ -46,19 +54,21 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 			)}
 			{data.pages[0].page ? (
 				<Box size="container">
-					{data?.pages?.map((page, idx) => (
-						<React.Fragment key={idx}>
-							{page?.page?.map(item => (
-								<>
-									<MblBoardListItem
-										key={item.communityId}
-										item={item}
-										navigate={navigate}
-									/>
-								</>
-							))}
-						</React.Fragment>
-					))}
+					<Flex fd="column-reverse">
+						{data?.pages?.map((page, idx) => (
+							<React.Fragment key={idx}>
+								{page?.page?.map(item => (
+									<>
+										<MblBoardListItem
+											key={item.communityId}
+											item={item}
+											navigate={navigate}
+										/>
+									</>
+								))}
+							</React.Fragment>
+						))}
+					</Flex>
 				</Box>
 			) : (
 				<Box variant="spinner-wrap">
