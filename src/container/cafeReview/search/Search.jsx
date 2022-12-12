@@ -15,7 +15,7 @@ const Search = ({
 	place,
 	setPlace,
 }) => {
-	console.log("searchPlace ==>", place);
+	// console.log("searchPlace ==>", place);
 
 	return (
 		<>
