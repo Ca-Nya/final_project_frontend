@@ -11,7 +11,7 @@ const MblLike = ({data,navigate}) => {
   return (
     <Box>  
     {data.pages[0].page.length ? (
-        <Box size="reverse">
+        <>
             {data?.pages.map((page, idx) => (
                 <React.Fragment key={idx}>
                     {page.page?.map(like => (
@@ -25,7 +25,7 @@ const MblLike = ({data,navigate}) => {
                     ))}
                 </React.Fragment>
             ))}
-        </Box>
+        </>
     ) : (
         <Box variant="spinner-wrap">
             <Flex fd="column" jc="center" ai="center" gap="100px">

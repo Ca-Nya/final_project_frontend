@@ -69,6 +69,7 @@ const MyComuBoard = () => {
 		navigate(`/edit/${item.communityId}`);
 	};
 
+
 	if (status === "loading")
 		return (
 			<Box variant="spinner-wrap">
