@@ -49,11 +49,10 @@ const MyComment = () => {
 		},
 	);
 
-	
-
 	useEffect(() => {
 		if (inView) fetchNextPage();
 	}, [inView]);
+	
 
 	if (status === "loading")
 		return (
