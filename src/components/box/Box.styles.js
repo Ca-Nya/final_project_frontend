@@ -281,12 +281,8 @@ export const Box = styled.div`
 				case "main-new-item":
 					return css`
 						width: 100%;
-	
-
 						min-width: ${calcRem(160)};
-
 						min-width: ${calcRem(169)};
-
 						height: ${calcRem(245)};
 						position: relative;
 					`;
@@ -800,7 +796,7 @@ export const Box = styled.div`
 					`;
 				case "reverse":
 					return css`
-						display: flex;
+						/* display: flex; */
 						flex-direction: column-reverse;
 
 						/* -webkit-flex-direction: column-reverse;
