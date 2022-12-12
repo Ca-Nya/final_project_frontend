@@ -2,14 +2,11 @@ import React from "react";
 import {
 	Box,
 	Button,
-	Image,
 	Text,
 	Margin,
 	Flex,
 	Strong,
 } from "../../../components";
-import Edit from "../../../assets/icons/edit.png";
-import Delete from "../../../assets/icons/delete.png";
 import BoardItem from "./BoardItem";
 
 const Board = ({ data, navigate, onDeletePost, onEditPost }) => {

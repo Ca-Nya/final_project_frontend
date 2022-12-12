@@ -1,9 +1,6 @@
 import React from 'react'
 import {
 	Box,
-	Image,
-	Text,
-	Margin,
 	Flex,
 	Strong,
 	Button,

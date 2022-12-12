@@ -1,7 +1,5 @@
 import React from "react";
-import { Box, Button, Image, Text, Margin, Flex, Strong } from "../../../components";
-import Edit from "../../../assets/icons/edit.png";
-import Delete from "../../../assets/icons/delete.png";
+import { Box, Button, Flex, Strong } from "../../../components";
 import  MblBoardItem from "./MlbBoardItem";
 
 const MblBoard = ({ data, navigate, onDeletePost, onEditPost }) => {

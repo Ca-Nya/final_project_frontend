@@ -1,8 +1,8 @@
-import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Image, Box, Flex, Button, Strong } from "../../components";
 // 로딩 스피너

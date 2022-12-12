@@ -8,7 +8,6 @@ import { Image, Box, Flex, Button, Strong } from "../../components";
 import { Board, MblBoard } from "./board";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import spinner from "../../assets/icons/spinner.gif";
-import { useQueryClient } from "react-query";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
