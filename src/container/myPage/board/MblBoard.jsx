@@ -6,7 +6,7 @@ const MblBoard = ({ data, navigate, onDeletePost, onEditPost }) => {
 	return ( 
     <Box>      
         {data?.pages[0].page.length ? (
-            <Flex fd="column-reverse">
+            <>
             {data?.pages?.map((page, idx) => (
                 <React.Fragment key={idx}>
                     {page?.page?.map(item => (
@@ -22,7 +22,7 @@ const MblBoard = ({ data, navigate, onDeletePost, onEditPost }) => {
                     ))}
                 </React.Fragment>
             ))}
-        </Flex>
+        </>
         ) : (
             <Box variant="spinner-wrap">
             <Flex fd="column" jc="center" ai="center" gap="100px">

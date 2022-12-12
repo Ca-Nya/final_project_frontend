@@ -17,9 +17,9 @@ const Like = ({ data, navigate }) => {
 					<Text variant="title">좋아요 한 글 ❣️ </Text>
 				</Box>
 			</Margin>
-			<Box variant="reverse">
+			<Box>
 				{data.pages[0].page.length ? (
-					<Flex fd="column-reverse">
+					<>
 						{data?.pages.map((page, idx) => (
 							<React.Fragment key={idx}>
 								{page.page?.map(like => (
@@ -33,7 +33,7 @@ const Like = ({ data, navigate }) => {
 								))}
 							</React.Fragment>
 						))}
-					</Flex>
+					</>
 				) : (
 					<Box variant="spinner-wrap">
 						<Flex fd="column" jc="center" ai="center" gap="100px">

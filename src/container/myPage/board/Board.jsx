@@ -19,7 +19,7 @@ const Board = ({ data, navigate, onDeletePost, onEditPost }) => {
 			</Margin>
 			<Box>
 				{data && data?.pages[0].page.length ? (
-					<Box variant="reverse">
+					<Box>
 						{data?.pages?.map((page, idx) => (
 							<React.Fragment key={idx}>
 								{page?.page?.map(item => (

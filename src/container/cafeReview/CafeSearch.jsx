@@ -10,7 +10,10 @@ import {
 } from "../../components";
 
 const CafeSearch = ({ place, setPlace }) => {
+
+
 	// console.log("디테일페이지 place ==> ", place);
+
 	// 검색 값 state
 	const [inputText, setInputText] = useState("");
 	// 검색 값 저장 핸들러
