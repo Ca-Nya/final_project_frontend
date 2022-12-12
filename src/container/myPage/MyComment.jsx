@@ -63,7 +63,7 @@ const MyComment = () => {
 				</Flex>
 			</Box>
 		);
-		if (infError.response.data === "작성한 댓글이 없습니다.") {
+		if (infError?.response.data === "작성한 댓글이 없습니다.") {
 			return (
 				<Box variant="spinner-wrap">
 					<Flex fd="column" jc="center" ai="center" gap="100px">
@@ -98,7 +98,7 @@ const MyComment = () => {
 					</Box>
 				</Margin>
 				{data.pages[0].page.length > 0 ? (
-					<Box>
+					<Box variant="reverse">
 						{data?.pages?.map((page, idx) => (
 							<React.Fragment key={idx}>
 								{page?.page?.map(comment => (

@@ -89,8 +89,7 @@ const MyPage = () => {
 			onSuccess: (data, variables, context) => {
 				refetch();
 			},
-			onError: (error, variables, context) => {
-				console.log("error ====>", error);
+			onError: (error, variables, context) => {				
 				alert("수정을 실패했습니다.");
 			},
 		});

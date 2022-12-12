@@ -790,6 +790,14 @@ export const Box = styled.div`
 							color: ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
+				case "reverse":
+					return css`
+						display: flex;
+						flex-direction: column-reverse;
+
+						/* -webkit-flex-direction: column-reverse;
+						-ms-flex-direction: column-reverse; */
+					`;
 				default:
 					break;
 			}
@@ -910,6 +918,11 @@ export const Box = styled.div`
 			case "s-box":
 				return css`
 					width: ${calcRem(40)};
+				`;
+			case "reverse":
+				return css`
+					display: flex;
+					flex-direction: column-reverse;
 				`;
 			default:
 				break;

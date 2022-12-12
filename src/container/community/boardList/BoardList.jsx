@@ -29,7 +29,7 @@ const BoardList = ({ navigate, data, authorization, nickname }) => {
 				)}
 			</Flex>
 			{data.pages[0].page ? (
-				<Box>
+				<Box variant="reverse">					
 					{data?.pages?.map((page, idx) => (
 						<React.Fragment key={idx}>
 							{page?.page?.map(item => (

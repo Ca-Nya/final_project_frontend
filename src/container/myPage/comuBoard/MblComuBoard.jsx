@@ -13,8 +13,8 @@ import MblComuBoardItem from "./MblComuBoardItem";
 const MblComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 	return (
 		<Box sixe="container">
-			{data.pages[0].page ? (
-				<>
+			{data?.pages[0].page.length ? (
+				<Box size="reverse">
 					{data?.pages?.map((page, idx) => (
 						<React.Fragment key={idx}>
 							{page?.page?.map(item => (
@@ -30,7 +30,7 @@ const MblComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 							))}
 						</React.Fragment>
 					))}
-				</>
+				</Box>
 			) : (
 				<Box variant="spinner-wrap">
 					<Flex fd="column" jc="center" ai="center" gap="100px">

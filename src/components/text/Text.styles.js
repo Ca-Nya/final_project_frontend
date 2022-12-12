@@ -82,6 +82,10 @@ export const Text = styled.p`
 								return css`
 									background-color: #f6cd3c;
 								`;
+								case "grande":
+								return css`
+									background-color: ${({ theme }) => theme.colors.main_purple};
+								`;
 							default:
 								break;
 						}
@@ -454,6 +458,10 @@ export const Text = styled.p`
 							case "tall":
 								return css`
 									background-color: #f6cd3c;
+								`;
+								case "grande":
+								return css`
+									background-color: ${({ theme }) => theme.colors.main_purple};
 								`;
 							default:
 								break;
