@@ -8,6 +8,7 @@ import { Image, Box, Flex, Button, Strong } from "../../components";
 import { Board, MblBoard } from "./board";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import spinner from "../../assets/icons/spinner.gif";
+import { useQueryClient } from "react-query";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -23,13 +24,14 @@ const fetchPostList = async pageParam => {
 			},
 		},
 	);
-	const { myPageList: page, isLast } = data;	
+	const { myPageList: page, isLast } = data;
 	return { page, nextPage: pageParam + 1, isLast };
 };
 
 const MyBoard = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
+
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
 		["myBoard"],
 		async ({ pageParam = 1 }) => await fetchPostList(pageParam),
@@ -83,6 +85,7 @@ const MyBoard = () => {
 				</Flex>
 			</Box>
 		);
+
 	return (
 		<Box>
 			<Default>
