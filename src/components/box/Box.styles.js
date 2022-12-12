@@ -14,7 +14,10 @@ export const Box = styled.div`
 						width: 100vw;
 						max-width: ${calcRem(1190)} !important;
 						margin: 0 auto;
-						padding: 0 3.5vw;
+						padding: 0 30px;
+						@media screen and (max-width: 1000px) {
+							padding: 0 3.3vw;
+						}
 					`;
 				case "container-2":
 					return css`
@@ -279,6 +282,7 @@ export const Box = styled.div`
 					return css`
 						width: 100%;
 						max-width: ${calcRem(169)};
+						min-width: ${calcRem(169)};
 						height: ${calcRem(245)};
 						position: relative;
 					`;

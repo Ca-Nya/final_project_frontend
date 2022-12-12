@@ -20,16 +20,6 @@ const MainLayout = () => {
 	// 검색 리스트 요청 무한스크롤 Hook
 	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
 		useFetchSearchList(submitValues);
-	console.log(
-		"useFetchSearchList data ==>",
-		data,
-		"status =>",
-		status,
-		"isFetchingNextPage =>",
-		isFetchingNextPage,
-		"error =>",
-		error,
-	);
 
 	useEffect(() => {
 		if (submitValues.category) {
@@ -39,7 +29,7 @@ const MainLayout = () => {
 
 	// observe
 	const { ref, inView } = useInView();
-	
+
 	// observe시 다음 게시글 요청 Effect
 	useEffect(() => {
 		if (inView) fetchNextPage();

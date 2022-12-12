@@ -5,8 +5,9 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 // image
-import main1 from "../../assets/images/main_carousel1.png";
+import main1 from "../../assets/images/form.png";
 import main2 from "../../assets/images/main_carousel2.png";
+import main3 from "../../assets/images/main_carousel1.png";
 import prev_arrow from "../../assets/icons/prev_arrow.png";
 import next_arrow from "../../assets/icons/next_arrow.png";
 
@@ -43,19 +44,22 @@ const MainCarousel = () => {
 					<Box variant="main-carousel-item-desc">
 						<Flex fd="column" jc="center" gap="50px">
 							<Box>
-								<Strong variant="main-carousel-rate">요즘 카페 어디가?</Strong>
-								<Text variant="main-carousel-rate">
-									핫한 카페를 찾고싶은 카페 유목민들을 위한
+								<Strong variant="main-carousel-hot">
+									폼 작성하고 선물 받아요!
+								</Strong>
+								<Text variant="main-carousel-hot">
+									설문조사에 참여하시면
 									<br />
-									카냐인이 사랑하는 카페를 보고싶다면?
+									성실한 카냐인에게 선물을 드려요!
 								</Text>
 							</Box>
-							<Button
-								onClick={() => navigate("/overalls/인기")}
-								variant="main-carousel-rate"
+							<a
+								href="https://docs.google.com/forms/d/e/1FAIpQLSdA8tq3Nayjaif8tUWBe9fqLgHDR-PkylGSM8ZsmSEqYFwR9g/viewform"
+								target="_blank"
+								rel="noreferrer"
 							>
-								인기리뷰 보러가기
-							</Button>
+								<Button variant="main-carousel-hot">구글폼 작성하기</Button>
+							</a>
 						</Flex>
 					</Box>
 				</Box>
@@ -77,6 +81,26 @@ const MainCarousel = () => {
 								variant="main-carousel-hot"
 							>
 								별점별리뷰 보러가기
+							</Button>
+						</Flex>
+					</Box>
+				</Box>
+				<Box variant="main-carousel-item" bg={main3}>
+					<Box variant="main-carousel-item-desc">
+						<Flex fd="column" jc="center" gap="50px">
+							<Box>
+								<Strong variant="main-carousel-rate">요즘 카페 어디가?</Strong>
+								<Text variant="main-carousel-rate">
+									핫한 카페를 찾고싶은 카페 유목민들을 위한
+									<br />
+									카냐인이 사랑하는 카페를 보고싶다면?
+								</Text>
+							</Box>
+							<Button
+								onClick={() => navigate("/overalls/인기")}
+								variant="main-carousel-rate"
+							>
+								인기리뷰 보러가기
 							</Button>
 						</Flex>
 					</Box>

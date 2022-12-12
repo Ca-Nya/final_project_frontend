@@ -39,7 +39,7 @@ const SignUp = ({
 				if (isCheckedId && isCheckedNickname) {
 					const { memberName, memberNickname, password } = value;
 					dispatch(__requestSignUp({ memberName, memberNickname, password }));
-					alert("카냐에 오신걸 환영합니다.");
+
 					navigate("/join"); // 네비게이트에 join
 				} else if (!isCheckedId && !isCheckedNickname) {
 					alert("아이디와 닉네임 중복체크를 해주세요.");
@@ -139,7 +139,6 @@ const SignUp = ({
 				) : (
 					""
 				)}
-
 				<Margin margin="15px 0 8px 8px">
 					<Text variant="join-id">아이디</Text>
 				</Margin>

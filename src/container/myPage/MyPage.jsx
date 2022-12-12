@@ -72,6 +72,7 @@ const MyPage = () => {
 
 	useEffect(() => {
 		dispatch(editProfileImage(memberProfileImage));
+		localStorage.setItem("profileImageUrl", memberProfileImage);
 	}, [memberProfileImage]);
 
 	// 프로필 수정 Hook
@@ -89,7 +90,8 @@ const MyPage = () => {
 			onSuccess: (data, variables, context) => {
 				refetch();
 			},
-			onError: (error, variables, context) => {				
+
+			onError: (error, variables, context) => {
 				alert("수정을 실패했습니다.");
 			},
 		});

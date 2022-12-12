@@ -1,7 +1,6 @@
 import { Box, Image, Text, Margin, Flex } from "../../../components";
 
 const LikeItem = ({ like, data, navigate, isFetchingNextPage }) => {
-	
 	return (
 		<Box>
 			<Box variant="board-box" key={like.boardId}>
