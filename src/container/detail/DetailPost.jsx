@@ -45,11 +45,9 @@ const DetailPost = () => {
 	const handleDeletePost = () => {
 		deletePostMutate(+id, {
 			onSuccess: data => {
-				console.log("useDeleteDetailPost data =>", data);
 				navigate("/");
 			},
 			onError: error => {
-				console.log("useDeleteDetailPost error =>", error);
 				alert("삭제를 실패했습니다");
 			},
 		});

@@ -18,12 +18,12 @@ const useFetchDetailPost = boardId => {
 	// 이렇게 하면 suspense 도 각자 돌구 다른 쿼리이기 때문에 캐싱된 값이 보이지도 않는다!
 	// queryKey도 어떤 상황인지에 따라 다르게 써야하는군아..
 	// 잠깐 보여도 상관없으면 넣지안기이이
-	console.log("boardId =>", boardId);
+
 	return useQuery({
 		queryKey: ["detailPost"],
 		queryFn: async () => {
 			const response = await fetchDetailPost(boardId);
-			console.log("useFetchDetailPost response =>", response);
+
 			return response.data;
 		},
 		suspense: true,
