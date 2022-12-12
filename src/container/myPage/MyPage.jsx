@@ -167,7 +167,7 @@ const MyPage = () => {
 					recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
 					memberCommunityCount={memberCommunityCount}
 					memberCommunityCommentCount={memberCommunityCommentCount}
-				/>
+				/>			
 			</Default>
 			<Mobile>
 				<MblMypgHome

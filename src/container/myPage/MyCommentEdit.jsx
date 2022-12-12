@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Box } from "../../components";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import {
-	QueryClient,
-	useMutation,
-	useQueryClient,
-	useQuery,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Comment, MblComment } from "./comment";
@@ -46,8 +41,8 @@ const MyCommentEdit = ({ comment }) => {
 		{
 			onSuccess: ({ status, data }) => {
 				if (status === "200") {
-					console.log("data =>", data);
-					console.log("status =>", status);					
+					// console.log("data =>", data);
+					// console.log("status =>", status);
 				}
 			},
 			onError: error => {
@@ -72,7 +67,7 @@ const MyCommentEdit = ({ comment }) => {
 	};
 
 	//댓글 수정하기 쿼리 요청(온클릭)
-	const handleEditComplete = e => {		
+	const handleEditComplete = e => {
 		if (editComment === "") {
 			alert("변경내용이 없습니다.");
 		} else {
@@ -83,7 +78,7 @@ const MyCommentEdit = ({ comment }) => {
 				},
 				{
 					onError: (error, variables, context) => {
-						console.log("error => ", error);
+						// console.log("error => ", error);
 					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");

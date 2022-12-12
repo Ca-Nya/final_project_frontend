@@ -49,10 +49,9 @@ const CommentEdit = ({ item }) => {
 		{
 			onSuccess: ({ status, data }) => {
 				if (status === "200") {
-					console.log("data =>", data);
-					console.log("status =>", status);
-					// queryClient.invalidateQueries("getComments");
-					// alert(data);
+					// console.log("data =>", data);
+					// console.log("status =>", status);
+					
 				}
 			},
 			onError: error => {
@@ -88,7 +87,7 @@ const CommentEdit = ({ item }) => {
 				},
 				{
 					onError: (error, variables, context) => {
-						console.log("error => ", error);
+						// console.log("error => ", error);
 					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");

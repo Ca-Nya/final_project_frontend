@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -23,25 +23,36 @@ const fetchPostList = async pageParam => {
 			},
 		},
 	);
-	const { myPageList: page, isLast } = data;	
+	const { myPageList: page, isLast } = data;
 	return { page, nextPage: pageParam + 1, isLast };
 };
 
 const MyBoard = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
-	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-		["myBoard"],
-		async ({ pageParam = 1 }) => await fetchPostList(pageParam),
-		{
-			getNextPageParam: lastPage =>
-				!lastPage.isLast ? lastPage.nextPage : undefined,
-		},
-	);
+
+	const { data, status, fetchNextPage, isFetchingNextPage, refetch } =
+		useInfiniteQuery(
+			["myBoard"],
+			async ({ pageParam = 1 }) => await fetchPostList(pageParam),
+			{
+				getNextPageParam: lastPage =>
+					!lastPage.isLast ? lastPage.nextPage : undefined,
+			},
+		);
 
 	useEffect(() => {
-		if (inView) fetchNextPage();
+		if (inView) {
+			fetchNextPage();
+		}
 	}, [inView]);
+
+	const queryClient = useQueryClient();
+	useEffect(() => {
+		queryClient.refetchQueries("myBoard", {
+			refetchPage: (_, index) => index === 0,
+		});
+	}, [queryClient]);
 
 	// 마이페이지 게시글 삭제 Hook
 	const { mutate: deletePostMutate } = useDeleteDetailPost();
@@ -83,6 +94,7 @@ const MyBoard = () => {
 				</Flex>
 			</Box>
 		);
+
 	return (
 		<Box>
 			<Default>

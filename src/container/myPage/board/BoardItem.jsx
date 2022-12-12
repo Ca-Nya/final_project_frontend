@@ -1,5 +1,5 @@
 import { Box, Button, Image, Text, Margin, Flex } from "../../../components";
-import hit from "../../../assets/icons/hit.png";
+
 
 const BoardItem = ({ item, navigate, onDeletePost, onEditPost }) => {
 	return (

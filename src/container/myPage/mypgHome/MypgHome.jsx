@@ -7,7 +7,7 @@ import {
 	Margin,
 	Flex,
 } from "../../../components";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import Edit from "../../../assets/icons/edit-profile.png";
 import Comment from "../../../assets/icons/comment.png";
 import Heart from "../../../assets/icons/heart.png";
@@ -72,8 +72,15 @@ const MypgHome = ({
 									<Margin margin="10%">
 										<Box>
 											<Flex gap="5%" ai="center" jc="center">
-												<Text variant="level" rank={localStorage.getItem("memberStatus")}>Lv</Text>
-												<Text variant="level-name">{localStorage.getItem("memberStatus")} ☕️</Text>
+												<Text
+													variant="level"
+													rank={localStorage.getItem("memberStatus")}
+												>
+													Lv
+												</Text>
+												<Text variant="level-name">
+													{localStorage.getItem("memberStatus")} ☕️
+												</Text>
 											</Flex>
 										</Box>
 									</Margin>
@@ -83,11 +90,7 @@ const MypgHome = ({
 
 						<Margin margin="10% 3% 0 0">
 							<Box variant="category-box">
-								<Flex
-									gap="5%"
-									jc="center"
-									ai="center"									
-								>
+								<Flex gap="5%" jc="center" ai="center">
 									<Flex fd="column" jc="center" ai="center" gap="5px">
 										<Image variant="mypage-icon" src={Write} />
 										<Text
@@ -160,6 +163,7 @@ const MypgHome = ({
 									>
 										내가쓴글
 									</Text>
+
 									<Box variant="guide-point" isActive={myBoardMatch !== null}>
 										<Margin margin="0.1vw 0 0 0">
 											<Text

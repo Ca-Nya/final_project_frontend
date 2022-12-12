@@ -1,11 +1,12 @@
 import { Box, Image, Text, Margin, Flex } from "../../../components";
+import { Like } from "../like";
 
 const All = ({
 	recentlyMyBoardList,
 	recentlyMyCommentList,
 	recentlyMyHeartBoardList,
 	recentlyMyCommunityList,
-	recentlyMyCommunityCommentList,	
+	recentlyMyCommunityCommentList,
 	navigate,
 }) => {
 	return (
@@ -19,8 +20,7 @@ const All = ({
 							onClick={() => {
 								navigate(`/mypage/myboard`);
 							}}
-						>
-							더보기
+						>더보기
 						</Text>
 					</Box>
 				</Margin>
@@ -29,7 +29,7 @@ const All = ({
 						return (
 							<Box key={item.boardId}>
 								<Image
-									variant="mypage-post"									
+									variant="mypage-post"
 									src={item.imageList[0].imageUrl}
 									alt={item.boardTitle}
 									onClick={() => {
@@ -204,7 +204,9 @@ const All = ({
 									<Margin margin="17px 3% 0 22px">
 										<Box>
 											<Flex jc="space-between" ai="center">
-												<Text variant="comment">{item.communityCommentContent}</Text>
+												<Text variant="comment">
+													{item.communityCommentContent}
+												</Text>
 												<Text variant="comment-date">
 													{item.communityCommentCreatedAt}
 												</Text>
