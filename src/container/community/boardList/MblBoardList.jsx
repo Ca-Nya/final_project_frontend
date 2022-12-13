@@ -54,21 +54,19 @@ const MblBoardList = ({ navigate, data, authorization, nickname }) => {
 			)}
 			{data.pages[0].page ? (
 				<Box size="container">
-					<Flex fd="column-reverse">
-						{data?.pages?.map((page, idx) => (
-							<React.Fragment key={idx}>
-								{page?.page?.map(item => (
-									<>
-										<MblBoardListItem
-											key={item.communityId}
-											item={item}
-											navigate={navigate}
-										/>
-									</>
-								))}
-							</React.Fragment>
-						))}
-					</Flex>
+					{data?.pages?.map((page, idx) => (
+						<React.Fragment key={idx}>
+							{page?.page?.map(item => (
+								<>
+									<MblBoardListItem
+										key={item.communityId}
+										item={item}
+										navigate={navigate}
+									/>
+								</>
+							))}
+						</React.Fragment>
+					))}
 				</Box>
 			) : (
 				<Box variant="spinner-wrap">
