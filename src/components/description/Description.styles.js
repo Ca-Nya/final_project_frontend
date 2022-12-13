@@ -143,10 +143,17 @@ export const DataDesc = styled.dd`
 						left: -10px;
 					}
 				`;
+			case "main-all-item-hashtag":
+				return css`
+					text-align: center;
+					font-size: ${({ theme }) => theme.fontSizes.base};
+					white-space: nowrap;
+				`;
 			case "main-all-item-rate":
 				return css`
 					text-align: center;
 					font-size: ${({ theme }) => theme.fontSizes.xxl};
+
 					&::before {
 						content: "";
 						background-image: url(${canya_item_star});
