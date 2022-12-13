@@ -64,7 +64,12 @@ const MainAllList = ({ allDto }) => {
 																	<Flex jc="center" gap="6px">
 																		{allItem.highestRatings.map((item, idx) => {
 																			return (
-																				<DataDesc key={idx}>#{item}</DataDesc>
+																				<DataDesc
+																					key={idx}
+																					variant="main-all-item-hashtag"
+																				>
+																					#{item}
+																				</DataDesc>
 																			);
 																		})}
 																	</Flex>
@@ -124,7 +129,12 @@ const MainAllList = ({ allDto }) => {
 																<Flex jc="center" gap="6px">
 																	{allItem.highestRatings.map((item, idx) => {
 																		return (
-																			<DataDesc key={idx}>#{item}</DataDesc>
+																			<DataDesc
+																				key={idx}
+																				variant="main-all-item-hashtag"
+																			>
+																				#{item}
+																			</DataDesc>
 																		);
 																	})}
 																</Flex>

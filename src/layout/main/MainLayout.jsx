@@ -51,7 +51,7 @@ const MainLayout = () => {
 		<>
 			<MainNav setResetMain={setResetMain} setSubmitValues={setSubmitValues} />
 			<Margin margin="78px 0 0 0">
-				{status === "loading" && !resetMain && <ExceptionHandler />}
+				{status === "loading" && !resetMain ? <ExceptionHandler /> : ""}
 				{data && !resetMain ? (
 					<MainSearchList data={data} setResetMain={setResetMain} />
 				) : (

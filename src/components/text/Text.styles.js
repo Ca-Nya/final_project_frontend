@@ -68,28 +68,29 @@ export const Text = styled.p`
 						font-size: ${({ theme }) => theme.fontSizes.base};
 						color: ${({ theme }) => theme.colors.white};
 						width: ${calcRem(80)};
-						height: ${calcRem(25)};					
+						height: ${calcRem(25)};
 						border-radius: 50px;
 						text-align: center;
 						line-height: ${calcRem(25)};
 						${({ rank }) => {
-						switch (rank) {
-							case "venti":
-								return css`
-									background-color: ${({ theme }) => theme.colors.point};
-								`;
-							case "tall":
-								return css`
-									background-color: #f6cd3c;
-								`;
+							switch (rank) {
+								case "venti":
+									return css`
+										background-color: ${({ theme }) => theme.colors.point};
+									`;
+								case "tall":
+									return css`
+										background-color: #f6cd3c;
+									`;
 								case "grande":
-								return css`
-									background-color: ${({ theme }) => theme.colors.main_purple};
-								`;
-							default:
-								break;
-						}
-					}}
+									return css`
+										background-color: ${({ theme }) =>
+											theme.colors.main_purple};
+									`;
+								default:
+									break;
+							}
+						}}
 					`;
 				case "level-name":
 					return css`
@@ -116,7 +117,7 @@ export const Text = styled.p`
 				case "main-canya-pick-content":
 					return css`
 						font-size: ${({ theme }) => theme.fontSizes.lg};
-						line-height: 1.1;
+						line-height: 1.2;
 						height: 100%;
 					`;
 				case "main-footer":
@@ -273,7 +274,7 @@ export const Text = styled.p`
 						font-size: ${({ theme }) => theme.fontSizes.xl};
 						color: ${({ theme }) => theme.colors.dark_gray};
 						font-weight: 400;
-						text-align: center;					
+						text-align: center;
 					`;
 				case "cafe-write-address":
 					return css`
@@ -290,20 +291,20 @@ export const Text = styled.p`
 						font-weight: 400;
 						text-align: end;
 					`;
-					/* 커뮤니티 리스트 */
+				/* 커뮤니티 리스트 */
 				case "hit":
 					return css`
 						font-size: ${({ theme }) => theme.fontSizes.base};
 						color: ${({ theme }) => theme.colors.white};
-						font-weight: 200;						
+						font-weight: 200;
 					`;
-					case "comu-title":
+				case "comu-title":
 					return css`
-						width: 47.6vw;						
+						width: 47.6vw;
 						max-width: ${calcRem(556)};
 						font-size: ${({ theme }) => theme.fontSizes.lg};
 						color: ${({ theme }) => theme.colors.black};
-						font-weight: 600;						
+						font-weight: 600;
 						white-space: nowrap;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -319,32 +320,32 @@ export const Text = styled.p`
 							color: ${({ theme }) => theme.colors.main_purple};
 						}
 					`;
-					case "comu-content":
-				return css`
-					font-size: ${({ theme }) => theme.fontSizes.base};
-					color: ${({ theme }) => theme.colors.dark_gray};
-					display: inline-block;
-					width: 45.4vw;
-					/* height: 6.5vw; */
-					max-width: ${calcRem(530)};
-					/* max-height: ${calcRem(88)}; */
-					white-space: nowrap;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: normal;
-					line-height: 1.2;
-					max-height: 1.2;
-					text-align: left;
-					word-wrap: break-word;
-					display: -webkit-box;
-					-webkit-line-clamp: 3;
-					-webkit-box-orient: vertical;
-				`;
-					case "comu-nickname":
-				return css`
-					font-size: ${({ theme }) => theme.fontSizes.base};
-					color: ${({ theme }) => theme.colors.gray};
-				`;
+				case "comu-content":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.dark_gray};
+						display: inline-block;
+						width: 45.4vw;
+						/* height: 6.5vw; */
+						max-width: ${calcRem(530)};
+						/* max-height: ${calcRem(88)}; */
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: normal;
+						line-height: 1.2;
+						max-height: 1.2;
+						text-align: left;
+						word-wrap: break-word;
+						display: -webkit-box;
+						-webkit-line-clamp: 3;
+						-webkit-box-orient: vertical;
+					`;
+				case "comu-nickname":
+					return css`
+						font-size: ${({ theme }) => theme.fontSizes.base};
+						color: ${({ theme }) => theme.colors.gray};
+					`;
 				default:
 					break;
 			}
@@ -459,7 +460,7 @@ export const Text = styled.p`
 								return css`
 									background-color: #f6cd3c;
 								`;
-								case "grande":
+							case "grande":
 								return css`
 									background-color: ${({ theme }) => theme.colors.main_purple};
 								`;

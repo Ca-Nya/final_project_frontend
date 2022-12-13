@@ -145,9 +145,11 @@ export const Button = styled.button`
 					return css`
 						width: 100%;
 						max-width: ${calcRem(90)};
+						min-width: ${calcRem(58)};
 						height: ${calcRem(129)};
 						font-size: ${({ theme }) => theme.fontSizes.base};
 						background-color: transparent;
+						white-space: nowrap;
 					`;
 				case "main-canya-pick-nav":
 					return css`

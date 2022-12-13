@@ -212,7 +212,7 @@ export const Box = styled.div`
 					`;
 				case "main-canya-pick-content":
 					return css`
-						height: ${calcRem(76)};
+						height: ${calcRem(81)};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding: 1px 0 17px 0;
 					`;
@@ -298,7 +298,7 @@ export const Box = styled.div`
 						background-repeat: no-repeat;
 						transition: border 400ms;
 						&:hover {
-							border: 3px solid ${({ theme }) => theme.colors.point};
+							border: 4px solid ${({ theme }) => theme.colors.point};
 						}
 					`;
 				case "main-new-address":

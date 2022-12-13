@@ -34,7 +34,7 @@ const MainNavButtons = () => {
 		<Nav variant="main-category-button-group-wrap">
 			<Flex jc="center" ai="center">
 				<Box variant="container">
-					<Flex jc="center" ai="center" gap="2.5%">
+					<Flex jc="center" ai="center" gap="2.3%">
 						{overalls.map(category => {
 							return (
 								<Button
