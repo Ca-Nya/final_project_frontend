@@ -44,7 +44,7 @@ const ComuList = () => {
 	const nickname = localStorage.getItem("Nickname");
 	const { ref, inView } = useInView();
 	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-		["page"],
+		["communityList"],
 		({ pageParam = 1 }) => fetchPostList(pageParam),
 		{
 			getNextPageParam: lastPage =>
