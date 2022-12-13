@@ -15,7 +15,7 @@ const Board = ({ data, navigate, onDeletePost, onEditPost }) => {
 	// 	return b.boardId - a.boardId
 	// })
 
-	console.log("boardData====>",data)
+	// console.log("boardData====>",data)
 
 	return (
 		<Box>
