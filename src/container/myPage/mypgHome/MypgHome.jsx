@@ -46,7 +46,7 @@ const MypgHome = ({
 							<Box>
 								<Label htmlFor="imageChange" variant="profile">
 									<Image variant="profile-edit" src={Edit} />
-									<span>프로필이미지 편집</span>
+									<span>프로필사진 편집</span>
 								</Label>
 								<Input
 									id="imageChange"
