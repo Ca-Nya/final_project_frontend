@@ -4,41 +4,45 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteComuPost } from "../../querys/community";
 import axios from "axios";
-import { Image, Box, Flex,Button,Strong } from "../../components";
+import { Image, Box, Flex, Button, Strong } from "../../components";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import { ComuBoard,MblComuBoard } from "./comuBoard";
+import { ComuBoard, MblComuBoard } from "./comuBoard";
 
-const BASE_URL = process.env.REACT_APP_SERVER;
-
-//로컬스토리지 토큰가져오기
-const authorization = localStorage.getItem("Authorization");
-
-const fetchPostList = async pageParam => {
-	const { data } = await axios.get(
-		`${BASE_URL}/member/auth/mypage/communities?page=${pageParam}&size=3`,
-		{
-			headers: {
-				authorization,
-			},
-		},
-	);
-	const { myPageList: page, isLast } = data;
-	return { page, nextPage: pageParam + 1, isLast };
-};
 
 const MyComuBoard = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
-	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-		["myComuBoard"],
-		({ pageParam = 1 }) => fetchPostList(pageParam),
-		{
-			getNextPageParam: lastPage =>
-				!lastPage.isLast ? lastPage.nextPage : undefined,
-		},
-	);
+	const BASE_URL = process.env.REACT_APP_SERVER;
+	//로컬스토리지 토큰가져오기
+	const authorization = localStorage.getItem("Authorization");
+
+	const { data, status, fetchNextPage, isFetchingNextPage} =
+		useInfiniteQuery(
+			["myComuBoard"],
+			async ({ pageParam = 1 }) => {
+				const { data } = await axios.get(
+					`${BASE_URL}/member/auth/mypage/communities?page=${pageParam}&size=3`,
+					{
+						headers: {
+							authorization,
+						},
+					},
+				);
+				const { myPageList: page, isLast } = data;
+				return { page, nextPage: pageParam + 1, isLast };
+			},
+			{
+				getNextPageParam: lastPage =>
+					!lastPage.isLast ? lastPage.nextPage : undefined,
+			},
+			{
+				onError: error => {
+					console.log(error.response);
+				},
+			},
+		);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
@@ -69,7 +73,6 @@ const MyComuBoard = () => {
 		navigate(`/edit/${item.communityId}`);
 	};
 
-
 	if (status === "loading")
 		return (
 			<Box variant="spinner-wrap">
@@ -78,55 +81,55 @@ const MyComuBoard = () => {
 				</Flex>
 			</Box>
 		);
-	if (status === "error") return  (
-		<Box variant="spinner-wrap">
-					<Flex fd="column" jc="center" ai="center" gap="100px">
-						<Strong variant="warning">
-							에러입니다.😭 빠른 시일 내에 해결하겠습니다.
-						</Strong>
-						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-							돌아가기
-						</Button>
-					</Flex>
-				</Box>
-	);
-
+	if (status === "error")
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">
+						에러입니다.😭 빠른 시일 내에 해결하겠습니다.
+					</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
 
 	return (
 		<Box>
 			<Default>
-			<ComuBoard
-				data={data}
-				navigate={navigate}
-				onDeleteComuPost={handleRemove}
-				onEditComuPost={handleEditComuPost}
-			/>
-			{isFetchingNextPage ? (
-				<Box variant="spinner-wrap">
-					<Flex jc="center" ai="center">
-						<Image src={spinner} alt="로딩중" variant="spinner" />
-					</Flex>
-				</Box>
-			) : (
-				<div ref={ref}></div>
-			)}
+				<ComuBoard
+					data={data}
+					navigate={navigate}
+					onDeleteComuPost={handleRemove}
+					onEditComuPost={handleEditComuPost}
+				/>
+				{isFetchingNextPage ? (
+					<Box variant="spinner-wrap">
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				) : (
+					<div ref={ref}></div>
+				)}
 			</Default>
 			<Mobile>
-			<MblComuBoard
-				data={data}
-				navigate={navigate}
-				onDeleteComuPost={handleRemove}
-				onEditComuPost={handleEditComuPost}
-			/>
-			{isFetchingNextPage ? (
-				<Box variant="spinner-wrap">
-					<Flex jc="center" ai="center">
-						<Image src={spinner} alt="로딩중" variant="spinner" />
-					</Flex>
-				</Box>
-			) : (
-				<div ref={ref}></div>
-			)}
+				<MblComuBoard
+					data={data}
+					navigate={navigate}
+					onDeleteComuPost={handleRemove}
+					onEditComuPost={handleEditComuPost}
+				/>
+				{isFetchingNextPage ? (
+					<Box variant="spinner-wrap">
+						<Flex jc="center" ai="center">
+							<Image src={spinner} alt="로딩중" variant="spinner" />
+						</Flex>
+					</Box>
+				) : (
+					<div ref={ref}></div>
+				)}
 			</Mobile>
 		</Box>
 	);

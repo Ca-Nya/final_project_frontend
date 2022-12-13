@@ -9,50 +9,46 @@ import { Board, MblBoard } from "./board";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import spinner from "../../assets/icons/spinner.gif";
 
+
 const BASE_URL = process.env.REACT_APP_SERVER;
-
-//로컬스토리지 토큰가져오기
-const authorization = localStorage.getItem("Authorization");
-
-const fetchPostList = async pageParam => {
-	const { data } = await axios.get(
-		`${BASE_URL}/member/auth/mypage/boards?page=${pageParam}&size=3`,
-		{
-			headers: {
-				authorization,
-			},
-		},
-	);
-	const { myPageList: page, isLast } = data;
-	return { page, nextPage: pageParam + 1, isLast };
-};
 
 const MyBoard = () => {
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
+	//로컬스토리지 토큰가져오기
+	const authorization = localStorage.getItem("Authorization");
 
-	const { data, status, fetchNextPage, isFetchingNextPage, refetch } =
+	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
 		useInfiniteQuery(
 			["myBoard"],
-			async ({ pageParam = 1 }) => await fetchPostList(pageParam),
+			async ({ pageParam = 1 }) => {
+			    const { data } = await axios.get(
+					`${BASE_URL}/member/auth/mypage/boards?page=${pageParam}&size=3`,
+					{
+						headers: {
+							authorization,
+						},
+					},
+				);
+				const { myPageList: page, isLast } = data;
+				return { page, nextPage: pageParam + 1, isLast };
+			},
 			{
 				getNextPageParam: lastPage =>
-					!lastPage.isLast ? lastPage.nextPage : undefined,
+					!lastPage.isLast ? lastPage.nextPage : undefined,	
 			},
-		);
+			{
+				onError: error => {
+					console.log(error.response);
+				},
+			},
+		);		
 
 	useEffect(() => {
 		if (inView) {
 			fetchNextPage();
 		}
 	}, [inView]);
-
-	const queryClient = useQueryClient();
-	useEffect(() => {
-		queryClient.refetchQueries("myBoard", {
-			refetchPage: (_, index) => index === 0,
-		});
-	}, [queryClient]);
 
 	// 마이페이지 게시글 삭제 Hook
 	const { mutate: deletePostMutate } = useDeleteDetailPost();

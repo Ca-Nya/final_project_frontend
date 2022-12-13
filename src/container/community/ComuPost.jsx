@@ -1,4 +1,5 @@
 import { useState } from "react";
+import imageCompression from "browser-image-compression";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
@@ -67,6 +68,44 @@ const ComuPost = () => {
 			},
 		},
 	);
+	// const onClickHandler = e => {
+	// 	e.preventDefault();
+	// 	const [file] = e.target.files;
+
+	// 	if (authorization) {
+	// 		const formData = new FormData();
+	// 		formData.append("data", JSON.stringify(input));
+	// 		if (communityImage !== null) {
+	// 			imageCompression = (file,
+	// 			{
+	// 				maxSizeMB: 1,
+	// 				maxWidthOrHeight: 1920,
+	// 			}).then(compressedFile => {
+	// 				const newFile = new File([compressedFile], file.name, {
+	// 					type: file.type,
+	// 				});
+	// 				setcommunityImage(newFile);
+	// 			});
+
+	// 			formData.append("image", communityImage);
+	// 		}
+		
+	// 		if (input?.communityTitle?.trim() === "") {
+	// 			return alert(" 제목을 입력해주세요.");
+	// 		} else if (input?.communityContent?.trim() === "") {
+	// 			return alert(" 내용을 입력해주세요.");
+	// 		}
+			
+	// 		mutation.mutate(formData);
+	// 		let entries = formData.entries();
+	// 		for (const pair of entries) {
+	// 			// console.log(pair[0] + ", " + pair[1]);
+	// 		}
+	// 	} else {
+	// 		alert("로그인 후 게시물을 등록해주세요.");
+	// 		navigate("/join");
+	// 	}
+	// };
 
 	//게시글 등록하기 쿼리요청
 	const onClickHandler = e => {
@@ -75,7 +114,7 @@ const ComuPost = () => {
 			return alert(" 제목을 입력해주세요.");
 		} else if (input?.communityContent?.trim() === "") {
 			return alert(" 내용을 입력해주세요.");
-		}	
+		}
 		if (authorization) {
 			const formData = new FormData();
 			formData.append("data", JSON.stringify(input));
