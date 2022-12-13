@@ -18,44 +18,42 @@ import MyComuCommentEdit from "./MyComuCommentEdit";
 import spinner from "../../assets/icons/spinner.gif";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = process.env.REACT_APP_SERVER;
-
-//로컬스토리지 토큰가져오기
-const authorization = localStorage.getItem("Authorization");
-
-const fetchPostList = async pageParam => {
-	const { data } = await axios.get(
-		`${BASE_URL}/member/auth/mypage/communityComments?page=${pageParam}&size=3`,
-		{
-			headers: {
-				authorization,
-			},
-		},
-	);
-	const { myPageList: page, isLast } = data;
-	return { page, nextPage: pageParam + 1, isLast };
-};
-
 const MyComuComment = () => {
 	//로컬스토리지 닉네임가져오기
 	const nickname = localStorage.getItem("Nickname");
 	const navigate = useNavigate();
+	//로컬스토리지 토큰가져오기
+	const authorization = localStorage.getItem("Authorization");
+	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const { ref, inView } = useInView();
-	const {
-		data,
-		status,
-		fetchNextPage,
-		isFetchingNextPage,
-		error: infError,
-	} = useInfiniteQuery(
-		["myComuComment"],
-		({ pageParam = 1 }) => fetchPostList(pageParam),
-		{
-			getNextPageParam: lastPage =>
-				!lastPage.isLast ? lastPage.nextPage : undefined,
-		},
-	);
+
+	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
+		useInfiniteQuery(
+			["myComuComment"],
+			async ({ pageParam = 1 }) => {
+				const { data } = await axios.get(
+					`${BASE_URL}/member/auth/mypage/communityComments?page=${pageParam}&size=3`,
+					{
+						headers: {
+							authorization,
+						},
+					},
+				);
+				const { myPageList: page, isLast } = data;
+				return { page, nextPage: pageParam + 1, isLast };
+			},
+			{ retry: 1 },
+			{
+				getNextPageParam: lastPage =>
+					!lastPage.isLast ? lastPage.nextPage : undefined,
+			},
+			{
+				onError: error => {
+					console.log(error.response);
+				},
+			},
+		);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
@@ -68,8 +66,8 @@ const MyComuComment = () => {
 					<Image src={spinner} alt="로딩중" variant="spinner" />
 				</Flex>
 			</Box>
-		);		
-	if (infError?.response?.data === "작성한 커뮤니티 댓글이 없습니다.") {
+		);
+	if (error?.response?.data === "작성한 커뮤니티 댓글이 없습니다.") {
 		return (
 			<Box variant="spinner-wrap">
 				<Flex fd="column" jc="center" ai="center" gap="100px">
@@ -170,7 +168,11 @@ const MyComuComment = () => {
 						<Box variant="spinner-wrap">
 							<Flex fd="column" jc="center" ai="center" gap="100px">
 								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-								<Button size="l" onClick={() => navigate(-1)} variant="cafe-review-post">
+								<Button
+									size="l"
+									onClick={() => navigate(-1)}
+									variant="cafe-review-post"
+								>
 									돌아가기
 								</Button>
 							</Flex>

@@ -36,7 +36,6 @@ const MyAll = () => {
 						authorization,
 					},
 				});
-
 				return response.data;
 			} catch (error) {
 				return error;

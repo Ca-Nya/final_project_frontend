@@ -19,40 +19,44 @@ import { useNavigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
-//로컬스토리지 토큰가져오기
-const authorization = localStorage.getItem("Authorization");
-
-const fetchPostList = async pageParam => {
-	const { data } = await axios.get(
-		`${BASE_URL}/member/auth/mypage/comments?page=${pageParam}&size=3`,
-		{
-			headers: {
-				authorization,
-			},
-		},
-	);
-	const { myPageList: page, isLast } = data;
-	return { page, nextPage: pageParam + 1, isLast };
-};
-
 const MyComment = () => {
 	//로컬스토리지 닉네임가져오기
 	const nickname = localStorage.getItem("Nickname");
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
-	const { data, status, fetchNextPage, isFetchingNextPage, error:infError } = useInfiniteQuery(
-		["myComment"],
-		({ pageParam = 1 }) => fetchPostList(pageParam),
-		{
-			getNextPageParam: lastPage =>
-				!lastPage.isLast ? lastPage.nextPage : undefined,
-		},
-	);
+
+	const authorization = localStorage.getItem("Authorization");
+
+	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
+		useInfiniteQuery(
+			["myComment"],
+			async ({ pageParam = 1 }) => {
+				const { data } = await axios.get(
+					`${BASE_URL}/member/auth/mypage/comments?page=${pageParam}&size=3`,
+					{
+						headers: {
+							authorization,
+						},
+					},
+				);
+				const { myPageList: page, isLast } = data;
+				return { page, nextPage: pageParam + 1, isLast };
+			},
+			{ retry: 1 },
+			{
+				getNextPageParam: lastPage =>
+					!lastPage.isLast ? lastPage.nextPage : undefined,
+			},
+			{
+				onError: error => {
+					console.log(error.response);
+				},
+			},
+		);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
 	}, [inView]);
-	
 
 	if (status === "loading")
 		return (
@@ -62,18 +66,18 @@ const MyComment = () => {
 				</Flex>
 			</Box>
 		);
-		if (infError?.response.data === "작성한 댓글이 없습니다.") {
-			return (
-				<Box variant="spinner-wrap">
-					<Flex fd="column" jc="center" ai="center" gap="100px">
-						<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-						<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-							돌아가기
-						</Button>
-					</Flex>
-				</Box>
-			);
-		}
+	if (error?.response.data === "작성한 댓글이 없습니다.") {
+		return (
+			<Box variant="spinner-wrap">
+				<Flex fd="column" jc="center" ai="center" gap="100px">
+					<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+						돌아가기
+					</Button>
+				</Flex>
+			</Box>
+		);
+	}
 	if (status === "error")
 		return (
 			<Box variant="spinner-wrap">
@@ -157,7 +161,11 @@ const MyComment = () => {
 						<Box variant="spinner-wrap">
 							<Flex fd="column" jc="center" ai="center" gap="100px">
 								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-								<Button size="l" onClick={() => navigate(-1)} variant="cafe-review-post">
+								<Button
+									size="l"
+									onClick={() => navigate(-1)}
+									variant="cafe-review-post"
+								>
 									돌아가기
 								</Button>
 							</Flex>

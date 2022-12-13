@@ -1,23 +1,17 @@
 import {
 	Button,
 	Form,
-	SecondHeading,
 	Box,
 	Margin,
 	TextArea,
-	Text,
 	Flex,
 	Input,
 	FirstHeading,
 	Label,
 	Hidden,
-	ThirdHeading,
 	Image,
-	DataList,
-	DataTerm,
-	DataDesc,
 } from "../../../components";
-import { cafe_review_image_upload } from "../../../assets/icons";
+
 const Post = ({
 	onClickHandler,
 	onChangeInput,
@@ -88,32 +82,7 @@ const Post = ({
 					</Form>
 				</Box>
 
-				<Margin margin="160px 0 0 0">
-					{/* <form onSubmit={onClickHandler}>
-						<input
-							type="text"
-							name="communityTitle"
-							placeholder="제목을 입력해주세요."
-							onChange={onChangeInput}
-						/>
-						<textarea
-							type="text"
-							autoComplete="off"
-							id="communityContent"
-							name="communityContent"
-							placeholder="내용을 입력해주세요"
-							onChange={onChangeInput}
-						/>
-
-						<input
-							name="communityImage"
-							type={"file"}
-							accept={"image/*"}
-							placeholder="이미지업로드"
-							onChange={onChangeImage}
-						/>
-						<button>등록</button>
-					</form> */}
+				<Margin margin="160px 0 0 0">					
 				</Margin>
 			</Margin>
 		</>
