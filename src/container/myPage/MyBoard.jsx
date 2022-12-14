@@ -29,7 +29,7 @@ const MyBoard = () => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
-	const { data, status, fetchNextPage, isFetchingNextPage, error } =
+	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
 		useInfiniteQuery(
 			["myBoard"],
 			async ({ pageParam = 1 }) => {
@@ -43,17 +43,18 @@ const MyBoard = () => {
 				);
 				const { myPageList: page, isLast } = data;
 				return { page, nextPage: pageParam + 1, isLast };
-			},
-			{ retry: 1 },
+			},			
 			{
 				getNextPageParam: lastPage =>
 					!lastPage.isLast ? lastPage.nextPage : undefined,
 			},
+			{ retry: 1 },
 			{
 				onError: error => {
 					console.log(error.response);
 				},
-			},
+			},			
+			
 		);
 
 	useEffect(() => {

@@ -43,17 +43,18 @@ const MyComment = () => {
 				);
 				const { myPageList: page, isLast } = data;
 				return { page, nextPage: pageParam + 1, isLast };
-			},
-			{ retry: 1 },
+			},			
 			{
 				getNextPageParam: lastPage =>
 					!lastPage.isLast ? lastPage.nextPage : undefined,
 			},
+			{ retry: 1 },
 			{
 				onError: error => {
 					console.log(error.response);
 				},
 			},
+			
 		);
 
 	useEffect(() => {
