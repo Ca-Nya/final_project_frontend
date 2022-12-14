@@ -40,7 +40,7 @@
 |임소희|https://github.com/Limsoheeee|FE|
 |장지윤|https://github.com/Jaylin16|BE|
 |김병기|https://github.com/Eolkeun|BE|
-|김정윤||UX/UI|
+|김정윤|https://hi100a.github.io/portfolio/#home|UX/UI|
 
 <br>
 
