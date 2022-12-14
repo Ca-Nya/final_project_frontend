@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import { Comment, MblComment, MblCommentEdit, CommentEdit } from "./comment";
+import { MblComment, MblCommentEdit, CommentEdit } from "./comment";
 
 const ComuCommentEdit = ({ item }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -102,7 +102,6 @@ const ComuCommentEdit = ({ item }) => {
 	return (
 		<div>
 			<Default>
-				{/* {item.memberNickname === nickname ? ( */}
 				<CommentEdit
 					item={item}
 					edit={edit}
@@ -112,9 +111,6 @@ const ComuCommentEdit = ({ item }) => {
 					handleRemove={handleRemove}
 					nickname={nickname}
 				/>
-				{/* ) : (
-					<Comment item={item} />
-				)} */}
 			</Default>
 
 			<Mobile>

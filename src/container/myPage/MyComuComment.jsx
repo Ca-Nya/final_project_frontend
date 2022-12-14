@@ -17,10 +17,12 @@ import MyComuCommentEdit from "./MyComuCommentEdit";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { isProfile } from "../../recoil/Atom";
+import arrow from "../../assets/icons/left_arrow.svg";
 
 const MyComuComment = () => {
-	//로컬스토리지 닉네임가져오기
-	const nickname = localStorage.getItem("Nickname");
+	const [profile, setProfile] = useRecoilState(isProfile);
 	const navigate = useNavigate();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
@@ -28,7 +30,7 @@ const MyComuComment = () => {
 
 	const { ref, inView } = useInView();
 
-	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
+	const { data, status, fetchNextPage, isFetchingNextPage, error } =
 		useInfiniteQuery(
 			["myComuComment"],
 			async ({ pageParam = 1 }) => {
@@ -69,14 +71,48 @@ const MyComuComment = () => {
 		);
 	if (error?.response?.data === "작성한 커뮤니티 댓글이 없습니다.") {
 		return (
-			<Box variant="spinner-wrap">
-				<Flex fd="column" jc="center" ai="center" gap="100px">
-					<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-						돌아가기
-					</Button>
-				</Flex>
-			</Box>
+			<>
+				<Default>
+					<Box variant="spinner-wrap">
+						<Flex fd="column" jc="center" ai="center" gap="100px">
+							<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+							<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+								돌아가기
+							</Button>
+						</Flex>
+					</Box>
+				</Default>
+				<Mobile>
+					<Box>
+						<Margin margin="10px auto">
+							<Flex ai="center">
+								<Box size="nav-white">
+									<Margin margin="10px">
+										<Flex ai="center" gap="98px">
+											<Image
+												src={arrow}
+												onClick={() => {
+													navigate(-1);
+													setProfile(isProfile);
+												}}
+											/>
+											<Text size="lg">커뮤댓글</Text>
+										</Flex>
+									</Margin>
+								</Box>
+							</Flex>
+						</Margin>
+						<Box variant="spinner-wrap">
+							<Flex fd="column" jc="center" ai="center" gap="100px">
+								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+								<Button size="l" onClick={() => {navigate(-1); setProfile(isProfile);}} variant="cafe-review-post">
+									돌아가기
+								</Button>
+							</Flex>
+						</Box>
+					</Box>
+				</Mobile>
+			</>
 		);
 	}
 	if (status === "error")
@@ -140,6 +176,24 @@ const MyComuComment = () => {
 			</Default>
 			<Mobile>
 				<Box>
+					<Margin margin="10px auto">
+						<Flex ai="center">
+							<Box size="nav-white">
+								<Margin margin="10px">
+									<Flex ai="center" gap="98px">
+										<Image
+											src={arrow}
+											onClick={() => {
+												navigate(-1);
+												setProfile(isProfile);
+											}}
+										/>
+										<Text size="lg">커뮤댓글</Text>
+									</Flex>
+								</Margin>
+							</Box>
+						</Flex>
+					</Margin>
 					{data.pages[0].page ? (
 						<Box>
 							{data?.pages?.map((page, idx) => (
@@ -165,17 +219,39 @@ const MyComuComment = () => {
 							)}
 						</Box>
 					) : (
-						<Box variant="spinner-wrap">
-							<Flex fd="column" jc="center" ai="center" gap="100px">
-								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-								<Button
-									size="l"
-									onClick={() => navigate(-1)}
-									variant="cafe-review-post"
-								>
-									돌아가기
-								</Button>
-							</Flex>
+						<Box size="container">
+							<Margin margin="10px auto">
+								<Flex ai="center">
+									<Box size="nav-white">
+										<Margin margin="10px">
+											<Flex ai="center" gap="98px">
+												<Image
+													src={arrow}
+													onClick={() => {
+														navigate(-1);
+														setProfile(isProfile);
+													}}
+												/>
+												<Text size="lg">커뮤댓글</Text>
+											</Flex>
+										</Margin>
+									</Box>
+								</Flex>
+							</Margin>
+							<Box variant="spinner-wrap">
+								<Flex fd="column" jc="center" ai="center" gap="100px">
+									<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+									<Button
+										size="l"
+										onClick={() => {navigate(-1);
+											setProfile(isProfile);
+										}}
+										variant="cafe-review-post"
+									>
+										돌아가기
+									</Button>
+								</Flex>
+							</Box>
 						</Box>
 					)}
 				</Box>

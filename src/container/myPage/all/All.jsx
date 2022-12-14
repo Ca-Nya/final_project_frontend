@@ -1,5 +1,4 @@
 import { Box, Image, Text, Margin, Flex } from "../../../components";
-import { Like } from "../like";
 
 const All = ({
 	recentlyMyBoardList,

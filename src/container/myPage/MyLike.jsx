@@ -18,7 +18,7 @@ const MyLike = () => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
     const [profile,setProfile] = useRecoilState(isProfile)
-	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
+	const { data, status, fetchNextPage, isFetchingNextPage } =
 		useInfiniteQuery(
 			["myLike"],
 			async ({ pageParam = 1 }) => {

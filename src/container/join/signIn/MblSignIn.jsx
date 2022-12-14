@@ -10,10 +10,7 @@ import {
 } from "../../../components";
 import {
 	__requestSignIn,
-	resetError,
 } from "../../../redux/modules/join/joinSlice";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import logo from "../../../assets/icons/canya_black.png";
 
 const MblSignIn = ({
