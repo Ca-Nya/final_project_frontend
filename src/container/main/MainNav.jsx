@@ -17,8 +17,11 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 // logo
 import canyaLogo from "../../assets/icons/canya.png";
+import { useRecoilState } from "recoil";
+import { isProfile } from "../../recoil/Atom";
 
 const MainNav = ({ setResetMain, setSubmitValues }) => {
+	const [ profile, setProfile] = useRecoilState(isProfile)
 	// Base Url
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// select값 state
@@ -52,6 +55,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 			dispatch(resetToken());
 		}
 	}, [dispatch, jwtToken]);
+
 	// 토큰 전역 state
 	const { token, profileImage } = useSelector(state => state.join);
 
@@ -82,6 +86,9 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 			throw error;
 		}
 	};
+
+
+
 	// 게시글 아이디 요청 Hook
 	const getPostId = useMutation(fetchPostId, {
 		onMutate: variables => {},
@@ -142,6 +149,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 									<Button
 										onClick={() => {
 											navigate("/mypage/myall");
+											setProfile(true);
 										}}
 										aria-label="사용자 정보 관리 버튼"
 										variant="main-user-info"

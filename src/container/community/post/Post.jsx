@@ -48,7 +48,7 @@ const Post = ({
 									type={"file"}
 									accept={"image/*"}
 									placeholder="이미지업로드"
-									onChange={onChangeImage}
+									onChange={e=>onChangeImage(e)}
 								/>
 							</Hidden>
 						</Margin>

@@ -129,7 +129,7 @@ const MblSignUp = ({
 					{isCheckedNickname && !isExistNickname ? (
 						<Margin margin="3px 0 0 2px">
 							<Flex>
-								<Text size="s-purple">중복되지않은 닉네임입니다.</Text>
+								<Text size="s-purple">사용가능한 닉네임입니다.</Text>
 							</Flex>
 						</Margin>
 					) : (
@@ -205,7 +205,7 @@ const MblSignUp = ({
 					{isCheckedId && !isExistId ? (
 						<Margin margin="3px 0 0 2px">
 							<Flex>
-								<Text size="s-purple">중복되지않은 아이디입니다.</Text>
+								<Text size="s-purple">사용가능한 아이디입니다.</Text>
 							</Flex>
 						</Margin>
 					) : (

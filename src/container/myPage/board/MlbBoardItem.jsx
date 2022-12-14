@@ -42,10 +42,10 @@ const MlbBoardItem = ({ item, navigate, onDeletePost, onEditPost }) => {
 									<Text size="s">{item.boardCreatedAt}</Text>
 									<Box variant="board-minibutton">
 										<Flex gap="0.9vw">
-											<Text size="m" onClick={onEditPost(item)}>
+											<Text size="s" onClick={onEditPost(item)}>
 												수정
 											</Text>
-											<Text size="m" onClick={onDeletePost(item)}>
+											<Text size="s" onClick={onDeletePost(item)}>
 												삭제
 											</Text>
 										</Flex>

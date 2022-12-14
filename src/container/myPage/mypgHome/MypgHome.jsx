@@ -36,6 +36,7 @@ const MypgHome = ({
 	recentlyMyCommunityCommentList,
 	memberCommunityCount,
 	memberCommunityCommentCount,
+	
 }) => {
 	return (
 		<Box variant="container-2">

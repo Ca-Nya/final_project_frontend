@@ -7,14 +7,17 @@ import axios from "axios";
 import { Image, Box, Flex, Button, Strong } from "../../components";
 import { Board, MblBoard } from "./board";
 import { Default, Mobile } from "../../assets/mediaQuery";
+import { isProfile } from "../../recoil/Atom";
 import spinner from "../../assets/icons/spinner.gif";
-
+import { useRecoilState } from "recoil";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const MyBoard = () => {
 	const navigate = useNavigate();
+
 	const { ref, inView } = useInView();
+	const [pofile,setProfile] = useRecoilState(isProfile)
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
@@ -116,6 +119,7 @@ const MyBoard = () => {
 					navigate={navigate}
 					onDeletePost={handelDeletePost}
 					onEditPost={handleEditPost}
+					setProfile={setProfile}
 				/>
 				{isFetchingNextPage ? (
 					<Box variant="spinner-wrap">
