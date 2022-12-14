@@ -8,6 +8,8 @@ import { Image, Box, Flex, Button, Strong } from "../../components";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 import { Like, MblLike } from "./like";
+import { useRecoilState } from "recoil";
+import { isProfile } from "../../recoil/Atom";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -15,7 +17,7 @@ const MyLike = () => {
 	const { ref, inView } = useInView();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
-
+    const [profile,setProfile] = useRecoilState(isProfile)
 	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
 		useInfiniteQuery(
 			["myLike"],
@@ -85,7 +87,7 @@ const MyLike = () => {
 				)}
 			</Default>
 			<Mobile>
-				<MblLike data={data} navigate={navigate}/>
+				<MblLike data={data} navigate={navigate} setProfile={setProfile}/>
 				{isFetchingNextPage ? (
 					<Box variant="spinner-wrap">
 						<Flex jc="center" ai="center">
