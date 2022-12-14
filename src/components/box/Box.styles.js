@@ -219,8 +219,13 @@ export const Box = styled.div`
 				case "main-canya-pick-info":
 					return css`
 						height: ${calcRem(87)};
+						width: 100%;
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding: 10px 0 14px 0;
+					`;
+				case "main-canya-pick-address":
+					return css`
+						width: 100%;
 						&::before {
 							content: "";
 							background-image: url(${location});

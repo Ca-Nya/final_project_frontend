@@ -142,17 +142,19 @@ const DetailEditPost = () => {
 				formData.append("url", JSON.stringify({ urlList: imageUrls }));
 
 				for (let key of formData.keys()) {
-					// console.log("formData ===>", key, ":", formData.get(key));
+					console.log("formData ===>", key, ":", formData.get(key));
 				}
 
 				editPostMutate(
 					{ boardId: +id, payload: formData },
 					{
 						onSuccess: (data, variables, context) => {
+							console.log("data ==>", data, variables, context);
 							alert("수정이 완료되었습니다");
 							navigate(`/detail/post/${+id}`);
 						},
 						onError: (error, variables, context) => {
+							console.log("에러! ===>", error, variables, context);
 							alert("수정을 실패했습니다");
 						},
 					},

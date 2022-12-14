@@ -7,6 +7,7 @@ import { Default, Mobile } from "../../assets/mediaQuery";
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import imageCompression from "browser-image-compression";
 import axios from "axios";
 
 const CafeReview = ({ id }) => {
@@ -136,7 +137,7 @@ const CafeReview = ({ id }) => {
 					},
 				});
 			}
-		} else if (!place) alert("장소를 선택해주세요");
+		} else if (!place.address) alert("장소를 선택해주세요");
 	};
 	// 별점 클릭시 실행 핸들러
 	// - 각 카테고리별 별점 rating state(props)에 추가

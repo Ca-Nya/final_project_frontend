@@ -71,12 +71,11 @@ const MainCanyaPick = ({ picks, setCanyaPick, mainPosts }) => {
 								</Margin>
 								<Margin margin="0 0 15px 0">
 									<Box variant="main-canya-pick-info">
-										<Strong
-											variant="main-canya-pick-address"
-											className="ellipsis-sm"
-										>
-											{pick.address}
-										</Strong>
+										<Box variant="main-canya-pick-address">
+											<ThirdHeading variant="main-canya-pick-address">
+												{pick.address}
+											</ThirdHeading>
+										</Box>
 										<Margin margin="14px 0 0 0">
 											<DataList variant="main-canya-pick-hashtag">
 												<Box>

@@ -37,16 +37,6 @@ export const Strong = styled.strong`
 						position: relative;
 						top: -6px;
 					`;
-				case "main-canya-pick-address":
-					return css`
-						display: inline-block;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						font-size: ${({ theme }) => theme.fontSizes.xxl};
-						background-color: ${({ theme }) => theme.colors.main};
-						font-weight: 700;
-					`;
 				case "cafe-write-address-info":
 					return css`
 						display: inline-block;
