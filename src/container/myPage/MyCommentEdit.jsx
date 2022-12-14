@@ -13,9 +13,6 @@ const MyCommentEdit = ({ comment }) => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
-	//로컬스토리지 닉네임가져오기
-	const nickname = localStorage.getItem("Nickname");
-
 	//수정여부 스테이트
 	const [edit, setEdit] = useState(false);
 
