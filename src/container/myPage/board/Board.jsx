@@ -14,8 +14,7 @@ const Board = ({ data, navigate, onDeletePost, onEditPost }) => {
 	// const boardData = data?.pages[0].page.sort((a,b)=>{
 	// 	return b.boardId - a.boardId
 	// })
-
-	console.log("boardData====>",data)
+	// console.log("boardData====>",data)
 
 	return (
 		<Box>

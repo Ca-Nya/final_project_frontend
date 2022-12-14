@@ -478,11 +478,16 @@ export const Box = styled.div`
 					`;
 				case "board-box":
 					return css`
-						width: 74.5vw;
+						/* width: 74.5vw; */
+						height: 17.4vw
 						max-width: ${calcRem(846)};
-						height: ${calcRem(198)};
+						max-height: ${calcRem(198)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						/* padding:1.5vh 0 1.5vh 0 ;
+						justify-content: space-between;
+						display: flex; */
+						align-items: center;
 						/* border-radius: 5px; */
 					`;
 				case "board-inbox":

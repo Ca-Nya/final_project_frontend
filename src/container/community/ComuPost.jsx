@@ -59,7 +59,7 @@ const ComuPost = () => {
 			}),
 		{
 			onSuccess: () => {
-				queryClient.invalidateQueries("community");
+				queryClient.invalidateQueries("communityList");
 				alert("게시물이 등록되었습니다.");
 				navigate("/community");
 			},

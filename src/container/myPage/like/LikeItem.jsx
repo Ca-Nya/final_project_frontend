@@ -4,9 +4,9 @@ const LikeItem = ({ like, data, navigate, isFetchingNextPage }) => {
 	return (
 		<Box>
 			<Box variant="board-box" key={like.boardId}>
-				<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
+				<Margin margin="1.5vw 0.3vw 1.5vw 0.3vw">
 					<Box variant="guide">
-						<Flex>
+						<Flex ai="center" jc="space-between">
 							<Image
 								variant="myboard-post"
 								src={like?.imageList[0]?.imageUrl}

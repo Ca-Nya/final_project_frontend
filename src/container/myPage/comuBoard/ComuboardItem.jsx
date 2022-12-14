@@ -10,8 +10,9 @@ const ComuboardItem = ({
 }) => {
 	return (
 		<Box variant="board-box" key={item.communityId}>
-			<Margin margin="2.6vw 0.3vw 0.9vw 0.3vw">
-				<Flex jc="space-between">
+			<Margin margin="1.5vw 0.3vw 1.5vw 0.3vw">
+				<Box variant="guide">
+				<Flex  ai="center" jc="space-between">
 					<Image
 						variant="myboard-post"
 						src={item.communityImage}
@@ -62,6 +63,7 @@ const ComuboardItem = ({
 						</Flex>
 					</Box>
 				</Flex>
+				</Box>
 			</Margin>
 		</Box>
 	);

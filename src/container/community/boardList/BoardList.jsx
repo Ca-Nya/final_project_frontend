@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Flex, Button, Strong } from "../../../components";
 import BoardListItem from "./BoardListItem";
 
-const BoardList = ({ navigate, data, authorization, nickname }) => {	
+const BoardList = ({ navigate, data, authorization, nickname }) => {
 	return (
 		<Box variant="container">
 			<Flex jc="flex-end">
@@ -29,21 +29,19 @@ const BoardList = ({ navigate, data, authorization, nickname }) => {
 			</Flex>
 			{data?.pages[0].page ? (
 				<Box>
-					<Flex fd="column-reverse">
-						{data?.pages?.map((page, idx) => (
-							<React.Fragment key={idx}>
-								{page?.page?.map(item => (
-									<>
-										<BoardListItem
-											key={item.communityId}
-											item={item}
-											navigate={navigate}
-										/>
-									</>
-								))}
-							</React.Fragment>
-						))}
-					</Flex>
+					{data?.pages?.map((page, idx) => (
+						<React.Fragment key={idx}>
+							{page?.page?.map(item => (
+								<>
+									<BoardListItem
+										key={item.communityId}
+										item={item}
+										navigate={navigate}
+									/>
+								</>
+							))}
+						</React.Fragment>
+					))}
 				</Box>
 			) : (
 				<Box variant="spinner-wrap">

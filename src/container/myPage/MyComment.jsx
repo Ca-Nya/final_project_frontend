@@ -101,7 +101,7 @@ const MyComment = () => {
 					</Box>
 				</Margin>
 				{data.pages[0].page.length > 0 ? (
-					<Box variant="reverse">
+					<Box>
 						{data?.pages?.map((page, idx) => (
 							<React.Fragment key={idx}>
 								{page?.page?.map(comment => (

@@ -19,11 +19,11 @@ const ComuBoard = ({ data, navigate, onDeleteComuPost, onEditComuPost }) => {
 					</Box>
 				</Margin>
 				<Box>
-					{data?.pages[0]?.page?.length ? (
+					{data?.pages[0].page.length ? (
 						<Box>
-							{data?.pages?.map((page, idx) => (
+							{data?.pages.map((page, idx) => (
 								<React.Fragment key={idx}>
-									{page?.page?.map(item => (
+									{page?.page.map(item => (
 										<>
 											<ComuBoardItem
 												key={item?.boardId}
