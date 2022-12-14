@@ -1,5 +1,6 @@
 import { Box, Image, Text, Margin, Flex } from "../../../components";
 import rightArrow from "../../../assets/icons/right_arrow.svg";
+import { isProfile } from "../../../recoil/Atom";
 
 const MblAll = ({
 	recentlyMyBoardList,
@@ -11,6 +12,9 @@ const MblAll = ({
 	handleGetPostId,
 	dispatch,
 	resetToken,
+	handleLogOut,
+	profile,
+	setProfile,
 }) => {
 	return (
 		<Box variant="mypage-category">
@@ -19,8 +23,9 @@ const MblAll = ({
 					<Flex jc="space-between">
 						<Text
 							size="lg"
-							onClick={() => {
+							onClick={() => {								
 								navigate(`/mypage/myboard`);
+								setProfile(!isProfile)
 							}}
 						>
 							내가 쓴 글 ✍🏻
@@ -29,6 +34,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/myboard`);
+								setProfile(!isProfile)
 							}}
 						/>
 					</Flex>
@@ -57,6 +63,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mylike`);
+								setProfile(!isProfile)
 							}}
 						>
 							좋아요 한 글 ❣️{" "}
@@ -65,6 +72,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mylike`);
+								setProfile(!isProfile)
 							}}
 						/>
 					</Flex>
@@ -95,6 +103,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mycommunityboard`);
+								setProfile(!isProfile)
 							}}
 						>
 							커뮤니티 글 👥{" "}
@@ -103,6 +112,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mycommunityboard`);
+								setProfile(!isProfile)
 							}}
 						/>
 					</Flex>
@@ -133,6 +143,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mycomment`);
+								setProfile(!isProfile)
 							}}
 						>
 							작성댓글 📋
@@ -141,6 +152,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mycomment`);
+								setProfile(!isProfile)
 							}}
 						/>
 					</Flex>
@@ -153,6 +165,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mycommunitycomment`);
+								setProfile(!isProfile)
 							}}
 						>
 							커뮤댓글 💬
@@ -161,6 +174,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mycommunitycomment`);
+								setProfile(!isProfile)
 							}}
 						/>
 					</Flex>
@@ -199,24 +213,10 @@ const MblAll = ({
 			<Box>
 				<Margin margin="20px 0 50px 0">
 					<Flex jc="space-between">
-						<Text
-							size="lg"
-							onClick={() => {
-								dispatch(resetToken());
-								localStorage.clear();
-								navigate("/");
-							}}
-						>
+						<Text size="lg" onClick={handleLogOut}>
 							로그아웃
 						</Text>
-						<Image
-							src={rightArrow}
-							onClick={() => {
-								dispatch(resetToken());
-								localStorage.clear();
-								navigate("/");
-							}}
-						/>
+						<Image src={rightArrow} onClick={handleLogOut} />
 					</Flex>
 				</Margin>
 			</Box>

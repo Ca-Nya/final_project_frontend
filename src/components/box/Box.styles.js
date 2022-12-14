@@ -845,6 +845,12 @@ export const Box = styled.div`
 					height: ${calcRem(50)};
 					background-color: ${({ theme }) => theme.colors.main};
 				`;
+				case "nav-white":
+				return css`
+					width: ${calcRem(360)};
+					height: ${calcRem(60)};
+					background-color: ${({ theme }) => theme.colors.white};
+				`;
 			case "nav-s":
 				return css`
 					width: ${calcRem(312)};

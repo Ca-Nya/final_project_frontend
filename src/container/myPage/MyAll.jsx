@@ -8,10 +8,12 @@ import axios from "axios";
 import spinner from "../../assets/icons/spinner.gif";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { All, MblAll } from "./all";
+import { useRecoilState } from 'recoil';
+import { isProfile } from "../../recoil/Atom"
 
 const MyAll = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
-
+	const [ profile,setProfile ] = useRecoilState(isProfile);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	//로컬스토리지 토큰가져오기
@@ -22,6 +24,22 @@ const MyAll = () => {
 			dispatch(resetToken());
 		}
 	}, [dispatch, authorization]);
+
+  const handleLogOut = e => {
+	e.preventDefault();
+	const delRes = window.confirm("정말 로그아웃 하시겠습니까?");
+		if (delRes) 
+	{
+		alert("로그아웃 되었습니다.")
+		dispatch(resetToken());
+	localStorage.clear();
+	navigate("/");
+	} else{
+		alert("취소합니다.")
+	}
+	
+  }
+
 	//내가좋아요한 게시물 get요청
 	const {
 		data: myContent,
@@ -137,6 +155,9 @@ const MyAll = () => {
 					resetToken={resetToken}
 					spinner={spinner}
 					navigate={navigate}
+					handleLogOut={handleLogOut}
+					profile={profile}
+					setProfile={setProfile}
 				/>
 			</Mobile>
 		</>

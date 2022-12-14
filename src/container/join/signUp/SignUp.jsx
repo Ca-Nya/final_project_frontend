@@ -61,6 +61,7 @@ const SignUp = ({
 							variant="signup"
 							id="memberNickname"
 							type="text"
+							maxLength="5"
 							placeholder="별명(2~5자)을 입력해주세요."
 							{...register("memberNickname", {
 								required: true,
@@ -124,7 +125,7 @@ const SignUp = ({
 				{isCheckedNickname && !isExistNickname ? (
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
-							<Text variant="join-available">중복되지 않은 닉네임입니다.</Text>
+							<Text variant="join-available">사용가능한 닉네임입니다.</Text>
 						</Flex>
 					</Margin>
 				) : (
@@ -198,7 +199,7 @@ const SignUp = ({
 				{isCheckedId && !isExistId ? (
 					<Margin margin="5px 0 0 10px ">
 						<Flex>
-							<Text variant="join-available">중복되지않은 아이디입니다.</Text>
+							<Text variant="join-available">사용가능한 아이디입니다.</Text>
 						</Flex>
 					</Margin>
 				) : (
