@@ -16,6 +16,7 @@ import {
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import * as Sentry from "@sentry/react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -51,10 +52,10 @@ const CommentEdit = ({ item }) => {
 				if (status === "200") {
 					// console.log("data =>", data);
 					// console.log("status =>", status);
-					
 				}
 			},
 			onError: error => {
+				Sentry.captureException(error);
 				alert("수정되지않았어요🥹");
 			},
 		},
@@ -76,7 +77,7 @@ const CommentEdit = ({ item }) => {
 	};
 
 	//댓글 수정하기 쿼리 요청(온클릭)
-	const handleEditComplete = e => {		
+	const handleEditComplete = e => {
 		if (editComment === "") {
 			alert("댓글을 수정해주세요!");
 		} else {
@@ -87,7 +88,7 @@ const CommentEdit = ({ item }) => {
 				},
 				{
 					onError: (error, variables, context) => {
-						// console.log("error => ", error);
+						Sentry.captureException(error);
 					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");

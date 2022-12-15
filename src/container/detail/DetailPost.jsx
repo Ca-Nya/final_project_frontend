@@ -17,6 +17,7 @@ import {
 	WarningException,
 } from "../../container/globalException";
 import { CommentList, CommentItem } from "../../container/comment";
+import * as Sentry from "@sentry/react";
 
 // 캐러셀
 import "slick-carousel/slick/slick.css";
@@ -32,8 +33,12 @@ const DetailPost = () => {
 		data: detailPostData,
 		isError,
 		isLoading,
+		error,
 		refetch: detailPostRefetch,
 	} = useFetchDetailPost(+id);
+
+	console.log("error =>", error);
+
 	// 별점을 담은 객체 배열화
 	const ratings = [];
 	for (let rate in detailPostData.rating) {
@@ -43,14 +48,21 @@ const DetailPost = () => {
 	const { mutate: deletePostMutate } = useDeleteDetailPost();
 	// 게시글 삭제 핸들러
 	const handleDeletePost = () => {
-		deletePostMutate(+id, {
-			onSuccess: data => {
-				navigate("/");
-			},
-			onError: error => {
-				alert("삭제를 실패했습니다");
-			},
-		});
+		const confirmAlert = window.confirm("정말 삭제하시겠습니까?");
+		if (confirmAlert) {
+			deletePostMutate(+id, {
+				onSuccess: data => {
+					alert("리뷰를 삭제했습니다.🥰");
+					navigate("/");
+				},
+				onError: error => {
+					Sentry.captureException(error);
+					alert("삭제를 실패했습니다.😞");
+				},
+			});
+		} else {
+			alert("리뷰 삭제를 취소합니다!");
+		}
 	};
 	// 게시글 수정 핸들러
 	const handleEditPost = () => {
@@ -81,23 +93,6 @@ const DetailPost = () => {
 									searchPlace={detailPostData.address}
 									addressId={detailPostData.addressId}
 								/>
-								<Margin margin="40px 0 0 0">
-									<Flex jc="flex-end">
-										<DataList variant="detail-heart-count">
-											<Flex ai="center" gap="5px">
-												<DataTerm>좋아요</DataTerm>
-												<DataDesc>{detailPostData.heartCount}</DataDesc>
-												<Box>
-													<DetailLike
-														isLike={detailPostData.liked}
-														boardId={+id}
-														detailPostRefetch={detailPostRefetch}
-													/>
-												</Box>
-											</Flex>
-										</DataList>
-									</Flex>
-								</Margin>
 							</Box>
 							<Margin margin="30px 0 170px 0">
 								<Box variant="comment-wrap">

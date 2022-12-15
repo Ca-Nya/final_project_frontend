@@ -9,7 +9,7 @@ import { Image, Box, Flex, Button, Strong } from "../../components";
 import spinner from "../../assets/icons/spinner.gif";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { ComuBoard, MblComuBoard } from "./comuBoard";
-
+import * as Sentry from "@sentry/react";
 
 const MyComuBoard = () => {
 	const navigate = useNavigate();
@@ -18,31 +18,30 @@ const MyComuBoard = () => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
-	const { data, status, fetchNextPage, isFetchingNextPage} =
-		useInfiniteQuery(
-			["myComuBoard"],
-			async ({ pageParam = 1 }) => {
-				const { data } = await axios.get(
-					`${BASE_URL}/member/auth/mypage/communities?page=${pageParam}&size=3`,
-					{
-						headers: {
-							authorization,
-						},
+	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+		["myComuBoard"],
+		async ({ pageParam = 1 }) => {
+			const { data } = await axios.get(
+				`${BASE_URL}/member/auth/mypage/communities?page=${pageParam}&size=3`,
+				{
+					headers: {
+						authorization,
 					},
-				);
-				const { myPageList: page, isLast } = data;
-				return { page, nextPage: pageParam + 1, isLast };
-			},
-			{
-				getNextPageParam: lastPage =>
-					!lastPage.isLast ? lastPage.nextPage : undefined,
-			},
-			{
-				onError: error => {
-					console.log(error.response);
 				},
+			);
+			const { myPageList: page, isLast } = data;
+			return { page, nextPage: pageParam + 1, isLast };
+		},
+		{
+			getNextPageParam: lastPage =>
+				!lastPage.isLast ? lastPage.nextPage : undefined,
+		},
+		{
+			onError: error => {
+				Sentry.captureException(error);
 			},
-		);
+		},
+	);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();
@@ -60,6 +59,7 @@ const MyComuBoard = () => {
 					alert("삭제 완료되었습니다!");
 				},
 				onError: (error, variables, context) => {
+					Sentry.captureException(error);
 					alert("삭제를 실패했습니다");
 				},
 			});

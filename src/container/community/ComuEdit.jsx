@@ -6,6 +6,7 @@ import { Default, Mobile } from "../../assets/mediaQuery";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import spinner from "../../assets/icons/spinner.gif";
+import * as Sentry from "@sentry/react";
 
 const ComuEdit = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -26,15 +27,14 @@ const ComuEdit = () => {
 		data: detailComuData,
 		isError,
 		isLoading,
-		refetch,
 	} = useQuery({
 		queryKey: ["community", id],
 		queryFn: async () => {
 			try {
 				const response = await axios.get(`${BASE_URL}/community/${id}`);
 				return response.data;
-			} catch (error) {				
-				return error;
+			} catch (error) {
+				Sentry.captureException(error);
 			}
 		},
 		suspense: true,

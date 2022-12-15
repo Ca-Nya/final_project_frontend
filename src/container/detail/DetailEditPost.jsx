@@ -5,8 +5,11 @@ import { CafeSearch, CafeRatings } from "../../container/cafeReview";
 import { useFetchDetailPost, useEditDetailPost } from "../../querys/detail";
 import { useNavigate } from "react-router-dom";
 import Review from "../../container/cafeReview/review";
+import imageCompression from "browser-image-compression";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
+// Error
+import * as Sentry from "@sentry/react";
 
 const DetailEditPost = () => {
 	// React Router
@@ -65,15 +68,44 @@ const DetailEditPost = () => {
 	// 이미지 state
 	const [images, setImages] = useState([...detailImages]);
 
+	// 이미지 압축 Hook
+	const getCompressImage = async imageFile => {
+		const options = { maxSizeMB: 1, maxWidthOrHeight: 650 };
+		try {
+			const compressedImageBlob = await imageCompression(imageFile, options);
+			const compressedImageFile = new File(
+				[compressedImageBlob],
+				compressedImageBlob.name,
+				{
+					type: compressedImageBlob.type,
+				},
+			);
+			return compressedImageFile;
+		} catch (error) {
+			Sentry.captureException(error);
+		}
+	};
+	// 이미지 URL 파일 압축 Hook
+	const getCompressImageUrl = async compressedImageFile => {
+		try {
+			const imageUrl = await imageCompression.getDataUrlFromFile(
+				compressedImageFile,
+			);
+			return imageUrl;
+		} catch (error) {
+			Sentry.captureException(error);
+		}
+	};
+
 	// 이미지 파일 추가 핸들러
-	const handleGetImage = e => {
+	const handleGetImage = async e => {
 		const imageList = e.target.files;
 		let imageThumbnailUrlList = [...thumbnailImages];
 		let imageUrlList = [...images];
 		// 썸네일 이미지 상대경로 저장, 이미지 저장
 		for (let i = 0; i < imageList.length; i++) {
-			const currentThumbnailImageUrl = URL.createObjectURL(imageList[i]);
-			const currentImageUrl = imageList[i];
+			let currentImageUrl = await getCompressImage(imageList[i]);
+			let currentThumbnailImageUrl = await getCompressImageUrl(currentImageUrl);
 			imageThumbnailUrlList.push(currentThumbnailImageUrl);
 			imageUrlList.push(currentImageUrl);
 		}
@@ -154,7 +186,7 @@ const DetailEditPost = () => {
 							navigate(`/detail/post/${+id}`);
 						},
 						onError: (error, variables, context) => {
-							console.log("에러! ===>", error, variables, context);
+							Sentry.captureException(error);
 							alert("수정을 실패했습니다");
 						},
 					},

@@ -10,6 +10,7 @@ import { Default, Mobile } from "../../assets/mediaQuery";
 import { isProfile } from "../../recoil/Atom";
 import spinner from "../../assets/icons/spinner.gif";
 import { useRecoilState } from "recoil";
+import * as Sentry from "@sentry/react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -17,7 +18,7 @@ const MyBoard = () => {
 	const navigate = useNavigate();
 
 	const { ref, inView } = useInView();
-	const [pofile,setProfile] = useRecoilState(isProfile)
+	const [pofile, setProfile] = useRecoilState(isProfile);
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
@@ -25,7 +26,7 @@ const MyBoard = () => {
 		useInfiniteQuery(
 			["myBoard"],
 			async ({ pageParam = 1 }) => {
-			    const { data } = await axios.get(
+				const { data } = await axios.get(
 					`${BASE_URL}/member/auth/mypage/boards?page=${pageParam}&size=3`,
 					{
 						headers: {
@@ -38,14 +39,14 @@ const MyBoard = () => {
 			},
 			{
 				getNextPageParam: lastPage =>
-					!lastPage.isLast ? lastPage.nextPage : undefined,	
+					!lastPage.isLast ? lastPage.nextPage : undefined,
 			},
 			{
 				onError: error => {
-					console.log(error.response);
+					Sentry.captureException(error);
 				},
 			},
-		);		
+		);
 
 	useEffect(() => {
 		if (inView) {
@@ -63,6 +64,7 @@ const MyBoard = () => {
 				alert("삭제 완료되었습니다!");
 			},
 			onError: (error, variables, context) => {
+				Sentry.captureException(error);
 				alert("삭제를 실패했습니다");
 			},
 		});

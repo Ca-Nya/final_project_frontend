@@ -297,6 +297,7 @@ export const Box = styled.div`
 						max-width: ${calcRem(169)};
 						height: ${calcRem(162)};
 						border-radius: 50%;
+
 						background-image: url(${({ bg }) => bg});
 						background-position: center center;
 						background-size: cover;
@@ -309,9 +310,8 @@ export const Box = styled.div`
 				case "main-new-address":
 					return css`
 						width: 100%;
-						/* width: 95%; */
+
 						max-width: ${calcRem(169)};
-						margin: 0 auto;
 					`;
 				case "main-all-item-wraper":
 					return css`
@@ -598,7 +598,7 @@ export const Box = styled.div`
 				/* 상세 페이지 */
 				case "detail-container":
 					return css`
-						padding: 0 0 30px 0;
+						padding: 0 0 50px 0;
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 					`;
 				case "detail-info":
@@ -621,8 +621,8 @@ export const Box = styled.div`
 					`;
 				case "detail-content-desc":
 					return css`
-						width: 55%;
-						max-width: ${calcRem(652)};
+						width: 60%;
+						max-width: ${calcRem(654)};
 						height: ${calcRem(460)};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						padding: 30px;
@@ -850,7 +850,7 @@ export const Box = styled.div`
 					height: ${calcRem(50)};
 					background-color: ${({ theme }) => theme.colors.main};
 				`;
-				case "nav-white":
+			case "nav-white":
 				return css`
 					width: ${calcRem(360)};
 					height: ${calcRem(60)};

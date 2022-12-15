@@ -17,6 +17,7 @@ import MyComuCommentEdit from "./MyComuCommentEdit";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 import { useNavigate } from "react-router-dom";
+import * as Sentry from "@sentry/react";
 
 const MyComuComment = () => {
 	//로컬스토리지 닉네임가져오기
@@ -50,6 +51,7 @@ const MyComuComment = () => {
 			},
 			{
 				onError: error => {
+					Sentry.captureException(error);
 					console.log(error.response);
 				},
 			},

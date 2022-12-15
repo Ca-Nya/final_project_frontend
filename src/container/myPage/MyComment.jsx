@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import MyCommentEdit from "./MyCommentEdit";
 import spinner from "../../assets/icons/spinner.gif";
 import { useNavigate } from "react-router-dom";
+import * as Sentry from "@sentry/react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -49,6 +50,7 @@ const MyComment = () => {
 			},
 			{
 				onError: error => {
+					Sentry.captureException(error);
 					console.log(error.response);
 				},
 			},

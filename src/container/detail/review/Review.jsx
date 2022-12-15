@@ -9,6 +9,7 @@ import {
 	Image,
 	Hidden,
 	Flex,
+	Margin,
 } from "../../../components";
 import { DetailLike } from "../../../container/detail";
 import styled from "styled-components";
@@ -98,6 +99,7 @@ const Review = ({
 								isLike={detailPostData.liked}
 								boardId={+id}
 								detailPostRefetch={detailPostRefetch}
+								detailPostData={detailPostData}
 							/>
 						</Flex>
 					</Flex>
