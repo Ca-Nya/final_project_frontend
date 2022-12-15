@@ -120,10 +120,10 @@ const ComuEdit = () => {
 			formData.append("image", editImg);
 			editMutation(formData);
 		}
-		let entries = formData.entries();
-		for (const pair of entries) {
-			// console.log(pair[0] + ", " + pair[1]);
-		}
+		// let entries = formData.entries();
+		// for (const pair of entries) {
+		// 	console.log(pair[0] + ", " + pair[1]);
+		// }
 		setEdit(false);
 	};
 

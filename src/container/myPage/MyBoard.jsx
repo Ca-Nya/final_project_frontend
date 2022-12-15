@@ -1,24 +1,32 @@
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteDetailPost } from "../../querys/detail";
 import axios from "axios";
-import { Image, Box, Flex, Button, Strong } from "../../components";
+import {
+	Image,
+	Box,
+	Flex,
+	Button,
+	Strong,
+	Text,
+	Margin,
+} from "../../components";
 import { Board, MblBoard } from "./board";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { isProfile } from "../../recoil/Atom";
 import spinner from "../../assets/icons/spinner.gif";
+import arrow from "../../assets/icons/left_arrow.svg";
 import { useRecoilState } from "recoil";
 import * as Sentry from "@sentry/react";
 
-const BASE_URL = process.env.REACT_APP_SERVER;
-
 const MyBoard = () => {
-	const navigate = useNavigate();
-
-	const { ref, inView } = useInView();
 	const [pofile, setProfile] = useRecoilState(isProfile);
+	const BASE_URL = process.env.REACT_APP_SERVER;
+	const navigate = useNavigate();
+	const { ref, inView } = useInView();
+
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
@@ -41,6 +49,7 @@ const MyBoard = () => {
 				getNextPageParam: lastPage =>
 					!lastPage.isLast ? lastPage.nextPage : undefined,
 			},
+			{ retry: 1 },
 			{
 				onError: error => {
 					Sentry.captureException(error);
@@ -82,6 +91,60 @@ const MyBoard = () => {
 				</Flex>
 			</Box>
 		);
+	if (error?.response?.data === "작성한 게시물이 없습니다.") {
+		return (
+			<>
+				<Default>
+					<Box variant="spinner-wrap">
+						<Flex fd="column" jc="center" ai="center" gap="100px">
+							<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+							<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+								돌아가기
+							</Button>
+						</Flex>
+					</Box>
+				</Default>
+				<Mobile>
+					<Box>
+						<Margin margin="10px auto">
+							<Flex ai="center">
+								<Box size="nav-white">
+									<Margin margin="10px">
+										<Flex ai="center" gap="98px">
+											<Image
+												src={arrow}
+												onClick={() => {
+													navigate("/mypage/myall");
+													setProfile(isProfile);
+												}}
+											/>
+											<Text size="lg">내가 쓴 글</Text>
+										</Flex>
+									</Margin>
+								</Box>
+							</Flex>
+						</Margin>
+						<Box variant="spinner-wrap">
+							<Flex fd="column" jc="center" ai="center" gap="100px">
+								<Strong variant="warning">작성한 게시글이 없습니다😭</Strong>
+								<Button
+									size="l"
+									onClick={() => {
+										navigate(-1);
+										setProfile(isProfile);
+									}}
+									variant="cafe-review-post"
+								>
+									돌아가기
+								</Button>
+							</Flex>
+						</Box>
+					</Box>
+				</Mobile>
+			</>
+		);
+	}
+
 	if (status === "error")
 		return (
 			<Box variant="spinner-wrap">

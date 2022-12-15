@@ -19,32 +19,31 @@ const MyLike = () => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 	const [profile, setProfile] = useRecoilState(isProfile);
-	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
-		useInfiniteQuery(
-			["myLike"],
-			async ({ pageParam = 1 }) => {
-				const { data } = await axios.get(
-					`${BASE_URL}/member/auth/mypage/heart-boards?page=${pageParam}&size=3`,
-					{
-						headers: {
-							authorization,
-						},
+	const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+		["myLike"],
+		async ({ pageParam = 1 }) => {
+			const { data } = await axios.get(
+				`${BASE_URL}/member/auth/mypage/heart-boards?page=${pageParam}&size=3`,
+				{
+					headers: {
+						authorization,
 					},
-				);
-				const { myPageList: page, isLast } = data;
-				return { page, nextPage: pageParam + 1, isLast };
-			},
-			{
-				getNextPageParam: lastPage =>
-					!lastPage.isLast ? lastPage.nextPage : undefined,
-			},
-			{
-				onError: error => {
-					Sentry.captureException(error);
-					console.log(error.response);
 				},
+			);
+			const { myPageList: page, isLast } = data;
+			return { page, nextPage: pageParam + 1, isLast };
+		},
+		{
+			getNextPageParam: lastPage =>
+				!lastPage.isLast ? lastPage.nextPage : undefined,
+		},
+		{
+			onError: error => {
+				Sentry.captureException(error);
+				console.log(error.response);
 			},
-		);
+		},
+	);
 
 	useEffect(() => {
 		if (inView) fetchNextPage();

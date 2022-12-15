@@ -50,6 +50,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 	const navigate = useNavigate();
 	// 로컬스토리지 토큰
 	const jwtToken = localStorage.getItem("Authorization");
+	
 	//토큰 리셋 useEffect
 	useEffect(() => {
 		if (!jwtToken) {

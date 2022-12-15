@@ -17,18 +17,20 @@ import MyCommentEdit from "./MyCommentEdit";
 import spinner from "../../assets/icons/spinner.gif";
 import { useNavigate } from "react-router-dom";
 import * as Sentry from "@sentry/react";
+import { useRecoilState } from "recoil";
+import { isProfile } from "../../recoil/Atom";
+import arrow from "../../assets/icons/left_arrow.svg";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const MyComment = () => {
-	//로컬스토리지 닉네임가져오기
-	const nickname = localStorage.getItem("Nickname");
+	const [profile, setProfile] = useRecoilState(isProfile);
 	const navigate = useNavigate();
 	const { ref, inView } = useInView();
 
 	const authorization = localStorage.getItem("Authorization");
 
-	const { data, status, fetchNextPage, isFetchingNextPage, error, refetch } =
+	const { data, status, fetchNextPage, isFetchingNextPage, error } =
 		useInfiniteQuery(
 			["myComment"],
 			async ({ pageParam = 1 }) => {
@@ -43,11 +45,11 @@ const MyComment = () => {
 				const { myPageList: page, isLast } = data;
 				return { page, nextPage: pageParam + 1, isLast };
 			},
-			{ retry: 1 },
 			{
 				getNextPageParam: lastPage =>
 					!lastPage.isLast ? lastPage.nextPage : undefined,
 			},
+			{ retry: 1 },
 			{
 				onError: error => {
 					Sentry.captureException(error);
@@ -70,14 +72,55 @@ const MyComment = () => {
 		);
 	if (error?.response.data === "작성한 댓글이 없습니다.") {
 		return (
-			<Box variant="spinner-wrap">
-				<Flex fd="column" jc="center" ai="center" gap="100px">
-					<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-					<Button onClick={() => navigate(-1)} variant="cafe-review-post">
-						돌아가기
-					</Button>
-				</Flex>
-			</Box>
+			<>
+				<Default>
+					<Box variant="spinner-wrap">
+						<Flex fd="column" jc="center" ai="center" gap="100px">
+							<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+							<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+								돌아가기
+							</Button>
+						</Flex>
+					</Box>
+				</Default>
+				<Mobile>
+					<Box>
+						<Margin margin="10px auto">
+							<Flex ai="center">
+								<Box size="nav-white">
+									<Margin margin="10px">
+										<Flex ai="center" gap="98px">
+											<Image
+												src={arrow}
+												onClick={() => {
+													navigate("/mypage/myall");
+													setProfile(isProfile);
+												}}
+											/>
+											<Text size="lg">내가 쓴 글</Text>
+										</Flex>
+									</Margin>
+								</Box>
+							</Flex>
+						</Margin>
+						<Box variant="spinner-wrap">
+							<Flex fd="column" jc="center" ai="center" gap="100px">
+								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
+								<Button
+									size="l"
+									onClick={() => {
+										navigate(-1);
+										setProfile(isProfile);
+									}}
+									variant="cafe-review-post"
+								>
+									돌아가기
+								</Button>
+							</Flex>
+						</Box>
+					</Box>
+				</Mobile>
+			</>
 		);
 	}
 	if (status === "error")
@@ -137,6 +180,24 @@ const MyComment = () => {
 				)}
 			</Default>
 			<Mobile>
+				<Margin margin="10px auto">
+					<Flex ai="center">
+						<Box size="nav-white">
+							<Margin margin="10px">
+								<Flex ai="center" gap="98px">
+									<Image
+										src={arrow}
+										onClick={() => {
+											navigate(-1);
+											setProfile(isProfile);
+										}}
+									/>
+									<Text size="lg">작성댓글</Text>
+								</Flex>
+							</Margin>
+						</Box>
+					</Flex>
+				</Margin>
 				{data.pages[0].page.length > 0 ? (
 					<Box>
 						{data?.pages?.map((page, idx) => (

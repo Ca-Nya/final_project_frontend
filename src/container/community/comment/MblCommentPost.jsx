@@ -1,14 +1,11 @@
-import { Navigate } from "react-router-dom";
 import {
 	Button,
 	Form,
-	SecondHeading,
 	Box,
 	Margin,
 	TextArea,
 	Flex,
 	Text,
-	Input,
 } from "../../../components";
 
 const MblCommentPost = ({ onClickHandler, ment, setMent, nickname,navigate }) => {

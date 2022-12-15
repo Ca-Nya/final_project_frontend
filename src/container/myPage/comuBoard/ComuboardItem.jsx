@@ -1,6 +1,4 @@
 import { Box, Button, Image, Text, Margin, Flex } from "../../../components";
-import Edit from "../../../assets/icons/edit.png";
-import Delete from "../../../assets/icons/delete.png";
 
 const ComuboardItem = ({
 	item,

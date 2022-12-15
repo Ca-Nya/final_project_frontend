@@ -1,16 +1,8 @@
 import { useState } from "react";
-import {
-	Button,
-	Form,
-	SecondHeading,
-	Box,
-	Margin,
-	TextArea,
-	Flex,
-} from "../../components";
+import { Margin } from "../../components";
 import axios from "axios";
 import { Default, Mobile } from "../../assets/mediaQuery";
-import { MblCommentPost,CommentPost } from "./comment";
+import { MblCommentPost, CommentPost } from "./comment";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -63,21 +55,21 @@ const ComuComment = () => {
 			<Default>
 				<Margin margin="80px 0 0 0">
 					<CommentPost
-					 onClickHandler={onClickHandler}
-					 ment={ment}
-					 setMent={setMent}
-					 nickname={nickname}
-					 navigate={navigate}
-					/>					
+						onClickHandler={onClickHandler}
+						ment={ment}
+						setMent={setMent}
+						nickname={nickname}
+						navigate={navigate}
+					/>
 				</Margin>
 			</Default>
 			<Mobile>
 				<MblCommentPost
-				onClickHandler={onClickHandler}
-				ment={ment}
-				setMent={setMent}
-				nickname={nickname}
-				navigate={navigate}
+					onClickHandler={onClickHandler}
+					ment={ment}
+					setMent={setMent}
+					nickname={nickname}
+					navigate={navigate}
 				/>
 			</Mobile>
 		</>

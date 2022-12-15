@@ -1,7 +1,7 @@
 import { Box, Flex, Image, Strong, Button } from "../../components";
 import { useNavigate, useMatch } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { useEditProfileImage } from "../../querys/myPage";
 import { useDeleteDetailPost } from "../../querys/detail";
@@ -10,7 +10,7 @@ import { MypgHome, MblMypgHome } from "./mypgHome";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { editProfileImage } from "../../redux/modules/join/joinSlice";
 import TopButton from "../../components/topButton/TopButton";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { isProfile } from "../../recoil/Atom";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";

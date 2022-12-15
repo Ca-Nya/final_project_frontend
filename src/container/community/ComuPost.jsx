@@ -2,7 +2,7 @@ import { useState } from "react";
 import imageCompression from "browser-image-compression";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { Post, MblPost } from "./post";
 import * as Sentry from "@sentry/react";

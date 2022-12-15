@@ -1,8 +1,6 @@
 import {
 	Box,
 	Input,
-	Button,
-	Image,
 	Text,
 	Margin,
 	Flex,

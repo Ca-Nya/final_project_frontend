@@ -1,4 +1,3 @@
-import { MainNav, MainFooter } from "../../container/main";
 import { MyPage } from "../../container/myPage";
 import { Box, Image, Margin } from "../../components";
 import { Default, Mobile } from "../../assets/mediaQuery";
