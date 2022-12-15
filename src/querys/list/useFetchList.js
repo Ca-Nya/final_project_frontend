@@ -11,7 +11,7 @@ const fetchList = ({ category, params }) => {
 };
 
 // 리스트 요청 Hook
-const useFetchList = category => {
+const useFetchList = (category, size) => {
 	return useInfiniteQuery(
 		["getList", category],
 		async ({ pageParam = 1 }) => {
@@ -19,7 +19,7 @@ const useFetchList = category => {
 				data: { boardResponseDto: list, lastPage: isLast },
 			} = await fetchList({
 				category,
-				params: { page: pageParam, size: 100 },
+				params: { page: pageParam, size },
 			});
 
 			return { list, isLast, nextPage: pageParam + 1 };

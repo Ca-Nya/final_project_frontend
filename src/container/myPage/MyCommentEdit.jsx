@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Comment, MblComment } from "./comment";
+import * as Sentry from "@sentry/react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -12,9 +13,6 @@ const MyCommentEdit = ({ comment }) => {
 	const navigate = useNavigate();
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
-
-	//로컬스토리지 닉네임가져오기
-	const nickname = localStorage.getItem("Nickname");
 
 	//수정여부 스테이트
 	const [edit, setEdit] = useState(false);
@@ -41,11 +39,10 @@ const MyCommentEdit = ({ comment }) => {
 		{
 			onSuccess: ({ status, data }) => {
 				if (status === "200") {
-					// console.log("data =>", data);
-					// console.log("status =>", status);
 				}
 			},
 			onError: error => {
+				Sentry.captureException(error);
 				alert("수정되지않았어요🥹");
 			},
 		},
@@ -78,7 +75,7 @@ const MyCommentEdit = ({ comment }) => {
 				},
 				{
 					onError: (error, variables, context) => {
-						// console.log("error => ", error);
+						Sentry.captureException(error);
 					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");

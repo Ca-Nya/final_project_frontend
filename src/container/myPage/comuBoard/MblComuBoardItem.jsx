@@ -47,10 +47,10 @@ const MblComuBoardItem = ({
 									<Text size="s">{item.communityCreatedAt}</Text>
 									<Box variant="board-minibutton">
 										<Flex gap="0.9vw">
-											<Text size="m" onClick={onEditComuPost(item)}>
+											<Text size="s" onClick={onEditComuPost(item)}>
 												수정
 											</Text>
-											<Text size="m" onClick={onDeleteComuPost(item)}>
+											<Text size="s" onClick={onDeleteComuPost(item)}>
 												삭제
 											</Text>
 										</Flex>

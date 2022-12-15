@@ -4,21 +4,33 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteComuPost } from "../../querys/community";
 import axios from "axios";
-import { Image, Box, Flex, Button, Strong } from "../../components";
+import {
+	Image,
+	Box,
+	Flex,
+	Button,
+	Strong,
+	Margin,
+	Text,
+} from "../../components";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { ComuBoard, MblComuBoard } from "./comuBoard";
-
+import * as Sentry from "@sentry/react";
+import { useRecoilState } from "recoil";
+import { isProfile } from "../../recoil/Atom";
+import arrow from "../../assets/icons/left_arrow.svg";
 
 const MyComuBoard = () => {
 	const navigate = useNavigate();
+	const [profile, setProfile] = useRecoilState(isProfile);
 	const { ref, inView } = useInView();
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
-	const { data, status, fetchNextPage, isFetchingNextPage} =
+	const { data, status, fetchNextPage, isFetchingNextPage, error } =
 		useInfiniteQuery(
 			["myComuBoard"],
 			async ({ pageParam = 1 }) => {
@@ -37,6 +49,7 @@ const MyComuBoard = () => {
 				getNextPageParam: lastPage =>
 					!lastPage.isLast ? lastPage.nextPage : undefined,
 			},
+			{ retry: 1 },
 			{
 				onError: error => {
 					console.log(error.response);
@@ -60,6 +73,7 @@ const MyComuBoard = () => {
 					alert("삭제 완료되었습니다!");
 				},
 				onError: (error, variables, context) => {
+					Sentry.captureException(error);
 					alert("삭제를 실패했습니다");
 				},
 			});
@@ -81,6 +95,59 @@ const MyComuBoard = () => {
 				</Flex>
 			</Box>
 		);
+	if (error?.response?.data === "작성한 커뮤니티 글이 없습니다.") {
+		return (
+			<>
+				<Default>
+					<Box variant="spinner-wrap">
+						<Flex fd="column" jc="center" ai="center" gap="100px">
+							<Strong variant="warning">작성한 게시글이 없습니다😭</Strong>
+							<Button onClick={() => navigate(-1)} variant="cafe-review-post">
+								돌아가기
+							</Button>
+						</Flex>
+					</Box>
+				</Default>
+				<Mobile>
+					<Box>
+						<Margin margin="10px auto">
+							<Flex ai="center">
+								<Box size="nav-white">
+									<Margin margin="10px">
+										<Flex ai="center" gap="98px">
+											<Image
+												src={arrow}
+												onClick={() => {
+													navigate(-1);
+													setProfile(isProfile);
+												}}
+											/>
+											<Text size="lg">내가 쓴 글</Text>
+										</Flex>
+									</Margin>
+								</Box>
+							</Flex>
+						</Margin>
+						<Box variant="spinner-wrap">
+							<Flex fd="column" jc="center" ai="center" gap="100px">
+								<Strong variant="warning">작성한 게시글 없습니다😭</Strong>
+								<Button
+									size="l"
+									onClick={() => {
+										navigate(-1);
+										setProfile(isProfile);
+									}}
+									variant="cafe-review-post"
+								>
+									돌아가기
+								</Button>
+							</Flex>
+						</Box>
+					</Box>
+				</Mobile>
+			</>
+		);
+	}
 	if (status === "error")
 		return (
 			<Box variant="spinner-wrap">
@@ -120,6 +187,7 @@ const MyComuBoard = () => {
 					navigate={navigate}
 					onDeleteComuPost={handleRemove}
 					onEditComuPost={handleEditComuPost}
+					setProfile={setProfile}
 				/>
 				{isFetchingNextPage ? (
 					<Box variant="spinner-wrap">

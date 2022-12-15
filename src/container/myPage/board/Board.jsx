@@ -14,7 +14,6 @@ const Board = ({ data, navigate, onDeletePost, onEditPost }) => {
 	// const boardData = data?.pages[0].page.sort((a,b)=>{
 	// 	return b.boardId - a.boardId
 	// })
-
 	// console.log("boardData====>",data)
 
 	return (
@@ -29,7 +28,7 @@ const Board = ({ data, navigate, onDeletePost, onEditPost }) => {
 					<Box>
 						{data?.pages?.map((page, idx) => (
 							<React.Fragment key={idx}>
-								{page?.page?.sort((a,b)=>{return b.boardId - a.boardId}).map(item => (
+								{page?.page?.map(item => (
 									<Box>
 										<BoardItem
 											key={item.boardId}

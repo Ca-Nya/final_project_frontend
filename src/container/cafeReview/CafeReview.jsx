@@ -7,7 +7,9 @@ import { Default, Mobile } from "../../assets/mediaQuery";
 import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import imageCompression from "browser-image-compression";
 import axios from "axios";
+import * as Sentry from "@sentry/react";
 
 const CafeReview = ({ id }) => {
 	// React Router
@@ -18,14 +20,13 @@ const CafeReview = ({ id }) => {
 	const [place, setPlace] = useState({ address: "", addressId: "" });
 	// 장소 검색값이 있을 경우에만 게시글 state에 등록
 	useEffect(() => {
-		if (place)
-			setInputValue(prev => {
-				return {
-					...prev,
-					address: place.address,
-					addressId: place.addressId,
-				};
-			});
+		setInputValue(prev => {
+			return {
+				...prev,
+				address: place.address,
+				addressId: place.addressId,
+			};
+		});
 	}, [place]);
 	// 데이터 전송을 위한 form 객체
 	const formData = new FormData();
@@ -34,15 +35,44 @@ const CafeReview = ({ id }) => {
 	// 이미지 state
 	const [images, setImages] = useState([]);
 
+	// 이미지 압축 Hook
+	const getCompressImage = async imageFile => {
+		const options = { maxSizeMB: 1, maxWidthOrHeight: 650 };
+		try {
+			const compressedImageBlob = await imageCompression(imageFile, options);
+			const compressedImageFile = new File(
+				[compressedImageBlob],
+				compressedImageBlob.name,
+				{
+					type: compressedImageBlob.type,
+				},
+			);
+			return compressedImageFile;
+		} catch (error) {
+			Sentry.captureException(error);
+		}
+	};
+	// 이미지 URL 파일 압축 Hook
+	const getCompressImageUrl = async compressedImageFile => {
+		try {
+			const imageUrl = await imageCompression.getDataUrlFromFile(
+				compressedImageFile,
+			);
+			return imageUrl;
+		} catch (error) {
+			Sentry.captureException(error);
+		}
+	};
+
 	// 이미지 파일 추가 핸들러
-	const handleGetImage = e => {
+	const handleGetImage = async e => {
 		const imageList = e.target.files;
 		let imageThumbnailUrlList = [...thumbnailImages];
 		let imageUrlList = [...images];
 		// 이미지 상대경로 저장
 		for (let i = 0; i < imageList.length; i++) {
-			const currentThumbnailImageUrl = URL.createObjectURL(imageList[i]);
-			const currentImageUrl = imageList[i];
+			let currentImageUrl = await getCompressImage(imageList[i]);
+			let currentThumbnailImageUrl = await getCompressImageUrl(currentImageUrl);
 			imageThumbnailUrlList.push(currentThumbnailImageUrl);
 			imageUrlList.push(currentImageUrl);
 		}
@@ -110,13 +140,15 @@ const CafeReview = ({ id }) => {
 			);
 
 			return response;
-		} catch (error) {}
+		} catch (error) {
+			Sentry.captureException(error);
+		}
 	};
 	// react-query => 게시글 post Mutaite 객체
 	const addPost = useMutation(fetchAddPost);
 	// 리뷰 등록 핸들러
 	const handlePostReview = () => {
-		if (place) {
+		if (place.address) {
 			if (!images.length) {
 				alert("한 개 이상의 이미지를 등록해주세요!");
 			} else {
@@ -124,19 +156,17 @@ const CafeReview = ({ id }) => {
 				for (let i = 0; i < images.length; i++) {
 					formData.append("image", images[i]);
 				}
-				for (let key of formData.keys()) {
-					// console.log("formData ===>", key, ":", formData.get(key));
-				}
 				addPost.mutate(formData, {
 					onSuccess: () => {
 						navigate(`/detail/post/${+id}`);
 					},
 					onError: error => {
+						Sentry.captureException(error);
 						alert("리뷰 작성을 실패했습니다.😭");
 					},
 				});
 			}
-		} else if (!place) alert("장소를 선택해주세요");
+		} else if (!place.address) alert("장소를 선택해주세요");
 	};
 	// 별점 클릭시 실행 핸들러
 	// - 각 카테고리별 별점 rating state(props)에 추가

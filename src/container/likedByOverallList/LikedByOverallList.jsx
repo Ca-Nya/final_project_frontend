@@ -27,8 +27,10 @@ const LikedByOverallList = () => {
 	const { category } = useParams();
 
 	// 리스트 요청 무한스크롤 Hook
-	const { data, status, fetchNextPage, isFetchingNextPage } =
-		useFetchList(category);
+	const { data, status, fetchNextPage, isFetchingNextPage } = useFetchList(
+		category,
+		3,
+	);
 
 	// observe
 	const { ref, inView } = useInView();

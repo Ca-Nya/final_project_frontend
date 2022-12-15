@@ -219,8 +219,13 @@ export const Box = styled.div`
 				case "main-canya-pick-info":
 					return css`
 						height: ${calcRem(87)};
+						width: 100%;
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 						padding: 10px 0 14px 0;
+					`;
+				case "main-canya-pick-address":
+					return css`
+						width: 100%;
 						&::before {
 							content: "";
 							background-image: url(${location});
@@ -292,6 +297,7 @@ export const Box = styled.div`
 						max-width: ${calcRem(169)};
 						height: ${calcRem(162)};
 						border-radius: 50%;
+
 						background-image: url(${({ bg }) => bg});
 						background-position: center center;
 						background-size: cover;
@@ -304,9 +310,8 @@ export const Box = styled.div`
 				case "main-new-address":
 					return css`
 						width: 100%;
-						/* width: 95%; */
+
 						max-width: ${calcRem(169)};
-						margin: 0 auto;
 					`;
 				case "main-all-item-wraper":
 					return css`
@@ -473,11 +478,16 @@ export const Box = styled.div`
 					`;
 				case "board-box":
 					return css`
-						width: 74.5vw;
+						/* width: 74.5vw; */
+						height: 17.4vw
 						max-width: ${calcRem(846)};
-						height: ${calcRem(198)};
+						max-height: ${calcRem(198)};
 						background-color: ${({ theme }) => theme.colors.white};
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+						/* padding:1.5vh 0 1.5vh 0 ;
+						justify-content: space-between;
+						display: flex; */
+						align-items: center;
 						/* border-radius: 5px; */
 					`;
 				case "board-inbox":
@@ -588,7 +598,7 @@ export const Box = styled.div`
 				/* 상세 페이지 */
 				case "detail-container":
 					return css`
-						padding: 0 0 30px 0;
+						padding: 0 0 50px 0;
 						border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 					`;
 				case "detail-info":
@@ -611,8 +621,8 @@ export const Box = styled.div`
 					`;
 				case "detail-content-desc":
 					return css`
-						width: 55%;
-						max-width: ${calcRem(652)};
+						width: 60%;
+						max-width: ${calcRem(654)};
 						height: ${calcRem(460)};
 						border: 1px solid ${({ theme }) => theme.colors.line};
 						padding: 30px;
@@ -839,6 +849,12 @@ export const Box = styled.div`
 					width: ${calcRem(360)};
 					height: ${calcRem(50)};
 					background-color: ${({ theme }) => theme.colors.main};
+				`;
+			case "nav-white":
+				return css`
+					width: ${calcRem(360)};
+					height: ${calcRem(60)};
+					background-color: ${({ theme }) => theme.colors.white};
 				`;
 			case "nav-s":
 				return css`

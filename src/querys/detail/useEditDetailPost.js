@@ -13,7 +13,6 @@ const useEditDetailPost = payload => {
 	return useMutation({
 		mutationFn: async payload => {
 			const response = await editDetailPost(payload);
-
 			return response.data;
 		},
 		suspense: true,

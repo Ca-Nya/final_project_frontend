@@ -17,8 +17,12 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 // logo
 import canyaLogo from "../../assets/icons/canya.png";
+import { useRecoilState } from "recoil";
+import { isProfile } from "../../recoil/Atom";
+import * as Sentry from "@sentry/react";
 
 const MainNav = ({ setResetMain, setSubmitValues }) => {
+	const [profile, setProfile] = useRecoilState(isProfile);
 	// Base Url
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// select값 state
@@ -46,12 +50,14 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 	const navigate = useNavigate();
 	// 로컬스토리지 토큰
 	const jwtToken = localStorage.getItem("Authorization");
+	
 	//토큰 리셋 useEffect
 	useEffect(() => {
 		if (!jwtToken) {
 			dispatch(resetToken());
 		}
 	}, [dispatch, jwtToken]);
+
 	// 토큰 전역 state
 	const { token, profileImage } = useSelector(state => state.join);
 
@@ -79,9 +85,11 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 
 			return response.data;
 		} catch (error) {
+			Sentry.captureException(error);
 			throw error;
 		}
 	};
+
 	// 게시글 아이디 요청 Hook
 	const getPostId = useMutation(fetchPostId, {
 		onMutate: variables => {},
@@ -89,6 +97,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 			navigate(`/write/${data}`);
 		},
 		onError: (error, variables) => {
+			Sentry.captureException(error);
 			alert("게시글을 작성할 수 없습니다!");
 		},
 	});
@@ -142,6 +151,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 									<Button
 										onClick={() => {
 											navigate("/mypage/myall");
+											setProfile(true);
 										}}
 										aria-label="사용자 정보 관리 버튼"
 										variant="main-user-info"

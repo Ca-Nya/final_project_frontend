@@ -46,8 +46,10 @@ const LikedByFieldList = () => {
 	const { category } = useParams();
 
 	// 리스트 요청 무한스크롤 Hook
-	const { data, status, fetchNextPage, isFetchingNextPage } =
-		useFetchList(category);
+	const { data, status, fetchNextPage, isFetchingNextPage } = useFetchList(
+		category,
+		50,
+	);
 
 	// observe
 	const { ref, inView } = useInView();
@@ -101,12 +103,12 @@ const LikedByFieldList = () => {
 				</Margin>
 				{data?.pages.map((page, idx) => {
 					return (
-						<Box>
+						<Box key={idx}>
 							<Flex gap="24px">
 								<Fragment key={page?.list[idx]?.boardId}>
 									{page.list?.map((pick, idx) => {
 										return (
-											<Fragment>
+											<Fragment key={idx}>
 												{idx <= 2 && (
 													<Box
 														onClick={() =>
@@ -241,10 +243,10 @@ const LikedByFieldList = () => {
 					<Flex jc="center" fw="wrap" gap="24px">
 						{data?.pages.map((page, idx) => {
 							return (
-								<Fragment key={page?.list[idx]?.boardId}>
+								<Fragment key={idx}>
 									{page.list?.map((item, idx) => {
 										return (
-											<Fragment>
+											<Fragment key={idx}>
 												{idx > 2 && (
 													<Box
 														variant="list-item"

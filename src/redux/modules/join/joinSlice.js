@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import * as Sentry from "@sentry/react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
@@ -65,6 +66,7 @@ export const __requestSignIn = createAsyncThunk(
 				profileImageUrl,
 			});
 		} catch (error) {
+			Sentry.captureException(error);
 			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
@@ -90,6 +92,7 @@ export const __isIdExist = createAsyncThunk(
 				status,
 				data: { errorMessage },
 			} = error.response;
+			Sentry.captureException(error);
 			return thunkAPI.rejectWithValue({ statusCode: status, errorMessage });
 		}
 	},
@@ -115,6 +118,7 @@ export const __isNicknameExist = createAsyncThunk(
 				status,
 				data: { errorMessage },
 			} = error.response;
+			Sentry.captureException(error);
 			return thunkAPI.rejectWithValue({ statusCode: status, errorMessage });
 		}
 	},

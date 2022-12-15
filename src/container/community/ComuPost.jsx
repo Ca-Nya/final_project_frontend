@@ -2,9 +2,10 @@ import { useState } from "react";
 import imageCompression from "browser-image-compression";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { Post, MblPost } from "./post";
+import * as Sentry from "@sentry/react";
 
 const ComuPost = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -15,7 +16,6 @@ const ComuPost = () => {
 	const init = {
 		communityTitle: "",
 		communityContent: "",
-		// communityImage: null,
 	};
 	//폼데이터 전송 스테이트
 	const [input, SetInput] = useState(init);
@@ -30,13 +30,24 @@ const ComuPost = () => {
 		SetInput({ ...input, [name]: value });
 	};
 
-	//이미지 스테이트저장, 미리보기 온체인지 핸들러
-	const onChangeImage = e => {
-		const { name, files } = e.target;
-		setcommunityImage(files[0]);
+	//이미지 리사이징 스테이트저장, 미리보기
+	const onChangeImage = async e => {
+		const imageFile = e.target.files[0];
+		const options = {
+			maxSizeMB: 1,
+			maxWidthOrHeight: 1920,
+			useWebWorker: true,
+		};
+		try {
+			const compressedFile = await imageCompression(imageFile, options);
+			setcommunityImage(compressedFile);
+		} catch (error) {
+			Sentry.captureException(error);
+		}
+
 		let reader = new FileReader();
-		if (files[0]) {
-			reader.readAsDataURL(files[0]);
+		if (imageFile) {
+			reader.readAsDataURL(imageFile);
 		}
 		reader.onloadend = () => {
 			const previewImgUrl = reader.result;
@@ -45,6 +56,7 @@ const ComuPost = () => {
 			}
 		};
 	};
+
 	//queryClient 선언하기
 	const queryClient = useQueryClient();
 
@@ -59,53 +71,16 @@ const ComuPost = () => {
 			}),
 		{
 			onSuccess: () => {
-				queryClient.invalidateQueries("community");
+				queryClient.invalidateQueries("communityList");
 				alert("게시물이 등록되었습니다.");
 				navigate("/community");
 			},
 			onError: error => {
+				Sentry.captureException(error);
 				alert("게시물이 등록되지않았습니다.");
 			},
 		},
 	);
-	// const onClickHandler = e => {
-	// 	e.preventDefault();
-	// 	const [file] = e.target.files;
-
-	// 	if (authorization) {
-	// 		const formData = new FormData();
-	// 		formData.append("data", JSON.stringify(input));
-	// 		if (communityImage !== null) {
-	// 			imageCompression = (file,
-	// 			{
-	// 				maxSizeMB: 1,
-	// 				maxWidthOrHeight: 1920,
-	// 			}).then(compressedFile => {
-	// 				const newFile = new File([compressedFile], file.name, {
-	// 					type: file.type,
-	// 				});
-	// 				setcommunityImage(newFile);
-	// 			});
-
-	// 			formData.append("image", communityImage);
-	// 		}
-		
-	// 		if (input?.communityTitle?.trim() === "") {
-	// 			return alert(" 제목을 입력해주세요.");
-	// 		} else if (input?.communityContent?.trim() === "") {
-	// 			return alert(" 내용을 입력해주세요.");
-	// 		}
-			
-	// 		mutation.mutate(formData);
-	// 		let entries = formData.entries();
-	// 		for (const pair of entries) {
-	// 			// console.log(pair[0] + ", " + pair[1]);
-	// 		}
-	// 	} else {
-	// 		alert("로그인 후 게시물을 등록해주세요.");
-	// 		navigate("/join");
-	// 	}
-	// };
 
 	//게시글 등록하기 쿼리요청
 	const onClickHandler = e => {
@@ -122,10 +97,6 @@ const ComuPost = () => {
 				formData.append("image", communityImage);
 			}
 			mutation.mutate(formData);
-			let entries = formData.entries();
-			for (const pair of entries) {
-				// console.log(pair[0] + ", " + pair[1]);
-			}
 		} else {
 			alert("로그인 후 게시물을 등록해주세요.");
 			navigate("/join");

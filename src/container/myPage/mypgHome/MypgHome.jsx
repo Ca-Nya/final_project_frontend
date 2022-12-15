@@ -7,19 +7,14 @@ import {
 	Margin,
 	Flex,
 } from "../../../components";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Edit from "../../../assets/icons/edit-profile.png";
 import Comment from "../../../assets/icons/comment.png";
 import Heart from "../../../assets/icons/heart.png";
 import Write from "../../../assets/icons/write.png";
 
 const MypgHome = ({
-	onEditPost,
-	onDeletePost,
 	onChangeProfileImage,
-	recentlyMyBoardList,
-	recentlyMyCommentList,
-	recentlyMyHeartBoardList,
 	memberBoardCount,
 	memberCommentCount,
 	memberHeartCount,
@@ -32,10 +27,8 @@ const MypgHome = ({
 	myComuCommentMatch,
 	myComuBoardMatch,
 	nickname,
-	recentlyMyCommunityList,
-	recentlyMyCommunityCommentList,
 	memberCommunityCount,
-	memberCommunityCommentCount,
+	memberCommunityCommentCount,	
 }) => {
 	return (
 		<Box variant="container-2">
@@ -46,7 +39,7 @@ const MypgHome = ({
 							<Box>
 								<Label htmlFor="imageChange" variant="profile">
 									<Image variant="profile-edit" src={Edit} />
-									<span>프로필이미지 편집</span>
+									<span>프로필사진 편집</span>
 								</Label>
 								<Input
 									id="imageChange"
