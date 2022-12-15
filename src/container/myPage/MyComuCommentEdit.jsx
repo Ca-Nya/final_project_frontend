@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ComuComment, MblComuComment } from "./comuComment";
+import * as Sentry from "@sentry/react";
 
 const MyComuCommentEdit = ({ comment }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -41,6 +42,7 @@ const MyComuCommentEdit = ({ comment }) => {
 				}
 			},
 			onError: error => {
+				Sentry.captureException(error);
 				alert("수정되지않았어요🥹");
 			},
 		},
@@ -75,7 +77,9 @@ const MyComuCommentEdit = ({ comment }) => {
 					communityCommentContent: editComment,
 				},
 				{
-					onError: (error, variables, context) => {},
+					onError: (error, variables, context) => {
+						Sentry.captureException(error);
+					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");
 						alert(data.data);

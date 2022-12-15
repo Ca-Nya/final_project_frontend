@@ -2,10 +2,11 @@ import Like from "./like";
 import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import * as Sentry from "@sentry/react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
-const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
+const DetailLike = ({ isLike, boardId, detailPostRefetch, detailPostData }) => {
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
@@ -43,7 +44,7 @@ const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
 				}
 			},
 			onError: error => {
-				// alert("다음기회에..");
+				Sentry.captureException(error);
 			},
 		},
 	);
@@ -68,7 +69,13 @@ const DetailLike = ({ isLike, boardId, detailPostRefetch }) => {
 		}
 	};
 
-	return <Like handleLike={handleLike} isLike={isLike} />;
+	return (
+		<Like
+			handleLike={handleLike}
+			isLike={isLike}
+			detailPostData={detailPostData}
+		/>
+	);
 };
 
 export default DetailLike;

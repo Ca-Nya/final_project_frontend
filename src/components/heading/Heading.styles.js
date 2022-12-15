@@ -148,6 +148,17 @@ export const ThirdHeading = styled.h3`
 						top: 10px;
 						left: -6px;
 					`;
+				case "main-canya-pick-address":
+					return css`
+						display: inline-block;
+
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						font-size: ${({ theme }) => theme.fontSizes.xxl};
+						background-color: ${({ theme }) => theme.colors.main};
+						font-weight: 700;
+					`;
 				/* 글쓰기 페이지 */
 				case "cafe-review-file-button-title":
 					return css`
@@ -174,6 +185,7 @@ export const ThirdHeading = styled.h3`
 						font-size: ${({ theme }) => theme.fontSizes.lg};
 						font-weight: 700;
 						letter-spacing: 0.03rem;
+						height: 20px;
 					`;
 				default:
 					break;

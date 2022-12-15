@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { Post, MblPost } from "./post";
+import * as Sentry from "@sentry/react";
 
 const ComuPost = () => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -34,14 +35,14 @@ const ComuPost = () => {
 		const imageFile = e.target.files[0];
 		const options = {
 			maxSizeMB: 1,
-			maxWidthOrHeight: 1920, 
-			useWebWorker: true, 
+			maxWidthOrHeight: 1920,
+			useWebWorker: true,
 		};
 		try {
 			const compressedFile = await imageCompression(imageFile, options);
 			setcommunityImage(compressedFile);
 		} catch (error) {
-			console.log(error);
+			Sentry.captureException(error);
 		}
 
 		let reader = new FileReader();
@@ -75,6 +76,7 @@ const ComuPost = () => {
 				navigate("/community");
 			},
 			onError: error => {
+				Sentry.captureException(error);
 				alert("게시물이 등록되지않았습니다.");
 			},
 		},
@@ -100,8 +102,6 @@ const ComuPost = () => {
 			navigate("/join");
 		}
 	};
-	
-	
 
 	return (
 		<>

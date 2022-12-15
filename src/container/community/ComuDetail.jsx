@@ -8,6 +8,7 @@ import { Default, Mobile } from "../../assets/mediaQuery";
 import ComuComment from "./ComuComment";
 import ComuCommentList from "./ComuCommentList";
 import TopButton from "../../components/topButton/TopButton";
+import * as Sentry from "@sentry/react";
 
 const ComuDetail = () => {
 	const { id } = useParams();
@@ -25,7 +26,7 @@ const ComuDetail = () => {
 				const response = await axios.get(`${BASE_URL}/community/${id}`);
 				return response.data;
 			} catch (error) {
-				return error;
+				Sentry.captureException(error);
 			}
 		},
 		suspense: true,

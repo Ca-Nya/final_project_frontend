@@ -19,13 +19,14 @@ import { isProfile } from "../../recoil/Atom";
 import spinner from "../../assets/icons/spinner.gif";
 import arrow from "../../assets/icons/left_arrow.svg";
 import { useRecoilState } from "recoil";
-
+import * as Sentry from "@sentry/react";
 
 const MyBoard = () => {
 	const [pofile, setProfile] = useRecoilState(isProfile);
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	const navigate = useNavigate();
-	const { ref, inView } = useInView();	
+	const { ref, inView } = useInView();
+
 	//로컬스토리지 토큰가져오기
 	const authorization = localStorage.getItem("Authorization");
 
@@ -43,7 +44,7 @@ const MyBoard = () => {
 				);
 				const { myPageList: page, isLast } = data;
 				return { page, nextPage: pageParam + 1, isLast };
-			},			
+			},
 			{
 				getNextPageParam: lastPage =>
 					!lastPage.isLast ? lastPage.nextPage : undefined,
@@ -51,10 +52,9 @@ const MyBoard = () => {
 			{ retry: 1 },
 			{
 				onError: error => {
-					console.log(error.response);
+					Sentry.captureException(error);
 				},
-			},			
-			
+			},
 		);
 
 	useEffect(() => {
@@ -73,6 +73,7 @@ const MyBoard = () => {
 				alert("삭제 완료되었습니다!");
 			},
 			onError: (error, variables, context) => {
+				Sentry.captureException(error);
 				alert("삭제를 실패했습니다");
 			},
 		});

@@ -26,10 +26,8 @@ const MainLayout = () => {
 			refetch();
 		}
 	}, [submitValues, refetch]);
-
 	// observe
-	const { ref, inView } = useInView();
-
+	const { inView } = useInView();
 	// observe시 다음 게시글 요청 Effect
 	useEffect(() => {
 		if (inView) fetchNextPage();

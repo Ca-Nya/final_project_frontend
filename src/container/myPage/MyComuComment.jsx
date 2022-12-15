@@ -17,6 +17,7 @@ import MyComuCommentEdit from "./MyComuCommentEdit";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
 import { useNavigate } from "react-router-dom";
+import * as Sentry from "@sentry/react";
 import { useRecoilState } from "recoil";
 import { isProfile } from "../../recoil/Atom";
 import arrow from "../../assets/icons/left_arrow.svg";
@@ -44,7 +45,7 @@ const MyComuComment = () => {
 				);
 				const { myPageList: page, isLast } = data;
 				return { page, nextPage: pageParam + 1, isLast };
-			},			
+			},
 			{
 				getNextPageParam: lastPage =>
 					!lastPage.isLast ? lastPage.nextPage : undefined,
@@ -52,9 +53,10 @@ const MyComuComment = () => {
 			{ retry: 1 },
 			{
 				onError: error => {
+					Sentry.captureException(error);
 					console.log(error.response);
 				},
-			},			
+			},
 		);
 
 	useEffect(() => {
@@ -105,7 +107,14 @@ const MyComuComment = () => {
 						<Box variant="spinner-wrap">
 							<Flex fd="column" jc="center" ai="center" gap="100px">
 								<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
-								<Button size="l" onClick={() => {navigate(-1); setProfile(isProfile);}} variant="cafe-review-post">
+								<Button
+									size="l"
+									onClick={() => {
+										navigate(-1);
+										setProfile(isProfile);
+									}}
+									variant="cafe-review-post"
+								>
 									돌아가기
 								</Button>
 							</Flex>
@@ -243,7 +252,8 @@ const MyComuComment = () => {
 									<Strong variant="warning">작성한 댓글이 없습니다😭</Strong>
 									<Button
 										size="l"
-										onClick={() => {navigate(-1);
+										onClick={() => {
+											navigate(-1);
 											setProfile(isProfile);
 										}}
 										variant="cafe-review-post"

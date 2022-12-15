@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { MblComment, MblCommentEdit, CommentEdit } from "./comment";
+import * as Sentry from "@sentry/react";
 
 const ComuCommentEdit = ({ item }) => {
 	const BASE_URL = process.env.REACT_APP_SERVER;
@@ -40,6 +41,7 @@ const ComuCommentEdit = ({ item }) => {
 				}
 			},
 			onError: error => {
+				Sentry.captureException(error);
 				alert("수정되지않았어요🥹");
 			},
 		},
@@ -75,7 +77,7 @@ const ComuCommentEdit = ({ item }) => {
 				},
 				{
 					onError: (error, variables, context) => {
-						// console.log("error => ", error);
+						Sentry.captureException(error);
 					},
 					onSuccess: (data, variables, context) => {
 						queryClient.invalidateQueries("getComments");

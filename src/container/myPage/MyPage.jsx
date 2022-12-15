@@ -10,14 +10,15 @@ import { MypgHome, MblMypgHome } from "./mypgHome";
 import { Default, Mobile } from "../../assets/mediaQuery";
 import { editProfileImage } from "../../redux/modules/join/joinSlice";
 import TopButton from "../../components/topButton/TopButton";
-import { useRecoilState } from 'recoil';
-import { isProfile } from "../../recoil/Atom"
+import { useRecoilState } from "recoil";
+import { isProfile } from "../../recoil/Atom";
 // 로딩 스피너
 import spinner from "../../assets/icons/spinner.gif";
+import * as Sentry from "@sentry/react";
 
 const MyPage = () => {
 	const dispatch = useDispatch();
-	const [profile,setProfile] = useRecoilState(isProfile)
+	const [profile, setProfile] = useRecoilState(isProfile);
 	const BASE_URL = process.env.REACT_APP_SERVER;
 
 	const navigate = useNavigate();
@@ -52,7 +53,7 @@ const MyPage = () => {
 
 				return response.data;
 			} catch (error) {
-				return error;
+				Sentry.captureException(error);
 			}
 		},
 		suspense: true,
@@ -94,6 +95,7 @@ const MyPage = () => {
 			},
 
 			onError: (error, variables, context) => {
+				Sentry.captureException(error);
 				alert("수정을 실패했습니다.");
 			},
 		});
@@ -109,6 +111,7 @@ const MyPage = () => {
 				alert("삭제 완료되었습니다!");
 			},
 			onError: (error, variables, context) => {
+				Sentry.captureException(error);
 				alert("삭제를 실패했습니다");
 			},
 		});
@@ -169,7 +172,7 @@ const MyPage = () => {
 					recentlyMyCommunityCommentList={recentlyMyCommunityCommentList}
 					memberCommunityCount={memberCommunityCount}
 					memberCommunityCommentCount={memberCommunityCommentCount}
-				/>			
+				/>
 			</Default>
 			<Mobile>
 				<MblMypgHome
@@ -196,7 +199,7 @@ const MyPage = () => {
 					memberCommunityCount={memberCommunityCount}
 					memberCommunityCommentCount={memberCommunityCommentCount}
 					profile={profile}
-					setProfile={setProfile}	
+					setProfile={setProfile}
 				/>
 				<TopButton />
 			</Mobile>

@@ -19,9 +19,10 @@ import axios from "axios";
 import canyaLogo from "../../assets/icons/canya.png";
 import { useRecoilState } from "recoil";
 import { isProfile } from "../../recoil/Atom";
+import * as Sentry from "@sentry/react";
 
 const MainNav = ({ setResetMain, setSubmitValues }) => {
-	const [ profile, setProfile] = useRecoilState(isProfile)
+	const [profile, setProfile] = useRecoilState(isProfile);
 	// Base Url
 	const BASE_URL = process.env.REACT_APP_SERVER;
 	// select값 state
@@ -84,11 +85,10 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 
 			return response.data;
 		} catch (error) {
+			Sentry.captureException(error);
 			throw error;
 		}
 	};
-
-
 
 	// 게시글 아이디 요청 Hook
 	const getPostId = useMutation(fetchPostId, {
@@ -97,6 +97,7 @@ const MainNav = ({ setResetMain, setSubmitValues }) => {
 			navigate(`/write/${data}`);
 		},
 		onError: (error, variables) => {
+			Sentry.captureException(error);
 			alert("게시글을 작성할 수 없습니다!");
 		},
 	});

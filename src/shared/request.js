@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as Sentry from "@sentry/react";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 const Authorization = localStorage.getItem("Authorization") ?? "";
@@ -20,9 +21,9 @@ export const getRequest = async ({
 }) => {
 	try {
 		const response = await http[method](url, { params });
-		// console.log("getRequest response =>", response);
 		return response;
 	} catch (error) {
+		Sentry.captureException(error);
 		if (throwWhenError) throw error;
 	}
 };
@@ -36,10 +37,9 @@ export const request = async ({
 }) => {
 	try {
 		const response = await http[method](url, payload);
-		// console.log("Request response =>", response);
 		return response;
 	} catch (error) {
-		// console.log("Request error =>", error);
+		Sentry.captureException(error);
 		if (throwWhenError) throw error;
 	}
 };

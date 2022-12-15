@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
+    font-display: swap;
   };
   body {
     color: #333333;
