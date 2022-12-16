@@ -23,9 +23,9 @@ const MblAll = ({
 					<Flex jc="space-between">
 						<Text
 							size="lg"
-							onClick={() => {								
+							onClick={() => {
 								navigate(`/mypage/myboard`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						>
 							내가 쓴 글 ✍🏻
@@ -34,7 +34,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/myboard`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						/>
 					</Flex>
@@ -63,7 +63,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mylike`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						>
 							좋아요 한 글 ❣️{" "}
@@ -72,7 +72,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mylike`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						/>
 					</Flex>
@@ -103,7 +103,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mycommunityboard`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						>
 							커뮤니티 글 👥{" "}
@@ -112,7 +112,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mycommunityboard`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						/>
 					</Flex>
@@ -143,7 +143,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mycomment`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						>
 							작성댓글 📋
@@ -152,7 +152,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mycomment`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						/>
 					</Flex>
@@ -165,7 +165,7 @@ const MblAll = ({
 							size="lg"
 							onClick={() => {
 								navigate(`/mypage/mycommunitycomment`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						>
 							커뮤댓글 💬
@@ -174,7 +174,7 @@ const MblAll = ({
 							src={rightArrow}
 							onClick={() => {
 								navigate(`/mypage/mycommunitycomment`);
-								setProfile(!isProfile)
+								setProfile(!isProfile);
 							}}
 						/>
 					</Flex>

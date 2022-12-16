@@ -61,7 +61,7 @@ const MyAll = () => {
 		},
 		suspense: true,
 	});
-
+ console.log("myContent=====>",myContent)
 	const {
 		recentlyMyBoardList,
 		recentlyMyCommentList,
