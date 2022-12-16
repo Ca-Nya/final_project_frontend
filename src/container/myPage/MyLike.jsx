@@ -40,7 +40,7 @@ const MyLike = () => {
 		{
 			onError: error => {
 				Sentry.captureException(error);
-				console.log(error.response);
+				// console.log(error.response);
 			},
 		},
 	);
